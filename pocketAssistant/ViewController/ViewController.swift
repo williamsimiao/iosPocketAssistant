@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var odtTextField: UITextField!
     
     var networkManager: NetworkManager!
-    var token: String?
+    var tokenString: String?
     
     init(networkManager: NetworkManager) {
         super.init(nibName: nil, bundle: nil)
@@ -63,7 +63,7 @@ class MainViewController: UIViewController {
                 print(error)
             }
             if let response = response {
-                self.token = response.token
+                self.tokenString = response.token
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "to_second", sender: self)
                 }
@@ -76,10 +76,17 @@ class MainViewController: UIViewController {
             return
         }
         if identifier == "to_second" {
-            guard let secondViewController = segue.destination as? SecondViewController else {
+            guard let navigationController = segue.destination as? UINavigationController else {
                 return
             }
-            secondViewController.tokenString = self.token
+            guard let secondViewController = navigationController.viewControllers.first as? SecondViewController else {
+                return
+            }
+            guard let token = self.tokenString else {
+                print("NO token")
+                return
+            }
+            secondViewController.tokenString = token
             secondViewController.networkManager = self.networkManager
         }
     }

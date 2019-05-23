@@ -30,6 +30,8 @@
 		3D93120B2289DD50000C2635 /* pocketAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D93120A2289DD50000C2635 /* pocketAssistantUITests.swift */; };
 		3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */; };
 		3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */; };
+		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
+		3DEBB0FC2297001A006F0E3B /* Body2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0FB2297001A006F0E3B /* Body2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		3D93120C2289DD50000C2635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosEndPoint.swift; sourceTree = "<group>"; };
+		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
+		3DEBB0FB2297001A006F0E3B /* Body2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 			children = (
 				3D9311EC2289DD4E000C2635 /* ViewController.swift */,
 				3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */,
+				3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				3D114DD2228B488C00A4A74C /* MovieModel.swift */,
 				3D48FB712295AC0A007ACC63 /* Body.swift */,
 				3D48FB732295B06F007ACC63 /* Body1.swift */,
+				3DEBB0FB2297001A006F0E3B /* Body2.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 				3D114DC6228B086900A4A74C /* NetworkError.swift in Sources */,
 				3D114DBC228B053E00A4A74C /* HTTPMethod.swift in Sources */,
 				3D48FB742295B06F007ACC63 /* Body1.swift in Sources */,
+				3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */,
 				3D114DC0228B05AB00A4A74C /* HTTPTask.swift in Sources */,
 				3D114DD3228B488C00A4A74C /* MovieModel.swift in Sources */,
 				3D114DCB228B28F100A4A74C /* JSONParameterEncoder.swift in Sources */,
@@ -381,6 +388,7 @@
 				3D9311ED2289DD4E000C2635 /* ViewController.swift in Sources */,
 				3D48FB722295AC0A007ACC63 /* Body.swift in Sources */,
 				3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */,
+				3DEBB0FC2297001A006F0E3B /* Body2.swift in Sources */,
 				3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */,
 				3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */,
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
