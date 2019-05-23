@@ -35,13 +35,9 @@ class SecondViewController: UIViewController {
         guard let token = self.tokenString else {
             return
         }
-        networkManager.runClose(token: token) { (response, error) in
+        networkManager.runClose(token: token) { (error) in
             if let error = error {
                 print(error)
-            }
-            if response != nil {
-                let mainViewController = MainViewController(networkManager: self.networkManager)
-                self.present(mainViewController, animated: true, completion: nil)
             }
         }
     }

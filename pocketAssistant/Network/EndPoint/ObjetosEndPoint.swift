@@ -42,16 +42,17 @@ extension ObjetosApi: EndPointType {
     var task: HTTPTask {
         switch self {
         case .listObjs(let token):
-            return .requestParametersAndHeaders(bodyParameters: [:], urlParameters: nil, additionHeaders: self.headers)
+            return .requestParametersAndHeaders(bodyParameters: [:], urlParameters: nil, additionHeaders: ["Authorization": token])
         }
     }
     
     var headers: HTTPHeaders? {
-        switch self {
-        case .listObjs(let token):
-            let autorizationValue = "HSM" + token
-            return ["Authorization":autorizationValue]
-        }
+        return nil
+//        switch self {
+//        case .listObjs(let token):
+//            let autorizationValue = "HSM" + token
+//            return ["Authorization":autorizationValue]
+//        }
     }
 }
 

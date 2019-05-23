@@ -54,20 +54,23 @@ extension SessaoApi: EndPointType {
             return .requestParameters(bodyParameters: ["usr":usr, "pwd":pwd], urlParameters: nil)
             
         case .close(let token):
+            print("FULL TOKEN: \(token)")
             return .requestParametersAndHeaders(bodyParameters: [:], urlParameters: nil, additionHeaders: ["Authorization": token])
             //TODO: testar
-            //return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: <#T##HTTPHeaders?#>)
+//            return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: ["Authorization": autorizationValue])
         }
     }
     
     var headers: HTTPHeaders? {
-        switch self {
-        case .auth:
-            return nil
-        case .close(let token):
-            let autorizationValue = "HSM" + token
-            return ["Authorization": autorizationValue]
-        }
+        return nil
+//        switch self {
+//        case .auth:
+//            return nil
+//        case .close(let token):
+//            let autorizationValue = "HSM" + token
+//            print("LOLO: \(autorizationValue)")
+//            return ["Authorization": autorizationValue]
+//        }
     }
 }
 

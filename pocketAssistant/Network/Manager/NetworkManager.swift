@@ -41,7 +41,7 @@ struct NetworkManager {
     //OBJS
     //TODO: Mudar tipo de Body
     func runListObjs(token: String, completion: @escaping (_ body1:Body1?,_ error: String?)->()) {
-        let completeToken = "HSM" + token
+        let completeToken = "HSM \(token)"
         objetosRouter.request(.listObjs(token: completeToken)) { (data, response, error) in
             if error != nil {
                 completion(nil, "Check your internet connection")
@@ -69,29 +69,31 @@ struct NetworkManager {
     }
     
     
-    func runClose(token: String, completion: @escaping (_ body1:Body1?,_ error: String?)->()) {
-        let completeToken = "HSM" + token
+    func runClose(token: String, completion: @escaping (_ error: String?)->()) {
+        let completeToken = "HSM \(token)"
         sessaoRouter.request(.close(token: completeToken)) { (data, response, error) in
             if error != nil {
-                completion(nil, "Check your internet connection")
+                completion("Check your internet connection")
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
                 switch result {
+                    //responseData is empty
                 case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-
-                    do {
-                        let apiResponse = try JSONDecoder().decode(Body1.self, from: responseData)
-                        completion(apiResponse, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
+                    break
+//                    guard let responseData = data else {
+//                        completion(NetworkResponse.noData.rawValue)
+//                        return
+//                    }
+//
+//                    do {
+//                        let apiResponse = try JSONDecoder().decode(Body1.self, from: responseData)
+//                        completion(apiResponse, nil)
+//                    } catch {
+//                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+//                    }
                 case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
+                    completion(networkFailureError)
                 }
             }
         }
