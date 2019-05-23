@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Body1: Codable {
+public struct ResponseBody1: Codable {
     
     public var token: String
     

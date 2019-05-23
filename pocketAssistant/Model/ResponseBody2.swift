@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Body2: Codable {
+public struct ResponseBody2: Codable {
     
     public var obj: [String]
     

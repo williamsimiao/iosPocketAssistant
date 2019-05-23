@@ -39,7 +39,7 @@ struct NetworkManager {
     }
     
     //OBJS
-    func runListObjs(token: String, completion: @escaping (_ body2:Body2?,_ error: String?)->()) {
+    func runListObjs(token: String, completion: @escaping (_ body2:ResponseBody2?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
         objetosRouter.request(.listObjs(token: completeToken)) { (data, response, error) in
@@ -56,7 +56,7 @@ struct NetworkManager {
                     }
                     
                     do {
-                        let apiResponse = try JSONDecoder().decode(Body2.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(ResponseBody2.self, from: responseData)
                         completion(apiResponse, nil)
                     } catch {
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
@@ -88,7 +88,7 @@ struct NetworkManager {
         }
     }
     
-    func runAuth(usr: String, pwd: String, completion: @escaping (_ body1:Body1?,_ error: String?)->()) {
+    func runAuth(usr: String, pwd: String, completion: @escaping (_ body1:ResponseBody1?,_ error: String?)->()) {
         sessaoRouter.request(.auth(usr: usr, pwd: pwd)) { (data, response, error) in
             if error != nil {
                 completion(nil, "Check your internet connection")
@@ -103,7 +103,7 @@ struct NetworkManager {
                     }
                     
                     do {
-                        let apiResponse = try JSONDecoder().decode(Body1.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(ResponseBody1.self, from: responseData)
                         completion(apiResponse, nil)
                     } catch {
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
