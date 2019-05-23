@@ -39,8 +39,7 @@ struct NetworkManager {
     }
     
     //OBJS
-    //TODO: Mudar tipo de Body
-    func runListObjs(token: String, completion: @escaping (_ body1:Body2?,_ error: String?)->()) {
+    func runListObjs(token: String, completion: @escaping (_ body2:Body2?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
         objetosRouter.request(.listObjs(token: completeToken)) { (data, response, error) in

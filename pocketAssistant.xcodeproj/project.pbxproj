@@ -18,7 +18,6 @@
 		3D114DCF228B2F7B00A4A74C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DCE228B2F7B00A4A74C /* Router.swift */; };
 		3D114DD3228B488C00A4A74C /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DD2228B488C00A4A74C /* MovieModel.swift */; };
 		3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DD5228B48EB00A4A74C /* NetworkManager.swift */; };
-		3D48FB722295AC0A007ACC63 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB712295AC0A007ACC63 /* Body.swift */; };
 		3D48FB742295B06F007ACC63 /* Body1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB732295B06F007ACC63 /* Body1.swift */; };
 		3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */; };
 		3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9311EA2289DD4E000C2635 /* AppDelegate.swift */; };
@@ -63,7 +62,6 @@
 		3D114DCE228B2F7B00A4A74C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		3D114DD2228B488C00A4A74C /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		3D114DD5228B48EB00A4A74C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		3D48FB712295AC0A007ACC63 /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
 		3D48FB732295B06F007ACC63 /* Body1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body1.swift; sourceTree = "<group>"; };
 		3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessaoEndPoint.swift; sourceTree = "<group>"; };
 		3D9311E72289DD4E000C2635 /* pocketAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pocketAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				3D114DD2228B488C00A4A74C /* MovieModel.swift */,
-				3D48FB712295AC0A007ACC63 /* Body.swift */,
 				3D48FB732295B06F007ACC63 /* Body1.swift */,
 				3DEBB0FB2297001A006F0E3B /* Body2.swift */,
 			);
@@ -386,7 +383,6 @@
 				3D114DCB228B28F100A4A74C /* JSONParameterEncoder.swift in Sources */,
 				3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */,
 				3D9311ED2289DD4E000C2635 /* ViewController.swift in Sources */,
-				3D48FB722295AC0A007ACC63 /* Body.swift in Sources */,
 				3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */,
 				3DEBB0FC2297001A006F0E3B /* Body2.swift in Sources */,
 				3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */,
