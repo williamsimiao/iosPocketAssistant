@@ -25,8 +25,8 @@ enum Result<String> {
 
 struct NetworkManager {
     static let environment : NetworkEnvironment = .production
-    static let MovieAPIKey = "58c9cfd74d252812f5af6305b2c176b6"
-    private let router = Router<MovieApi>()
+    private let sessaoRouter = Router<SessaoApi>()
+    private let objetosRouter = Router<ObjetosApi>()
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
         switch response.statusCode {
@@ -38,8 +38,11 @@ struct NetworkManager {
         }
     }
     
-    func getMovieRecomendationsById(id: Int, completion: @escaping (_ movie: [Movie]?,_ error: String?)->()) {
-        router.request(.recommended(id: id)) { (data, response, error) in
+    //OBJS
+    //TODO: Mudar tipo de Body
+    func runListObjs(token: String, completion: @escaping (_ body1:Body1?,_ error: String?)->()) {
+        let completeToken = "HSM" + token
+        objetosRouter.request(.listObjs(token: completeToken)) { (data, response, error) in
             if error != nil {
                 completion(nil, "Check your internet connection")
             }
@@ -53,8 +56,8 @@ struct NetworkManager {
                     }
                     
                     do {
-                        let apiResponse = try JSONDecoder().decode(MovieApiResponse.self, from: responseData)
-                        completion(apiResponse.movies, nil)
+                        let apiResponse = try JSONDecoder().decode(Body1.self, from: responseData)
+                        completion(apiResponse, nil)
                     } catch {
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
                     }
@@ -65,8 +68,37 @@ struct NetworkManager {
         }
     }
     
-    func getNewMovies(page: Int, completion: @escaping (_ movie: [Movie]?,_ error: String?)->()) {
-        router.request(.newMovies(page: page)) { (data, response, error) in
+    
+    func runClose(token: String, completion: @escaping (_ body1:Body1?,_ error: String?)->()) {
+        let completeToken = "HSM" + token
+        sessaoRouter.request(.close(token: completeToken)) { (data, response, error) in
+            if error != nil {
+                completion(nil, "Check your internet connection")
+            }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue)
+                        return
+                    }
+
+                    do {
+                        let apiResponse = try JSONDecoder().decode(Body1.self, from: responseData)
+                        completion(apiResponse, nil)
+                    } catch {
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError)
+                }
+            }
+        }
+    }
+    
+    func runAuth(usr: String, pwd: String, completion: @escaping (_ body1:Body1?,_ error: String?)->()) {
+        sessaoRouter.request(.auth(usr: usr, pwd: pwd)) { (data, response, error) in
             if error != nil {
                 completion(nil, "Check your internet connection")
             }
@@ -80,8 +112,8 @@ struct NetworkManager {
                     }
                     
                     do {
-                        let apiResponse = try JSONDecoder().decode(MovieApiResponse.self, from: responseData)
-                        completion(apiResponse.movies, nil)
+                        let apiResponse = try JSONDecoder().decode(Body1.self, from: responseData)
+                        completion(apiResponse, nil)
                     } catch {
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
                     }
@@ -91,5 +123,4 @@ struct NetworkManager {
             }
         }
     }
-    
 }

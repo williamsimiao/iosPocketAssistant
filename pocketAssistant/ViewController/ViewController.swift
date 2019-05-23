@@ -9,7 +9,12 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var usrTextField: UITextField!
+    @IBOutlet weak var pwdTextField: UITextField!
+    @IBOutlet weak var odtTextField: UITextField!
+    
     var networkManager: NetworkManager!
+    var token: String?
     
     init(networkManager: NetworkManager) {
         super.init(nibName: nil, bundle: nil)
@@ -21,32 +26,62 @@ class MainViewController: UIViewController {
         self.networkManager = NetworkManager()
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .green
-        
-        networkManager.getMovieRecomendationsById(id: 550) { (movies, error) in
+    }
+    
+    func validateTextInput(text: String?) throws {
+        if text == nil {
+            throw inputError.stringNil
+        }
+        //TODO check more cases
+    }
+    
+    func validateAuth() -> Bool {
+        do {
+            try validateTextInput(text: usrTextField.text)
+            try validateTextInput(text: pwdTextField.text)
+        } catch {
+            let alert = UIAlertController(title: "Erro", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            present(alert, animated: true)
+            return false
+        }
+        return true
+    }
+    
+    @IBAction func autenticar(_ sender: Any) {
+        if validateAuth() == false {
+            return
+        }
+        networkManager.runAuth(usr: usrTextField.text!, pwd: pwdTextField.text!) { (response, error) in
             if let error = error {
                 print(error)
             }
-            if let movies = movies {
-                for singleMovie in movies {
-                    print(singleMovie.title)
+            if let response = response {
+                self.token = response.token
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "to_second", sender: self)
                 }
             }
         }
-        
-        networkManager.getNewMovies(page: 1) { (movies, error) in
-            if let error = error {
-                print(error)
-            }
-            if let movies = movies {
-                for singleMovie in movies {
-                    print("\(singleMovie.title)")
-                }
-            }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            return
         }
-        
+        if identifier == "to_second" {
+            guard let secondViewController = segue.destination as? SecondViewController else {
+                return
+            }
+            secondViewController.tokenString = self.token
+            secondViewController.networkManager = self.networkManager
+        }
     }
 }
 

@@ -7,6 +7,11 @@
 //
 
 import Foundation
+public enum inputError : String, Error {
+    case stringNil = "Empty String"
+    case invalidString = "invalid String"
+}
+
 public enum NetworkError : String, Error {
     case parameterNil = "Parameter were nil"
     case encodingFailed = "Parameters encoding failed"

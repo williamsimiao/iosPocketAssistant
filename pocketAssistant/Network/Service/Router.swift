@@ -14,7 +14,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
         let session = URLSession.shared
         do {
             let request = try self.buildRequest(from: route)
-            print(request)
+            print("request: \(request)")
             task = session.dataTask(with: request, completionHandler: { (data, response, error) in
                 completion(data, response, error)
             })
@@ -41,6 +41,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
                                              request: &request)
                 
             case .requestParametersAndHeaders(let bodyParameters, let urlParameters, let additionHeaders):
+                self.addAdditionalHeaders(additionHeaders, request: &request)
                 try self.configureParameters(bodyParameters: bodyParameters,
                                              urlParameters: urlParameters,
                                              request: &request)
@@ -71,5 +72,4 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
             request.setValue(value, forHTTPHeaderField: key)
         }
     }
-    
 }
