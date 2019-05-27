@@ -11,10 +11,8 @@ import MaterialComponents
 
 class MainViewController: UIViewController {
     
-    //    @IBOutlet weak var scrollView: UIScrollView!
-    //    @IBOutlet weak var usrTextField: MDCTextField!
-    //    @IBOutlet weak var pwdTextField: MDCTextField!
-    //    @IBOutlet weak var otpTextField: MDCTextField!
+    let networkManager = NetworkManager()
+    var tokenString: String?
     
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -22,22 +20,6 @@ class MainViewController: UIViewController {
         scrollView.backgroundColor = .white
         scrollView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         return scrollView
-    }()
-    
-    let logoImageView: UIImageView = {
-        let baseImage = UIImage.init(named: "ShrineLogo")
-        let templatedImage = baseImage?.withRenderingMode(.alwaysTemplate)
-        let logoImageView = UIImageView(image: templatedImage)
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        return logoImageView
-    }()
-    
-    let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "SHRINE"
-        titleLabel.sizeToFit()
-        return titleLabel
     }()
     
     // Text Fields
@@ -68,20 +50,12 @@ class MainViewController: UIViewController {
 
     
     // Buttons
-    //TODO: Add buttons
-    let cancelButton: MDCButton = {
-        let cancelButton = MDCButton()
-        cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.setTitle("CANCEL", for: .normal)
-        cancelButton.addTarget(self, action: #selector(didTapCancel(sender:)), for: .touchUpInside)
-        return cancelButton
-    }()
-    let nextButton: MDCButton = {
-        let nextButton = MDCButton()
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.setTitle("NEXT", for: .normal)
-        nextButton.addTarget(self, action: #selector(didTapNext(sender:)), for: .touchUpInside)
-        return nextButton
+    let autenticarButton: MDCButton = {
+        let autenticarButton = MDCButton()
+        autenticarButton.translatesAutoresizingMaskIntoConstraints = false
+        autenticarButton.setTitle("AUTENTICAR", for: .normal)
+        autenticarButton.addTarget(self, action: #selector(didTapNext(sender:)), for: .touchUpInside)
+        return autenticarButton
     }()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -122,9 +96,6 @@ class MainViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapTouch))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
         
-        scrollView.addSubview(titleLabel)
-        scrollView.addSubview(logoImageView)
-        
         // TextFields
         //TODO: Add text fields to scroll view and setup initial state
         scrollView.addSubview(usernameTextField)
@@ -140,52 +111,19 @@ class MainViewController: UIViewController {
         
         // Buttons
         //TODO: Add buttons to the scroll view
-        scrollView.addSubview(nextButton)
-        scrollView.addSubview(cancelButton)
+        scrollView.addSubview(autenticarButton)
         
         // Constraints
         var constraints = [NSLayoutConstraint]()
-        if #available(iOS 11.0, *) {
-            constraints.append(NSLayoutConstraint(item: logoImageView,
-                                                  attribute: .top,
-                                                  relatedBy: .equal,
-                                                  toItem: scrollView.contentLayoutGuide,
-                                                  attribute: .top,
-                                                  multiplier: 1,
-                                                  constant: 49))
-        } else {
-            // Fallback on earlier versions
-        }
-        constraints.append(NSLayoutConstraint(item: logoImageView,
-                                              attribute: .centerX,
-                                              relatedBy: .equal,
-                                              toItem: scrollView,
-                                              attribute: .centerX,
-                                              multiplier: 1,
-                                              constant: 0))
-        constraints.append(NSLayoutConstraint(item: titleLabel,
-                                              attribute: .top,
-                                              relatedBy: .equal,
-                                              toItem: logoImageView,
-                                              attribute: .bottom,
-                                              multiplier: 1,
-                                              constant: 22))
-        constraints.append(NSLayoutConstraint(item: titleLabel,
-                                              attribute: .centerX,
-                                              relatedBy: .equal,
-                                              toItem: scrollView,
-                                              attribute: .centerX,
-                                              multiplier: 1,
-                                              constant: 0))
+        
         // Text Fields
-        //TODO: Setup text field constraints
         constraints.append(NSLayoutConstraint(item: usernameTextField,
                                               attribute: .top,
                                               relatedBy: .equal,
-                                              toItem: titleLabel,
+                                              toItem: scrollView,
                                               attribute: .bottom,
                                               multiplier: 1,
-                                              constant: 22))
+                                              constant: 150))
         constraints.append(NSLayoutConstraint(item: usernameTextField,
                                               attribute: .centerX,
                                               relatedBy: .equal,
@@ -239,37 +177,25 @@ class MainViewController: UIViewController {
                                            views: [ "otp" : otpTextField]))
         
         // Buttons
-        //TODO: Setup button constraints
-        constraints.append(NSLayoutConstraint(item: cancelButton,
+        constraints.append(NSLayoutConstraint(item: autenticarButton,
                                               attribute: .top,
                                               relatedBy: .equal,
-                                              toItem: passwordTextField,
+                                              toItem: otpTextField,
                                               attribute: .bottom,
                                               multiplier: 1,
                                               constant: 8))
-        constraints.append(NSLayoutConstraint(item: cancelButton,
-                                              attribute: .centerY,
+        constraints.append(NSLayoutConstraint(item: autenticarButton,
+                                              attribute: .centerX,
                                               relatedBy: .equal,
-                                              toItem: nextButton,
-                                              attribute: .centerY,
+                                              toItem: scrollView,
+                                              attribute: .centerX,
                                               multiplier: 1,
                                               constant: 0))
         constraints.append(contentsOf:
-            NSLayoutConstraint.constraints(withVisualFormat: "H:[cancel]-[next]-|",
-                                           options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+            NSLayoutConstraint.constraints(withVisualFormat: "H:|-[autenticar]-|",
+                                           options: [],
                                            metrics: nil,
-                                           views: [ "cancel" : cancelButton, "next" : nextButton]))
-        if #available(iOS 11.0, *) {
-            constraints.append(NSLayoutConstraint(item: nextButton,
-                                                  attribute: .bottom,
-                                                  relatedBy: .equal,
-                                                  toItem: scrollView.contentLayoutGuide,
-                                                  attribute: .bottomMargin,
-                                                  multiplier: 1,
-                                                  constant: -20))
-        } else {
-            // Fallback on earlier versions
-        }
+                                           views: [ "autenticar" : autenticarButton]))
         
         NSLayoutConstraint.activate(constraints)
     }
@@ -281,6 +207,13 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Action Handling
+    func validateTextInput(text: String?) throws {
+        if text == nil {
+            throw inputError.stringNil
+        }
+        //TODO check more cases
+    }
+    
     func validateAuth() -> Bool {
         do {
             try validateTextInput(text: usernameTextField.text)
@@ -311,9 +244,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    @objc func didTapCancel(sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     // MARK: - Keyboard Handling
     
@@ -343,6 +273,26 @@ class MainViewController: UIViewController {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         self.scrollView.contentInset = UIEdgeInsets.zero;
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        if identifier == "to_second" {
+            guard let navigationController = segue.destination as? UINavigationController else {
+                return
+            }
+            guard let secondViewController = navigationController.viewControllers.first as? SecondViewController else {
+                return
+            }
+            guard let token = self.tokenString else {
+                print("NO token")
+                return
+            }
+            secondViewController.tokenString = token
+            secondViewController.networkManager = self.networkManager
+        }
     }
 }
 
