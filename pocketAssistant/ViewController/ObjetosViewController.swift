@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class ObjetosViewController: UICollectionViewController {
+    
+    var appBarViewController = MDCAppBarViewController()
 
     var tokenString: String?
     var objIdArray: [String]?
@@ -16,7 +19,14 @@ class ObjetosViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Dinâmo Pocket 3"
         
+        self.addChild(self.appBarViewController)
+        self.view.addSubview(self.appBarViewController.view)
+        self.appBarViewController.didMove(toParent: self)
+        
+        // Set the tracking scroll view.
+        self.appBarViewController.headerView.trackingScrollView = self.collectionView
     }
 
 }
@@ -38,22 +48,39 @@ extension ObjetosViewController {
         cell.keyLabel.text = data[indexPath.row]
         return cell
     }
-    //
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let rowCounter = objIdArray?.count else {
-//            return 0
-//        }
-//        return rowCounter
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-//        guard let data = objIdArray else {
-//            return  cell
-//        }
-//        cell.textLabel?.text = data[indexPath.row]
-//        return cell
-//    }
     
+}
+
+extension ObjetosViewController {
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView == self.appBarViewController.headerView.trackingScrollView) {
+            self.appBarViewController.headerView.trackingScrollDidScroll()
+        }
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if (scrollView == self.appBarViewController.headerView.trackingScrollView) {
+            self.appBarViewController.headerView.trackingScrollDidEndDecelerating()
+        }
+    }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView,
+                                           willDecelerate decelerate: Bool) {
+        let headerView = self.appBarViewController.headerView
+        if (scrollView == headerView.trackingScrollView) {
+            headerView.trackingScrollDidEndDraggingWillDecelerate(decelerate)
+        }
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                            withVelocity velocity: CGPoint,
+                                            targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let headerView = self.appBarViewController.headerView
+        if (scrollView == headerView.trackingScrollView) {
+            headerView.trackingScrollWillEndDragging(withVelocity: velocity,
+                                                     targetContentOffset: targetContentOffset)
+        }
+    }
     
 }
