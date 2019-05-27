@@ -21,7 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="hCL-EO-skP" kind="show" identifier="to_second" id="mHY-k9-32b"/>
+                        <segue destination="RWb-6R-oVe" kind="show" identifier="to_second" id="5rw-GU-DwV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -37,18 +37,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WI-8j-ZMF">
-                                <rect key="frame" x="16" y="148" width="382" height="20.5"/>
+                                <rect key="frame" x="16" y="104" width="382" height="20.5"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AG1-zo-RRv">
-                                <rect key="frame" x="184.5" y="782" width="45" height="30"/>
-                                <color key="backgroundColor" red="0.23727876000000001" green="0.40869199480000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="GAQ-S0-0PC"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfy-q1-WWV" customClass="MDCButton">
+                                <rect key="frame" x="16" y="433" width="382" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Listar Objetos">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="listarObjetos:" destination="RWb-6R-oVe" eventType="touchUpInside" id="Foo-D6-mbd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVN-pK-DRI">
+                                <rect key="frame" x="16" y="471" width="382" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Listar Usuarios">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AG1-zo-RRv" customClass="MDCButton">
+                                <rect key="frame" x="16" y="509" width="382" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Close">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -56,28 +70,23 @@
                                     <action selector="close:" destination="RWb-6R-oVe" eventType="touchUpInside" id="mRC-mv-Z8W"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfy-q1-WWV">
-                                <rect key="frame" x="147" y="433" width="120" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="uXh-1S-4AO"/>
-                                </constraints>
-                                <state key="normal" title="Listar Objetos"/>
-                                <connections>
-                                    <action selector="listarObjetos:" destination="RWb-6R-oVe" eventType="touchUpInside" id="Foo-D6-mbd"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="B29-5S-aEu" firstAttribute="bottom" secondItem="AG1-zo-RRv" secondAttribute="bottom" constant="50" id="0EY-uz-bg7"/>
+                            <constraint firstItem="AG1-zo-RRv" firstAttribute="top" secondItem="jVN-pK-DRI" secondAttribute="bottom" constant="8" id="2Nf-LS-aXi"/>
+                            <constraint firstItem="jVN-pK-DRI" firstAttribute="leading" secondItem="B29-5S-aEu" secondAttribute="leading" constant="16" id="2Pc-1Q-yFP"/>
+                            <constraint firstItem="B29-5S-aEu" firstAttribute="trailing" secondItem="AG1-zo-RRv" secondAttribute="trailing" constant="16" id="HIX-cl-cWr"/>
+                            <constraint firstItem="B29-5S-aEu" firstAttribute="trailing" secondItem="jVN-pK-DRI" secondAttribute="trailing" constant="16" id="HeC-bo-Wzp"/>
+                            <constraint firstItem="vfy-q1-WWV" firstAttribute="leading" secondItem="B29-5S-aEu" secondAttribute="leading" constant="16" id="TdO-Mo-ECr"/>
                             <constraint firstItem="1WI-8j-ZMF" firstAttribute="centerX" secondItem="God-AK-Mkg" secondAttribute="centerX" id="UCQ-Qp-uxV"/>
+                            <constraint firstItem="B29-5S-aEu" firstAttribute="trailing" secondItem="vfy-q1-WWV" secondAttribute="trailing" constant="16" id="brI-nz-LeY"/>
                             <constraint firstItem="1WI-8j-ZMF" firstAttribute="top" secondItem="B29-5S-aEu" secondAttribute="top" constant="60" id="jcA-yc-ZOd"/>
+                            <constraint firstItem="jVN-pK-DRI" firstAttribute="top" secondItem="vfy-q1-WWV" secondAttribute="bottom" constant="8" id="jnK-wu-Kma"/>
+                            <constraint firstItem="AG1-zo-RRv" firstAttribute="leading" secondItem="B29-5S-aEu" secondAttribute="leading" constant="16" id="oCP-O4-SjD"/>
                             <constraint firstItem="B29-5S-aEu" firstAttribute="trailing" secondItem="1WI-8j-ZMF" secondAttribute="trailing" constant="16" id="onF-ZI-TKR"/>
                             <constraint firstItem="vfy-q1-WWV" firstAttribute="centerY" secondItem="God-AK-Mkg" secondAttribute="centerY" id="phF-cp-v4p"/>
                             <constraint firstItem="AG1-zo-RRv" firstAttribute="centerX" secondItem="God-AK-Mkg" secondAttribute="centerX" id="tyN-Ma-2RD"/>
                             <constraint firstItem="1WI-8j-ZMF" firstAttribute="leading" secondItem="B29-5S-aEu" secondAttribute="leading" constant="16" id="vFz-lY-z5o"/>
-                            <constraint firstItem="vfy-q1-WWV" firstAttribute="centerX" secondItem="God-AK-Mkg" secondAttribute="centerX" id="x7f-4p-JTT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B29-5S-aEu"/>
                     </view>
@@ -100,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iEs-EM-2Sb">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" id="obF-k0-W4g">
@@ -134,25 +143,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4h-IS-zNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3076.811594202899" y="-35.491071428571423"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hOm-nM-5f8">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hCL-EO-skP" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="V0k-ZS-btd">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="RWb-6R-oVe" kind="relationship" relationship="rootViewController" id="GT0-4R-fPh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mZc-W3-gPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1350.7246376811595" y="-35.491071428571423"/>
         </scene>
     </scenes>
 </document>

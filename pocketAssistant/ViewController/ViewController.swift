@@ -22,26 +22,31 @@ class MainViewController: UIViewController {
         return scrollView
     }()
     
+    var appBarViewController = MDCAppBarViewController()
+
     // Text Fields
     //TODO: Add text fields
     let usernameTextField: MDCTextField = {
         let usernameTextField = MDCTextField()
+        usernameTextField.text = "master"
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         usernameTextField.clearButtonMode = .unlessEditing
+        usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         return usernameTextField
     }()
     let passwordTextField: MDCTextField = {
         let passwordTextField = MDCTextField()
+        passwordTextField.text = "12345678"
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.isSecureTextEntry = true
         return passwordTextField
     }()
     let otpTextField: MDCTextField = {
-        let passwordTextField = MDCTextField()
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.isSecureTextEntry = true
-        return passwordTextField
+        let otpTextField = MDCTextField()
+        otpTextField.translatesAutoresizingMaskIntoConstraints = false
+        return otpTextField
     }()
+    
     
     //TODO: Add text field controllers
     let usernameTextFieldController: MDCTextInputControllerOutlined
@@ -75,9 +80,12 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.tintColor = .black
+        self.title = "Dinâmo Pocket"
+
+        // Set the tracking scroll view.
+        self.appBarViewController.headerView.trackingScrollView = self.scrollView
         scrollView.backgroundColor = .white
+        scrollView.delegate = self
         
         view.addSubview(scrollView)
         
@@ -96,14 +104,18 @@ class MainViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapTouch))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
         
+        self.addChild(self.appBarViewController)
+        self.appBarViewController.didMove(toParent: self)
+        view.addSubview(self.appBarViewController.view)
+        
         // TextFields
         //TODO: Add text fields to scroll view and setup initial state
         scrollView.addSubview(usernameTextField)
         scrollView.addSubview(passwordTextField)
         scrollView.addSubview(otpTextField)
-        usernameTextFieldController.placeholderText = "Username"
+        usernameTextFieldController.placeholderText = "Usuario"
         usernameTextField.delegate = self
-        passwordTextFieldController.placeholderText = "Password"
+        passwordTextFieldController.placeholderText = "Senha"
         passwordTextField.delegate = self
         otpTextFieldController.placeholderText = "OTP(Opcional)"
         otpTextField.delegate = self
@@ -280,10 +292,10 @@ class MainViewController: UIViewController {
             return
         }
         if identifier == "to_second" {
-            guard let navigationController = segue.destination as? UINavigationController else {
-                return
-            }
-            guard let secondViewController = navigationController.viewControllers.first as? SecondViewController else {
+//            guard let navigationController = segue.destination as? UINavigationController else {
+//                return
+//            }
+            guard let secondViewController = segue.destination as? SecondViewController else {
                 return
             }
             guard let token = self.tokenString else {
@@ -308,10 +320,46 @@ extension MainViewController: UITextFieldDelegate {
         if (textField == passwordTextField &&
             passwordTextField.text != nil &&
             passwordTextField.text!.count < 8) {
-            passwordTextFieldController.setErrorText("Password is too short",
+            passwordTextFieldController.setErrorText("Senha muito curta",
                                                      errorAccessibilityValue: nil)
         }
         
         return false
     }
+}
+
+//MARK: - UIScrollViewDelegate
+
+extension MainViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView == self.appBarViewController.headerView.trackingScrollView) {
+            self.appBarViewController.headerView.trackingScrollDidScroll()
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if (scrollView == self.appBarViewController.headerView.trackingScrollView) {
+            self.appBarViewController.headerView.trackingScrollDidEndDecelerating()
+        }
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView,
+                                           willDecelerate decelerate: Bool) {
+        let headerView = self.appBarViewController.headerView
+        if (scrollView == headerView.trackingScrollView) {
+            headerView.trackingScrollDidEndDraggingWillDecelerate(decelerate)
+        }
+    }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                            withVelocity velocity: CGPoint,
+                                            targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let headerView = self.appBarViewController.headerView
+        if (scrollView == headerView.trackingScrollView) {
+            headerView.trackingScrollWillEndDragging(withVelocity: velocity,
+                                                     targetContentOffset: targetContentOffset)
+        }
+    }
+
 }
