@@ -1,0 +1,6 @@
+framework module Pods_pocketAssistant {
+  umbrella header "Pods-pocketAssistant-umbrella.h"
+
+  export *
+  module * { export * }
+}

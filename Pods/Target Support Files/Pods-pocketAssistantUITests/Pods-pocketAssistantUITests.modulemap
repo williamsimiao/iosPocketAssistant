@@ -1,0 +1,6 @@
+framework module Pods_pocketAssistantUITests {
+  umbrella header "Pods-pocketAssistantUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
