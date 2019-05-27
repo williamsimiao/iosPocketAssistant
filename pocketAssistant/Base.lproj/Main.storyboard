@@ -92,7 +92,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="k1E-ea-mQg"/>
                     <connections>
-                        <outlet property="tokenLabel" destination="1WI-8j-ZMF" id="cu0-zP-QKG"/>
                         <segue destination="RXJ-ak-uk6" kind="show" identifier="to_objetos" id="jRd-I3-MQJ"/>
                     </connections>
                 </viewController>
