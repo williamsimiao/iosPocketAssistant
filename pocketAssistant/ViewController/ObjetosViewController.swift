@@ -27,6 +27,15 @@ class ObjetosViewController: UICollectionViewController {
         
         // Set the tracking scroll view.
         self.appBarViewController.headerView.trackingScrollView = self.collectionView
+        
+        let backItemImage = UIImage(named: "sharp_arrow_back_ios_black_24pt_")
+        let templatedMenuItemImage = backItemImage?.withRenderingMode(.alwaysTemplate)
+        let backItem = UIBarButtonItem(image: templatedMenuItemImage,
+                                       style: .plain,
+                                       target: self,
+                                       action: #selector(backItemTapped(sender:)))
+        self.navigationItem.leftBarButtonItem = backItem
+        self.navigationItem.leftBarButtonItem?.tintColor = .black
     }
 
 }
@@ -49,6 +58,9 @@ extension ObjetosViewController {
         return cell
     }
     
+    @objc func backItemTapped(sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension ObjetosViewController {

@@ -292,10 +292,11 @@ class MainViewController: UIViewController {
             return
         }
         if identifier == "to_second" {
-//            guard let navigationController = segue.destination as? UINavigationController else {
-//                return
-//            }
-            guard let secondViewController = segue.destination as? SecondViewController else {
+            guard let navigationController = segue.destination as? UINavigationController else {
+                return
+            }
+
+            guard let secondViewController = navigationController.viewControllers.first as? SecondViewController else {
                 return
             }
             guard let token = self.tokenString else {
