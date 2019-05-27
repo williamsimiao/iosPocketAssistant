@@ -10,6 +10,7 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/Buttons'
     pod 'MaterialComponents/Collections'
     pod 'MaterialComponents/TextFields'
+    pod 'MaterialComponents/Cards'
 
     target 'pocketAssistantTests' do
     inherit! :search_paths

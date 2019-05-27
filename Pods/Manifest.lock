@@ -1,6 +1,6 @@
 PODS:
-  - MaterialComponents/AnimationTiming (84.2.0)
-  - MaterialComponents/AppBar (84.2.0):
+  - MaterialComponents/AnimationTiming (84.3.0)
+  - MaterialComponents/AppBar (84.3.0):
     - MaterialComponents/FlexibleHeader
     - MaterialComponents/HeaderStackView
     - MaterialComponents/NavigationBar
@@ -11,11 +11,11 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/ButtonBar (84.2.0):
+  - MaterialComponents/ButtonBar (84.3.0):
     - MaterialComponents/Buttons
     - MaterialComponents/private/Application
     - MDFInternationalization
-  - MaterialComponents/Buttons (84.2.0):
+  - MaterialComponents/Buttons (84.3.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/Ripple
@@ -25,7 +25,14 @@ PODS:
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - MaterialComponents/CollectionCells (84.2.0):
+  - MaterialComponents/Cards (84.3.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+  - MaterialComponents/CollectionCells (84.3.0):
     - MaterialComponents/CollectionLayoutAttributes
     - MaterialComponents/Ink
     - MaterialComponents/Palettes
@@ -38,8 +45,8 @@ PODS:
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/CollectionLayoutAttributes (84.2.0)
-  - MaterialComponents/Collections (84.2.0):
+  - MaterialComponents/CollectionLayoutAttributes (84.3.0)
+  - MaterialComponents/Collections (84.3.0):
     - MaterialComponents/CollectionCells
     - MaterialComponents/CollectionLayoutAttributes
     - MaterialComponents/Ink
@@ -47,55 +54,55 @@ PODS:
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
-  - MaterialComponents/FlexibleHeader (84.2.0):
+  - MaterialComponents/FlexibleHeader (84.3.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/UIMetrics
     - MDFTextAccessibility
-  - MaterialComponents/HeaderStackView (84.2.0)
-  - MaterialComponents/Ink (84.2.0):
+  - MaterialComponents/HeaderStackView (84.3.0)
+  - MaterialComponents/Ink (84.3.0):
     - MaterialComponents/private/Math
-  - MaterialComponents/NavigationBar (84.2.0):
+  - MaterialComponents/NavigationBar (84.3.0):
     - MaterialComponents/ButtonBar
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - MaterialComponents/Palettes (84.2.0)
-  - MaterialComponents/private/Application (84.2.0)
-  - MaterialComponents/private/Icons/Base (84.2.0)
-  - MaterialComponents/private/Icons/ic_arrow_back (84.2.0):
+  - MaterialComponents/Palettes (84.3.0)
+  - MaterialComponents/private/Application (84.3.0)
+  - MaterialComponents/private/Icons/Base (84.3.0)
+  - MaterialComponents/private/Icons/ic_arrow_back (84.3.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_check (84.2.0):
+  - MaterialComponents/private/Icons/ic_check (84.3.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_check_circle (84.2.0):
+  - MaterialComponents/private/Icons/ic_check_circle (84.3.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_chevron_right (84.2.0):
+  - MaterialComponents/private/Icons/ic_chevron_right (84.3.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_info (84.2.0):
+  - MaterialComponents/private/Icons/ic_info (84.3.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_radio_button_unchecked (84.2.0):
+  - MaterialComponents/private/Icons/ic_radio_button_unchecked (84.3.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_reorder (84.2.0):
+  - MaterialComponents/private/Icons/ic_reorder (84.3.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Math (84.2.0)
-  - MaterialComponents/private/UIMetrics (84.2.0):
+  - MaterialComponents/private/Math (84.3.0)
+  - MaterialComponents/private/UIMetrics (84.3.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/Ripple (84.2.0):
+  - MaterialComponents/Ripple (84.3.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (84.2.0)
-  - MaterialComponents/ShadowLayer (84.2.0):
+  - MaterialComponents/ShadowElevations (84.3.0)
+  - MaterialComponents/ShadowLayer (84.3.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Shapes (84.2.0):
+  - MaterialComponents/Shapes (84.3.0):
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
-  - MaterialComponents/TextFields (84.2.0):
+  - MaterialComponents/TextFields (84.3.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Palettes
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Typography (84.2.0):
+  - MaterialComponents/Typography (84.3.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -104,6 +111,7 @@ PODS:
 DEPENDENCIES:
   - MaterialComponents/AppBar
   - MaterialComponents/Buttons
+  - MaterialComponents/Cards
   - MaterialComponents/Collections
   - MaterialComponents/TextFields
 
@@ -114,10 +122,10 @@ SPEC REPOS:
     - MDFTextAccessibility
 
 SPEC CHECKSUMS:
-  MaterialComponents: 97aaf99bed91a6918775cb4cdb4d4551ded48c3f
+  MaterialComponents: 897e26e71faa95ea71c183e056443e9344682faf
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
 
-PODFILE CHECKSUM: 1ceed86139949f825a672413ebc88ad9ef607e22
+PODFILE CHECKSUM: 93bcbd5e7f15a5edd44a381d928979d176017e3a
 
 COCOAPODS: 1.6.1

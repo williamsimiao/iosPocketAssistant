@@ -8,9 +8,8 @@
 
 import UIKit
 
-class ObjetosViewController: UIViewController {
+class ObjetosViewController: UICollectionViewController {
 
-    @IBOutlet weak var tableView: UITableView!
     var tokenString: String?
     var objIdArray: [String]?
     var networkManager: NetworkManager!
@@ -22,22 +21,39 @@ class ObjetosViewController: UIViewController {
 
 }
 
-extension ObjetosViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//Delegate, DataSource
+extension ObjetosViewController {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let rowCounter = objIdArray?.count else {
             return 0
         }
         return rowCounter
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ObjetoCell", for: indexPath) as! ObjetoCell
         guard let data = objIdArray else {
             return  cell
         }
-        cell.textLabel?.text = data[indexPath.row]
+        cell.keyLabel.text = data[indexPath.row]
         return cell
     }
+    //
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        guard let rowCounter = objIdArray?.count else {
+//            return 0
+//        }
+//        return rowCounter
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+//        guard let data = objIdArray else {
+//            return  cell
+//        }
+//        cell.textLabel?.text = data[indexPath.row]
+//        return cell
+//    }
     
     
 }
