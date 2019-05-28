@@ -11,6 +11,7 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/Collections'
     pod 'MaterialComponents/TextFields'
     pod 'MaterialComponents/Cards'
+    pod 'MaterialComponents/Typography'
 
     target 'pocketAssistantTests' do
     inherit! :search_paths
