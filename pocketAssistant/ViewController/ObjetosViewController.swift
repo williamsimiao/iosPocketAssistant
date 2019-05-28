@@ -19,6 +19,7 @@ class ObjetosViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "Dinâmo Pocket 3"
         
         self.addChild(self.appBarViewController)
@@ -41,7 +42,14 @@ class ObjetosViewController: UICollectionViewController {
 }
 
 //Delegate, DataSource
-extension ObjetosViewController {
+extension ObjetosViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width  = self.view.frame.size.width * 0.9
+
+        return CGSize(width: width, height: 50.0)
+    }
+
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let rowCounter = objIdArray?.count else {
             return 0
