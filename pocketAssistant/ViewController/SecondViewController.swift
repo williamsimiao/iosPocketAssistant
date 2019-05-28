@@ -43,15 +43,17 @@ class SecondViewController: UIViewController {
             if let response = response {
                 self.objIdArray = response.obj
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "to_objetos", sender: self)
+                    self.performSegue(withIdentifier: "to_ObjetosViewController", sender: self)
                 }
             }
         }
     }
     
     @IBAction func didTapCriarUsuario(_ sender: Any) {
+        self.performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
     }
     @IBAction func didTapMudarSenha(_ sender: Any) {
+        self.performSegue(withIdentifier: "to_TrocarSenhaViewController", sender: self)
     }
     
     @IBAction func didTapClose(_ sender: Any) {

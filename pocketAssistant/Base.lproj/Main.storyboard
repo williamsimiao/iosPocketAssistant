@@ -24,7 +24,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esq-Cm-2HR">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Usuário" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yte-kM-0SM" customClass="MDCTextField">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yte-kM-0SM" customClass="MDCTextField">
                                                 <rect key="frame" x="8" y="150" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -198,8 +198,9 @@
                     <navigationItem key="navigationItem" id="k1E-ea-mQg"/>
                     <connections>
                         <outlet property="scrollView" destination="xf2-Sd-TSO" id="49j-th-Qbb"/>
-                        <segue destination="PJc-q7-FEt" kind="show" identifier="to_objetos" id="EBf-Dj-6KY"/>
-                        <segue destination="OJ8-F1-OeA" kind="show" identifier="to_changePwd" id="QKq-he-8jG"/>
+                        <segue destination="PJc-q7-FEt" kind="show" identifier="to_ObjetosViewController" id="EBf-Dj-6KY"/>
+                        <segue destination="OJ8-F1-OeA" kind="show" identifier="to_TrocarSenhaViewController" id="QKq-he-8jG"/>
+                        <segue destination="d1z-lK-8OI" kind="show" identifier="to_CriarUsuarioViewController" id="2vv-Oe-fmO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umY-l2-grh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -220,7 +221,15 @@
                 <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="TrocarSenhaViewController" id="OJ8-F1-OeA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jp-wG-iQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3202" y="-99"/>
+            <point key="canvasLocation" x="3154" y="-169"/>
+        </scene>
+        <!--CriarUsuarioViewController-->
+        <scene sceneID="keM-3r-4Ng">
+            <objects>
+                <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="CriarUsuarioViewController" id="d1z-lK-8OI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QJZ-yd-vjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3155" y="-133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZHk-we-tl0">
