@@ -8,11 +8,12 @@
 
 import UIKit
 import MaterialComponents
+import SwiftKeychainWrapper
 
 class MainViewController: UIViewController {
     
     let networkManager = NetworkManager()
-    var tokenString: String?
+//    var tokenString: String?
     
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -243,12 +244,20 @@ class MainViewController: UIViewController {
         if validateAuth() == false {
             return
         }
-        networkManager.runAuth(usr: usernameTextField.text!, pwd: passwordTextField.text!) { (response, error) in
+        let username = usernameTextField.text!
+        let password = passwordTextField.text!
+        networkManager.runAuth(usr: username, pwd: password) { (response, error) in
             if let error = error {
                 print(error)
             }
             if let response = response {
-                self.tokenString = response.token
+                let tokenSaved: Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
+                let usrSaved: Bool = KeychainWrapper.standard.set("usr", forKey: username)
+                let pwdSaved: Bool = KeychainWrapper.standard.set("pwd", forKey: password)
+                if !(tokenSaved && usrSaved && pwdSaved) {
+                    return
+                }
+
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "to_second", sender: self)
                 }
@@ -287,26 +296,26 @@ class MainViewController: UIViewController {
         self.scrollView.contentInset = UIEdgeInsets.zero;
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else {
-            return
-        }
-        if identifier == "to_second" {
-            guard let navigationController = segue.destination as? UINavigationController else {
-                return
-            }
-
-            guard let secondViewController = navigationController.viewControllers.first as? SecondViewController else {
-                return
-            }
-            guard let token = self.tokenString else {
-                print("NO token")
-                return
-            }
-            secondViewController.tokenString = token
-            secondViewController.networkManager = self.networkManager
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let identifier = segue.identifier else {
+//            return
+//        }
+//        if identifier == "to_second" {
+//            guard let navigationController = segue.destination as? UINavigationController else {
+//                return
+//            }
+//
+//            guard let secondViewController = navigationController.viewControllers.first as? SecondViewController else {
+//                return
+//            }
+//            guard let token = self.tokenString else {
+//                print("NO token")
+//                return
+//            }
+//            secondViewController.tokenString = token
+//            secondViewController.networkManager = self.networkManager
+//        }
+//    }
 }
 
 

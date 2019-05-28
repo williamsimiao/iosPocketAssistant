@@ -16,7 +16,7 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/Dialogs'
     pod 'MaterialComponents/NavigationBar'
     pod 'MaterialComponents/Palettes'
-
+    pod 'SwiftKeychainWrapper'
 
     target 'pocketAssistantTests' do
     inherit! :search_paths

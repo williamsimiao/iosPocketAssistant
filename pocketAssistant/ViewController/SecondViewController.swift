@@ -8,6 +8,7 @@
 
 import UIKit
 import MaterialComponents
+import SwiftKeychainWrapper
 
 class SecondViewController: UIViewController {
 
@@ -42,22 +43,12 @@ class SecondViewController: UIViewController {
     var appBarViewController = MDCAppBarViewController()
     
     var tokenString: String?
-    var networkManager: NetworkManager!
+    let networkManager = NetworkManager()
     var objIdArray: [String]?
-
-    
-    init(networkManager: NetworkManager) {
-        super.init(nibName: nil, bundle: nil)
-        self.networkManager = networkManager
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.networkManager = NetworkManager()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
         self.title = "Dinâmo Pocket 2"
 
         //ScrollView\
@@ -173,15 +164,6 @@ class SecondViewController: UIViewController {
                     })
                     alertController.addAction(action)
                     self.present(alertController, animated:true, completion:nil)
-                    
-                    
-//                    let alert = UIAlertController(title: "Sessão encerrada", message: "Sessão encerrada com sucesso", preferredStyle: UIAlertController.Style.alert)
-//                    let dismissAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-//                        self.dismiss(animated: true, completion: nil)
-//                    })
-//                    alert.addAction(dismissAction)
-//
-//                    self.present(alert, animated: true)
                 }
             }
         }

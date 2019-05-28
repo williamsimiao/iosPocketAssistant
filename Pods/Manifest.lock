@@ -124,6 +124,7 @@ PODS:
   - MotionAnimator (2.8.1):
     - MotionInterchange (~> 1.6)
   - MotionInterchange (1.6.0)
+  - SwiftKeychainWrapper (3.3.0)
 
 DEPENDENCIES:
   - MaterialComponents/ActivityIndicator
@@ -136,6 +137,7 @@ DEPENDENCIES:
   - MaterialComponents/Palettes
   - MaterialComponents/TextFields
   - MaterialComponents/Typography
+  - SwiftKeychainWrapper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -144,6 +146,7 @@ SPEC REPOS:
     - MDFTextAccessibility
     - MotionAnimator
     - MotionInterchange
+    - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   MaterialComponents: 897e26e71faa95ea71c183e056443e9344682faf
@@ -151,7 +154,8 @@ SPEC CHECKSUMS:
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
+  SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: 9514deed1e1271bb0466c6226e9f740ebef454b6
+PODFILE CHECKSUM: 690381565c2f264da5fa0da67f68b5abd0a1fa9e
 
 COCOAPODS: 1.6.1
