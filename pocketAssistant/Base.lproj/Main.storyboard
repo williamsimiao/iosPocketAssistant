@@ -198,106 +198,29 @@
                     <navigationItem key="navigationItem" id="k1E-ea-mQg"/>
                     <connections>
                         <outlet property="scrollView" destination="xf2-Sd-TSO" id="49j-th-Qbb"/>
-                        <segue destination="QRH-UU-tig" kind="show" identifier="to_objetos" id="VFW-bF-aUi"/>
-                        <segue destination="OUV-t3-8OY" kind="show" identifier="to_changePwd" id="6Xy-AQ-4fZ"/>
+                        <segue destination="PJc-q7-FEt" kind="show" identifier="to_objetos" id="EBf-Dj-6KY"/>
+                        <segue destination="OJ8-F1-OeA" kind="show" identifier="to_changePwd" id="QKq-he-8jG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umY-l2-grh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2442.0289855072465" y="-35.491071428571423"/>
         </scene>
-        <!--Objetos View Controller-->
-        <scene sceneID="vEv-we-iWK">
+        <!--ObjetosViewController-->
+        <scene sceneID="9u6-J1-5BP">
             <objects>
-                <collectionViewController id="QRH-UU-tig" customClass="ObjetosViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Kyj-Af-iqb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zJG-G9-WsB">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="10"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ObjetoCell" id="s4H-P4-5yP" customClass="ObjetoCell" customModule="pocketAssistant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="10" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDs-1u-xDA">
-                                            <rect key="frame" x="4" y="15" width="42" height="20"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="GDs-1u-xDA" firstAttribute="leading" secondItem="s4H-P4-5yP" secondAttribute="leading" constant="4" id="71O-lh-d3f"/>
-                                    <constraint firstAttribute="trailing" secondItem="GDs-1u-xDA" secondAttribute="trailing" constant="4" id="BCk-LO-fnn"/>
-                                    <constraint firstItem="GDs-1u-xDA" firstAttribute="centerY" secondItem="s4H-P4-5yP" secondAttribute="centerY" id="QKJ-rN-YUC"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="keyLabel" destination="GDs-1u-xDA" id="K4x-Qv-yaw"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2Xp-hj-EQ0">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="10"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="QRH-UU-tig" id="wrJ-xD-vDi"/>
-                            <outlet property="delegate" destination="QRH-UU-tig" id="EUC-tz-iFZ"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tQs-m3-pIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="ObjetosViewController" id="PJc-q7-FEt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Yc-fa-dIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3373.913043478261" y="-35.491071428571423"/>
+            <point key="canvasLocation" x="3133" y="-206"/>
         </scene>
-        <!--Trocar Senha View Controller-->
-        <scene sceneID="El8-4D-chx">
+        <!--TrocarSenhaViewController-->
+        <scene sceneID="3UT-mQ-ebp">
             <objects>
-                <viewController storyboardIdentifier="TrocarSenhaViewController" id="OUV-t3-8OY" customClass="TrocarSenhaViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="154-Li-RRU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L9j-gm-7Dt" customClass="MDCTextField">
-                                <rect key="frame" x="16" y="210" width="382" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMz-nI-CRi" customClass="MDCButton">
-                                <rect key="frame" x="184" y="351" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="didTapChangePwd:" destination="OUV-t3-8OY" eventType="touchUpInside" id="iYh-iu-qWE"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="L9j-gm-7Dt" firstAttribute="leading" secondItem="vx3-tk-LgE" secondAttribute="leading" constant="16" id="A5i-YR-5gU"/>
-                            <constraint firstItem="L9j-gm-7Dt" firstAttribute="top" secondItem="vx3-tk-LgE" secondAttribute="top" constant="166" id="aiq-k5-aAX"/>
-                            <constraint firstItem="vx3-tk-LgE" firstAttribute="trailing" secondItem="L9j-gm-7Dt" secondAttribute="trailing" constant="16" id="zxf-Ak-sgx"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="vx3-tk-LgE"/>
-                    </view>
-                    <connections>
-                        <outlet property="newPwdTextField" destination="L9j-gm-7Dt" id="UwQ-8c-7Un"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hOQ-cq-0Ne" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="TrocarSenhaViewController" id="OJ8-F1-OeA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2jp-wG-iQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3391" y="628"/>
+            <point key="canvasLocation" x="3202" y="-99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZHk-we-tl0">

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Objetos View Controller-->
+        <scene sceneID="MXv-KG-5Z3">
+            <objects>
+                <collectionViewController storyboardIdentifier="ObjetosViewController" id="Mge-dc-TEG" customClass="ObjetosViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="z9B-T5-4bm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TPm-5F-8PU">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="10"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ObjetoCell" id="UgA-AV-v0t" customClass="ObjetoCell" customModule="pocketAssistant" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="10" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcH-2X-KaF">
+                                            <rect key="frame" x="4" y="15" width="42" height="20"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="LcH-2X-KaF" firstAttribute="leading" secondItem="UgA-AV-v0t" secondAttribute="leading" constant="4" id="Rn0-6p-n3m"/>
+                                    <constraint firstAttribute="trailing" secondItem="LcH-2X-KaF" secondAttribute="trailing" constant="4" id="jEb-I5-fcC"/>
+                                    <constraint firstItem="LcH-2X-KaF" firstAttribute="centerY" secondItem="UgA-AV-v0t" secondAttribute="centerY" id="nqE-AE-zEf"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="keyLabel" destination="LcH-2X-KaF" id="ocZ-OO-9fZ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Hjs-TJ-7F1">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="10"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="Mge-dc-TEG" id="JCO-3W-gSN"/>
+                            <outlet property="delegate" destination="Mge-dc-TEG" id="nmt-ZR-up5"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3At-mF-0CG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3373.913043478261" y="-35.491071428571423"/>
+        </scene>
+        <!--Trocar Senha View Controller-->
+        <scene sceneID="8dQ-1B-J7r">
+            <objects>
+                <viewController storyboardIdentifier="TrocarSenhaViewController" id="GVn-lg-13a" customClass="TrocarSenhaViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h2w-oB-sa8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xeg-ea-i0s" customClass="MDCTextField">
+                                <rect key="frame" x="16" y="210" width="382" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2a-0Z-tV7" customClass="MDCButton">
+                                <rect key="frame" x="184" y="351" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didTapChangePwd:" destination="GVn-lg-13a" eventType="touchUpInside" id="aPr-n0-hzR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xeg-ea-i0s" firstAttribute="top" secondItem="ydV-b5-zqr" secondAttribute="top" constant="166" id="ZMK-2a-TIf"/>
+                            <constraint firstItem="Xeg-ea-i0s" firstAttribute="leading" secondItem="ydV-b5-zqr" secondAttribute="leading" constant="16" id="bWZ-Cr-yRp"/>
+                            <constraint firstItem="ydV-b5-zqr" firstAttribute="trailing" secondItem="Xeg-ea-i0s" secondAttribute="trailing" constant="16" id="w4B-bS-exH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ydV-b5-zqr"/>
+                    </view>
+                    <connections>
+                        <outlet property="newPwdTextField" destination="Xeg-ea-i0s" id="8jd-rd-OKR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3gD-dg-qoC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4259" y="-35"/>
+        </scene>
+    </scenes>
+</document>
