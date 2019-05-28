@@ -167,13 +167,21 @@ class SecondViewController: UIViewController {
             }
             else {
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Sessão encerrada", message: "Sessão encerrada com sucesso", preferredStyle: UIAlertController.Style.alert)
-                    let dismissAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    let alertController = MDCAlertController(title: "Sessão encerrada", message: "Sessão encerrada com sucesso")
+                    let action = MDCAlertAction(title: "OK", handler: { (MDCAlertAction) in
                         self.dismiss(animated: true, completion: nil)
                     })
-                    alert.addAction(dismissAction)
+                    alertController.addAction(action)
+                    self.present(alertController, animated:true, completion:nil)
                     
-                    self.present(alert, animated: true)
+                    
+//                    let alert = UIAlertController(title: "Sessão encerrada", message: "Sessão encerrada com sucesso", preferredStyle: UIAlertController.Style.alert)
+//                    let dismissAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+//                        self.dismiss(animated: true, completion: nil)
+//                    })
+//                    alert.addAction(dismissAction)
+//
+//                    self.present(alert, animated: true)
                 }
             }
         }

@@ -1,4 +1,9 @@
 PODS:
+  - MaterialComponents/ActivityIndicator (84.3.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Application
+    - MDFInternationalization
+    - MotionAnimator (~> 2.0)
   - MaterialComponents/AnimationTiming (84.3.0)
   - MaterialComponents/AppBar (84.3.0):
     - MaterialComponents/FlexibleHeader
@@ -54,6 +59,13 @@ PODS:
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
+  - MaterialComponents/Dialogs (84.3.0):
+    - MaterialComponents/Buttons
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
   - MaterialComponents/FlexibleHeader (84.3.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/UIMetrics
@@ -84,6 +96,8 @@ PODS:
     - MaterialComponents/private/Icons/Base
   - MaterialComponents/private/Icons/ic_reorder (84.3.0):
     - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/KeyboardWatcher (84.3.0):
+    - MaterialComponents/private/Application
   - MaterialComponents/private/Math (84.3.0)
   - MaterialComponents/private/UIMetrics (84.3.0):
     - MaterialComponents/private/Application
@@ -107,12 +121,19 @@ PODS:
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
   - MDFTextAccessibility (2.0.0)
+  - MotionAnimator (2.8.1):
+    - MotionInterchange (~> 1.6)
+  - MotionInterchange (1.6.0)
 
 DEPENDENCIES:
+  - MaterialComponents/ActivityIndicator
   - MaterialComponents/AppBar
   - MaterialComponents/Buttons
   - MaterialComponents/Cards
   - MaterialComponents/Collections
+  - MaterialComponents/Dialogs
+  - MaterialComponents/NavigationBar
+  - MaterialComponents/Palettes
   - MaterialComponents/TextFields
   - MaterialComponents/Typography
 
@@ -121,12 +142,16 @@ SPEC REPOS:
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
+    - MotionAnimator
+    - MotionInterchange
 
 SPEC CHECKSUMS:
   MaterialComponents: 897e26e71faa95ea71c183e056443e9344682faf
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
+  MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
 
-PODFILE CHECKSUM: 1efd52f97984365d6292936b2e98a1e50bb1abed
+PODFILE CHECKSUM: 9514deed1e1271bb0466c6226e9f740ebef454b6
 
 COCOAPODS: 1.6.1

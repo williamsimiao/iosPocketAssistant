@@ -12,6 +12,11 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/TextFields'
     pod 'MaterialComponents/Cards'
     pod 'MaterialComponents/Typography'
+    pod 'MaterialComponents/ActivityIndicator'
+    pod 'MaterialComponents/Dialogs'
+    pod 'MaterialComponents/NavigationBar'
+    pod 'MaterialComponents/Palettes'
+
 
     target 'pocketAssistantTests' do
     inherit! :search_paths

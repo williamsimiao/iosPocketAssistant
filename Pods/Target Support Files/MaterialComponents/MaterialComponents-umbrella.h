@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "MaterialActivityIndicator.h"
+#import "MDCActivityIndicator.h"
 #import "CAMediaTimingFunction+MDCAnimationTiming.h"
 #import "MaterialAnimationTiming.h"
 #import "UIView+MDCTimingFunction.h"
@@ -43,6 +45,13 @@
 #import "MDCCollectionViewFlowLayout.h"
 #import "MDCCollectionViewStyling.h"
 #import "MDCCollectionViewStylingDelegate.h"
+#import "MaterialDialogs.h"
+#import "MDCAlertController+ButtonForAction.h"
+#import "MDCAlertController.h"
+#import "MDCAlertControllerView.h"
+#import "MDCDialogPresentationController.h"
+#import "MDCDialogTransitionController.h"
+#import "UIViewController+MaterialDialogs.h"
 #import "MaterialFlexibleHeader.h"
 #import "MDCFlexibleHeaderContainerViewController.h"
 #import "MDCFlexibleHeaderView+ShiftBehavior.h"
@@ -114,6 +123,8 @@
 #import "MaterialIcons+ic_info.h"
 #import "MaterialIcons+ic_radio_button_unchecked.h"
 #import "MaterialIcons+ic_reorder.h"
+#import "MaterialKeyboardWatcher.h"
+#import "MDCKeyboardWatcher.h"
 #import "MaterialMath.h"
 #import "MDCMath.h"
 #import "MaterialUIMetrics.h"
