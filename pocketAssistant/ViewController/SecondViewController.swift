@@ -158,10 +158,16 @@ class SecondViewController: UIViewController {
             }
             else {
                 DispatchQueue.main.async {
+                    let actionComplitionHandler: MDCActionHandler = {_ in
+                        let stor = UIStoryboard.init(name: "Main", bundle: nil)
+                        let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
+                        self.present(mainViewController, animated: true, completion: { () in
+                            print("Done")
+                        })
+                    }
+                    
                     let alertController = MDCAlertController(title: "Sessão encerrada", message: "Sessão encerrada com sucesso")
-                    let action = MDCAlertAction(title: "OK", handler: { (MDCAlertAction) in
-                        self.dismiss(animated: true, completion: nil)
-                    })
+                    let action = MDCAlertAction(title: "OK", handler: actionComplitionHandler)
                     alertController.addAction(action)
                     self.present(alertController, animated:true, completion:nil)
                 }

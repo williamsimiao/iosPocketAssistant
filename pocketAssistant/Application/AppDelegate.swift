@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let networkManager = NetworkManager()
+        let token = KeychainWrapper.standard.string(forKey: "TOKEN")
+        guard let tokenString = token else {
+            return true
+        }
+        networkManager.runProbe(token: tokenString) { (response, error) in
+            if let error = error {
+                print(error)
+            }
+            if let response = response {
+                print(response.probe_str)
+                let stor = UIStoryboard.init(name: "Main", bundle: nil)
+                let homeView = stor.instantiateViewController(withIdentifier: "SecondViewController")
+                let nav = UINavigationController(rootViewController: homeView)
+                nav.navigationBar.isHidden = true
+                self.window?.rootViewController = nav
+            }
+        }
+        
         return true
     }
 
@@ -29,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

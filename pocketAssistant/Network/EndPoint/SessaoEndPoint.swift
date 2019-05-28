@@ -15,6 +15,7 @@ enum NetworkEnvironment {
 public enum SessaoApi {
     case auth(usr: String, pwd: String)
     case close(token: String)
+    case probe(token: String)
 }
 
 extension SessaoApi: EndPointType {
@@ -36,6 +37,8 @@ extension SessaoApi: EndPointType {
             return "auth"
         case .close:
             return "close"
+        case .probe:
+            return "probe"
         }
     }
     
@@ -45,6 +48,8 @@ extension SessaoApi: EndPointType {
             return .post
         case .close:
             return .post
+        case .probe:
+            return .get
         }
     }
     
@@ -54,8 +59,10 @@ extension SessaoApi: EndPointType {
             return .requestParameters(bodyParameters: ["usr":usr, "pwd":pwd], urlParameters: nil)
             
         case .close(let token):
-            print("FULL TOKEN: \(token)")
             return .requestParametersAndHeaders(bodyParameters: [:], urlParameters: nil, additionHeaders: ["Authorization": token])
+        case .probe(let token):
+            print("FUll token: \(token)")
+            return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: ["Authorization": token])
         }
     }
     

@@ -38,7 +38,7 @@ struct NetworkManager {
         }
     }
     
-    //OBJS
+    //ObjetosApi
     func runListObjs(token: String, completion: @escaping (_ body2:ResponseBody2?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
@@ -68,6 +68,33 @@ struct NetworkManager {
         }
     }
     
+    //SessaoApi
+    func runProbe(token: String, completion: @escaping (_ body1:ResponseBody3?,_ error: String?)->()) {
+        let completeToken = "HSM \(token)"
+        sessaoRouter.request(.probe(token: completeToken)) { (data, response, error) in
+            if error != nil {
+                completion(nil, "Check your internet connection")
+            }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue)
+                        return
+                    }
+                    do {
+                        let apiResponse = try JSONDecoder().decode(ResponseBody3.self, from: responseData)
+                        completion(apiResponse, nil)
+                    } catch {
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError)
+                }
+            }
+        }
+    }
     
     func runClose(token: String, completion: @escaping (_ error: String?)->()) {
         let completeToken = "HSM \(token)"

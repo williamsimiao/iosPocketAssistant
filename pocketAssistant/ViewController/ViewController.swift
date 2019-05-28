@@ -252,8 +252,8 @@ class MainViewController: UIViewController {
             }
             if let response = response {
                 let tokenSaved: Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
-                let usrSaved: Bool = KeychainWrapper.standard.set("usr", forKey: username)
-                let pwdSaved: Bool = KeychainWrapper.standard.set("pwd", forKey: password)
+                let usrSaved: Bool = KeychainWrapper.standard.set(username, forKey: "usr")
+                let pwdSaved: Bool = KeychainWrapper.standard.set(password, forKey: "pwd")
                 if !(tokenSaved && usrSaved && pwdSaved) {
                     return
                 }
