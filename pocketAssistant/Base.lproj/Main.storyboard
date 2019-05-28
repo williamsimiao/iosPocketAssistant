@@ -28,19 +28,102 @@
             </objects>
             <point key="canvasLocation" x="548" y="-35"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Dinâmo Pocket 2-->
         <scene sceneID="DMN-YY-gyd">
             <objects>
-                <viewController storyboardIdentifier="SecondViewController" id="RWb-6R-oVe" customClass="SecondViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondViewController" title="Dinâmo Pocket 2" id="RWb-6R-oVe" customClass="SecondViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="God-AK-Mkg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xf2-Sd-TSO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Idu-O9-2sf">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iao-2d-3FM" customClass="MDCButton">
+                                                <rect key="frame" x="16" y="200" width="382" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="LISTAR OBJETOS">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapListarObjetos:" destination="RWb-6R-oVe" eventType="touchUpInside" id="Sdb-XP-Q2k"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ate-yy-Qeh" customClass="MDCButton">
+                                                <rect key="frame" x="16" y="238" width="382" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="CRIAR USUARIO">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapCriarUsuario:" destination="RWb-6R-oVe" eventType="touchUpInside" id="Icj-3J-T75"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIF-QF-L6b" customClass="MDCButton">
+                                                <rect key="frame" x="16" y="276" width="382" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="MUDAR SUA SENHA">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapMudarSenha:" destination="RWb-6R-oVe" eventType="touchUpInside" id="f8b-ww-LdF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWy-LC-6nl" customClass="MDCButton">
+                                                <rect key="frame" x="16" y="314" width="382" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="FECHAR SESSÃO">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapClose:" destination="RWb-6R-oVe" eventType="touchUpInside" id="ccT-5D-YbX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ate-yy-Qeh" firstAttribute="leading" secondItem="Idu-O9-2sf" secondAttribute="leading" constant="16" id="55n-c5-28B"/>
+                                            <constraint firstItem="iao-2d-3FM" firstAttribute="top" secondItem="Idu-O9-2sf" secondAttribute="top" constant="200" id="5e1-zK-F6J"/>
+                                            <constraint firstAttribute="trailing" secondItem="ate-yy-Qeh" secondAttribute="trailing" constant="16" id="9aW-4Q-eAN"/>
+                                            <constraint firstItem="cIF-QF-L6b" firstAttribute="top" secondItem="ate-yy-Qeh" secondAttribute="bottom" constant="8" id="MOH-uG-Tv2"/>
+                                            <constraint firstItem="PWy-LC-6nl" firstAttribute="top" secondItem="cIF-QF-L6b" secondAttribute="bottom" constant="8" id="Q3N-QU-ApM"/>
+                                            <constraint firstItem="PWy-LC-6nl" firstAttribute="leading" secondItem="Idu-O9-2sf" secondAttribute="leading" constant="16" id="W03-H4-NfP"/>
+                                            <constraint firstItem="cIF-QF-L6b" firstAttribute="leading" secondItem="Idu-O9-2sf" secondAttribute="leading" constant="16" id="YQF-0C-04P"/>
+                                            <constraint firstItem="iao-2d-3FM" firstAttribute="leading" secondItem="Idu-O9-2sf" secondAttribute="leading" constant="16" id="YnE-57-XIC"/>
+                                            <constraint firstAttribute="trailing" secondItem="PWy-LC-6nl" secondAttribute="trailing" constant="16" id="flS-eS-CDg"/>
+                                            <constraint firstItem="ate-yy-Qeh" firstAttribute="top" secondItem="iao-2d-3FM" secondAttribute="bottom" constant="8" id="gE7-yv-u3j"/>
+                                            <constraint firstAttribute="trailing" secondItem="iao-2d-3FM" secondAttribute="trailing" constant="16" id="kGd-lN-e7j"/>
+                                            <constraint firstAttribute="trailing" secondItem="cIF-QF-L6b" secondAttribute="trailing" constant="16" id="sup-bb-E7n"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Idu-O9-2sf" secondAttribute="bottom" id="Bvn-vl-Vbj"/>
+                                    <constraint firstItem="Idu-O9-2sf" firstAttribute="leading" secondItem="xf2-Sd-TSO" secondAttribute="leading" id="GHh-7z-8q2"/>
+                                    <constraint firstItem="Idu-O9-2sf" firstAttribute="centerY" secondItem="xf2-Sd-TSO" secondAttribute="centerY" id="HEX-w2-ytx"/>
+                                    <constraint firstItem="Idu-O9-2sf" firstAttribute="centerX" secondItem="xf2-Sd-TSO" secondAttribute="centerX" id="UGj-UU-Yfz"/>
+                                    <constraint firstAttribute="trailing" secondItem="Idu-O9-2sf" secondAttribute="trailing" id="uCe-WW-3zZ"/>
+                                    <constraint firstItem="Idu-O9-2sf" firstAttribute="top" secondItem="xf2-Sd-TSO" secondAttribute="top" id="un8-CZ-PPL"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="B29-5S-aEu" firstAttribute="trailing" secondItem="xf2-Sd-TSO" secondAttribute="trailing" id="0dT-CR-Bwy"/>
+                            <constraint firstItem="xf2-Sd-TSO" firstAttribute="leading" secondItem="B29-5S-aEu" secondAttribute="leading" id="UFg-rr-1fJ"/>
+                            <constraint firstItem="xf2-Sd-TSO" firstAttribute="top" secondItem="B29-5S-aEu" secondAttribute="top" id="aWx-oS-i1c"/>
+                            <constraint firstItem="B29-5S-aEu" firstAttribute="bottom" secondItem="xf2-Sd-TSO" secondAttribute="bottom" id="qWU-9J-1Nz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="B29-5S-aEu"/>
                     </view>
                     <navigationItem key="navigationItem" id="k1E-ea-mQg"/>
                     <connections>
+                        <outlet property="scrollView" destination="xf2-Sd-TSO" id="49j-th-Qbb"/>
                         <segue destination="QRH-UU-tig" kind="show" identifier="to_objetos" id="VFW-bF-aUi"/>
+                        <segue destination="OUV-t3-8OY" kind="show" identifier="to_changePwd" id="6Xy-AQ-4fZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umY-l2-grh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,6 +183,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQs-m3-pIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3373.913043478261" y="-35.491071428571423"/>
+        </scene>
+        <!--Trocar Senha View Controller-->
+        <scene sceneID="El8-4D-chx">
+            <objects>
+                <viewController storyboardIdentifier="TrocarSenhaViewController" id="OUV-t3-8OY" customClass="TrocarSenhaViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="154-Li-RRU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L9j-gm-7Dt" customClass="MDCTextField">
+                                <rect key="frame" x="16" y="210" width="382" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMz-nI-CRi" customClass="MDCButton">
+                                <rect key="frame" x="184" y="351" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didTapChangePwd:" destination="OUV-t3-8OY" eventType="touchUpInside" id="iYh-iu-qWE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="L9j-gm-7Dt" firstAttribute="leading" secondItem="vx3-tk-LgE" secondAttribute="leading" constant="16" id="A5i-YR-5gU"/>
+                            <constraint firstItem="L9j-gm-7Dt" firstAttribute="top" secondItem="vx3-tk-LgE" secondAttribute="top" constant="166" id="aiq-k5-aAX"/>
+                            <constraint firstItem="vx3-tk-LgE" firstAttribute="trailing" secondItem="L9j-gm-7Dt" secondAttribute="trailing" constant="16" id="zxf-Ak-sgx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vx3-tk-LgE"/>
+                    </view>
+                    <connections>
+                        <outlet property="newPwdTextField" destination="L9j-gm-7Dt" id="UwQ-8c-7Un"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hOQ-cq-0Ne" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3391" y="628"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZHk-we-tl0">

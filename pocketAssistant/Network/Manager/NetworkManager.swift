@@ -27,6 +27,8 @@ struct NetworkManager {
     static let environment : NetworkEnvironment = .production
     private let sessaoRouter = Router<SessaoApi>()
     private let objetosRouter = Router<ObjetosApi>()
+    private let usuarioRouter = Router<UsuariosApi>()
+
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
         switch response.statusCode {
@@ -35,6 +37,27 @@ struct NetworkManager {
         case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
         case 600: return .failure(NetworkResponse.outdated.rawValue)
         default: return .failure(NetworkResponse.failed.rawValue)
+        }
+    }
+    //UsuarioApi
+    func runChangePwd(token: String, newPwd: String, completion: @escaping (_ error: String?)->()) {
+        let completeToken = "HSM \(token)"
+        print("complete TOKEN: \(completeToken)")
+        usuarioRouter.request(.changePwd(token: completeToken, pwd: newPwd)) { (data, response, error) in
+            if error != nil {
+                completion("Check your internet connection")
+            }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                //responseData is empty
+                case .success:
+                    print("SENHA MUDOU")
+                    completion(nil)
+                case .failure(let networkFailureError):
+                    completion(networkFailureError)
+                }
+            }
         }
     }
     

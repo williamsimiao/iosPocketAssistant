@@ -28,7 +28,8 @@
 		3D9312002289DD50000C2635 /* pocketAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9311FF2289DD50000C2635 /* pocketAssistantTests.swift */; };
 		3D93120B2289DD50000C2635 /* pocketAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D93120A2289DD50000C2635 /* pocketAssistantUITests.swift */; };
 		3DDB7ACD229D999800C4D265 /* ResponseBody3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */; };
-		3DDB7ACF229DACDE00C4D265 /* NSURLSession+Synchronous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7ACE229DACDE00C4D265 /* NSURLSession+Synchronous.swift */; };
+		3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */; };
+		3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */; };
 		3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */; };
 		3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */; };
 		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
@@ -84,7 +85,8 @@
 		3D93120A2289DD50000C2635 /* pocketAssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pocketAssistantUITests.swift; sourceTree = "<group>"; };
 		3D93120C2289DD50000C2635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody3.swift; sourceTree = "<group>"; };
-		3DDB7ACE229DACDE00C4D265 /* NSURLSession+Synchronous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSURLSession+Synchronous.swift"; sourceTree = "<group>"; };
+		3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioEndPoint.swift; sourceTree = "<group>"; };
+		3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrocarSenhaViewController.swift; sourceTree = "<group>"; };
 		3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosEndPoint.swift; sourceTree = "<group>"; };
 		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */,
 				3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */,
 				3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */,
+				3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -149,7 +152,6 @@
 		3D114DB8228B043800A4A74C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				3DDB7ACE229DACDE00C4D265 /* NSURLSession+Synchronous.swift */,
 				3D114DBE228B055900A4A74C /* EndPoint */,
 				3D114DBD228B054800A4A74C /* Service */,
 				3D114DC7228B08E800A4A74C /* Encoding */,
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				3D114DB9228B045500A4A74C /* EndPointType.swift */,
+				3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */,
 				3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */,
 				3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */,
 			);
@@ -524,9 +527,9 @@
 			files = (
 				3D114DCF228B2F7B00A4A74C /* Router.swift in Sources */,
 				3D114DC9228B090200A4A74C /* URLParameterEncoder.swift in Sources */,
+				3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */,
 				3DDB7ACD229D999800C4D265 /* ResponseBody3.swift in Sources */,
 				3D114DC4228B075C00A4A74C /* ParameterEncoding.swift in Sources */,
-				3DDB7ACF229DACDE00C4D265 /* NSURLSession+Synchronous.swift in Sources */,
 				3D114DC6228B086900A4A74C /* NetworkError.swift in Sources */,
 				3D114DBC228B053E00A4A74C /* HTTPMethod.swift in Sources */,
 				3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */,
@@ -539,6 +542,7 @@
 				3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */,
 				3DEBB0FC2297001A006F0E3B /* ResponseBody2.swift in Sources */,
 				3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */,
+				3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */,
 				3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */,
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
 				3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */,
