@@ -10,6 +10,23 @@ import Foundation
 class Router<EndPoint: EndPointType>: NetworkRouter {
     private var task: URLSessionTask?
     
+    func synchronousRequest(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
+        let session = URLSession.shared
+        do {
+            let request = try self.buildRequest(from: route)
+            print("request: \(request)")
+            session.synchronousDataTask(with: request, completionHandler: { (data, response, error) in
+                completion(data, response, error)
+            })
+
+//            task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+//                completion(data, response, error)
+//            })
+        } catch {
+            completion(nil, nil, error)
+        }
+    }
+    
     func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
         let session = URLSession.shared
         do {

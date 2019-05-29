@@ -92,9 +92,9 @@ struct NetworkManager {
     }
     
     //SessaoApi
-    func runProbe(token: String, completion: @escaping (_ body1:ResponseBody3?,_ error: String?)->()) {
+    func runProbeSynchronous(token: String, completion: @escaping (_ body1:ResponseBody3?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
-        sessaoRouter.request(.probe(token: completeToken)) { (data, response, error) in
+        sessaoRouter.synchronousRequest(.probe(token: completeToken)) { (data, response, error) in
             if error != nil {
                 completion(nil, "Check your internet connection")
             }

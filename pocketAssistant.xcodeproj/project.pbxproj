@@ -32,6 +32,7 @@
 		3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */; };
 		3DDB7AD5229DD59B00C4D265 /* actions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD4229DD59B00C4D265 /* actions.storyboard */; };
 		3DDB7AD7229DDD6400C4D265 /* CriarUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */; };
+		3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */; };
 		3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */; };
 		3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */; };
 		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
@@ -91,6 +92,7 @@
 		3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrocarSenhaViewController.swift; sourceTree = "<group>"; };
 		3DDB7AD4229DD59B00C4D265 /* actions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = actions.storyboard; sourceTree = "<group>"; };
 		3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarUsuarioViewController.swift; sourceTree = "<group>"; };
+		3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+synchronous.swift"; sourceTree = "<group>"; };
 		3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosEndPoint.swift; sourceTree = "<group>"; };
 		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				3D114DC7228B08E800A4A74C /* Encoding */,
 				3D114DC5228B086900A4A74C /* NetworkError.swift */,
 				3D114DD7228B48FE00A4A74C /* Manager */,
+				3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */,
 				3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */,
 				3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */,
+				3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */,
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
 				3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */,
 				3D114DBA228B045500A4A74C /* EndPointType.swift in Sources */,
