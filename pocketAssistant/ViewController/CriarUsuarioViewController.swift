@@ -14,10 +14,17 @@ class CriarUsuarioViewController: UIViewController {
     @IBOutlet weak var usernameTextField: MDCTextField!
     @IBOutlet weak var passwordTextField: MDCTextField!
     @IBOutlet weak var aclTextField: MDCTextField!
+    
+    var usernameTextFieldController: MDCTextInputControllerOutlined?
+    var passwordTextFieldController: MDCTextInputControllerOutlined?
+    var aclTextFieldController: MDCTextInputControllerOutlined?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
+        passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
+        aclTextFieldController = MDCTextInputControllerOutlined(textInput: aclTextField)
     }
     
     @IBAction func didTapCriar(_ sender: Any) {

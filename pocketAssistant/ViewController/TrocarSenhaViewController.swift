@@ -13,22 +13,11 @@ import SwiftKeychainWrapper
 class TrocarSenhaViewController: UIViewController {
 
     @IBOutlet weak var newPwdTextField: MDCTextField!
-    let newPwdTextFieldController: MDCTextInputControllerOutlined
-
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        newPwdTextFieldController = MDCTextInputControllerOutlined(textInput: newPwdTextField)
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        newPwdTextFieldController = MDCTextInputControllerOutlined(textInput: newPwdTextField)
-        super.init(coder: aDecoder)
-    }
+    var newPwdTextFieldController: MDCTextInputControllerOutlined?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newPwdTextFieldController.placeholderText = "Nova senha"
+        newPwdTextFieldController = MDCTextInputControllerOutlined(textInput: newPwdTextField)
     }
     @IBAction func didTapChangePwd(_ sender: Any) {
         let networkmanager = NetworkManager()
