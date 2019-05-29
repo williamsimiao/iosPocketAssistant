@@ -1,11 +1,11 @@
 PODS:
-  - MaterialComponents/ActivityIndicator (84.3.0):
+  - MaterialComponents/ActivityIndicator (84.2.0):
     - MaterialComponents/Palettes
     - MaterialComponents/private/Application
     - MDFInternationalization
     - MotionAnimator (~> 2.0)
-  - MaterialComponents/AnimationTiming (84.3.0)
-  - MaterialComponents/AppBar (84.3.0):
+  - MaterialComponents/AnimationTiming (84.2.0)
+  - MaterialComponents/AppBar (84.2.0):
     - MaterialComponents/FlexibleHeader
     - MaterialComponents/HeaderStackView
     - MaterialComponents/NavigationBar
@@ -16,11 +16,11 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/ButtonBar (84.3.0):
+  - MaterialComponents/ButtonBar (84.2.0):
     - MaterialComponents/Buttons
     - MaterialComponents/private/Application
     - MDFInternationalization
-  - MaterialComponents/Buttons (84.3.0):
+  - MaterialComponents/Buttons (84.2.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
     - MaterialComponents/Ripple
@@ -30,14 +30,30 @@ PODS:
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - MaterialComponents/Cards (84.3.0):
+  - "MaterialComponents/Buttons+ColorThemer (84.2.0)":
+    - MaterialComponents/Buttons
+    - MaterialComponents/schemes/Color
+  - "MaterialComponents/Buttons+ShapeThemer (84.2.0)":
+    - MaterialComponents/Buttons
+    - MaterialComponents/schemes/Shape
+  - "MaterialComponents/Buttons+Theming (84.2.0)":
+    - MaterialComponents/Buttons
+    - "MaterialComponents/Buttons+ColorThemer"
+    - "MaterialComponents/Buttons+ShapeThemer"
+    - "MaterialComponents/Buttons+TypographyThemer"
+    - MaterialComponents/schemes/Container
+    - MaterialComponents/ShadowElevations
+  - "MaterialComponents/Buttons+TypographyThemer (84.2.0)":
+    - MaterialComponents/Buttons
+    - MaterialComponents/schemes/Typography
+  - MaterialComponents/Cards (84.2.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Icons/ic_check_circle
     - MaterialComponents/private/Math
     - MaterialComponents/Ripple
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Shapes
-  - MaterialComponents/CollectionCells (84.3.0):
+  - MaterialComponents/CollectionCells (84.2.0):
     - MaterialComponents/CollectionLayoutAttributes
     - MaterialComponents/Ink
     - MaterialComponents/Palettes
@@ -50,8 +66,8 @@ PODS:
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/CollectionLayoutAttributes (84.3.0)
-  - MaterialComponents/Collections (84.3.0):
+  - MaterialComponents/CollectionLayoutAttributes (84.2.0)
+  - MaterialComponents/Collections (84.2.0):
     - MaterialComponents/CollectionCells
     - MaterialComponents/CollectionLayoutAttributes
     - MaterialComponents/Ink
@@ -59,64 +75,86 @@ PODS:
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
-  - MaterialComponents/Dialogs (84.3.0):
+  - MaterialComponents/Dialogs (84.2.0):
     - MaterialComponents/Buttons
     - MaterialComponents/private/KeyboardWatcher
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/FlexibleHeader (84.3.0):
+  - MaterialComponents/FlexibleHeader (84.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/UIMetrics
     - MDFTextAccessibility
-  - MaterialComponents/HeaderStackView (84.3.0)
-  - MaterialComponents/Ink (84.3.0):
+  - MaterialComponents/HeaderStackView (84.2.0)
+  - MaterialComponents/Ink (84.2.0):
     - MaterialComponents/private/Math
-  - MaterialComponents/NavigationBar (84.3.0):
+  - MaterialComponents/NavigationBar (84.2.0):
     - MaterialComponents/ButtonBar
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - MaterialComponents/Palettes (84.3.0)
-  - MaterialComponents/private/Application (84.3.0)
-  - MaterialComponents/private/Icons/Base (84.3.0)
-  - MaterialComponents/private/Icons/ic_arrow_back (84.3.0):
+  - MaterialComponents/Palettes (84.2.0)
+  - MaterialComponents/private/Application (84.2.0)
+  - MaterialComponents/private/Icons/Base (84.2.0)
+  - MaterialComponents/private/Icons/ic_arrow_back (84.2.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_check (84.3.0):
+  - MaterialComponents/private/Icons/ic_check (84.2.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_check_circle (84.3.0):
+  - MaterialComponents/private/Icons/ic_check_circle (84.2.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_chevron_right (84.3.0):
+  - MaterialComponents/private/Icons/ic_chevron_right (84.2.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_info (84.3.0):
+  - MaterialComponents/private/Icons/ic_info (84.2.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_radio_button_unchecked (84.3.0):
+  - MaterialComponents/private/Icons/ic_radio_button_unchecked (84.2.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_reorder (84.3.0):
+  - MaterialComponents/private/Icons/ic_reorder (84.2.0):
     - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/KeyboardWatcher (84.3.0):
+  - MaterialComponents/private/KeyboardWatcher (84.2.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Math (84.3.0)
-  - MaterialComponents/private/UIMetrics (84.3.0):
+  - MaterialComponents/private/Math (84.2.0)
+  - MaterialComponents/private/UIMetrics (84.2.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/Ripple (84.3.0):
+  - MaterialComponents/Ripple (84.2.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (84.3.0)
-  - MaterialComponents/ShadowLayer (84.3.0):
+  - MaterialComponents/schemes/Color (84.2.0)
+  - MaterialComponents/schemes/Container (84.2.0):
+    - MaterialComponents/schemes/Color
+    - MaterialComponents/schemes/Shape
+    - MaterialComponents/schemes/Typography
+  - MaterialComponents/schemes/Shape (84.2.0):
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+  - MaterialComponents/schemes/Typography (84.2.0):
+    - MaterialComponents/Typography
+  - MaterialComponents/ShadowElevations (84.2.0)
+  - MaterialComponents/ShadowLayer (84.2.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Shapes (84.3.0):
+  - MaterialComponents/ShapeLibrary (84.2.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/Shapes
+  - MaterialComponents/Shapes (84.2.0):
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
-  - MaterialComponents/TextFields (84.3.0):
+  - MaterialComponents/Tabs (84.2.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Ink
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/TextFields (84.2.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Palettes
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Typography (84.3.0):
+  - MaterialComponents/Typography (84.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -130,11 +168,13 @@ DEPENDENCIES:
   - MaterialComponents/ActivityIndicator
   - MaterialComponents/AppBar
   - MaterialComponents/Buttons
+  - "MaterialComponents/Buttons+Theming"
   - MaterialComponents/Cards
   - MaterialComponents/Collections
   - MaterialComponents/Dialogs
   - MaterialComponents/NavigationBar
   - MaterialComponents/Palettes
+  - MaterialComponents/Tabs
   - MaterialComponents/TextFields
   - MaterialComponents/Typography
   - SwiftKeychainWrapper
@@ -149,13 +189,13 @@ SPEC REPOS:
     - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
-  MaterialComponents: 897e26e71faa95ea71c183e056443e9344682faf
+  MaterialComponents: 97aaf99bed91a6918775cb4cdb4d4551ded48c3f
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: 690381565c2f264da5fa0da67f68b5abd0a1fa9e
+PODFILE CHECKSUM: 6c6585fc5f8b5934120f9abd3eda658ebd56f58e
 
 COCOAPODS: 1.6.1

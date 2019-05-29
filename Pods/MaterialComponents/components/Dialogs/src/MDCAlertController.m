@@ -465,13 +465,6 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
                       completion:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-
-  [self.alertView.contentScrollView flashScrollIndicators];
-  [self.alertView.actionsScrollView flashScrollIndicators];
-}
-
 #pragma mark - UIAccessibilityAction
 
 - (BOOL)accessibilityPerformEscape {

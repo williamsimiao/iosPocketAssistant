@@ -14,7 +14,6 @@ class SecondViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var appBarViewController = MDCAppBarViewController()
     
     var tokenString: String?
     let networkManager = NetworkManager()
@@ -24,13 +23,6 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Dinâmo Pocket 2"
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
-        
-        //AppBar
-        self.addChild(self.appBarViewController)
-        self.appBarViewController.headerView.trackingScrollView = self.scrollView
-        self.appBarViewController.didMove(toParent: self)
-        view.addSubview(self.appBarViewController.view)
-
     }
     @IBAction func didTapListarObjetos(_ sender: Any) {
         guard let token = self.tokenString else {
@@ -99,40 +91,3 @@ class SecondViewController: UIViewController {
         }
     }
 }
-
-//MARK: - UIScrollViewDelegate
-
-extension SecondViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView == self.appBarViewController.headerView.trackingScrollView) {
-            self.appBarViewController.headerView.trackingScrollDidScroll()
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if (scrollView == self.appBarViewController.headerView.trackingScrollView) {
-            self.appBarViewController.headerView.trackingScrollDidEndDecelerating()
-        }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView,
-                                  willDecelerate decelerate: Bool) {
-        let headerView = self.appBarViewController.headerView
-        if (scrollView == headerView.trackingScrollView) {
-            headerView.trackingScrollDidEndDraggingWillDecelerate(decelerate)
-        }
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
-                                   withVelocity velocity: CGPoint,
-                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let headerView = self.appBarViewController.headerView
-        if (scrollView == headerView.trackingScrollView) {
-            headerView.trackingScrollWillEndDragging(withVelocity: velocity,
-                                                     targetContentOffset: targetContentOffset)
-        }
-    }
-    
-}
-

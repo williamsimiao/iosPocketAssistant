@@ -25,22 +25,22 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yte-kM-0SM" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="150" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="400" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP(Opcional)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4gY-3P-aLH" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="210" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="460" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsZ-Cz-3YM">
-                                                <rect key="frame" x="8" y="264" width="398" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsZ-Cz-3YM" customClass="MDCButton">
+                                                <rect key="frame" x="8" y="514" width="398" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="p1z-tD-qmN"/>
+                                                    <constraint firstAttribute="height" constant="48" id="4Xb-Mv-BKh"/>
                                                 </constraints>
                                                 <state key="normal" title="AUTENTICAR">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,7 +50,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-c7-pbX" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="180" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="430" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -63,7 +63,7 @@
                                             <constraint firstItem="4gY-3P-aLH" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="CVA-sl-bs0"/>
                                             <constraint firstItem="OsZ-Cz-3YM" firstAttribute="top" secondItem="4gY-3P-aLH" secondAttribute="bottom" constant="24" id="JTQ-nz-Zon"/>
                                             <constraint firstAttribute="trailing" secondItem="4gY-3P-aLH" secondAttribute="trailing" constant="8" id="O01-9g-tcl"/>
-                                            <constraint firstItem="Yte-kM-0SM" firstAttribute="top" secondItem="Esq-Cm-2HR" secondAttribute="top" constant="150" id="QJp-5u-408"/>
+                                            <constraint firstItem="Yte-kM-0SM" firstAttribute="top" secondItem="Esq-Cm-2HR" secondAttribute="top" constant="400" id="QJp-5u-408"/>
                                             <constraint firstItem="BXl-c7-pbX" firstAttribute="top" secondItem="Yte-kM-0SM" secondAttribute="bottom" id="W1O-4g-omj"/>
                                             <constraint firstItem="BXl-c7-pbX" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="sf4-hC-Rke"/>
                                             <constraint firstItem="Yte-kM-0SM" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="uW6-Uc-X34"/>
@@ -93,6 +93,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="autenticarButton" destination="OsZ-Cz-3YM" id="988-uM-zUg"/>
                         <outlet property="otpTextField" destination="4gY-3P-aLH" id="cWW-cq-SUI"/>
                         <outlet property="passwordTextField" destination="BXl-c7-pbX" id="Pwh-Ij-6ks"/>
                         <outlet property="scrollView" destination="Qwb-Lw-1ZV" id="fDV-UP-gDQ"/>
@@ -109,14 +110,14 @@
             <objects>
                 <viewController storyboardIdentifier="SecondViewController" id="RWb-6R-oVe" customClass="SecondViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="God-AK-Mkg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xf2-Sd-TSO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Idu-O9-2sf">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iao-2d-3FM" customClass="MDCButton">
                                                 <rect key="frame" x="16" y="200" width="382" height="30"/>
@@ -234,10 +235,16 @@
         <!--Navigation Controller-->
         <scene sceneID="ZHk-we-tl0">
             <objects>
-                <navigationController storyboardIdentifier="firstNavigation" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eaQ-bq-brj" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="firstNavigation" automaticallyAdjustsScrollViewInsets="NO" id="eaQ-bq-brj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="egT-aW-AKM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="egT-aW-AKM">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

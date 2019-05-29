@@ -8,6 +8,7 @@ target 'pocketAssistant' do
     # Pods for pocketAssistant
     pod 'MaterialComponents/AppBar'
     pod 'MaterialComponents/Buttons'
+    pod 'MaterialComponents/Buttons+Theming'
     pod 'MaterialComponents/Collections'
     pod 'MaterialComponents/TextFields'
     pod 'MaterialComponents/Cards'
@@ -16,6 +17,7 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/Dialogs'
     pod 'MaterialComponents/NavigationBar'
     pod 'MaterialComponents/Palettes'
+    pod 'MaterialComponents/Tabs'
     pod 'SwiftKeychainWrapper'
 
     target 'pocketAssistantTests' do

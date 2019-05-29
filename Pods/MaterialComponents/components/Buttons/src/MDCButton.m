@@ -321,7 +321,9 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   }
   [super touchesBegan:touches withEvent:event];
 
-  if (!self.enableRippleBehavior) {
+  if (self.enableRippleBehavior) {
+    self.rippleView.rippleHighlighted = YES;
+  } else {
     [self handleBeginTouches:touches];
   }
 }
@@ -341,7 +343,9 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   }
   [super touchesEnded:touches withEvent:event];
 
-  if (!self.enableRippleBehavior) {
+  if (self.enableRippleBehavior) {
+    self.rippleView.rippleHighlighted = NO;
+  } else {
     CGPoint location = [self locationFromTouches:touches];
     [_inkView startTouchEndedAnimationAtPoint:location completion:nil];
   }
@@ -354,7 +358,9 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   }
   [super touchesCancelled:touches withEvent:event];
 
-  if (!self.enableRippleBehavior) {
+  if (self.enableRippleBehavior) {
+    self.rippleView.rippleHighlighted = NO;
+  } else {
     [self evaporateInkToPoint:[self locationFromTouches:touches]];
   }
 }
@@ -374,14 +380,12 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 - (void)setHighlighted:(BOOL)highlighted {
   [super setHighlighted:highlighted];
 
-  self.rippleView.rippleHighlighted = highlighted;
   [self updateAfterStateChange:NO];
 }
 
 - (void)setSelected:(BOOL)selected {
   [super setSelected:selected];
 
-  self.rippleView.selected = selected;
   [self updateAfterStateChange:NO];
 }
 
@@ -725,27 +729,13 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 #pragma mark - Title Font
 
 - (nullable UIFont *)titleFontForState:(UIControlState)state {
-  // If the `.highlighted` flag is set, turn off the `.disabled` flag
-  if ((state & UIControlStateHighlighted) == UIControlStateHighlighted) {
-    state = state & ~UIControlStateDisabled;
-  }
-  return _fonts[@(state)] ?: _fonts[@(UIControlStateNormal)];
+  return _fonts[@(state)];
 }
 
 - (void)setTitleFont:(nullable UIFont *)font forState:(UIControlState)state {
-  UIControlState storageState = state;
-  // If the `.highlighted` flag is set, turn off the `.disabled` flag
-  if ((state & UIControlStateHighlighted) == UIControlStateHighlighted) {
-    storageState = state & ~UIControlStateDisabled;
-  }
+  _fonts[@(state)] = font;
 
-  // Only update the backing dictionary if:
-  // 1. The `state` argument is the same as the "storage" state, OR
-  // 2. There is already a value in the "storage" state.
-  if (storageState == state || _fonts[@(storageState)] != nil) {
-    _fonts[@(storageState)] = font;
-    [self updateTitleFont];
-  }
+  [self updateTitleFont];
 }
 
 #pragma mark - Private methods
