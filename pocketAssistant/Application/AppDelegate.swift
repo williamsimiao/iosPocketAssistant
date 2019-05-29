@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let networkManager = NetworkManager()
         let token = KeychainWrapper.standard.string(forKey: "TOKEN")
         guard let tokenString = token else {
+            //then go to MainViewController without setting "tokenHasExpired" to true
+            //because thre is no token yet or the session has been properly closed
             return true
         }
         networkManager.runProbeSynchronous(token: tokenString) { (response, error) in
@@ -34,10 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             else if let response = response {
                 print(response.probe_str)
                 let stor = UIStoryboard.init(name: "Main", bundle: nil)
-                let homeView = stor.instantiateViewController(withIdentifier: "SecondViewController")
-                let nav = UINavigationController(rootViewController: homeView)
+                let navigationController = stor.instantiateViewController(withIdentifier: "firstNavigation")
 //                nav.navigationBar.isHidden = true
-                self.window?.rootViewController = nav
+                self.window?.rootViewController = navigationController
             }
         }
         

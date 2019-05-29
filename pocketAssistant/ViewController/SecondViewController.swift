@@ -61,28 +61,28 @@ class SecondViewController: UIViewController {
             print("No token")
             return
         }
-        networkManager.runClose(token: token) { (error) in
-            print("Closed")
-            if let error = error {
-                print(error)
-            }
-            else {
-                DispatchQueue.main.async {
-                    let actionComplitionHandler: MDCActionHandler = {_ in
+        let actionComplitionHandler: MDCActionHandler = {_ in
+            self.networkManager.runClose(token: token) { (error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("Sessão encerrada")
+                    DispatchQueue.main.async {
                         let stor = UIStoryboard.init(name: "Main", bundle: nil)
                         let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
                         self.present(mainViewController, animated: true, completion: { () in
                             print("Done")
                         })
                     }
-
-                    let alertController = MDCAlertController(title: "Sessão encerrada", message: "Sessão encerrada com sucesso")
-                    let action = MDCAlertAction(title: "OK", handler: actionComplitionHandler)
-                    alertController.addAction(action)
-                    self.present(alertController, animated:true, completion:nil)
                 }
             }
         }
+        
+        let alertController = MDCAlertController(title: "Encerrar sessão", message: "Deseja mesmo encerrar a sessão ?")
+        alertController.addAction(MDCAlertAction(title: "Sim", emphasis: .medium, handler: actionComplitionHandler))
+        alertController.addAction(MDCAlertAction(title: "Cancelar", emphasis: .high, handler: nil))
+        self.present(alertController, animated:true, completion:nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

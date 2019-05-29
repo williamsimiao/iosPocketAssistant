@@ -29,13 +29,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if tokenHasExpired {
-            let alertController = MDCAlertController(title: "Token experou", message: "O token experou, faça login novamente")
-            let action = MDCAlertAction(title: "OK", handler: nil)
-            alertController.addAction(action)
-            self.present(alertController, animated:true, completion:nil)
-        }
-        
         usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
         otpTextFieldController = MDCTextInputControllerOutlined(textInput: otpTextField)
@@ -56,10 +49,16 @@ class MainViewController: UIViewController {
         passwordTextField.delegate = self
         otpTextField.delegate = self
         registerKeyboardNotifications()
-        
-        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if tokenHasExpired {
+            let alertController = MDCAlertController(title: "Token expirou", message: "Faça o login novamente")
+            let action = MDCAlertAction(title: "OK", handler: nil)
+            alertController.addAction(action)
+            self.present(alertController, animated:true, completion:nil)
+        }
+    }
     // MARK: - Gesture Handling
     
     @objc func didTapTouch(sender: UIGestureRecognizer) {
