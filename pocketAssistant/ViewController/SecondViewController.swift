@@ -90,7 +90,7 @@ class SecondViewController: UIViewController {
         guard let identifier = segue.identifier else {
             return
         }
-        if identifier == "to_objetos" {
+        if identifier == "to_ObjetosViewController" {
             guard let objetosViewController = segue.destination as? ObjetosViewController else {
                 return
             }

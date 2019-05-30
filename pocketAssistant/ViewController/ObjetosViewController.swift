@@ -20,22 +20,6 @@ class ObjetosViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Objetos"
-        
-        self.addChild(self.appBarViewController)
-        self.view.addSubview(self.appBarViewController.view)
-        self.appBarViewController.didMove(toParent: self)
-        
-        // Set the tracking scroll view.
-        self.appBarViewController.headerView.trackingScrollView = self.collectionView
-        
-        let backItemImage = UIImage(named: "sharp_arrow_back_ios_black_24pt_")
-        let templatedMenuItemImage = backItemImage?.withRenderingMode(.alwaysTemplate)
-        let backItem = UIBarButtonItem(image: templatedMenuItemImage,
-                                       style: .plain,
-                                       target: self,
-                                       action: #selector(backItemTapped(sender:)))
-        self.navigationItem.leftBarButtonItem = backItem
-        self.navigationItem.leftBarButtonItem?.tintColor = .black
     }
 
 }
@@ -70,38 +54,4 @@ extension ObjetosViewController: UICollectionViewDelegateFlowLayout {
     @objc func backItemTapped(sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-}
-
-extension ObjetosViewController {
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView == self.appBarViewController.headerView.trackingScrollView) {
-            self.appBarViewController.headerView.trackingScrollDidScroll()
-        }
-    }
-    
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if (scrollView == self.appBarViewController.headerView.trackingScrollView) {
-            self.appBarViewController.headerView.trackingScrollDidEndDecelerating()
-        }
-    }
-    
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView,
-                                           willDecelerate decelerate: Bool) {
-        let headerView = self.appBarViewController.headerView
-        if (scrollView == headerView.trackingScrollView) {
-            headerView.trackingScrollDidEndDraggingWillDecelerate(decelerate)
-        }
-    }
-    
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView,
-                                            withVelocity velocity: CGPoint,
-                                            targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let headerView = self.appBarViewController.headerView
-        if (scrollView == headerView.trackingScrollView) {
-            headerView.trackingScrollWillEndDragging(withVelocity: velocity,
-                                                     targetContentOffset: targetContentOffset)
-        }
-    }
-    
 }
