@@ -17,16 +17,16 @@ class ObjetoCell: MDCCardCollectionCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //TODO: Configure the cell properties
-        self.backgroundColor = .white
-        
-        createRectangle()
+        keyLabel.font = MDCTypography.body2Font()
+        keyLabel.alpha = MDCTypography.body2FontOpacity()
+
     }
 
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+        createRectangle()
+
     }
     
     

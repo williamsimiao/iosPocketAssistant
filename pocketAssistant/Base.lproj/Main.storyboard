@@ -263,10 +263,10 @@
             </objects>
             <point key="canvasLocation" x="3155" y="-133"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Navigation Controller-->
         <scene sceneID="ZHk-we-tl0">
             <objects>
-                <navigationController storyboardIdentifier="firstNavigation" automaticallyAdjustsScrollViewInsets="NO" id="eaQ-bq-brj" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="firstNavigation" automaticallyAdjustsScrollViewInsets="NO" id="eaQ-bq-brj" customClass="CustomNavigationController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="egT-aW-AKM">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

@@ -45,8 +45,6 @@ extension ObjetosViewController: UICollectionViewDelegateFlowLayout {
         guard let data = objIdArray else {
             return  cell
         }
-        cell.keyLabel.font = MDCTypography.titleFont()
-        cell.keyLabel.alpha = MDCTypography.titleFontOpacity()
         cell.keyLabel.text = data[indexPath.row]
         return cell
     }
