@@ -160,6 +160,14 @@ class MainViewController: UIViewController {
         guard let tokenString = token else {
             //then go to MainViewController without setting "tokenHasExpired" to true
             //because thre is no token yet or the session has been properly closed
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            
+            //SHOW IT ALL
+            self.usernameTextField.isHidden = false
+            self.passwordTextField.isHidden = false
+            self.otpTextField.isHidden = false
+            self.autenticarButton.isHidden = false
             return
         }
         
