@@ -12,15 +12,34 @@ import MaterialComponents
 class ObjetoCell: MDCCardCollectionCell {
     
     @IBOutlet weak var keyLabel: UILabel!
+    
+    var separator: UIBezierPath!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
         //TODO: Configure the cell properties
         self.backgroundColor = .white
         
-        //TODO: Configure the MDCCardCollectionCell specific properties
-        self.cornerRadius = 4.0;
-        self.setBorderWidth(1.0, for:.normal)
-        self.setBorderColor(.lightGray, for: .normal)
+        createRectangle()
     }
+
+
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+    }
+    
+    
+    func createRectangle() {
+        // Initialize the path.
+        separator = UIBezierPath()
+        
+        // Create the bottom line (bottom-left to bottom-right).
+        separator.move(to: CGPoint(x: 0.0, y: self.frame.size.height))
+        separator.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
+        separator.close()
+        UIColor.black.setStroke()
+        separator.stroke()
+    }
+
 }

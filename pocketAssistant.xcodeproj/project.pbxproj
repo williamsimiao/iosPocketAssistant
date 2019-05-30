@@ -20,6 +20,7 @@
 		3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DD5228B48EB00A4A74C /* NetworkManager.swift */; };
 		3D48FB742295B06F007ACC63 /* ResponseBody1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB732295B06F007ACC63 /* ResponseBody1.swift */; };
 		3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */; };
+		3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60CA0622A01547000387D7 /* testeViewController.swift */; };
 		3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9311EA2289DD4E000C2635 /* AppDelegate.swift */; };
 		3D9311ED2289DD4E000C2635 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9311EC2289DD4E000C2635 /* ViewController.swift */; };
 		3D9311F02289DD4E000C2635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9311EE2289DD4E000C2635 /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 		3D114DD5228B48EB00A4A74C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3D48FB732295B06F007ACC63 /* ResponseBody1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody1.swift; sourceTree = "<group>"; };
 		3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessaoEndPoint.swift; sourceTree = "<group>"; };
+		3D60CA0622A01547000387D7 /* testeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
 		3D9311E72289DD4E000C2635 /* pocketAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pocketAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9311EA2289DD4E000C2635 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9311EC2289DD4E000C2635 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */,
 				3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */,
 				3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */,
+				3D60CA0622A01547000387D7 /* testeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */,
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
 				3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */,
+				3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */,
 				3D114DBA228B045500A4A74C /* EndPointType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

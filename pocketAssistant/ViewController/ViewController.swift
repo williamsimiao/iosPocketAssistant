@@ -19,8 +19,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var otpTextField: MDCTextField!
     @IBOutlet weak var autenticarButton: MDCButton!
     
-    var tokenHasExpired = false
     let networkManager = NetworkManager()
+    let activityIndicator = MDCActivityIndicator()
 
     //TODO: Add text field controllers
     var usernameTextFieldController: MDCTextInputControllerOutlined?
@@ -30,13 +30,28 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Dinâmo Pocket"
+        
+//        activityIndicator.backgroundColor = .gray
+        activityIndicator.sizeToFit()
+        let colorScheme = MDCSemanticColorScheme()
+        colorScheme.primaryColor = .black
+        MDCActivityIndicatorColorThemer.applySemanticColorScheme(colorScheme, to: activityIndicator)
+        
+        contentView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        let heightConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        // To make the activity indicator appear:
+        activityIndicator.startAnimating()
+        
         //HIDE IT ALL
         usernameTextField.isHidden = true
         passwordTextField.isHidden = true
         otpTextField.isHidden = true
         autenticarButton.isHidden = true
-
-        probeRequest()
         
         usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
@@ -53,13 +68,8 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if tokenHasExpired {
-            let alertController = MDCAlertController(title: "Token expirou", message: "Faça o login novamente")
-            let action = MDCAlertAction(title: "OK", handler: nil)
-            alertController.addAction(action)
-            alertController.applyTheme(withScheme: globalContainerScheme())
-            self.present(alertController, animated:true, completion:nil)
-        }
+        probeRequest()
+
     }
     
     // MARK: - Gesture Handling
@@ -152,32 +162,28 @@ class MainViewController: UIViewController {
             //because thre is no token yet or the session has been properly closed
             return
         }
-        let activityIndicator = MDCActivityIndicator()
-        activityIndicator.sizeToFit()
-        contentView.addSubview(activityIndicator)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        let horizontalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-        let widthConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
-        let heightConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
-        view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
-        activityIndicator.startAnimating()
         
         networkManager.runProbeSynchronous(token: tokenString) { (response, error) in
             if let error = error {
                 print(error)
-                //SHOW IT ALL
-                self.usernameTextField.isHidden = false
-                self.passwordTextField.isHidden = false
-                self.otpTextField.isHidden = false
-                self.autenticarButton.isHidden = false
-                
+                let alertController = MDCAlertController(title: "Token expirou", message: "Faça o login novamente")
+                let action = MDCAlertAction(title: "OK", handler: nil)
+                alertController.addAction(action)
+                alertController.applyTheme(withScheme: globalContainerScheme())
+                self.present(alertController, animated:true, completion:nil)
             }
             else if let response = response {
                 print(response.probe_str)
                 self.performSegue(withIdentifier: "to_second", sender: self)
             }
-            activityIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            
+            //SHOW IT ALL
+            self.usernameTextField.isHidden = false
+            self.passwordTextField.isHidden = false
+            self.otpTextField.isHidden = false
+            self.autenticarButton.isHidden = false
         }
     }
 }

@@ -4,6 +4,9 @@ PODS:
     - MaterialComponents/private/Application
     - MDFInternationalization
     - MotionAnimator (~> 2.0)
+  - "MaterialComponents/ActivityIndicator+ColorThemer (84.2.0)":
+    - MaterialComponents/ActivityIndicator
+    - MaterialComponents/schemes/Color
   - MaterialComponents/AnimationTiming (84.2.0)
   - MaterialComponents/AppBar (84.2.0):
     - MaterialComponents/FlexibleHeader
@@ -104,6 +107,13 @@ PODS:
   - MaterialComponents/HeaderStackView (84.2.0)
   - MaterialComponents/Ink (84.2.0):
     - MaterialComponents/private/Math
+  - MaterialComponents/List (84.2.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
   - MaterialComponents/NavigationBar (84.2.0):
     - MaterialComponents/ButtonBar
     - MaterialComponents/private/Math
@@ -195,6 +205,7 @@ PODS:
 
 DEPENDENCIES:
   - MaterialComponents/ActivityIndicator
+  - "MaterialComponents/ActivityIndicator+ColorThemer"
   - MaterialComponents/AppBar
   - MaterialComponents/Buttons
   - "MaterialComponents/Buttons+Theming"
@@ -202,6 +213,7 @@ DEPENDENCIES:
   - MaterialComponents/Collections
   - MaterialComponents/Dialogs
   - "MaterialComponents/Dialogs+Theming"
+  - MaterialComponents/List
   - MaterialComponents/NavigationBar
   - MaterialComponents/Palettes
   - MaterialComponents/Snackbar
@@ -227,6 +239,6 @@ SPEC CHECKSUMS:
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: b1f22eaa860fb2a5b44833e79f6902a0aaeb495e
+PODFILE CHECKSUM: a7bc09816e859ce15683c097dad2c0e0ea0e7309
 
 COCOAPODS: 1.6.1

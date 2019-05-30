@@ -12,6 +12,8 @@
 
 #import "MaterialActivityIndicator.h"
 #import "MDCActivityIndicator.h"
+#import "MaterialActivityIndicator+ColorThemer.h"
+#import "MDCActivityIndicatorColorThemer.h"
 #import "CAMediaTimingFunction+MDCAnimationTiming.h"
 #import "MaterialAnimationTiming.h"
 #import "UIView+MDCTimingFunction.h"
@@ -84,6 +86,9 @@
 #import "MDCInkGestureRecognizer.h"
 #import "MDCInkTouchController.h"
 #import "MDCInkView.h"
+#import "MaterialList.h"
+#import "MDCBaseCell.h"
+#import "MDCSelfSizingStereoCell.h"
 #import "MaterialNavigationBar.h"
 #import "MDCNavigationBar.h"
 #import "MaterialOverlayWindow.h"
