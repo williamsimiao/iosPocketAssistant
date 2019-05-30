@@ -19,6 +19,14 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
+  - MaterialComponents/BottomAppBar (84.2.0):
+    - MaterialComponents/Buttons
+    - MaterialComponents/NavigationBar
+    - MaterialComponents/private/Math
+    - MDFInternationalization
+  - "MaterialComponents/BottomAppBar+ColorThemer (84.2.0)":
+    - MaterialComponents/BottomAppBar
+    - MaterialComponents/Themes
   - MaterialComponents/ButtonBar (84.2.0):
     - MaterialComponents/Buttons
     - MaterialComponents/private/Application
@@ -120,6 +128,14 @@ PODS:
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
+  - MaterialComponents/NavigationDrawer (84.2.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/UIMetrics
+    - MaterialComponents/ShadowLayer
+  - "MaterialComponents/NavigationDrawer+ColorThemer (84.2.0)":
+    - MaterialComponents/NavigationDrawer
+    - MaterialComponents/schemes/Color
   - MaterialComponents/OverlayWindow (84.2.0):
     - MaterialComponents/private/Application
   - MaterialComponents/Palettes (84.2.0)
@@ -207,6 +223,8 @@ DEPENDENCIES:
   - MaterialComponents/ActivityIndicator
   - "MaterialComponents/ActivityIndicator+ColorThemer"
   - MaterialComponents/AppBar
+  - MaterialComponents/BottomAppBar
+  - "MaterialComponents/BottomAppBar+ColorThemer"
   - MaterialComponents/Buttons
   - "MaterialComponents/Buttons+Theming"
   - MaterialComponents/Cards
@@ -215,6 +233,8 @@ DEPENDENCIES:
   - "MaterialComponents/Dialogs+Theming"
   - MaterialComponents/List
   - MaterialComponents/NavigationBar
+  - MaterialComponents/NavigationDrawer
+  - "MaterialComponents/NavigationDrawer+ColorThemer"
   - MaterialComponents/Palettes
   - MaterialComponents/Snackbar
   - MaterialComponents/Tabs
@@ -239,6 +259,6 @@ SPEC CHECKSUMS:
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: a7bc09816e859ce15683c097dad2c0e0ea0e7309
+PODFILE CHECKSUM: ee09d0b51efa158c8f4863b2ee836f4cd3994a93
 
 COCOAPODS: 1.6.1

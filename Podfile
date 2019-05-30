@@ -22,6 +22,12 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/Palettes'
     pod 'MaterialComponents/Tabs'
     pod 'MaterialComponents/Snackbar'
+    
+    pod 'MaterialComponents/BottomAppBar'
+    pod 'MaterialComponents/BottomAppBar+ColorThemer'
+    pod 'MaterialComponents/NavigationDrawer'
+    pod 'MaterialComponents/NavigationDrawer+ColorThemer'
+
     pod 'SwiftKeychainWrapper'
 
     target 'pocketAssistantTests' do

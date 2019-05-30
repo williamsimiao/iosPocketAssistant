@@ -27,7 +27,7 @@ class ObjetosViewController: UICollectionViewController {
 //Delegate, DataSource
 extension ObjetosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width  = self.view.frame.size.width * 0.9
+        let width  = self.view.frame.size.width
 
         return CGSize(width: width, height: 50.0)
     }
