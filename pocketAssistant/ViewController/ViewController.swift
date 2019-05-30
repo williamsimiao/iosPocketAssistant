@@ -89,29 +89,27 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func didTapAutenticar(_ sender: Any) {
-//        if validateAuth() == false {
-//            return
-//        }
-//        let username = usernameTextField.text!
-//        let password = passwordTextField.text!
-//        networkManager.runAuth(usr: username, pwd: password) { (response, error) in
-//            if let error = error {
-//                print(error)
-//            }
-//            if let response = response {
-//                let tokenSaved: Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
-//                let usrSaved: Bool = KeychainWrapper.standard.set(username, forKey: "usr")
-//                let pwdSaved: Bool = KeychainWrapper.standard.set(password, forKey: "pwd")
-//                if !(tokenSaved && usrSaved && pwdSaved) {
-//                    return
-//                }
-//
-//                DispatchQueue.main.async {
-//                    self.performSegue(withIdentifier: "to_second", sender: self)
-//                }
-//            }
-//        }
-        self.performSegue(withIdentifier: "to_second", sender: self)
+        if validateAuth() == false {
+            return
+        }
+        let username = usernameTextField.text!
+        let password = passwordTextField.text!
+        networkManager.runAuth(usr: username, pwd: password) { (response, error) in
+            if let error = error {
+                print(error)
+            }
+            if let response = response {
+                let tokenSaved: Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
+                if !tokenSaved {
+                    //TODO: alert autenticação falhou
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "to_second", sender: self)
+                }
+            }
+        }
+//        self.performSegue(withIdentifier: "to_second", sender: self)
 
     }
     

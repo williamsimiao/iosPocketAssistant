@@ -19,8 +19,7 @@ class ObjetosViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Dinâmo Pocket 3"
+        self.title = "Objetos"
         
         self.addChild(self.appBarViewController)
         self.view.addSubview(self.appBarViewController.view)

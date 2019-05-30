@@ -40,6 +40,27 @@ struct NetworkManager {
         }
     }
     //UsuarioApi
+    func runCreateUsr(token: String, usr: String, pwd: String, acl: Int, completion: @escaping (_ error: String?)->()) {
+        let completeToken = "HSM \(token)"
+        print("complete TOKEN: \(completeToken)")
+        usuarioRouter.request(.createUsr(token: completeToken, usr: usr, pwd: pwd, acl: acl)) { (data, response, error) in
+            if error != nil {
+                completion("Check your internet connection")
+            }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                //responseData is empty
+                case .success:
+                    print("USUARIO CRIADO")
+                    completion(nil)
+                case .failure(let networkFailureError):
+                    completion(networkFailureError)
+                }
+            }
+        }
+    }
+    
     func runChangePwd(token: String, newPwd: String, completion: @escaping (_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")

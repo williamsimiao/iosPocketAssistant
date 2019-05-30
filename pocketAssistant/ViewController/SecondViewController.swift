@@ -24,7 +24,7 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Dinâmo Pocket 2"
+        self.title = "Ações"
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
         
         listarObjetosButton.applyContainedTheme(withScheme: globalContainerScheme())

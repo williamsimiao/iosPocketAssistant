@@ -19,6 +19,7 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/NavigationBar'
     pod 'MaterialComponents/Palettes'
     pod 'MaterialComponents/Tabs'
+    pod 'MaterialComponents/Snackbar'
     pod 'SwiftKeychainWrapper'
 
     target 'pocketAssistantTests' do

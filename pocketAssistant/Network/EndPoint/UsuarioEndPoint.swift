@@ -10,6 +10,7 @@ import Foundation
 
 public enum UsuariosApi {
     case changePwd(token: String, pwd: String)
+    case createUsr(token: String, usr: String, pwd: String, acl: Int)
 }
 
 extension UsuariosApi: EndPointType {
@@ -29,12 +30,16 @@ extension UsuariosApi: EndPointType {
         switch self {
         case .changePwd:
             return "change_pwd"
+        case .createUsr:
+            return "create_usr"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
         case .changePwd:
+            return .post
+        case .createUsr:
             return .post
         }
     }
@@ -43,6 +48,9 @@ extension UsuariosApi: EndPointType {
         switch self {
         case .changePwd(let token, let pwd):
             return .requestParametersAndHeaders(bodyParameters: ["pwd":pwd], urlParameters: nil, additionHeaders: ["Authorization": token])
+            
+        case .createUsr(let token, let usr, let pwd, let acl):
+            return .requestParametersAndHeaders(bodyParameters: ["usr":usr, "pwd":pwd, "acl": acl], urlParameters: nil, additionHeaders: ["Authorization": token])
         }
     }
     

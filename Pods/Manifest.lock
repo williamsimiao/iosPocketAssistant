@@ -110,6 +110,8 @@ PODS:
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
+  - MaterialComponents/OverlayWindow (84.2.0):
+    - MaterialComponents/private/Application
   - MaterialComponents/Palettes (84.2.0)
   - MaterialComponents/private/Application (84.2.0)
   - MaterialComponents/private/Icons/Base (84.2.0)
@@ -130,6 +132,7 @@ PODS:
   - MaterialComponents/private/KeyboardWatcher (84.2.0):
     - MaterialComponents/private/Application
   - MaterialComponents/private/Math (84.2.0)
+  - MaterialComponents/private/Overlay (84.2.0)
   - MaterialComponents/private/UIMetrics (84.2.0):
     - MaterialComponents/private/Application
   - MaterialComponents/Ripple (84.2.0):
@@ -154,6 +157,14 @@ PODS:
   - MaterialComponents/Shapes (84.2.0):
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
+  - MaterialComponents/Snackbar (84.2.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Buttons
+    - MaterialComponents/OverlayWindow
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Overlay
+    - MaterialComponents/Typography
   - MaterialComponents/Tabs (84.2.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Ink
@@ -193,6 +204,7 @@ DEPENDENCIES:
   - "MaterialComponents/Dialogs+Theming"
   - MaterialComponents/NavigationBar
   - MaterialComponents/Palettes
+  - MaterialComponents/Snackbar
   - MaterialComponents/Tabs
   - MaterialComponents/TextFields
   - MaterialComponents/Typography
@@ -215,6 +227,6 @@ SPEC CHECKSUMS:
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: e916fe916779d2848bfd5468b9e3ad12ef662b24
+PODFILE CHECKSUM: b1f22eaa860fb2a5b44833e79f6902a0aaeb495e
 
 COCOAPODS: 1.6.1

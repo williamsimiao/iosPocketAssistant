@@ -20,6 +20,8 @@ class TrocarSenhaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Trocar senha"
+
         atualizarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())
         newPwdTextFieldController = MDCTextInputControllerOutlined(textInput: newPwdTextField)
         
@@ -46,14 +48,19 @@ class TrocarSenhaViewController: UIViewController {
             }
             else {
                 DispatchQueue.main.async {
-                    let actionComplitionHandler: MDCActionHandler = {_ in
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                    self.navigationController?.popViewController(animated: true)
+                    let message = MDCSnackbarMessage()
+                    message.text = "Senha alterada com sucesso"
+                    MDCSnackbarManager.show(message)
                     
-                    let alertController = MDCAlertController(title: "Senha alterada", message: "Senha alterada com sucesso")
-                    let action = MDCAlertAction(title: "OK", handler: actionComplitionHandler)
-                    alertController.addAction(action)
-                    self.present(alertController, animated:true, completion:nil)
+//                    let actionComplitionHandler: MDCActionHandler = {_ in
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+//
+//                    let alertController = MDCAlertController(title: "Senha alterada", message: "Senha alterada com sucesso")
+//                    let action = MDCAlertAction(title: "OK", handler: actionComplitionHandler)
+//                    alertController.addAction(action)
+//                    self.present(alertController, animated:true, completion:nil)
                 }
             }
         }
