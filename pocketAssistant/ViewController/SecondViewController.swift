@@ -13,7 +13,10 @@ import SwiftKeychainWrapper
 class SecondViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
-    
+    @IBOutlet weak var listarObjetosButton: MDCButton!
+    @IBOutlet weak var criarUsuarioButton: MDCButton!
+    @IBOutlet weak var mudarSenhaButton: MDCButton!
+    @IBOutlet weak var fecharSessaoButton: MDCButton!
     
     var tokenString: String?
     let networkManager = NetworkManager()
@@ -23,6 +26,12 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Dinâmo Pocket 2"
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
+        
+        listarObjetosButton.applyContainedTheme(withScheme: globalContainerScheme())
+        criarUsuarioButton.applyContainedTheme(withScheme: globalContainerScheme())
+        mudarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())
+        fecharSessaoButton.applyContainedTheme(withScheme: globalContainerScheme())
+
     }
     @IBAction func didTapListarObjetos(_ sender: Any) {
         guard let token = self.tokenString else {

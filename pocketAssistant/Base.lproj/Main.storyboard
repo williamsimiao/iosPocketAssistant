@@ -36,15 +36,13 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsZ-Cz-3YM" customClass="MDCButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsZ-Cz-3YM" customClass="MDCButton">
                                                 <rect key="frame" x="8" y="514" width="398" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="4Xb-Mv-BKh"/>
                                                 </constraints>
-                                                <state key="normal" title="AUTENTICAR">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
+                                                <state key="normal" title="AUTENTICAR"/>
                                                 <connections>
                                                     <action selector="didTapAutenticar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zbb-W9-eWR"/>
                                                 </connections>
@@ -120,8 +118,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iao-2d-3FM" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="200" width="382" height="30"/>
+                                                <rect key="frame" x="16" y="200" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="49F-Sa-ZGO"/>
+                                                </constraints>
                                                 <state key="normal" title="LISTAR OBJETOS">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -130,8 +131,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ate-yy-Qeh" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="238" width="382" height="30"/>
+                                                <rect key="frame" x="16" y="256" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="eqL-fP-m7q"/>
+                                                </constraints>
                                                 <state key="normal" title="CRIAR USUARIO">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -140,8 +144,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIF-QF-L6b" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="276" width="382" height="30"/>
+                                                <rect key="frame" x="16" y="312" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="PUJ-AW-7aR"/>
+                                                </constraints>
                                                 <state key="normal" title="MUDAR SUA SENHA">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -150,8 +157,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWy-LC-6nl" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="314" width="382" height="30"/>
+                                                <rect key="frame" x="16" y="368" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="IIu-zB-LG6"/>
+                                                </constraints>
                                                 <state key="normal" title="FECHAR SESSÃO">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -198,6 +208,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="k1E-ea-mQg"/>
                     <connections>
+                        <outlet property="criarUsuarioButton" destination="ate-yy-Qeh" id="hhg-ss-8W3"/>
+                        <outlet property="fecharSessaoButton" destination="PWy-LC-6nl" id="5ud-aC-E8t"/>
+                        <outlet property="listarObjetosButton" destination="iao-2d-3FM" id="KkF-zG-ncI"/>
+                        <outlet property="mudarSenhaButton" destination="cIF-QF-L6b" id="bal-Kz-XQm"/>
                         <outlet property="scrollView" destination="xf2-Sd-TSO" id="49j-th-Qbb"/>
                         <segue destination="PJc-q7-FEt" kind="show" identifier="to_ObjetosViewController" id="EBf-Dj-6KY"/>
                         <segue destination="OJ8-F1-OeA" kind="show" identifier="to_TrocarSenhaViewController" id="QKq-he-8jG"/>

@@ -78,12 +78,17 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnI-KB-jm3">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="828"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2a-0Z-tV7" customClass="MDCButton">
-                                                <rect key="frame" x="8" y="354" width="398" height="40"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nova senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xeg-ea-i0s" customClass="MDCTextField">
+                                                <rect key="frame" x="8" y="300" width="398" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2a-0Z-tV7" customClass="MDCButton">
+                                                <rect key="frame" x="8" y="354" width="398" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="K5b-ek-i4C"/>
-                                                    <constraint firstAttribute="height" constant="40" id="Svt-Gp-efK"/>
+                                                    <constraint firstAttribute="height" constant="48" id="fkv-KE-f1E"/>
                                                 </constraints>
                                                 <state key="normal" title="Atulizar senha">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -92,12 +97,6 @@
                                                     <action selector="didTapChangePwd:" destination="GVn-lg-13a" eventType="touchUpInside" id="aPr-n0-hzR"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nova senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xeg-ea-i0s" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="300" width="398" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -130,7 +129,9 @@
                         <viewLayoutGuide key="safeArea" id="ydV-b5-zqr"/>
                     </view>
                     <connections>
+                        <outlet property="atualizarSenhaButton" destination="i2a-0Z-tV7" id="t66-B7-CmB"/>
                         <outlet property="newPwdTextField" destination="Xeg-ea-i0s" id="8jd-rd-OKR"/>
+                        <outlet property="scrollView" destination="XXF-Xc-13B" id="S2s-c8-CH7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gD-dg-qoC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -163,9 +164,18 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moS-a4-OLE" customClass="MDCButton">
-                                                <rect key="frame" x="8" y="414" width="398" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Mh-To-VGl" customClass="MDCTextField">
+                                                <rect key="frame" x="8" y="300" width="398" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moS-a4-OLE" customClass="MDCButton">
+                                                <rect key="frame" x="8" y="414" width="398" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="VZq-cf-Kap"/>
+                                                </constraints>
                                                 <state key="normal" title="CRIAR USUÁRIO">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -173,12 +183,6 @@
                                                     <action selector="didTapCriar:" destination="1lD-BM-luG" eventType="touchUpInside" id="rI0-je-46n"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Mh-To-VGl" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="300" width="398" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -218,7 +222,9 @@
                     </view>
                     <connections>
                         <outlet property="aclTextField" destination="uY8-R1-SgE" id="h3k-jN-s6A"/>
+                        <outlet property="criarUsuarioButton" destination="moS-a4-OLE" id="Lhf-Kg-YoM"/>
                         <outlet property="passwordTextField" destination="EQD-yI-Rmk" id="8Q3-RL-l08"/>
+                        <outlet property="scrollView" destination="ueL-7k-5R1" id="XZM-IN-uLD"/>
                         <outlet property="usernameTextField" destination="4Mh-To-VGl" id="vGF-5R-gdL"/>
                     </connections>
                 </viewController>

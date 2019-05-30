@@ -12,13 +12,29 @@ import SwiftKeychainWrapper
 
 class TrocarSenhaViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var newPwdTextField: MDCTextField!
+    @IBOutlet weak var atualizarSenhaButton: MDCButton!
+    
     var newPwdTextFieldController: MDCTextInputControllerOutlined?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        atualizarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())
         newPwdTextFieldController = MDCTextInputControllerOutlined(textInput: newPwdTextField)
+        
+        newPwdTextField.delegate = self
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
+        scrollView.addGestureRecognizer(tapGestureRecognizer)
+        registerKeyboardNotifications()
     }
+    
+    // MARK: - Gesture Handling
+    @objc func didTapScrollView(sender: UIGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     @IBAction func didTapChangePwd(_ sender: Any) {
         let networkmanager = NetworkManager()
         let newPwd = newPwdTextField.text!
@@ -42,4 +58,38 @@ class TrocarSenhaViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Keyboard Handling
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow),
+            name: NSNotification.Name(rawValue: "UIKeyboardWillShowNotification"),
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow),
+            name: NSNotification.Name(rawValue: "UIKeyboardWillChangeFrameNotification"),
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillHide),
+            name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"),
+            object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let keyboardFrame =
+            (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height, right: 0);
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.scrollView.contentInset = UIEdgeInsets.zero;
+    }
+
+}
+
+extension TrocarSenhaViewController: UITextFieldDelegate {
+    
 }

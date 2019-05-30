@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
         otpTextFieldController = MDCTextInputControllerOutlined(textInput: otpTextField)
 
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapTouch))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
 
         autenticarButton.applyContainedTheme(withScheme: globalContainerScheme())
@@ -54,8 +54,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Gesture Handling
-    
-    @objc func didTapTouch(sender: UIGestureRecognizer) {
+    @objc func didTapScrollView(sender: UIGestureRecognizer) {
         view.endEditing(true)
     }
     
