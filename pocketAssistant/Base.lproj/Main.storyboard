@@ -74,6 +74,7 @@
                                 <constraints>
                                     <constraint firstItem="Esq-Cm-2HR" firstAttribute="centerX" secondItem="Qwb-Lw-1ZV" secondAttribute="centerX" id="6HQ-Hm-VjH"/>
                                     <constraint firstItem="Esq-Cm-2HR" firstAttribute="leading" secondItem="Qwb-Lw-1ZV" secondAttribute="leading" id="L73-zS-dHS"/>
+                                    <constraint firstItem="Esq-Cm-2HR" firstAttribute="centerY" secondItem="Qwb-Lw-1ZV" secondAttribute="centerY" id="NOE-xb-YSf"/>
                                     <constraint firstAttribute="bottom" secondItem="Esq-Cm-2HR" secondAttribute="bottom" id="O2o-dE-Mlh"/>
                                     <constraint firstItem="Esq-Cm-2HR" firstAttribute="top" secondItem="Qwb-Lw-1ZV" secondAttribute="top" id="TCb-fc-JRT"/>
                                     <constraint firstItem="Esq-Cm-2HR" firstAttribute="centerY" secondItem="Qwb-Lw-1ZV" secondAttribute="centerY" id="g68-T9-6kZ"/>
@@ -92,6 +93,7 @@
                     </view>
                     <connections>
                         <outlet property="autenticarButton" destination="OsZ-Cz-3YM" id="988-uM-zUg"/>
+                        <outlet property="contentView" destination="Esq-Cm-2HR" id="7Zk-KS-JQO"/>
                         <outlet property="otpTextField" destination="4gY-3P-aLH" id="cWW-cq-SUI"/>
                         <outlet property="passwordTextField" destination="BXl-c7-pbX" id="Pwh-Ij-6ks"/>
                         <outlet property="scrollView" destination="Qwb-Lw-1ZV" id="fDV-UP-gDQ"/>
@@ -101,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="-35"/>
+            <point key="canvasLocation" x="547.82608695652175" y="-35.491071428571423"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="DMN-YY-gyd">
@@ -118,7 +120,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iao-2d-3FM" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="200" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="400" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="49F-Sa-ZGO"/>
@@ -131,7 +133,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ate-yy-Qeh" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="256" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="456" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="eqL-fP-m7q"/>
@@ -144,7 +146,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIF-QF-L6b" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="312" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="512" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="PUJ-AW-7aR"/>
@@ -157,7 +159,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWy-LC-6nl" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="368" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="568" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="IIu-zB-LG6"/>
@@ -173,7 +175,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="ate-yy-Qeh" firstAttribute="leading" secondItem="Idu-O9-2sf" secondAttribute="leading" constant="16" id="55n-c5-28B"/>
-                                            <constraint firstItem="iao-2d-3FM" firstAttribute="top" secondItem="Idu-O9-2sf" secondAttribute="top" constant="200" id="5e1-zK-F6J"/>
+                                            <constraint firstItem="iao-2d-3FM" firstAttribute="top" secondItem="Idu-O9-2sf" secondAttribute="top" constant="400" id="5e1-zK-F6J"/>
                                             <constraint firstAttribute="trailing" secondItem="ate-yy-Qeh" secondAttribute="trailing" constant="16" id="9aW-4Q-eAN"/>
                                             <constraint firstItem="cIF-QF-L6b" firstAttribute="top" secondItem="ate-yy-Qeh" secondAttribute="bottom" constant="8" id="MOH-uG-Tv2"/>
                                             <constraint firstItem="PWy-LC-6nl" firstAttribute="top" secondItem="cIF-QF-L6b" secondAttribute="bottom" constant="8" id="Q3N-QU-ApM"/>

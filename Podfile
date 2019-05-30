@@ -15,6 +15,7 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/Typography'
     pod 'MaterialComponents/ActivityIndicator'
     pod 'MaterialComponents/Dialogs'
+    pod 'MaterialComponents/Dialogs+Theming'
     pod 'MaterialComponents/NavigationBar'
     pod 'MaterialComponents/Palettes'
     pod 'MaterialComponents/Tabs'

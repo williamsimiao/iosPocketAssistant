@@ -82,6 +82,21 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
+  - "MaterialComponents/Dialogs+ColorThemer (84.2.0)":
+    - "MaterialComponents/Buttons+ColorThemer"
+    - MaterialComponents/Dialogs
+    - MaterialComponents/Themes
+  - "MaterialComponents/Dialogs+Theming (84.2.0)":
+    - "MaterialComponents/Buttons+Theming"
+    - MaterialComponents/Dialogs
+    - "MaterialComponents/Dialogs+ColorThemer"
+    - "MaterialComponents/Dialogs+TypographyThemer"
+    - MaterialComponents/schemes/Container
+    - MaterialComponents/ShadowElevations
+  - "MaterialComponents/Dialogs+TypographyThemer (84.2.0)":
+    - "MaterialComponents/Buttons+TypographyThemer"
+    - MaterialComponents/Dialogs
+    - MaterialComponents/schemes/Typography
   - MaterialComponents/FlexibleHeader (84.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/UIMetrics
@@ -154,6 +169,9 @@ PODS:
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
+  - MaterialComponents/Themes (84.2.0):
+    - MaterialComponents/schemes/Color
+    - MaterialComponents/schemes/Typography
   - MaterialComponents/Typography (84.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
@@ -172,6 +190,7 @@ DEPENDENCIES:
   - MaterialComponents/Cards
   - MaterialComponents/Collections
   - MaterialComponents/Dialogs
+  - "MaterialComponents/Dialogs+Theming"
   - MaterialComponents/NavigationBar
   - MaterialComponents/Palettes
   - MaterialComponents/Tabs
@@ -196,6 +215,6 @@ SPEC CHECKSUMS:
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: 6c6585fc5f8b5934120f9abd3eda658ebd56f58e
+PODFILE CHECKSUM: e916fe916779d2848bfd5468b9e3ad12ef662b24
 
 COCOAPODS: 1.6.1

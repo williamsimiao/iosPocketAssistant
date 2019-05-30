@@ -12,6 +12,7 @@ import SwiftKeychainWrapper
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usernameTextField: MDCTextField!
     @IBOutlet weak var passwordTextField: MDCTextField!
@@ -29,7 +30,14 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Dinâmo Pocket"
+        //HIDE IT ALL
+        usernameTextField.isHidden = true
+        passwordTextField.isHidden = true
+        otpTextField.isHidden = true
+        autenticarButton.isHidden = true
 
+        probeRequest()
+        
         usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
         otpTextFieldController = MDCTextInputControllerOutlined(textInput: otpTextField)
@@ -49,6 +57,7 @@ class MainViewController: UIViewController {
             let alertController = MDCAlertController(title: "Token expirou", message: "Faça o login novamente")
             let action = MDCAlertAction(title: "OK", handler: nil)
             alertController.addAction(action)
+            alertController.applyTheme(withScheme: globalContainerScheme())
             self.present(alertController, animated:true, completion:nil)
         }
     }
@@ -107,7 +116,6 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Keyboard Handling
-    
     func registerKeyboardNotifications() {
         NotificationCenter.default.addObserver(
             self,
@@ -134,6 +142,45 @@ class MainViewController: UIViewController {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         self.scrollView.contentInset = UIEdgeInsets.zero;
+    }
+    
+    // MARK: - Requests
+    func probeRequest() {
+        
+        let networkManager = NetworkManager()
+        let token = KeychainWrapper.standard.string(forKey: "TOKEN")
+        guard let tokenString = token else {
+            //then go to MainViewController without setting "tokenHasExpired" to true
+            //because thre is no token yet or the session has been properly closed
+            return
+        }
+        let activityIndicator = MDCActivityIndicator()
+        activityIndicator.sizeToFit()
+        contentView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        let heightConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
+        view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        activityIndicator.startAnimating()
+        
+        networkManager.runProbeSynchronous(token: tokenString) { (response, error) in
+            if let error = error {
+                print(error)
+                //SHOW IT ALL
+                self.usernameTextField.isHidden = false
+                self.passwordTextField.isHidden = false
+                self.otpTextField.isHidden = false
+                self.autenticarButton.isHidden = false
+                
+            }
+            else if let response = response {
+                print(response.probe_str)
+                self.performSegue(withIdentifier: "to_second", sender: self)
+            }
+            activityIndicator.stopAnimating()
+        }
     }
 }
 
@@ -189,5 +236,4 @@ extension MainViewController: UITextFieldDelegate {
         
         return true
     }
-
 }
