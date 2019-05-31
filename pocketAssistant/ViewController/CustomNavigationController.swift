@@ -8,13 +8,14 @@
 
 import UIKit
 import MaterialComponents
+import SwiftKeychainWrapper
 
 class CustomNavigationController: UINavigationController {
 
     @objc var colorScheme = MDCSemanticColorScheme()
     let bottomAppBar = MDCBottomAppBarView()
     
-    let headerViewController = DrawerHeaderViewController()
+//    let headerViewController = DrawerHeaderViewController()
     let contentViewController = DrawerContentWithScrollViewController()
     
     override func viewDidLoad() {
@@ -33,7 +34,6 @@ class CustomNavigationController: UINavigationController {
                                                        to: bottomAppBar)
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeOnBottomAppBar))
         bottomAppBar.addGestureRecognizer(swipeGestureRecognizer)
-        bottomAppBar.isUserInteractionEnabled = false
         view.addSubview(bottomAppBar)
     }
     @objc func didSwipeOnBottomAppBar(sender: UIGestureRecognizer) {
@@ -63,7 +63,7 @@ class CustomNavigationController: UINavigationController {
         let bottomDrawerViewController = MDCBottomDrawerViewController()
         bottomDrawerViewController.maximumInitialDrawerHeight = 400;
         bottomDrawerViewController.contentViewController = contentViewController
-        bottomDrawerViewController.headerViewController = headerViewController
+//        bottomDrawerViewController.headerViewController = headerViewController
         bottomDrawerViewController.trackingScrollView = contentViewController.collectionView
         MDCBottomDrawerColorThemer.applySemanticColorScheme(colorScheme,
                                                             toBottomDrawer: bottomDrawerViewController)
@@ -73,9 +73,9 @@ class CustomNavigationController: UINavigationController {
 }
 
 class DrawerContentWithScrollViewController: UIViewController,
-UICollectionViewDelegate, UICollectionViewDataSource {
-    @objc var colorScheme: MDCSemanticColorScheme!
+UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @objc var colorScheme: MDCSemanticColorScheme!
     let collectionView: UICollectionView
     let layout = UICollectionViewFlowLayout()
     
@@ -93,7 +93,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         super.viewDidLoad()
         collectionView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width,
                                       height: self.view.bounds.height)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(DrawerCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -110,31 +111,84 @@ UICollectionViewDelegate, UICollectionViewDataSource {
                                            height: layout.collectionViewContentSize.height)
     }
     
+    // MARK: - UICollectionView protocols
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width  = self.view.frame.size.width
+        
+        return CGSize(width: width, height: 50.0)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 102
+        let val = drawerTabs.allCases.count
+        return val
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        let colorPick = indexPath.row % 2 == 0
-        print(indexPath.item)
-        cell.backgroundColor = colorPick ? colorScheme.surfaceColor : colorScheme.primaryColorVariant
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DrawerCell
+        let theText = drawerTabs.allCases[indexPath.row].rawValue
+        cell.titleLabel.text = theText
+        cell.backgroundColor = .orange
+//        let colorPick = indexPath.row % 2 == 0
+//        print(indexPath.item)
+//        cell.backgroundColor = colorPick ? colorScheme.surfaceColor : colorScheme.primaryColorVariant
         return cell
+    }
+    
+    func didTapListarObjetos() {
+        self.performSegue(withIdentifier: "to_ObjetosViewController", sender: self)
+    }
+    
+    func didTapCriarUsuario() {
+        self.performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
+    }
+    func didTapMudarSenha() {
+        self.performSegue(withIdentifier: "to_TrocarSenhaViewController", sender: self)
+    }
+    
+    func didTapClose() {
+        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
+            return
+        }
+        let actionComplitionHandler: MDCActionHandler = {_ in
+            NetworkManager().runClose(token: token) { (error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("Sessão encerrada")
+                    DispatchQueue.main.async {
+                        let stor = UIStoryboard.init(name: "Main", bundle: nil)
+                        let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
+                        self.present(mainViewController, animated: true, completion: { () in
+                            print("Done")
+                        })
+                    }
+                }
+            }
+        }
+        
+        let alertController = MDCAlertController(title: "Encerrar sessão", message: "Deseja mesmo encerrar a sessão ?")
+        alertController.addAction(MDCAlertAction(title: "Sim", emphasis: .medium, handler: actionComplitionHandler))
+        alertController.addAction(MDCAlertAction(title: "Cancelar", emphasis: .high, handler: nil))
+        self.present(alertController, animated:true, completion:nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! DrawerCell
+        switch cell.drawerItem {
+            case .listarObjetos:
+                didTapListarObjetos()
+            case .criarUsuario:
+                didTapCriarUsuario()
+            case .mudarSenha:
+                didTapMudarSenha()
+            case .fecharSessao:
+                didTapClose()
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
-    }
-}
-
-extension CustomNavigationController {
-    
-    @objc class func catalogMetadata() -> [String: Any] {
-        return [
-            "breadcrumbs": ["Navigation Drawer", "Bottom Drawer Scrollable Content"],
-            "primaryDemo": false,
-            "presentable": false,
-        ]
     }
 }
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import MaterialComponents
+import SwiftKeychainWrapper
 
 class ObjetosViewController: UICollectionViewController {
     
@@ -20,6 +21,24 @@ class ObjetosViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Objetos"
+        makeRequest()
+    }
+    
+    func makeRequest() {
+        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
+            return
+        }
+        NetworkManager().runListObjs(token: token) { (response, error) in
+            if let error = error {
+                print(error)
+            }
+            if let response = response {
+                self.objIdArray = response.obj
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
     }
 
 }
