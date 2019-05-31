@@ -12,8 +12,6 @@ import SwiftKeychainWrapper
 
 class ObjetosViewController: UICollectionViewController {
     
-    var appBarViewController = MDCAppBarViewController()
-
     var tokenString: String?
     var objIdArray: [String]?
     var networkManager: NetworkManager!

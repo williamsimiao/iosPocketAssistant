@@ -15,13 +15,13 @@ class CustomNavigationController: UINavigationController {
     @objc var colorScheme = MDCSemanticColorScheme()
     let bottomAppBar = MDCBottomAppBarView()
     
-//    let headerViewController = DrawerHeaderViewController()
+    let headerViewController = DrawerHeaderViewController()
     let contentViewController = DrawerContentWithScrollViewController()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = colorScheme.backgroundColor
-        contentViewController.colorScheme = colorScheme
 
         bottomAppBar.isFloatingButtonHidden = true
         let barButtonLeadingItem = UIBarButtonItem()
@@ -70,8 +70,9 @@ class CustomNavigationController: UINavigationController {
     @objc func presentNavigationDrawer() {
         let bottomDrawerViewController = MDCBottomDrawerViewController()
         bottomDrawerViewController.maximumInitialDrawerHeight = 400;
+
         bottomDrawerViewController.contentViewController = contentViewController
-//        bottomDrawerViewController.headerViewController = headerViewController
+        bottomDrawerViewController.headerViewController = headerViewController
         bottomDrawerViewController.trackingScrollView = contentViewController.collectionView
         MDCBottomDrawerColorThemer.applySemanticColorScheme(colorScheme,
                                                             toBottomDrawer: bottomDrawerViewController)
@@ -81,9 +82,11 @@ class CustomNavigationController: UINavigationController {
 }
 
 class DrawerContentWithScrollViewController: UIViewController,
-UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+UICollectionViewDelegate, UICollectionViewDataSource {
+    let listObjetosInfo = DrawerCellinfo(title: "Listar Objetos")
+    let outraCoisaInfo = DrawerCellinfo(title: "Outra coisa")
+    var drawerItens: [DrawerCellinfo]!
     
-    @objc var colorScheme: MDCSemanticColorScheme!
     let collectionView: UICollectionView
     let layout = UICollectionViewFlowLayout()
     
@@ -99,100 +102,51 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        drawerItens = [listObjetosInfo, outraCoisaInfo]
+        
         collectionView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width,
                                       height: self.view.bounds.height)
-        collectionView.register(DrawerCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .orange
+        collectionView.register(DrawerCell.self, forCellWithReuseIdentifier: DrawerCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
+//        layout.footerReferenceSize = CGSize(width: self.view.bounds.width, height: 34)
         self.view.addSubview(collectionView)
+        
+//        if #available(iOS 11.0, *) {
+//            NSLayoutConstraint.activate([
+////                collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+////                collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+////                collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+//                collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+//                ])
+//        } else {
+//            // Fallback on earlier versions
+//        }
+
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        let s = self.view.frame.size.width / 3
-        layout.itemSize = CGSize(width: s, height: s)
+        let width = self.view.frame.size.width
+        layout.itemSize = CGSize(width: width, height: 50.0)
         self.preferredContentSize = CGSize(width: view.bounds.width,
                                            height: layout.collectionViewContentSize.height)
     }
     
-    // MARK: - UICollectionView protocols
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width  = self.view.frame.size.width
-        
-        return CGSize(width: width, height: 50.0)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let val = drawerTabs.allCases.count
-        return val
+        let cellCount = drawerItens.count
+        return cellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DrawerCell
-        let theText = drawerTabs.allCases[indexPath.row].rawValue
-        cell.titleLabel.text = theText
-        cell.backgroundColor = .orange
-//        let colorPick = indexPath.row % 2 == 0
-//        print(indexPath.item)
-//        cell.backgroundColor = colorPick ? colorScheme.surfaceColor : colorScheme.primaryColorVariant
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrawerCell.identifier, for: indexPath) as! DrawerCell
+        cell.titleLabel.text = drawerItens[indexPath.row].title
+        cell.backgroundColor = .white
         return cell
-    }
-    
-    func didTapListarObjetos() {
-        self.performSegue(withIdentifier: "to_ObjetosViewController", sender: self)
-    }
-    
-    func didTapCriarUsuario() {
-        self.performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
-    }
-    func didTapMudarSenha() {
-        self.performSegue(withIdentifier: "to_TrocarSenhaViewController", sender: self)
-    }
-    
-    func didTapClose() {
-        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
-            return
-        }
-        let actionComplitionHandler: MDCActionHandler = {_ in
-            NetworkManager().runClose(token: token) { (error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("Sessão encerrada")
-                    DispatchQueue.main.async {
-                        let stor = UIStoryboard.init(name: "Main", bundle: nil)
-                        let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
-                        self.present(mainViewController, animated: true, completion: { () in
-                            print("Done")
-                        })
-                    }
-                }
-            }
-        }
-        
-        let alertController = MDCAlertController(title: "Encerrar sessão", message: "Deseja mesmo encerrar a sessão ?")
-        alertController.addAction(MDCAlertAction(title: "Sim", emphasis: .medium, handler: actionComplitionHandler))
-        alertController.addAction(MDCAlertAction(title: "Cancelar", emphasis: .high, handler: nil))
-        self.present(alertController, animated:true, completion:nil)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! DrawerCell
-        switch cell.drawerItem {
-            case .listarObjetos:
-                didTapListarObjetos()
-            case .criarUsuario:
-                didTapCriarUsuario()
-            case .mudarSenha:
-                didTapMudarSenha()
-            case .fecharSessao:
-                didTapClose()
-        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -200,7 +154,36 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     }
 }
 
+
 class DrawerHeaderViewController: UIViewController, MDCBottomDrawerHeader {
+    weak var titleLabel: UILabel!
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        commomInit()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commomInit()
+    }
+    func commomInit() {
+        view.backgroundColor = .white
+        let titleLabel = UILabel(frame: .zero)
+        titleLabel.font = MDCTypography.body2Font()
+        titleLabel.alpha = MDCTypography.body2FontOpacity()
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            self.view.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
+            self.view.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            ])
+        self.titleLabel = titleLabel
+        self.titleLabel.text = "Header"
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
 }
 
