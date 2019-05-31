@@ -7,10 +7,21 @@
 //
 
 import Foundation
-public struct DrawerCellinfo {
+
+public struct drawerMenu: Codable {
+    public var sections: [section]
+}
+
+public struct section: Codable {
+    public var sectionTitle: String
+    
+    public var cellItens: [cellInfo]
+}
+
+public struct cellInfo: Codable {
     
     public var title: String
     
-//    public var leftImageName: String
+    public var leftImageName: String
     
 }

@@ -12,11 +12,10 @@ import MaterialComponents
 func globalContainerScheme() -> MDCContainerScheming {
     let containerScheme = MDCContainerScheme()
     // Customize containerScheme here...
-    containerScheme.colorScheme.primaryColor = .orange
+    containerScheme.colorScheme.primaryColor = .black
+//    containerScheme.colorScheme.onPrimaryColor = .yellow
+
 //
-//    // Or assign a customized scheme instance:
-//    let shapeScheme = MDCShapeScheme()
-//    containerScheme.shapeScheme = shapeScheme
     
     return containerScheme
 }

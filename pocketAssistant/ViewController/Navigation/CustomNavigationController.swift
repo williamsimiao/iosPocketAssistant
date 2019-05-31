@@ -10,6 +10,16 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
+public enum drawerKeys : String {
+    case drawerMenu = "drawerMenu"
+    case sections = "sections"
+    case section = "section"
+    case sectionTitle = "sectionTitle"
+    case cellItens = "cellItens"
+    case title = "title"
+    case leftImageName = "leftImageName"
+}
+
 class CustomNavigationController: UINavigationController {
 
     @objc var colorScheme = MDCSemanticColorScheme()
@@ -78,14 +88,10 @@ class CustomNavigationController: UINavigationController {
                                                             toBottomDrawer: bottomDrawerViewController)
         present(bottomDrawerViewController, animated: true, completion: nil)
     }
-    
 }
 
 class DrawerContentWithScrollViewController: UIViewController,
 UICollectionViewDelegate, UICollectionViewDataSource {
-    let listObjetosInfo = DrawerCellinfo(title: "Listar Objetos")
-    let outraCoisaInfo = DrawerCellinfo(title: "Outra coisa")
-    var drawerItens: [DrawerCellinfo]!
     
     let collectionView: UICollectionView
     let layout = UICollectionViewFlowLayout()
@@ -102,8 +108,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawerItens = [listObjetosInfo, outraCoisaInfo]
+//        let decoder = JSONDecoder()
+//        let beers = try decoder.decode([[String:Beer]].self, from: data)
         
+        
+        let dicit: [String:String]
+        dici
         collectionView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width,
                                       height: self.view.bounds.height)
         collectionView.backgroundColor = .orange
@@ -113,24 +123,14 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-//        layout.footerReferenceSize = CGSize(width: self.view.bounds.width, height: 34)
         self.view.addSubview(collectionView)
-        
-//        if #available(iOS 11.0, *) {
-//            NSLayoutConstraint.activate([
-////                collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-////                collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-////                collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-//                collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-//                ])
-//        } else {
-//            // Fallback on earlier versions
-//        }
 
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        collectionView.backgroundColor = UIColor(red: 56, green: 69, blue: 76)
+
         let width = self.view.frame.size.width
         layout.itemSize = CGSize(width: width, height: 50.0)
         self.preferredContentSize = CGSize(width: view.bounds.width,
@@ -138,51 +138,79 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let cellCount = drawerItens.count
+        
+        let cellCount = particaoItens.count
         return cellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrawerCell.identifier, for: indexPath) as! DrawerCell
-        cell.titleLabel.text = drawerItens[indexPath.row].title
-        cell.backgroundColor = .white
+        let drawerItem = particaoItens[indexPath.row]
+        cell.titleLabel.text = drawerItem.title
+        cell.imageView.image = UIImage(named: drawerItem.leftImageName)
+
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }
 
-
-class DrawerHeaderViewController: UIViewController, MDCBottomDrawerHeader {
-    weak var titleLabel: UILabel!
+class DrawerHeaderViewController: UIViewController,MDCBottomDrawerHeader {
+    let preferredHeight: CGFloat = 60
+    let titleLabel : UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "Menu"
+        label.sizeToFit()
+        return label
+    }()
+    
+    override var preferredContentSize: CGSize {
+        get {
+            return CGSize(width: view.bounds.width, height: preferredHeight)
+        }
+        set {
+            super.preferredContentSize = newValue
+        }
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
-        commomInit()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commomInit()
     }
-    func commomInit() {
-        view.backgroundColor = .white
-        let titleLabel = UILabel(frame: .zero)
-        titleLabel.font = MDCTypography.body2Font()
-        titleLabel.alpha = MDCTypography.body2FontOpacity()
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            self.view.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
-            self.view.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            ])
-        self.titleLabel = titleLabel
-        self.titleLabel.text = "Header"
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.addSubview(titleLabel)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        view.backgroundColor = UIColor(red: 56, green: 69, blue: 76)
+
+        super.viewWillLayoutSubviews()
+        titleLabel.font = MDCTypography.titleFont()
+        titleLabel.alpha = MDCTypography.titleFontOpacity()
+        titleLabel.textColor = .white
+        titleLabel.contentMode = .left
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        titleLabel.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.height / 2)
+//
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 4),
+            titleLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -4),
+            titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+            ])
     }
     
 }
