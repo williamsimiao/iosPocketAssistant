@@ -30,6 +30,14 @@ class CustomNavigationController: UINavigationController {
         barButtonLeadingItem.target = self
         barButtonLeadingItem.action = #selector(presentNavigationDrawer)
         bottomAppBar.leadingBarButtonItems = [ barButtonLeadingItem ]
+        
+        let barButtonTrailingItem = UIBarButtonItem()
+        let userImage = UIImage(named:"baseline_person_black_24pt_")?.withRenderingMode(.alwaysTemplate)
+        barButtonTrailingItem.image = userImage
+        barButtonTrailingItem.target = self
+        barButtonTrailingItem.action = #selector(presentNavigationDrawer)
+        bottomAppBar.trailingBarButtonItems = [ barButtonTrailingItem ]
+        
         MDCBottomAppBarColorThemer.applySurfaceVariant(withSemanticColorScheme: colorScheme,
                                                        to: bottomAppBar)
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeOnBottomAppBar))

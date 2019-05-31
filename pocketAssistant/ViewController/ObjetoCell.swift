@@ -33,7 +33,8 @@ class ObjetoCell: MDCCardCollectionCell {
     func createRectangle() {
         // Initialize the path.
         separator = UIBezierPath()
-        
+        UIColor.lightGray.setStroke()
+        separator.lineWidth = 0.5
         // Create the bottom line (bottom-left to bottom-right).
         separator.move(to: CGPoint(x: 0.0, y: self.frame.size.height))
         separator.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
