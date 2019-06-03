@@ -33,7 +33,7 @@
 		3D9312002289DD50000C2635 /* pocketAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9311FF2289DD50000C2635 /* pocketAssistantTests.swift */; };
 		3D93120B2289DD50000C2635 /* pocketAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D93120A2289DD50000C2635 /* pocketAssistantUITests.swift */; };
 		3DC8465622A1AD420032FB31 /* UIColor+RGBinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */; };
-		3DC8465B22A1CAD50032FB31 /* drawerMenu.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DC8465A22A1CAD50032FB31 /* drawerMenu.json */; };
+		3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */; };
 		3DDB7ACD229D999800C4D265 /* ResponseBody3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */; };
 		3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */; };
 		3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */; };
@@ -101,7 +101,7 @@
 		3D93120A2289DD50000C2635 /* pocketAssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pocketAssistantUITests.swift; sourceTree = "<group>"; };
 		3D93120C2289DD50000C2635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBinit.swift"; sourceTree = "<group>"; };
-		3DC8465A22A1CAD50032FB31 /* drawerMenu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = drawerMenu.json; sourceTree = "<group>"; };
+		3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody3.swift; sourceTree = "<group>"; };
 		3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioEndPoint.swift; sourceTree = "<group>"; };
 		3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrocarSenhaViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +172,7 @@
 				3D60CA0622A01547000387D7 /* testeViewController.swift */,
 				3DC8465722A1B6B70032FB31 /* Navigation */,
 				3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */,
+				3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -284,7 +285,6 @@
 				3D9311F32289DD50000C2635 /* LaunchScreen.storyboard */,
 				3D9311F62289DD50000C2635 /* Info.plist */,
 				3DDC4090229F490100713546 /* Theming.swift */,
-				3DC8465A22A1CAD50032FB31 /* drawerMenu.json */,
 			);
 			path = pocketAssistant;
 			sourceTree = "<group>";
@@ -447,7 +447,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9311F52289DD50000C2635 /* LaunchScreen.storyboard in Resources */,
-				3DC8465B22A1CAD50032FB31 /* drawerMenu.json in Resources */,
 				3D9311F22289DD50000C2635 /* Assets.xcassets in Resources */,
 				3DDB7AD5229DD59B00C4D265 /* actions.storyboard in Resources */,
 				3D9311F02289DD4E000C2635 /* Main.storyboard in Resources */,
@@ -529,6 +528,7 @@
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -540,6 +540,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,6 +599,7 @@
 				3D9311ED2289DD4E000C2635 /* ViewController.swift in Sources */,
 				3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */,
 				3DEBB0FC2297001A006F0E3B /* ResponseBody2.swift in Sources */,
+				3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */,
 				3D1F5ABC22A1747D006DE185 /* DrawerCell.swift in Sources */,
 				3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */,
 				3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */,

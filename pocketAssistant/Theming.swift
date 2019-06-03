@@ -8,7 +8,11 @@
 
 import Foundation
 import MaterialComponents
-
+func globalColorScheme() -> MDCSemanticColorScheme {
+    let colorScheme = MDCSemanticColorScheme()
+    colorScheme.primaryColor = UIColor(red: 170, green: 170, blue: 170)
+    return colorScheme
+}
 func globalContainerScheme() -> MDCContainerScheming {
     let containerScheme = MDCContainerScheme()
     // Customize containerScheme here...

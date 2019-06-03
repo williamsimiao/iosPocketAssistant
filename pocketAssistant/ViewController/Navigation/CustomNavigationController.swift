@@ -27,12 +27,11 @@ class CustomNavigationController: UINavigationController {
     
     let headerViewController = DrawerHeaderViewController()
     let contentViewController = DrawerContentWithScrollViewController()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = colorScheme.backgroundColor
-
+        
         bottomAppBar.isFloatingButtonHidden = true
         let barButtonLeadingItem = UIBarButtonItem()
         let menuImage = UIImage(named:"baseline_menu_black_24pt_")?.withRenderingMode(.alwaysTemplate)
@@ -45,7 +44,7 @@ class CustomNavigationController: UINavigationController {
         let userImage = UIImage(named:"baseline_person_black_24pt_")?.withRenderingMode(.alwaysTemplate)
         barButtonTrailingItem.image = userImage
         barButtonTrailingItem.target = self
-        barButtonTrailingItem.action = #selector(presentNavigationDrawer)
+        barButtonTrailingItem.action = #selector(presentPerfilController)
         bottomAppBar.trailingBarButtonItems = [ barButtonTrailingItem ]
         
         MDCBottomAppBarColorThemer.applySurfaceVariant(withSemanticColorScheme: colorScheme,
@@ -77,6 +76,14 @@ class CustomNavigationController: UINavigationController {
         layoutBottomAppBar()
     }
     
+    @objc func presentPerfilController() {
+        let stor = UIStoryboard.init(name: "Main", bundle: nil)
+        let mainViewController = stor.instantiateViewController(withIdentifier: "PerfilViewController")
+        self.present(mainViewController, animated: true, completion: { () in
+            print("Done")
+        })
+    }
+    
     @objc func presentNavigationDrawer() {
         let bottomDrawerViewController = MDCBottomDrawerViewController()
         bottomDrawerViewController.maximumInitialDrawerHeight = 400;
@@ -96,7 +103,23 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     let collectionView: UICollectionView
     let layout = UICollectionViewFlowLayout()
     
+    //particao
+    let chavesItem = cellInfo(title: "Chaves/Objetos", leftImageName: "baseline_vpn_key_white_24pt_")
+    let confiancaItem = cellInfo(title: "Relação de confiança", leftImageName: "baseline_vpn_key_white_24pt_")
+    var particaoSection: section?
+    //usuarios
+    let gestaoItem = cellInfo(title: "Gestão", leftImageName: "baseline_vpn_key_white_24pt_")
+    var usuariosSection: section?
+    
+    var drawerComplete: drawerMenu?
+
+    
     init() {
+        particaoSection = section(sectionTitle: "Partição", cellItens: [chavesItem, confiancaItem])
+        usuariosSection = section(sectionTitle: "Usuários", cellItens: [gestaoItem])
+        drawerComplete = drawerMenu(sections: [particaoSection!, usuariosSection!])
+
+        
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         super.init(nibName: nil, bundle: nil)
     }
@@ -108,12 +131,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let decoder = JSONDecoder()
-//        let beers = try decoder.decode([[String:Beer]].self, from: data)
-        
-        
-        let dicit: [String:String]
-        dici
         collectionView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width,
                                       height: self.view.bounds.height)
         collectionView.backgroundColor = .orange
@@ -138,27 +155,32 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let aSection = drawerComplete?.sections[section]
         
-        let cellCount = particaoItens.count
-        return cellCount
+        return aSection!.cellItens.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrawerCell.identifier, for: indexPath) as! DrawerCell
-        let drawerItem = particaoItens[indexPath.row]
-        cell.titleLabel.text = drawerItem.title
-        cell.imageView.image = UIImage(named: drawerItem.leftImageName)
+        
+        let section = drawerComplete!.sections[indexPath.section]
+        let cellItem = section.cellItens[indexPath.row]
+        cell.titleLabel.text = cellItem.title
+        cell.imageView.image = UIImage(named: cellItem.leftImageName)
 
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        guard let sectionCount = drawerComplete?.sections.count else {
+            return 0
+        }
+        return sectionCount
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//    }
 }
 
 class DrawerHeaderViewController: UIViewController,MDCBottomDrawerHeader {
