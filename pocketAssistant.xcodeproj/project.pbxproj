@@ -46,6 +46,9 @@
 		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
 		3DEBB0FC2297001A006F0E3B /* ResponseBody2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0FB2297001A006F0E3B /* ResponseBody2.swift */; };
 		3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */; };
+		3DFC2FE922A5BD4A005099A8 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FE822A5BD4A005099A8 /* SectionView.swift */; };
+		3DFC2FEB22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */; };
+		3DFC2FED22A5BE2B005099A8 /* DrawerHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */; };
 		DB5B795C171B839FB899B200 /* Pods_pocketAssistantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C9E0621829363EDDD14786 /* Pods_pocketAssistantUITests.framework */; };
 		E59639CB1100C70E66B532AF /* Pods_pocketAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA57C49EE4E0E31AAC057880 /* Pods_pocketAssistant.framework */; };
 /* End PBXBuildFile section */
@@ -114,6 +117,9 @@
 		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
 		3DEBB0FB2297001A006F0E3B /* ResponseBody2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody2.swift; sourceTree = "<group>"; };
 		3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetoCell.swift; sourceTree = "<group>"; };
+		3DFC2FE822A5BD4A005099A8 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContentWithScrollViewController.swift; sourceTree = "<group>"; };
+		3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHeaderViewController.swift; sourceTree = "<group>"; };
 		4035907E3AF831FFA15F767C /* Pods-pocketAssistantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketAssistantUITests.debug.xcconfig"; path = "Target Support Files/Pods-pocketAssistantUITests/Pods-pocketAssistantUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6450FD44100929B3E47E6D1F /* Pods_pocketAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pocketAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7691126919138FD928000AE8 /* Pods-pocketAssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketAssistantTests.release.xcconfig"; path = "Target Support Files/Pods-pocketAssistantTests/Pods-pocketAssistantTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -311,6 +317,9 @@
 			isa = PBXGroup;
 			children = (
 				3D60CA0822A0216B000387D7 /* CustomNavigationController.swift */,
+				3DFC2FE822A5BD4A005099A8 /* SectionView.swift */,
+				3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */,
+				3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -575,8 +584,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DFC2FED22A5BE2B005099A8 /* DrawerHeaderViewController.swift in Sources */,
 				3D19F95322A156B70071644C /* DrawerCellinfo.swift in Sources */,
 				3D60CA0B22A0260D000387D7 /* NetworkHelper.swift in Sources */,
+				3DFC2FE922A5BD4A005099A8 /* SectionView.swift in Sources */,
 				3D114DCF228B2F7B00A4A74C /* Router.swift in Sources */,
 				3D114DC9228B090200A4A74C /* URLParameterEncoder.swift in Sources */,
 				3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */,
@@ -604,6 +615,7 @@
 				3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */,
 				3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */,
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
+				3DFC2FEB22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift in Sources */,
 				3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */,
 				3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */,
 				3D114DBA228B045500A4A74C /* EndPointType.swift in Sources */,
