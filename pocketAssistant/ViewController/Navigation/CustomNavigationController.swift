@@ -108,7 +108,7 @@ class DrawerContentWithScrollViewController: UIViewController,
 UICollectionViewDelegate, UICollectionViewDataSource {
     
     let collectionView: UICollectionView
-    let layout = UICollectionViewFlowLayout()
+    let flowLayout = UICollectionViewFlowLayout()
     
     //particao
     let chavesItem = cellInfo(title: "Chaves/Objetos", leftImageName: "baseline_vpn_key_white_24pt_")
@@ -127,12 +127,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         usuariosSection = section(sectionTitle: "Usuários", cellItens: [gestaoItem])
         drawerComplete = drawerMenuInfo(sections: [particaoSection!, usuariosSection!])
         
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         super.init(coder: aDecoder)
     }
     
@@ -142,11 +142,13 @@ UICollectionViewDelegate, UICollectionViewDataSource {
                                       height: self.view.bounds.height)
         collectionView.backgroundColor = .orange
         collectionView.register(DrawerCell.self, forCellWithReuseIdentifier: DrawerCell.identifier)
+        collectionView.register(SectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionView.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.size.width, height: 40)
         self.view.addSubview(collectionView)
 
     }
@@ -156,9 +158,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectionView.backgroundColor = UIColor(red: 56, green: 69, blue: 76)
 
         let width = self.view.frame.size.width
-        layout.itemSize = CGSize(width: width, height: 50.0)
+        flowLayout.itemSize = CGSize(width: width, height: 50.0)
         self.preferredContentSize = CGSize(width: view.bounds.width,
-                                           height: layout.collectionViewContentSize.height)
+                                           height: flowLayout.collectionViewContentSize.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -186,16 +188,32 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let transitionDelegate = self.transitionDelegate else {
-            print("Delegate ruim")
-            return
-        }
-        transitionDelegate.makeTransition(indexPath: indexPath)
         guard let dismissDelegate = self.dismissDelegate else {
             print("transition delegate eh ruim")
             return
         }
         dismissDelegate.dismissDrawer()
+        
+        guard let transitionDelegate = self.transitionDelegate else {
+            print("Delegate ruim")
+            return
+        }
+        transitionDelegate.makeTransition(indexPath: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: SectionView.identifier,
+                for: indexPath) as! SectionView
+            headerView.sectionLabel?.text = drawerComplete?.sections[indexPath.section].sectionTitle
+            
+            return headerView
+        default:
+            assert(false, "Invalid element type")
+        }
     }
 }
 
@@ -252,4 +270,40 @@ class DrawerHeaderViewController: UIViewController,MDCBottomDrawerHeader {
     }
     
 }
+
+class SectionView: UICollectionReusableView {
+    static var identifier: String = "SectionView"
+    var sectionLabel: UILabel?
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.myCustomInit()
+    }
+    
+        required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+            self.myCustomInit()
+    }
+    
+    func myCustomInit() {        
+        sectionLabel = UILabel(frame: .zero)
+        guard let sectionLabel = sectionLabel else {
+            return
+        }
+        sectionLabel.translatesAutoresizingMaskIntoConstraints = false
+        sectionLabel.font = MDCTypography.body1Font()
+        sectionLabel.alpha = MDCTypography.body1FontOpacity()
+        sectionLabel.textAlignment = .left
+        sectionLabel.textColor = .white
+
+        self.addSubview(sectionLabel)
+        NSLayoutConstraint.activate([
+            sectionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
+            self.trailingAnchor.constraint(equalTo: sectionLabel.trailingAnchor, constant: 4),
+            sectionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            sectionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0)
+            ])
+    }
+    
+}
+
 
