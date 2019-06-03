@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct drawerMenu: Codable {
+public struct drawerMenuInfo: Codable {
     public var sections: [section]
 }
 

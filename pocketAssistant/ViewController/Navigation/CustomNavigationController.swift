@@ -10,16 +10,6 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
-public enum drawerKeys : String {
-    case drawerMenu = "drawerMenu"
-    case sections = "sections"
-    case section = "section"
-    case sectionTitle = "sectionTitle"
-    case cellItens = "cellItens"
-    case title = "title"
-    case leftImageName = "leftImageName"
-}
-
 class CustomNavigationController: UINavigationController {
 
     @objc var colorScheme = MDCSemanticColorScheme()
@@ -27,6 +17,7 @@ class CustomNavigationController: UINavigationController {
     
     let headerViewController = DrawerHeaderViewController()
     let contentViewController = DrawerContentWithScrollViewController()
+    var bottomDrawerViewController: MDCBottomDrawerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +63,6 @@ class CustomNavigationController: UINavigationController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         layoutBottomAppBar()
     }
     
@@ -85,9 +75,12 @@ class CustomNavigationController: UINavigationController {
     }
     
     @objc func presentNavigationDrawer() {
-        let bottomDrawerViewController = MDCBottomDrawerViewController()
-        bottomDrawerViewController.maximumInitialDrawerHeight = 400;
-
+        bottomDrawerViewController = MDCBottomDrawerViewController()
+        guard let bottomDrawerViewController = self.bottomDrawerViewController else {
+            return
+        }
+        bottomDrawerViewController.maximumInitialDrawerHeight = 400
+        contentViewController.dismissDelegate = self
         bottomDrawerViewController.contentViewController = contentViewController
         bottomDrawerViewController.headerViewController = headerViewController
         bottomDrawerViewController.trackingScrollView = contentViewController.collectionView
@@ -95,6 +88,20 @@ class CustomNavigationController: UINavigationController {
                                                             toBottomDrawer: bottomDrawerViewController)
         present(bottomDrawerViewController, animated: true, completion: nil)
     }
+}
+
+extension CustomNavigationController: drawerDismissDelegate {
+    func dismissDrawer() {
+        bottomDrawerViewController?.dismiss(animated: true, completion: nil)
+    }
+}
+
+protocol drawerTransitionDelegate {
+    func makeTransition(indexPath: IndexPath)
+}
+
+protocol drawerDismissDelegate {
+    func dismissDrawer()
 }
 
 class DrawerContentWithScrollViewController: UIViewController,
@@ -111,14 +118,14 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     let gestaoItem = cellInfo(title: "Gestão", leftImageName: "baseline_vpn_key_white_24pt_")
     var usuariosSection: section?
     
-    var drawerComplete: drawerMenu?
-
+    var drawerComplete: drawerMenuInfo?
+    var transitionDelegate: drawerTransitionDelegate?
+    var dismissDelegate: drawerDismissDelegate?
     
     init() {
         particaoSection = section(sectionTitle: "Partição", cellItens: [chavesItem, confiancaItem])
         usuariosSection = section(sectionTitle: "Usuários", cellItens: [gestaoItem])
-        drawerComplete = drawerMenu(sections: [particaoSection!, usuariosSection!])
-
+        drawerComplete = drawerMenuInfo(sections: [particaoSection!, usuariosSection!])
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         super.init(nibName: nil, bundle: nil)
@@ -178,9 +185,18 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         return sectionCount
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let transitionDelegate = self.transitionDelegate else {
+            print("Delegate ruim")
+            return
+        }
+        transitionDelegate.makeTransition(indexPath: indexPath)
+        guard let dismissDelegate = self.dismissDelegate else {
+            print("transition delegate eh ruim")
+            return
+        }
+        dismissDelegate.dismissDrawer()
+    }
 }
 
 class DrawerHeaderViewController: UIViewController,MDCBottomDrawerHeader {

@@ -13,10 +13,10 @@ import SwiftKeychainWrapper
 class SecondViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var listarObjetosButton: MDCButton!
-    @IBOutlet weak var criarUsuarioButton: MDCButton!
-    @IBOutlet weak var mudarSenhaButton: MDCButton!
-    @IBOutlet weak var fecharSessaoButton: MDCButton!
+//    @IBOutlet weak var listarObjetosButton: MDCButton!
+//    @IBOutlet weak var criarUsuarioButton: MDCButton!
+//    @IBOutlet weak var mudarSenhaButton: MDCButton!
+//    @IBOutlet weak var fecharSessaoButton: MDCButton!
     
     var tokenString: String?
     let networkManager = NetworkManager()
@@ -26,32 +26,30 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Ações"
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
-        
-        listarObjetosButton.applyContainedTheme(withScheme: globalContainerScheme())
-        criarUsuarioButton.applyContainedTheme(withScheme: globalContainerScheme())
-
+        let navController = self.navigationController as! CustomNavigationController
+        navController.contentViewController.transitionDelegate = self
     }
-    @IBAction func didTapListarObjetos(_ sender: Any) {
-        guard let token = self.tokenString else {
-            return
-        }
-        networkManager.runListObjs(token: token) { (response, error) in
-            if let error = error {
-                print(error)
-            }
-            if let response = response {
-                self.objIdArray = response.obj
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "to_ObjetosViewController", sender: self)
-                }
-            }
-        }
-    }
-    
-    @IBAction func didTapCriarUsuario(_ sender: Any) {
-        self.performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
-
-    }
+//    @IBAction func didTapListarObjetos(_ sender: Any) {
+//        guard let token = self.tokenString else {
+//            return
+//        }
+//        networkManager.runListObjs(token: token) { (response, error) in
+//            if let error = error {
+//                print(error)
+//            }
+//            if let response = response {
+//                self.objIdArray = response.obj
+//                DispatchQueue.main.async {
+//                    self.performSegue(withIdentifier: "to_ObjetosViewController", sender: self)
+//                }
+//            }
+//        }
+//    }
+//
+//    @IBAction func didTapCriarUsuario(_ sender: Any) {
+//        self.performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
+//
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {
@@ -64,6 +62,32 @@ class SecondViewController: UIViewController {
             objetosViewController.tokenString = self.tokenString
             objetosViewController.networkManager = self.networkManager
             objetosViewController.objIdArray = self.objIdArray
+        }
+    }
+}
+
+extension SecondViewController: drawerTransitionDelegate {
+    func makeTransition(indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                self.performSegue(withIdentifier: "to_ObjetosViewController", sender: self)
+            case 1:
+                print("Relacoes")
+            default:
+                print("NADA")
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                self.performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
+                
+            default:
+                print("NADA")
+            }
+        default:
+            print("NOTHING")
         }
     }
 }
