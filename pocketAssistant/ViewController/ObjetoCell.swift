@@ -12,6 +12,7 @@ import MaterialComponents
 class ObjetoCell: MDCCardCollectionCell {
     
     @IBOutlet weak var keyLabel: UILabel!
+    @IBOutlet weak var arrowImage: UIImageView!
     
     var separator: UIBezierPath!
 
@@ -19,6 +20,7 @@ class ObjetoCell: MDCCardCollectionCell {
         super.awakeFromNib()
         keyLabel.font = MDCTypography.body2Font()
         keyLabel.alpha = MDCTypography.body2FontOpacity()
+        arrowImage.image = UIImage(named: "baseline_keyboard_arrow_right_black_24pt_")
 
     }
 

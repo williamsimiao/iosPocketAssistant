@@ -19,33 +19,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="TPm-5F-8PU">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="400" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="20"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ObjetoCell" id="UgA-AV-v0t" customClass="ObjetoCell" customModule="pocketAssistant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="50" height="50"/>
+                                <rect key="frame" x="7" y="20" width="400" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcH-2X-KaF">
-                                            <rect key="frame" x="8" y="15" width="38" height="20"/>
+                                            <rect key="frame" x="8" y="15" width="388" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lLw-RD-GYy">
+                                            <rect key="frame" x="346" y="0.0" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="Ity-NA-I3N"/>
+                                                <constraint firstAttribute="width" secondItem="lLw-RD-GYy" secondAttribute="height" multiplier="1:1" id="Ox6-c6-Z4z"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lLw-RD-GYy" secondAttribute="bottom" id="H7y-yy-ceb"/>
                                     <constraint firstItem="LcH-2X-KaF" firstAttribute="leading" secondItem="UgA-AV-v0t" secondAttribute="leading" constant="8" id="Rn0-6p-n3m"/>
+                                    <constraint firstAttribute="trailing" secondItem="lLw-RD-GYy" secondAttribute="trailing" constant="4" id="eer-fL-8vD"/>
                                     <constraint firstAttribute="trailing" secondItem="LcH-2X-KaF" secondAttribute="trailing" constant="4" id="jEb-I5-fcC"/>
                                     <constraint firstItem="LcH-2X-KaF" firstAttribute="centerY" secondItem="UgA-AV-v0t" secondAttribute="centerY" id="nqE-AE-zEf"/>
+                                    <constraint firstItem="lLw-RD-GYy" firstAttribute="top" secondItem="UgA-AV-v0t" secondAttribute="top" id="xFr-yt-rIN"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="arrowImage" destination="lLw-RD-GYy" id="xCS-Cs-JoU"/>
                                     <outlet property="keyLabel" destination="LcH-2X-KaF" id="ocZ-OO-9fZ"/>
                                 </connections>
                             </collectionViewCell>

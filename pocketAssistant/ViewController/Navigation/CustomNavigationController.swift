@@ -51,6 +51,7 @@ class CustomNavigationController: UINavigationController {
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeOnBottomAppBar))
         bottomAppBar.addGestureRecognizer(swipeGestureRecognizer)
         view.addSubview(bottomAppBar)
+        
     }
     @objc func didSwipeOnBottomAppBar(sender: UIGestureRecognizer) {
         
