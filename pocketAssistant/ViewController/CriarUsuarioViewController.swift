@@ -18,7 +18,11 @@ class CriarUsuarioViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: MDCTextField!
     @IBOutlet weak var criarUsuarioButton: MDCButton!
     
-    let newUserDefaultACL = 6
+    let newUserDefaultACL = 80
+    //1 0 1 0 0 0 0
+    //#define ACL_USR_CREATE          (ACL_OBJ_DEL << 4) // create usr
+    //#define ACL_USR_LIST            (ACL_OBJ_DEL << 6) // can usr get user-list?
+
     var usernameTextFieldController: MDCTextInputControllerOutlined?
     var passwordTextFieldController: MDCTextInputControllerOutlined?
     var confirmPasswordTextFieldController: MDCTextInputControllerOutlined?
@@ -68,32 +72,13 @@ class CriarUsuarioViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func validateTextInput(text: String?) throws {
-        if text == nil {
-            throw inputError.stringNil
-        }
-        //TODO check more cases
-    }
-    
-    func validateFields() -> Bool {
-        do {
-            try validateTextInput(text: usernameTextField.text)
-            try validateTextInput(text: passwordTextField.text)
-            try validateTextInput(text: confirmPasswordTextField.text)
-        } catch {
-            let alert = UIAlertController(title: "Erro", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            present(alert, animated: true)
-            return false
-        }
-        return true
-    }
-    
-    
     @IBAction func didTapCriar(_ sender: Any) {
-        if validateFields() == false {
+        if  !isValidInput(usernameTextField) ||
+            !isValidInput(passwordTextField) ||
+            !isValidInput(confirmPasswordTextField) {
             return
         }
+        
         let username = usernameTextField.text!
         let password = passwordTextField.text!
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
@@ -154,5 +139,85 @@ class CriarUsuarioViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         self.scrollView.contentInset = UIEdgeInsets.zero;
     }
-
 }
+
+// MARK: - UITextFieldDelegate
+extension CriarUsuarioViewController: UITextFieldDelegate {
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        switch textField {
+        case usernameTextField:
+            usernameTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        case passwordTextField:
+            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        case confirmPasswordTextField:
+            confirmPasswordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        default:
+            break
+        }
+        return true
+    }
+    
+    func checkTextFieldEmpity(_ textField: UITextField) -> Bool {
+        return textField.text == nil || textField.text == ""
+    }
+    
+    func isValidInput(_ textField: UITextField) -> Bool {
+        switch textField {
+        case usernameTextField:
+            if checkTextFieldEmpity(usernameTextField) {
+                usernameTextFieldController?.setErrorText("Campo Obirgatorio", errorAccessibilityValue: nil)
+                return false
+            }
+            
+        case passwordTextField:
+            if checkTextFieldEmpity(passwordTextField) {
+                passwordTextFieldController?.setErrorText("Campo Obirgatorio", errorAccessibilityValue: nil)
+                return false
+            }
+            else if passwordTextField.text!.count < 8 {
+                passwordTextFieldController?.setErrorText("Senha muito curta",
+                                                          errorAccessibilityValue: nil)
+                return false
+            }
+        case confirmPasswordTextField:
+            if checkTextFieldEmpity(confirmPasswordTextField) {
+                confirmPasswordTextFieldController?.setErrorText("Campo Obirgatorio", errorAccessibilityValue: nil)
+                return false
+            }
+            else if confirmPasswordTextField.text != passwordTextField.text {
+                confirmPasswordTextFieldController?.setErrorText("Confirmação e senha não conferem", errorAccessibilityValue: nil)
+                return false
+            }
+        default:
+            break
+        }
+        return true
+    }
+    
+    //Validation after press return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let _ = isValidInput(textField)
+        return false
+    }
+    
+    //Validation while typing
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text,
+            let range = Range(range, in: text),
+            textField == passwordTextField else {
+                return true
+        }
+        
+        let finishedString = text.replacingCharacters(in: range, with: string)
+        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
+            passwordTextFieldController?.setErrorText("Apenas letras e numeros são permitidas", errorAccessibilityValue: nil)
+        } else {
+            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        }
+        
+        return true
+    }
+}
+

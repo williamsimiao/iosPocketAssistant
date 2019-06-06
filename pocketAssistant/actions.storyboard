@@ -167,22 +167,22 @@
                                                 <rect key="frame" x="8" y="50" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EQD-yI-Rmk" customClass="MDCTextField">
                                                 <rect key="frame" x="8" y="80" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repita a senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3h-jj-Naw" customClass="MDCTextField">
                                                 <rect key="frame" x="8" y="110" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moS-a4-OLE" customClass="MDCButton">
-                                                <rect key="frame" x="8" y="690" width="398" height="48"/>
+                                                <rect key="frame" x="8" y="670" width="398" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="VZq-cf-Kap"/>
@@ -206,7 +206,7 @@
                                             <constraint firstItem="4Mh-To-VGl" firstAttribute="top" secondItem="hbe-tQ-CMc" secondAttribute="top" constant="50" id="hPP-Kz-LaB"/>
                                             <constraint firstAttribute="trailing" secondItem="t3h-jj-Naw" secondAttribute="trailing" constant="8" id="jpD-uO-hc4"/>
                                             <constraint firstItem="EQD-yI-Rmk" firstAttribute="leading" secondItem="hbe-tQ-CMc" secondAttribute="leading" constant="8" id="ltz-P1-Ojk"/>
-                                            <constraint firstAttribute="bottom" secondItem="moS-a4-OLE" secondAttribute="bottom" constant="80" id="mOz-y3-1KV"/>
+                                            <constraint firstAttribute="bottom" secondItem="moS-a4-OLE" secondAttribute="bottom" constant="100" id="mOz-y3-1KV"/>
                                             <constraint firstItem="moS-a4-OLE" firstAttribute="leading" secondItem="hbe-tQ-CMc" secondAttribute="leading" constant="8" id="nCa-wf-E0N"/>
                                             <constraint firstItem="4Mh-To-VGl" firstAttribute="leading" secondItem="hbe-tQ-CMc" secondAttribute="leading" constant="8" id="ug4-kY-Syp"/>
                                         </constraints>

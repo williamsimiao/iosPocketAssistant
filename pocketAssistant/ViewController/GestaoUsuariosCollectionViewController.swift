@@ -40,7 +40,6 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
         }
     }
     
-    
     func setUpBarButtonItens() {
         let refreshButton = UIButton(type: .custom)
         refreshButton.setImage(UIImage(named: "refresh"), for: .normal)
