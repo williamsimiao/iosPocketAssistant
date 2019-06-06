@@ -180,7 +180,6 @@
                     <connections>
                         <outlet property="scrollView" destination="xf2-Sd-TSO" id="49j-th-Qbb"/>
                         <segue destination="GCG-DF-gPb" kind="show" identifier="to_ObjetosViewController" id="wqr-mz-O4b"/>
-                        <segue destination="Qca-i9-BUq" kind="show" identifier="to_CriarUsuarioViewController" id="cou-3z-pce"/>
                         <segue destination="uhO-rx-8QJ" kind="show" identifier="to_GestaoUsuariosCollectionViewController" id="vOO-Ol-Zs8"/>
                     </connections>
                 </viewController>
@@ -196,21 +195,13 @@
             </objects>
             <point key="canvasLocation" x="3033" y="-103"/>
         </scene>
-        <!--CriarUsuarioViewController-->
-        <scene sceneID="yXo-7G-mA2">
-            <objects>
-                <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="CriarUsuarioViewController" id="Qca-i9-BUq" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hwn-Nr-bWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3054" y="-64"/>
-        </scene>
         <!--GestaoUsuariosCollectionViewController-->
         <scene sceneID="Seb-dL-zNb">
             <objects>
                 <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="GestaoUsuariosCollectionViewController" id="uhO-rx-8QJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUv-gb-NfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3112" y="-24"/>
+            <point key="canvasLocation" x="3112" y="-59"/>
         </scene>
         <!--Perfil View Controller-->
         <scene sceneID="Iwz-Xq-Bx3">

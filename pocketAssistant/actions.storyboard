@@ -73,7 +73,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3At-mF-0CG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6674" y="-40"/>
+            <point key="canvasLocation" x="5251" y="-52"/>
         </scene>
         <!--Trocar Senha View Controller-->
         <scene sceneID="8dQ-1B-J7r">
@@ -163,26 +163,26 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbe-tQ-CMc">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EQD-yI-Rmk" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="330" width="398" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Mh-To-VGl" customClass="MDCTextField">
+                                                <rect key="frame" x="8" y="50" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ACL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uY8-R1-SgE" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="360" width="398" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EQD-yI-Rmk" customClass="MDCTextField">
+                                                <rect key="frame" x="8" y="80" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Mh-To-VGl" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="300" width="398" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repita a senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3h-jj-Naw" customClass="MDCTextField">
+                                                <rect key="frame" x="8" y="110" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moS-a4-OLE" customClass="MDCButton">
-                                                <rect key="frame" x="8" y="414" width="398" height="48"/>
+                                                <rect key="frame" x="8" y="690" width="398" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="VZq-cf-Kap"/>
@@ -198,16 +198,16 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="moS-a4-OLE" secondAttribute="trailing" constant="8" id="2Qd-hY-Mlc"/>
-                                            <constraint firstAttribute="trailing" secondItem="uY8-R1-SgE" secondAttribute="trailing" constant="8" id="3sc-MG-OIK"/>
                                             <constraint firstAttribute="trailing" secondItem="4Mh-To-VGl" secondAttribute="trailing" constant="8" id="CMr-pa-cyE"/>
-                                            <constraint firstItem="uY8-R1-SgE" firstAttribute="top" secondItem="EQD-yI-Rmk" secondAttribute="bottom" id="NTF-RG-1Wp"/>
-                                            <constraint firstItem="uY8-R1-SgE" firstAttribute="leading" secondItem="hbe-tQ-CMc" secondAttribute="leading" constant="8" id="Uxg-uz-ZN9"/>
+                                            <constraint firstItem="t3h-jj-Naw" firstAttribute="top" secondItem="EQD-yI-Rmk" secondAttribute="bottom" id="J7l-3X-feM"/>
+                                            <constraint firstItem="t3h-jj-Naw" firstAttribute="leading" secondItem="hbe-tQ-CMc" secondAttribute="leading" constant="8" id="Jdw-H4-ByA"/>
                                             <constraint firstAttribute="trailing" secondItem="EQD-yI-Rmk" secondAttribute="trailing" constant="8" id="bRo-k7-wYB"/>
                                             <constraint firstItem="EQD-yI-Rmk" firstAttribute="top" secondItem="4Mh-To-VGl" secondAttribute="bottom" id="fYa-hk-hxH"/>
-                                            <constraint firstItem="4Mh-To-VGl" firstAttribute="top" secondItem="hbe-tQ-CMc" secondAttribute="top" constant="300" id="hPP-Kz-LaB"/>
+                                            <constraint firstItem="4Mh-To-VGl" firstAttribute="top" secondItem="hbe-tQ-CMc" secondAttribute="top" constant="50" id="hPP-Kz-LaB"/>
+                                            <constraint firstAttribute="trailing" secondItem="t3h-jj-Naw" secondAttribute="trailing" constant="8" id="jpD-uO-hc4"/>
                                             <constraint firstItem="EQD-yI-Rmk" firstAttribute="leading" secondItem="hbe-tQ-CMc" secondAttribute="leading" constant="8" id="ltz-P1-Ojk"/>
+                                            <constraint firstAttribute="bottom" secondItem="moS-a4-OLE" secondAttribute="bottom" constant="80" id="mOz-y3-1KV"/>
                                             <constraint firstItem="moS-a4-OLE" firstAttribute="leading" secondItem="hbe-tQ-CMc" secondAttribute="leading" constant="8" id="nCa-wf-E0N"/>
-                                            <constraint firstItem="moS-a4-OLE" firstAttribute="top" secondItem="uY8-R1-SgE" secondAttribute="bottom" constant="24" id="qoK-h6-pYf"/>
                                             <constraint firstItem="4Mh-To-VGl" firstAttribute="leading" secondItem="hbe-tQ-CMc" secondAttribute="leading" constant="8" id="ug4-kY-Syp"/>
                                         </constraints>
                                     </view>
@@ -232,7 +232,7 @@
                         <viewLayoutGuide key="safeArea" id="lTR-Wt-PRm"/>
                     </view>
                     <connections>
-                        <outlet property="aclTextField" destination="uY8-R1-SgE" id="h3k-jN-s6A"/>
+                        <outlet property="confirmPasswordTextField" destination="t3h-jj-Naw" id="hix-U4-qGV"/>
                         <outlet property="criarUsuarioButton" destination="moS-a4-OLE" id="Lhf-Kg-YoM"/>
                         <outlet property="passwordTextField" destination="EQD-yI-Rmk" id="8Q3-RL-l08"/>
                         <outlet property="scrollView" destination="ueL-7k-5R1" id="XZM-IN-uLD"/>
@@ -241,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKr-Il-Ig1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5014" y="-39"/>
+            <point key="canvasLocation" x="7625" y="-40"/>
         </scene>
         <!--Gestao Usuarios Collection View Controller-->
         <scene sceneID="8jo-74-QFF">
@@ -308,10 +308,13 @@
                             <outlet property="delegate" destination="Zpv-wt-4rt" id="832-zf-Phb"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <segue destination="1lD-BM-luG" kind="show" identifier="to_CriarUsuarioViewController" id="3Ne-yg-TbL"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0K-ih-dyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5881" y="-40"/>
+            <point key="canvasLocation" x="6268" y="-40"/>
         </scene>
     </scenes>
     <resources>

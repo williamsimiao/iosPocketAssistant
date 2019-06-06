@@ -11,16 +11,42 @@ import MaterialComponents
 import SwiftKeychainWrapper
 
 class CriarUsuarioViewController: UIViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usernameTextField: MDCTextField!
     @IBOutlet weak var passwordTextField: MDCTextField!
-    @IBOutlet weak var aclTextField: MDCTextField!
+    @IBOutlet weak var confirmPasswordTextField: MDCTextField!
     @IBOutlet weak var criarUsuarioButton: MDCButton!
     
+    let newUserDefaultACL = 6
     var usernameTextFieldController: MDCTextInputControllerOutlined?
     var passwordTextFieldController: MDCTextInputControllerOutlined?
-    var aclTextFieldController: MDCTextInputControllerOutlined?
+    var confirmPasswordTextFieldController: MDCTextInputControllerOutlined?
+    
+    //#define ACL_NOP                 (0x00000000)       // "may the Force be with ya'!"
+    //#define ACL_OBJ_DEL             (ACL_NOP + 1)      // delete objects
+    //#define ACL_OBJ_READ            (ACL_OBJ_DEL << 1) // read obj content
+    //#define ACL_OBJ_LIST            (ACL_OBJ_READ)     // list usr objs
+    //#define ACL_OBJ_CREATE          (ACL_OBJ_DEL << 2) // create obj
+    //#define ACL_OBJ_UPDATE          (ACL_OBJ_DEL << 3) // update obj (hdr and alike)
+    //#define ACL_OBJ_WRITE           (ACL_OBJ_UPDATE)   // update obj
+    //#define ACL_USR_CREATE          (ACL_OBJ_DEL << 4) // create usr
+    //#define ACL_USR_DELETE          (ACL_USR_CREATE)   // makes no sense only to create
+    //#define ACL_USR_REMOTE_LOG      (ACL_OBJ_DEL << 5) // can usr use remote log/info?
+    //#define ACL_USR_LIST            (ACL_OBJ_DEL << 6) // can usr get user-list?
+    //#define ACL_SYS_OPERATOR        (ACL_OBJ_DEL << 7) // operate as master (adm mode)
+    //#define ACL_SYS_BACKUP          (ACL_OBJ_DEL << 8) // extract full appliance backup
+    //#define ACL_SYS_RESTORE         (ACL_SYS_BACKUP)   // restore full appliance backup
+    //#define ACL_SYS_UDATE_HSM       (ACL_OBJ_DEL << 9) // firmware and stuff like that
+    //#define ACL_NS_AUTHORIZATION    (ACL_OBJ_DEL << 10) // user must be authorized with "m of n"
+    //#define ACL_VIRTUAL_X509_AUTH    (ACL_OBJ_DEL << 28) // presence means SA (user must use 2F PKI)
+    //#define ACL_VIRTUAL_OTP_AUTH    (ACL_OBJ_DEL << 29) // presence means SA (user must use 2-F OTP)
+    //#define ACL_CHANGE_PWD_NEXT_TIME (ACL_OBJ_DEL << 30) // can force usrs to change pwd on next login
+    //
+    //
+    //#define ACL_DEFAULT_OWNER ( ACL_OBJ_DEL | ACL_OBJ_READ | ACL_OBJ_CREATE | \
+    //ACL_OBJ_UPDATE |ACL_OBJ_WRITE \
+    //)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +55,9 @@ class CriarUsuarioViewController: UIViewController {
         criarUsuarioButton.applyContainedTheme(withScheme: globalContainerScheme())
         usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
-        aclTextFieldController = MDCTextInputControllerOutlined(textInput: aclTextField)
-        
+        confirmPasswordTextFieldController =
+            MDCTextInputControllerOutlined(textInput: confirmPasswordTextField)
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
         registerKeyboardNotifications()
@@ -52,7 +79,7 @@ class CriarUsuarioViewController: UIViewController {
         do {
             try validateTextInput(text: usernameTextField.text)
             try validateTextInput(text: passwordTextField.text)
-            try validateTextInput(text: aclTextField.text)
+            try validateTextInput(text: confirmPasswordTextField.text)
         } catch {
             let alert = UIAlertController(title: "Erro", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -61,19 +88,20 @@ class CriarUsuarioViewController: UIViewController {
         }
         return true
     }
+    
+    
     @IBAction func didTapCriar(_ sender: Any) {
         if validateFields() == false {
             return
         }
         let username = usernameTextField.text!
         let password = passwordTextField.text!
-        let acl = Int(aclTextField.text!)
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             //TODO: mandar para login
             return
         }
         
-        NetworkManager().runCreateUsr(token: token, usr: username, pwd: password, acl: acl!) { (error) in
+        NetworkManager().runCreateUsr(token: token, usr: username, pwd: password, acl: newUserDefaultACL) { (error) in
             if let error = error {
                 print(error)
             }

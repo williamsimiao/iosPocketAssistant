@@ -19,10 +19,11 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Usuários"
-        makeListUsersRequest()
+        makeRequestListUsers()
+        setUpBarButtonItens()
     }
     
-    func makeListUsersRequest() {
+    func makeRequestListUsers() {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
@@ -39,29 +40,32 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
         }
     }
     
+    
     func setUpBarButtonItens() {
         let refreshButton = UIButton(type: .custom)
-        refreshButton.setImage(UIImage(named: "imagename"), for: .normal)
+        refreshButton.setImage(UIImage(named: "refresh"), for: .normal)
         refreshButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         refreshButton.addTarget(self, action: #selector(GestaoUsuariosCollectionViewController.didTapAddRefresh), for: .touchUpInside)
         let refreshBarItem = UIBarButtonItem(customView: refreshButton)
         
         let adduserButton = UIButton(type: .custom)
-        adduserButton.setImage(UIImage(named: "imagename"), for: .normal)
+        adduserButton.setImage(UIImage(named: "addUser"), for: .normal)
         adduserButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         adduserButton.addTarget(self, action: #selector(GestaoUsuariosCollectionViewController.didTapAddUser), for: .touchUpInside)
         let addUserBarItem = UIBarButtonItem(customView: adduserButton)
         
-        self.navigationItem.setRightBarButtonItems([refreshBarItem,addUserBarItem], animated: true)
+        self.navigationItem.setRightBarButtonItems([addUserBarItem, refreshBarItem], animated: true)
     }
     
     @objc func didTapAddUser() {
-        
+        performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
     }
     
     @objc func didTapAddRefresh() {
-        makeListUsersRequest()
+        makeRequestListUsers()
     }
+    
+    //ADD USER STUFF
 }
 
 //Delegate, DataSource
