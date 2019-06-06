@@ -181,19 +181,12 @@
                         <outlet property="scrollView" destination="xf2-Sd-TSO" id="49j-th-Qbb"/>
                         <segue destination="GCG-DF-gPb" kind="show" identifier="to_ObjetosViewController" id="wqr-mz-O4b"/>
                         <segue destination="Qca-i9-BUq" kind="show" identifier="to_CriarUsuarioViewController" id="cou-3z-pce"/>
+                        <segue destination="uhO-rx-8QJ" kind="show" identifier="to_GestaoUsuariosCollectionViewController" id="vOO-Ol-Zs8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umY-l2-grh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2435" y="-35"/>
-        </scene>
-        <!--TrocarSenhaViewController-->
-        <scene sceneID="3UT-mQ-ebp">
-            <objects>
-                <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="TrocarSenhaViewController" id="OJ8-F1-OeA" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2jp-wG-iQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3933" y="-17"/>
         </scene>
         <!--ObjetosViewController-->
         <scene sceneID="2bM-a2-QIp">
@@ -210,6 +203,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hwn-Nr-bWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3054" y="-64"/>
+        </scene>
+        <!--GestaoUsuariosCollectionViewController-->
+        <scene sceneID="Seb-dL-zNb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="GestaoUsuariosCollectionViewController" id="uhO-rx-8QJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KUv-gb-NfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3112" y="-24"/>
         </scene>
         <!--Perfil View Controller-->
         <scene sceneID="Iwz-Xq-Bx3">
@@ -235,7 +236,7 @@
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVa-yD-qUJ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="48"/>
-                                <color key="backgroundColor" red="0.75081449749999996" green="0.66754204029999997" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.74901960784313726" green="0.66666666666666663" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="78O-aS-hrO"/>
                                 </constraints>
@@ -318,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDt-hK-Fka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3867" y="-35"/>
+            <point key="canvasLocation" x="2617" y="740"/>
         </scene>
         <!--Custom Navigation Controller-->
         <scene sceneID="ZHk-we-tl0">

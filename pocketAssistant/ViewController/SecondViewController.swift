@@ -56,7 +56,8 @@ extension SecondViewController: drawerTransitionDelegate {
         case 1:
             switch indexPath.row {
             case 0:
-                self.performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
+                self.performSegue(withIdentifier: "to_GestaoUsuariosCollectionViewController", sender: self)
+//                self.performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
                 
             default:
                 print("NADA")

@@ -10,7 +10,8 @@ import Foundation
 import MaterialComponents
 
 class ObjetoCell: MDCCardCollectionCell {
-    
+    static var identifier: String = "ObjetoCell"
+
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var arrowImage: UIImageView!
     
@@ -21,14 +22,12 @@ class ObjetoCell: MDCCardCollectionCell {
         keyLabel.font = MDCTypography.body2Font()
         keyLabel.alpha = MDCTypography.body2FontOpacity()
         arrowImage.image = UIImage(named: "baseline_keyboard_arrow_right_black_24pt_")
-
     }
 
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         createRectangle()
-
     }
     
     
