@@ -19,10 +19,10 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Usuários"
-        makeRequest()
+        makeListUsersRequest()
     }
     
-    func makeRequest() {
+    func makeListUsersRequest() {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
@@ -37,6 +37,30 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
                 }
             }
         }
+    }
+    
+    func setUpBarButtonItens() {
+        let refreshButton = UIButton(type: .custom)
+        refreshButton.setImage(UIImage(named: "imagename"), for: .normal)
+        refreshButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        refreshButton.addTarget(self, action: #selector(GestaoUsuariosCollectionViewController.didTapAddRefresh), for: .touchUpInside)
+        let refreshBarItem = UIBarButtonItem(customView: refreshButton)
+        
+        let adduserButton = UIButton(type: .custom)
+        adduserButton.setImage(UIImage(named: "imagename"), for: .normal)
+        adduserButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        adduserButton.addTarget(self, action: #selector(GestaoUsuariosCollectionViewController.didTapAddUser), for: .touchUpInside)
+        let addUserBarItem = UIBarButtonItem(customView: adduserButton)
+        
+        self.navigationItem.setRightBarButtonItems([refreshBarItem,addUserBarItem], animated: true)
+    }
+    
+    @objc func didTapAddUser() {
+        
+    }
+    
+    @objc func didTapAddRefresh() {
+        makeListUsersRequest()
     }
 }
 
