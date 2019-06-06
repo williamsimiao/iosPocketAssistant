@@ -23,6 +23,9 @@
 		3D3C104B22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */; };
 		3D3C104D22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */; };
 		3D3C105022A946BC00E1BDD9 /* ResponseBody4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104F22A946BC00E1BDD9 /* ResponseBody4.swift */; };
+		3D3C105422A9909200E1BDD9 /* RelacoesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */; };
+		3D3C105822A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */; };
+		3D3C105A22A9950A00E1BDD9 /* ResponseBody5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105922A9950A00E1BDD9 /* ResponseBody5.swift */; };
 		3D48FB742295B06F007ACC63 /* ResponseBody1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB732295B06F007ACC63 /* ResponseBody1.swift */; };
 		3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */; };
 		3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60CA0622A01547000387D7 /* testeViewController.swift */; };
@@ -91,6 +94,9 @@
 		3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestaoUsuariosCollectionViewController.swift; sourceTree = "<group>"; };
 		3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestaoUsuariosCollectionViewCell.swift; sourceTree = "<group>"; };
 		3D3C104F22A946BC00E1BDD9 /* ResponseBody4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody4.swift; sourceTree = "<group>"; };
+		3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelacoesCollectionViewController.swift; sourceTree = "<group>"; };
+		3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelacaoCollectionViewCell.swift; sourceTree = "<group>"; };
+		3D3C105922A9950A00E1BDD9 /* ResponseBody5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody5.swift; sourceTree = "<group>"; };
 		3D48FB732295B06F007ACC63 /* ResponseBody1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody1.swift; sourceTree = "<group>"; };
 		3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessaoEndPoint.swift; sourceTree = "<group>"; };
 		3D60CA0622A01547000387D7 /* testeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */,
 				3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */,
 				3D1F5ABA22A1747D006DE185 /* DrawerCell.swift */,
+				3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */,
 				3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */,
 				3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */,
 				3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */,
@@ -187,6 +194,7 @@
 				3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */,
 				3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */,
 				3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */,
+				3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -261,6 +269,7 @@
 				3DEBB0FB2297001A006F0E3B /* ResponseBody2.swift */,
 				3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */,
 				3D3C104F22A946BC00E1BDD9 /* ResponseBody4.swift */,
+				3D3C105922A9950A00E1BDD9 /* ResponseBody5.swift */,
 			);
 			path = Bodies;
 			sourceTree = "<group>";
@@ -608,6 +617,7 @@
 				3DDC4091229F490100713546 /* Theming.swift in Sources */,
 				3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */,
 				3D48FB742295B06F007ACC63 /* ResponseBody1.swift in Sources */,
+				3D3C105422A9909200E1BDD9 /* RelacoesCollectionViewController.swift in Sources */,
 				3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */,
 				3DDB7AD7229DDD6400C4D265 /* CriarUsuarioViewController.swift in Sources */,
 				3D3C104D22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift in Sources */,
@@ -616,6 +626,7 @@
 				3D114DCB228B28F100A4A74C /* JSONParameterEncoder.swift in Sources */,
 				3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */,
 				3D9311ED2289DD4E000C2635 /* ViewController.swift in Sources */,
+				3D3C105822A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift in Sources */,
 				3D3C105022A946BC00E1BDD9 /* ResponseBody4.swift in Sources */,
 				3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */,
 				3DEBB0FC2297001A006F0E3B /* ResponseBody2.swift in Sources */,
@@ -627,6 +638,7 @@
 				3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */,
 				3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */,
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
+				3D3C105A22A9950A00E1BDD9 /* ResponseBody5.swift in Sources */,
 				3DFC2FEB22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift in Sources */,
 				3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */,
 				3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */,

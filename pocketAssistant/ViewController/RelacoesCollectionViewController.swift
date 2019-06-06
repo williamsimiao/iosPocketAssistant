@@ -1,5 +1,5 @@
 //
-//  GestaoUsuariosCollectionViewController.swift
+//  RelacoesCollectionViewController.swift
 //  pocketAssistant
 //
 //  Created by William Simiao on 06/06/19.
@@ -10,7 +10,9 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
-class GestaoUsuariosCollectionViewController: UICollectionViewController {
+private let reuseIdentifier = "Cell"
+
+class RelacoesCollectionViewController: UICollectionViewController {
 
     var tokenString: String?
     var usrsArray: [String]?
@@ -62,12 +64,10 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
     @objc func didTapAddRefresh() {
         makeRequestListUsers()
     }
-    
-    //ADD USER STUFF
 }
 
 //Delegate, DataSource
-extension GestaoUsuariosCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension RelacoesCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width  = self.view.frame.size.width
         
@@ -82,27 +82,16 @@ extension GestaoUsuariosCollectionViewController: UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GestaoUsuariosCollectionViewCell.identifier, for: indexPath) as! GestaoUsuariosCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GestaoUsuariosCollectionViewCell.identifier, for: indexPath) as! RelacaoCollectionViewCell
         
         guard let data = usrsArray else {
             return  cell
         }
-        cell.actionDelegate = self
-        cell.setUserName(data[indexPath.row])
+        cell.titleLabel.text = data[indexPath.row]
         return cell
     }
     
     @objc func backItemTapped(sender: Any) {
         self.navigationController?.popViewController(animated: true)
-    }
-}
-
-extension GestaoUsuariosCollectionViewController: gestaoUsuariosCellDelegate {
-    func onDeleteTapped(userName: String) {
-        print("tap delete: \(userName)")
-    }
-    
-    func onEditTapped(userName: String) {
-        print("tap edit: \(userName)")
     }
 }

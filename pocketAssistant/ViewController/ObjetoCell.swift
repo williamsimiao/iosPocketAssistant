@@ -10,7 +10,7 @@ import Foundation
 import MaterialComponents
 
 class ObjetoCell: MDCCardCollectionCell {
-    static var identifier: String = "ObjetoCell"
+    static var identifier: String = "Cell"
 
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var arrowImage: UIImageView!

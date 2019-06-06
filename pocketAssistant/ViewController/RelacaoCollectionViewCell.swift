@@ -1,5 +1,5 @@
 //
-//  GestaoUsuariosCollectionViewCell.swift
+//  RelacaoCollectionViewCell.swift
 //  pocketAssistant
 //
 //  Created by William Simiao on 06/06/19.
@@ -9,22 +9,15 @@
 import UIKit
 import MaterialComponents
 
-protocol gestaoUsuariosCellDelegate {
-    func onDeleteTapped(userName: String)
-    func onEditTapped(userName: String)
-}
+//protocol relacaoCollectionCellDelegate {
+//    func onDeleteTapped(userName: String)
+//    func onEditTapped(userName: String)
+//}
 
-class GestaoUsuariosCollectionViewCell: MDCCardCollectionCell {
+class RelacaoCollectionViewCell: MDCCardCollectionCell {
     static var identifier: String = "Cell"
-
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var editButton: UIButton!
-    
     var separator: UIBezierPath!
-    
-    var userName: String?
-    var actionDelegate: gestaoUsuariosCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,22 +25,10 @@ class GestaoUsuariosCollectionViewCell: MDCCardCollectionCell {
         titleLabel.alpha = MDCTypography.body2FontOpacity()
     }
     
-    func setUserName(_ userName: String) {
-        self.userName = userName
-        titleLabel.text = userName
-    }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         createRectangle()
-    }
-    
-    @IBAction func didTapEdit(_ sender: Any) {
-        actionDelegate?.onEditTapped(userName: self.userName!)
-    }
-    
-    @IBAction func didTapDelete(_ sender: Any) {
-        actionDelegate?.onDeleteTapped(userName: self.userName!)
     }
     
     
@@ -63,4 +44,5 @@ class GestaoUsuariosCollectionViewCell: MDCCardCollectionCell {
         UIColor.black.setStroke()
         separator.stroke()
     }
+
 }

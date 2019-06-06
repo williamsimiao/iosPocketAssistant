@@ -12,6 +12,7 @@ public enum UsuariosApi {
     case changePwd(token: String, pwd: String)
     case createUsr(token: String, usr: String, pwd: String, acl: Int)
     case listUsrs(token: String)
+    case listUsrTrust(token: String, op: Int, usr: String)
 }
 
 extension UsuariosApi: EndPointType {
@@ -35,7 +36,10 @@ extension UsuariosApi: EndPointType {
             return "create_usr"
         case .listUsrs:
             return "list_usrs"
+        case .listUsrTrust:
+            return "list_usr_trust"
         }
+        
     }
     
     var httpMethod: HTTPMethod {
@@ -46,6 +50,8 @@ extension UsuariosApi: EndPointType {
             return .post
         case .listUsrs:
             return .get
+        case .listUsrTrust:
+            return .post
         }
     }
     
@@ -58,6 +64,8 @@ extension UsuariosApi: EndPointType {
             return .requestParametersAndHeaders(bodyParameters: ["usr":usr, "pwd":pwd, "acl": acl], urlParameters: nil, additionHeaders: ["Authorization": token])
         case .listUsrs(let token):
             return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: ["Authorization": token])
+        case .listUsrTrust(let token, let op, let usr):
+            return .requestParametersAndHeaders(bodyParameters: ["op": op, "usr": usr], urlParameters: nil, additionHeaders: ["Authorization": token])
         }
     }
     

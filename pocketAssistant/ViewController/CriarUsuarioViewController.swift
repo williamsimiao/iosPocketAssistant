@@ -33,6 +33,7 @@ class CriarUsuarioViewController: UIViewController {
     //#define ACL_OBJ_LIST            (ACL_OBJ_READ)     // list usr objs
     //#define ACL_OBJ_CREATE          (ACL_OBJ_DEL << 2) // create obj
     //#define ACL_OBJ_UPDATE          (ACL_OBJ_DEL << 3) // update obj (hdr and alike)
+    
     //#define ACL_OBJ_WRITE           (ACL_OBJ_UPDATE)   // update obj
     //#define ACL_USR_CREATE          (ACL_OBJ_DEL << 4) // create usr
     //#define ACL_USR_DELETE          (ACL_USR_CREATE)   // makes no sense only to create
