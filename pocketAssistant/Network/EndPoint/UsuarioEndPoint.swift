@@ -13,6 +13,7 @@ public enum UsuariosApi {
     case createUsr(token: String, usr: String, pwd: String, acl: Int)
     case listUsrs(token: String)
     case listUsrTrust(token: String, op: Int, usr: String)
+    case updateAcl(token: String, acl: Int, usr: String)
 }
 
 extension UsuariosApi: EndPointType {
@@ -38,6 +39,8 @@ extension UsuariosApi: EndPointType {
             return "list_usrs"
         case .listUsrTrust:
             return "list_usr_trust"
+        case .updateAcl:
+            return "update_acl"
         }
         
     }
@@ -52,6 +55,8 @@ extension UsuariosApi: EndPointType {
             return .get
         case .listUsrTrust:
             return .post
+        case .updateAcl:
+            return .post
         }
     }
     
@@ -65,6 +70,8 @@ extension UsuariosApi: EndPointType {
             return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: ["Authorization": token])
         case .listUsrTrust(let token, let op, let usr):
             return .requestParametersAndHeaders(bodyParameters: ["op": op, "usr": usr], urlParameters: nil, additionHeaders: ["Authorization": token])
+        case .updateAcl(let token, let acl, let usr):
+            return .requestParametersAndHeaders(bodyParameters: ["acl": acl, "usr": usr], urlParameters: nil, additionHeaders: ["Authorization": token])
         }
     }
     

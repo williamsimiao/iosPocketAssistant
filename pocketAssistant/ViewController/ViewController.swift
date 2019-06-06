@@ -22,7 +22,6 @@ class MainViewController: UIViewController {
     let networkManager = NetworkManager()
     let activityIndicator = MDCActivityIndicator()
 
-    //TODO: Add text field controllers
     var usernameTextFieldController: MDCTextInputControllerOutlined?
     var passwordTextFieldController: MDCTextInputControllerOutlined?
     var otpTextFieldController: MDCTextInputControllerOutlined?
@@ -111,7 +110,6 @@ class MainViewController: UIViewController {
                 let tokenSaved: Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
                 let userNameSaved: Bool = KeychainWrapper.standard.set(username, forKey: "USR_NAME")
                 if !tokenSaved {
-                    //TODO: alert autenticação falhou
                     return
                 }
                 DispatchQueue.main.async {
@@ -119,8 +117,6 @@ class MainViewController: UIViewController {
                 }
             }
         }
-//        self.performSegue(withIdentifier: "to_second", sender: self)
-
     }
     
     // MARK: - Keyboard Handling
@@ -167,11 +163,11 @@ class MainViewController: UIViewController {
         networkManager.runProbeSynchronous(token: tokenString) { (response, error) in
             if let error = error {
                 print(error)
-                let alertController = MDCAlertController(title: "Token expirou", message: "Faça o login novamente")
-                let action = MDCAlertAction(title: "OK", handler: nil)
-                alertController.addAction(action)
-                alertController.applyTheme(withScheme: globalContainerScheme())
-                self.present(alertController, animated:true, completion:nil)
+//                let alertController = MDCAlertController(title: "Token expirou", message: "Faça o login novamente")
+//                let action = MDCAlertAction(title: "OK", handler: nil)
+//                alertController.addAction(action)
+//                alertController.applyTheme(withScheme: globalContainerScheme())
+//                self.present(alertController, animated:true, completion:nil)
             }
             else if let response = response {
                 print(response.probe_str)

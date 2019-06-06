@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MaterialComponents
 
 enum NetworkResponse: String {
     case success
@@ -29,18 +30,71 @@ struct NetworkManager {
     private let objetosRouter = Router<ObjetosApi>()
     private let usuarioRouter = Router<UsuariosApi>()
 
+    func promptErrorToUser(resultCode: Result<String>) {
+        let message: String?
+        let title: String?
+        switch resultCode {
+        case .failure(NetworkResponse.authenticationError.rawValue):
+            title = "Credenciais invalidas"
+            message = "Faça o login novamente"
+        default:
+            title = "Erro"
+            message = ""
+        }
+        guard let aTitle = title else {
+            return
+        }
+        guard let aMessage = message else {
+            return
+        }
+        
+        let alertController = MDCAlertController(title: aTitle, message: aMessage)
+        let action = MDCAlertAction(title: "OK", handler: nil)
+        alertController.addAction(action)
+        alertController.applyTheme(withScheme: globalContainerScheme())
+        AppUtil().currentView().present(alertController, animated: true, completion: nil)
+    }
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
         switch response.statusCode {
-        case 200...299: return .success
-        case 401...500: return .failure(NetworkResponse.authenticationError.rawValue)
-        case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
-        case 600: return .failure(NetworkResponse.outdated.rawValue)
-        default: return .failure(NetworkResponse.failed.rawValue)
+        case 200...299:
+            return .success
+        case 401...500:
+            promptErrorToUser(resultCode: .failure(NetworkResponse.authenticationError.rawValue))
+            return .failure(NetworkResponse.authenticationError.rawValue)
+        case 501...599:
+            promptErrorToUser(resultCode: .failure(NetworkResponse.badRequest.rawValue))
+            return .failure(NetworkResponse.badRequest.rawValue)
+        case 600:
+            promptErrorToUser(resultCode: .failure(NetworkResponse.outdated.rawValue))
+            return .failure(NetworkResponse.outdated.rawValue)
+        default:
+            promptErrorToUser(resultCode: .failure(NetworkResponse.failed.rawValue))
+            return .failure(NetworkResponse.failed.rawValue)
         }
     }
     
     //UsuarioApi
+    func runUpdateAcl(token: String, acl: Int, usr: String, completion: @escaping (_ error: String?)->()) {
+        let completeToken = "HSM \(token)"
+        print("complete TOKEN: \(completeToken)")
+        usuarioRouter.request(.updateAcl(token: completeToken, acl: acl, usr: usr)) { (data, response, error) in
+            if error != nil {
+                completion("Check your internet connection")
+            }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                //responseData is empty
+                case .success:
+                    completion(nil)
+                case .failure(let networkFailureError):
+                    completion(networkFailureError)
+                }
+            }
+        }
+    }
+    
     func runListUsrsTrust(token: String, op: Int, usr: String, completion: @escaping (_ body1:ResponseBody5?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         usuarioRouter.request(.listUsrTrust(token: completeToken, op: op, usr: usr)) { (data, response, error) in
@@ -107,7 +161,6 @@ struct NetworkManager {
                 switch result {
                 //responseData is empty
                 case .success:
-                    print("USUARIO CRIADO")
                     completion(nil)
                 case .failure(let networkFailureError):
                     completion(networkFailureError)
@@ -128,7 +181,6 @@ struct NetworkManager {
                 switch result {
                 //responseData is empty
                 case .success:
-                    print("SENHA MUDOU")
                     completion(nil)
                 case .failure(let networkFailureError):
                     completion(networkFailureError)

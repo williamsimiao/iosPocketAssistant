@@ -26,6 +26,8 @@
 		3D3C105422A9909200E1BDD9 /* RelacoesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */; };
 		3D3C105822A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */; };
 		3D3C105A22A9950A00E1BDD9 /* ResponseBody5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105922A9950A00E1BDD9 /* ResponseBody5.swift */; };
+		3D3C105C22A9AA9000E1BDD9 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105B22A9AA9000E1BDD9 /* AppUtil.swift */; };
+		3D3C105E22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */; };
 		3D48FB742295B06F007ACC63 /* ResponseBody1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB732295B06F007ACC63 /* ResponseBody1.swift */; };
 		3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */; };
 		3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60CA0622A01547000387D7 /* testeViewController.swift */; };
@@ -97,6 +99,8 @@
 		3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelacoesCollectionViewController.swift; sourceTree = "<group>"; };
 		3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelacaoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3D3C105922A9950A00E1BDD9 /* ResponseBody5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody5.swift; sourceTree = "<group>"; };
+		3D3C105B22A9AA9000E1BDD9 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
+		3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaPermissaoViewController.swift; sourceTree = "<group>"; };
 		3D48FB732295B06F007ACC63 /* ResponseBody1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody1.swift; sourceTree = "<group>"; };
 		3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessaoEndPoint.swift; sourceTree = "<group>"; };
 		3D60CA0622A01547000387D7 /* testeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				3D9311EA2289DD4E000C2635 /* AppDelegate.swift */,
+				3D3C105B22A9AA9000E1BDD9 /* AppUtil.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */,
 				3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */,
 				3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */,
+				3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -606,11 +612,13 @@
 				3D19F95322A156B70071644C /* DrawerCellinfo.swift in Sources */,
 				3D60CA0B22A0260D000387D7 /* NetworkHelper.swift in Sources */,
 				3DFC2FE922A5BD4A005099A8 /* SectionView.swift in Sources */,
+				3D3C105E22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift in Sources */,
 				3D114DCF228B2F7B00A4A74C /* Router.swift in Sources */,
 				3D114DC9228B090200A4A74C /* URLParameterEncoder.swift in Sources */,
 				3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */,
 				3DDB7ACD229D999800C4D265 /* ResponseBody3.swift in Sources */,
 				3D114DC4228B075C00A4A74C /* ParameterEncoding.swift in Sources */,
+				3D3C105C22A9AA9000E1BDD9 /* AppUtil.swift in Sources */,
 				3DC8465622A1AD420032FB31 /* UIColor+RGBinit.swift in Sources */,
 				3D114DC6228B086900A4A74C /* NetworkError.swift in Sources */,
 				3D114DBC228B053E00A4A74C /* HTTPMethod.swift in Sources */,
