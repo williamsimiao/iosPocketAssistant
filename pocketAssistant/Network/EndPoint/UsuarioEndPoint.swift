@@ -59,7 +59,6 @@ extension UsuariosApi: EndPointType {
         switch self {
         case .changePwd(let token, let pwd):
             return .requestParametersAndHeaders(bodyParameters: ["pwd":pwd], urlParameters: nil, additionHeaders: ["Authorization": token])
-            
         case .createUsr(let token, let usr, let pwd, let acl):
             return .requestParametersAndHeaders(bodyParameters: ["usr":usr, "pwd":pwd, "acl": acl], urlParameters: nil, additionHeaders: ["Authorization": token])
         case .listUsrs(let token):

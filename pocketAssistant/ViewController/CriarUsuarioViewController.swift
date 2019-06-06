@@ -65,6 +65,10 @@ class CriarUsuarioViewController: UIViewController {
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
+        
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
         registerKeyboardNotifications()
     }
     
@@ -97,15 +101,6 @@ class CriarUsuarioViewController: UIViewController {
                     let message = MDCSnackbarMessage()
                     message.text = "Usuário criado com sucesso"
                     MDCSnackbarManager.show(message)
-                    
-                    //                    let actionComplitionHandler: MDCActionHandler = {_ in
-                    //                        self.navigationController?.popViewController(animated: true)
-                    //                    }
-                    //
-                    //                    let alertController = MDCAlertController(title: "Senha alterada", message: "Senha alterada com sucesso")
-                    //                    let action = MDCAlertAction(title: "OK", handler: actionComplitionHandler)
-                    //                    alertController.addAction(action)
-                    //                    self.present(alertController, animated:true, completion:nil)
                 }
             }
         }

@@ -12,7 +12,7 @@ public struct ResponseBody5: Codable {
 }
 
 public struct item: Codable {
-    public var acl: String
+    public var acl: Int
     public var usr: String
 }
 

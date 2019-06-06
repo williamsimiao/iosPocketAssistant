@@ -49,7 +49,7 @@ extension SecondViewController: drawerTransitionDelegate {
             case 0:
                 self.performSegue(withIdentifier: "to_ObjetosViewController", sender: self)
             case 1:
-                print("Relacoes")
+                self.performSegue(withIdentifier: "to_PerfilViewController", sender: self)
             default:
                 print("NADA")
             }

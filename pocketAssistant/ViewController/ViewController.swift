@@ -29,9 +29,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Dinâmo Pocket"
+        self.title = "Dinâmo"
         
-//        activityIndicator.backgroundColor = .gray
         activityIndicator.sizeToFit()
         let colorScheme = MDCSemanticColorScheme()
         colorScheme.primaryColor = .black
@@ -110,6 +109,7 @@ class MainViewController: UIViewController {
             }
             if let response = response {
                 let tokenSaved: Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
+                let userNameSaved: Bool = KeychainWrapper.standard.set(username, forKey: "USR_NAME")
                 if !tokenSaved {
                     //TODO: alert autenticação falhou
                     return

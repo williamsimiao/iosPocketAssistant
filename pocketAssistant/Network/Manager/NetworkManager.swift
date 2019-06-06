@@ -43,7 +43,7 @@ struct NetworkManager {
     //UsuarioApi
     func runListUsrsTrust(token: String, op: Int, usr: String, completion: @escaping (_ body1:ResponseBody5?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
-        usuarioRouter.request(.listUsrTrust(token: token, op: op, usr: usr)) { (data, response, error) in
+        usuarioRouter.request(.listUsrTrust(token: completeToken, op: op, usr: usr)) { (data, response, error) in
             if error != nil {
                 completion(nil, "Check your internet connection")
             }

@@ -78,7 +78,7 @@
         <!--Relacoes Collection View Controller-->
         <scene sceneID="M5e-J1-bzU">
             <objects>
-                <collectionViewController id="soA-cm-ept" customClass="RelacoesCollectionViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="RelacoesCollectionViewController" id="soA-cm-ept" customClass="RelacoesCollectionViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="teb-I7-RIW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +123,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6a-Bv-MlJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5251" y="650"/>
+            <point key="canvasLocation" x="8239" y="-40"/>
         </scene>
         <!--Trocar Senha View Controller-->
         <scene sceneID="8dQ-1B-J7r">

@@ -181,6 +181,7 @@
                         <outlet property="scrollView" destination="xf2-Sd-TSO" id="49j-th-Qbb"/>
                         <segue destination="GCG-DF-gPb" kind="show" identifier="to_ObjetosViewController" id="wqr-mz-O4b"/>
                         <segue destination="uhO-rx-8QJ" kind="show" identifier="to_GestaoUsuariosCollectionViewController" id="vOO-Ol-Zs8"/>
+                        <segue destination="HIl-Pb-GOo" kind="show" identifier="to_RelacoesCollectionViewController" id="Nau-Ve-quw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umY-l2-grh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,6 +203,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUv-gb-NfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3112" y="-59"/>
+        </scene>
+        <!--RelacoesCollectionViewController-->
+        <scene sceneID="6hX-54-K4o">
+            <objects>
+                <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="RelacoesCollectionViewController" id="HIl-Pb-GOo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Yh-fZ-Wgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3014" y="3"/>
         </scene>
         <!--Perfil View Controller-->
         <scene sceneID="Iwz-Xq-Bx3">
@@ -225,7 +234,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVa-yD-qUJ">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVa-yD-qUJ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="48"/>
                                 <color key="backgroundColor" red="0.74901960784313726" green="0.66666666666666663" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
