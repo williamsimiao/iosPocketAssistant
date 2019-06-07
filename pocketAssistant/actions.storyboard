@@ -245,12 +245,28 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwU-Bm-M78" customClass="MDCButton">
+                                                <rect key="frame" x="8" y="400" width="398" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="dCD-T9-yqe"/>
+                                                </constraints>
+                                                <state key="normal" title="SALVAR">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapSalvar:" destination="9Ob-pq-aJH" eventType="touchUpInside" id="xTS-1j-v18"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="RwU-Bm-M78" firstAttribute="leading" secondItem="43c-3J-7xL" secondAttribute="leading" constant="8" id="0sq-LL-JCb"/>
                                             <constraint firstAttribute="trailing" secondItem="VcD-sd-tIO" secondAttribute="trailing" constant="8" id="955-ih-wWM"/>
                                             <constraint firstItem="CA0-CP-TI1" firstAttribute="leading" secondItem="43c-3J-7xL" secondAttribute="leading" constant="8" id="NjY-pw-jTY"/>
                                             <constraint firstItem="VcD-sd-tIO" firstAttribute="leading" secondItem="43c-3J-7xL" secondAttribute="leading" constant="8" id="QqI-7t-faE"/>
+                                            <constraint firstAttribute="trailing" secondItem="RwU-Bm-M78" secondAttribute="trailing" constant="8" id="Rec-0v-1Bm"/>
+                                            <constraint firstItem="RwU-Bm-M78" firstAttribute="top" secondItem="VcD-sd-tIO" secondAttribute="bottom" constant="80" id="XkP-S0-dAa"/>
                                             <constraint firstItem="CA0-CP-TI1" firstAttribute="top" secondItem="43c-3J-7xL" secondAttribute="top" constant="60" id="YF9-jx-CdV"/>
                                             <constraint firstAttribute="trailing" secondItem="CA0-CP-TI1" secondAttribute="trailing" constant="8" id="bfa-8d-sZ7"/>
                                             <constraint firstItem="VcD-sd-tIO" firstAttribute="top" secondItem="CA0-CP-TI1" secondAttribute="bottom" constant="30" id="wvA-a9-ccx"/>
@@ -281,6 +297,7 @@
                         <outlet property="criarSwitch" destination="btW-HK-d3R" id="Scf-1o-etB"/>
                         <outlet property="lerSwitch" destination="FEh-0u-d0d" id="HZj-lY-Ra4"/>
                         <outlet property="removerSwitch" destination="0lV-VU-NTM" id="SSE-ef-csA"/>
+                        <outlet property="salvarButton" destination="RwU-Bm-M78" id="E5p-sQ-fSx"/>
                         <outlet property="scrollView" destination="Igg-mv-bZn" id="MY9-c5-LY3"/>
                         <outlet property="usernameTextField" destination="CA0-CP-TI1" id="DVG-hh-eht"/>
                     </connections>

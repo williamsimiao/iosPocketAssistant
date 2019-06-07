@@ -48,11 +48,25 @@ struct NetworkManager {
             return
         }
         
+        let stor = UIStoryboard.init(name: "Main", bundle: nil)
+        let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
+        let currentViewController = AppUtil().currentView()
+        
         let alertController = MDCAlertController(title: aTitle, message: aMessage)
         let action = MDCAlertAction(title: "OK", handler: nil)
         alertController.addAction(action)
         alertController.applyTheme(withScheme: globalContainerScheme())
-        AppUtil().currentView().present(alertController, animated: true, completion: nil)
+        
+        if currentViewController.isKind(of: MainViewController.self) {
+            currentViewController.present(alertController, animated: true, completion: nil)
+        }
+        else {
+            
+            currentViewController.present(mainViewController, animated: true, completion: { () in
+                let newCurrentViewCOntroller = AppUtil().currentView()
+                newCurrentViewCOntroller.present(alertController, animated: true, completion: nil)
+            })
+        }
     }
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
@@ -74,7 +88,35 @@ struct NetworkManager {
         }
     }
     
+    
     //UsuarioApi
+    func runGetAcl(token: String, usr: String, completion: @escaping (_ body1:ResponseBody6?,_ error: String?)->()) {
+        let completeToken = "HSM \(token)"
+        usuarioRouter.request(.getAcl(token: completeToken, usr: usr)) { (data, response, error) in
+            if error != nil {
+                completion(nil, "Check your internet connection")
+            }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue)
+                        return
+                    }
+                    do {
+                        let apiResponse = try JSONDecoder().decode(ResponseBody6.self, from: responseData)
+                        completion(apiResponse, nil)
+                    } catch {
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError)
+                }
+            }
+        }
+    }
+    
     func runUpdateAcl(token: String, acl: Int, usr: String, completion: @escaping (_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")

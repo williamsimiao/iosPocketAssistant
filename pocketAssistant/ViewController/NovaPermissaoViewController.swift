@@ -17,20 +17,49 @@ class NovaPermissaoViewController: UIViewController {
     @IBOutlet weak var criarSwitch: UISwitch!
     @IBOutlet weak var removerSwitch: UISwitch!
     @IBOutlet weak var atualizarSwitch: UISwitch!
+    @IBOutlet weak var salvarButton: MDCButton!
     
     var usernameTextFieldController: MDCTextInputControllerOutlined?
-
+    let networkManager = NetworkManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
-
         
+        
+        usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
         usernameTextField.delegate = self
         registerKeyboardNotifications()
 
     }
     
-    func makeRequest() {
+    func setUpSwitches() {
+        
+    }
+    
+    @IBAction func didTapSalvar(_ sender: Any) {
+    }
+    
+    func getAclRequest() {
+        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
+            return
+        }
+        guard let username = usernameTextField.text else {
+            return
+        }
+        
+        networkManager.runGetAcl(token: token, usr: username) { (response, error) in
+            if let error = error {
+                print(error)
+            }
+            if let response = response {
+                
+                DispatchQueue.main.async {
+                }
+            }
+        }
+    }
+    
+    
+    func updateAclRequest() {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
@@ -39,7 +68,7 @@ class NovaPermissaoViewController: UIViewController {
         }
         //TODO: Mudar, montando a partir dos valores dos switches
         let acl = 15
-        NetworkManager().runUpdateAcl(token: token, acl: acl, usr: username) { (error) in
+        networkManager.runUpdateAcl(token: token, acl: acl, usr: username) { (error) in
             if let error = error {
                 print(error)
             }
@@ -72,13 +101,13 @@ class NovaPermissaoViewController: UIViewController {
             name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"),
             object: nil)
     }
-    
+
     @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardFrame =
             (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height, right: 0);
     }
-    
+
     @objc func keyboardWillHide(notification: NSNotification) {
         self.scrollView.contentInset = UIEdgeInsets.zero;
     }
@@ -86,12 +115,12 @@ class NovaPermissaoViewController: UIViewController {
 
 // MARK: - UITextFieldDelegate
 extension NovaPermissaoViewController: UITextFieldDelegate {
-    
+
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         usernameTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
         return true
     }
-    
+
     //Validation after press return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -101,11 +130,11 @@ extension NovaPermissaoViewController: UITextFieldDelegate {
 //        return true
         return false
     }
-    
+
     //Validation while typing
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        
+
         return true
     }
 }

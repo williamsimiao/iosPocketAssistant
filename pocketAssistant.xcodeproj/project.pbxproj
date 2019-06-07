@@ -54,6 +54,8 @@
 		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
 		3DEBB0FC2297001A006F0E3B /* ResponseBody2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0FB2297001A006F0E3B /* ResponseBody2.swift */; };
 		3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */; };
+		3DFBDFA422A9D0680027C41E /* ResponseBody6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBDFA322A9D0680027C41E /* ResponseBody6.swift */; };
+		3DFBDFA622A9E2040027C41E /* acl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBDFA522A9E2040027C41E /* acl.swift */; };
 		3DFC2FE922A5BD4A005099A8 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FE822A5BD4A005099A8 /* SectionView.swift */; };
 		3DFC2FEB22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */; };
 		3DFC2FED22A5BE2B005099A8 /* DrawerHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */; };
@@ -133,6 +135,8 @@
 		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
 		3DEBB0FB2297001A006F0E3B /* ResponseBody2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody2.swift; sourceTree = "<group>"; };
 		3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetoCell.swift; sourceTree = "<group>"; };
+		3DFBDFA322A9D0680027C41E /* ResponseBody6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody6.swift; sourceTree = "<group>"; };
+		3DFBDFA522A9E2040027C41E /* acl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = acl.swift; sourceTree = "<group>"; };
 		3DFC2FE822A5BD4A005099A8 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContentWithScrollViewController.swift; sourceTree = "<group>"; };
 		3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHeaderViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 			children = (
 				3D19F95122A156670071644C /* Bodies */,
 				3D19F95222A156B70071644C /* DrawerCellinfo.swift */,
+				3DFBDFA522A9E2040027C41E /* acl.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */,
 				3D3C104F22A946BC00E1BDD9 /* ResponseBody4.swift */,
 				3D3C105922A9950A00E1BDD9 /* ResponseBody5.swift */,
+				3DFBDFA322A9D0680027C41E /* ResponseBody6.swift */,
 			);
 			path = Bodies;
 			sourceTree = "<group>";
@@ -619,8 +625,10 @@
 				3DDB7ACD229D999800C4D265 /* ResponseBody3.swift in Sources */,
 				3D114DC4228B075C00A4A74C /* ParameterEncoding.swift in Sources */,
 				3D3C105C22A9AA9000E1BDD9 /* AppUtil.swift in Sources */,
+				3DFBDFA622A9E2040027C41E /* acl.swift in Sources */,
 				3DC8465622A1AD420032FB31 /* UIColor+RGBinit.swift in Sources */,
 				3D114DC6228B086900A4A74C /* NetworkError.swift in Sources */,
+				3DFBDFA422A9D0680027C41E /* ResponseBody6.swift in Sources */,
 				3D114DBC228B053E00A4A74C /* HTTPMethod.swift in Sources */,
 				3DDC4091229F490100713546 /* Theming.swift in Sources */,
 				3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */,
