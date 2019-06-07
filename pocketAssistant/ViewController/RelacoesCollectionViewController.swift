@@ -103,7 +103,10 @@ class RelacoesCollectionViewController: UIViewController {
 }
 
 //Delegate, DataSource
-extension RelacoesCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension RelacoesCollectionViewController: UICollectionViewDelegate,
+                                            UICollectionViewDataSource,
+                                            UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width  = self.view.frame.size.width
         

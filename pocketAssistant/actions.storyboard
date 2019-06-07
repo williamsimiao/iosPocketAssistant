@@ -462,8 +462,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="dVk-wq-czp" id="wUL-tb-IEq"/>
-                                    <outlet property="delegate" destination="dVk-wq-czp" id="aLq-sU-LB9"/>
+                                    <outlet property="dataSource" destination="dVk-wq-czp" id="y9j-yC-iTU"/>
+                                    <outlet property="delegate" destination="dVk-wq-czp" id="jLH-DH-6Ov"/>
                                 </connections>
                             </collectionView>
                         </subviews>
