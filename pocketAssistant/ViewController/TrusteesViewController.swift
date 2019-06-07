@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import MaterialComponents
 
 class TrusteesViewController: UIViewController {
     
@@ -15,6 +16,14 @@ class TrusteesViewController: UIViewController {
     var selectedUserName: String?
     var collectionView: UICollectionView?
     var isTrustees: Bool?
+    
+    let noContentLabel : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .black
+        lbl.font = MDCTypography.body2Font()
+        lbl.alpha = MDCTypography.body2FontOpacity()
+        return lbl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

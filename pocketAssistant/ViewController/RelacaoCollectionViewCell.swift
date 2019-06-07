@@ -45,10 +45,13 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
     func commonInit() {
         self.contentView.backgroundColor = .white
         self.contentView.addSubview(titleLabel)
-//        NSLayoutConstraint.activate([
-//            titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
-//            titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 8)
-//            ])
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 8),
+            titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
+            ])
     }
     
     override func draw(_ rect: CGRect) {
