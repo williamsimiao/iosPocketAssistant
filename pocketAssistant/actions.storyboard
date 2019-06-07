@@ -241,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSS-2T-bxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9079" y="-42"/>
+            <point key="canvasLocation" x="9442" y="-526"/>
         </scene>
         <!--Trocar Senha View Controller-->
         <scene sceneID="8dQ-1B-J7r">
@@ -426,59 +426,19 @@
                                     <constraint firstAttribute="height" constant="48" id="1W4-G1-x0p"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVl-Xg-1oU">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oVl-Xg-1oU">
                                 <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="faX-0n-PhD">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="770"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="me8-ko-4Yl">
-                                            <size key="itemSize" width="400" height="50"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="u56-3S-FlV" customClass="RelacaoCollectionViewCell" customModule="pocketAssistant" customModuleProvider="target">
-                                                <rect key="frame" x="7" y="0.0" width="400" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJk-AS-cTQ">
-                                                            <rect key="frame" x="16" y="14.5" width="368" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </view>
-                                                <constraints>
-                                                    <constraint firstItem="pJk-AS-cTQ" firstAttribute="leading" secondItem="u56-3S-FlV" secondAttribute="leadingMargin" constant="8" id="CQR-d0-2eR"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="pJk-AS-cTQ" secondAttribute="trailing" constant="8" id="XNY-cf-9wG"/>
-                                                    <constraint firstItem="pJk-AS-cTQ" firstAttribute="centerY" secondItem="u56-3S-FlV" secondAttribute="centerY" id="aVB-rb-dFd"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="titleLabel" destination="pJk-AS-cTQ" id="vux-xN-tqX"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
-                                        <connections>
-                                            <outlet property="dataSource" destination="dVk-wq-czp" id="y9j-yC-iTU"/>
-                                            <outlet property="delegate" destination="dVk-wq-czp" id="jLH-DH-6Ov"/>
-                                        </connections>
-                                    </collectionView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KxY-Fo-8Kd">
+                                        <rect key="frame" x="117" y="159" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RjY-5L-Pxd">
+                                        <rect key="frame" x="74" y="484" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.27000162010000001" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="faX-0n-PhD" secondAttribute="bottom" id="4vW-3I-3mL"/>
-                                    <constraint firstItem="faX-0n-PhD" firstAttribute="top" secondItem="oVl-Xg-1oU" secondAttribute="top" id="BM4-aI-WXM"/>
-                                    <constraint firstItem="faX-0n-PhD" firstAttribute="centerY" secondItem="oVl-Xg-1oU" secondAttribute="centerY" id="CvF-Dw-TJM"/>
-                                    <constraint firstItem="faX-0n-PhD" firstAttribute="centerX" secondItem="oVl-Xg-1oU" secondAttribute="centerX" id="Qnj-km-qSw"/>
-                                    <constraint firstAttribute="trailing" secondItem="faX-0n-PhD" secondAttribute="trailing" id="Rxn-qo-hRe"/>
-                                    <constraint firstItem="faX-0n-PhD" firstAttribute="leading" secondItem="oVl-Xg-1oU" secondAttribute="leading" id="jIV-cn-6Jc"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -494,7 +454,6 @@
                         <viewLayoutGuide key="safeArea" id="At1-wV-IkR"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="faX-0n-PhD" id="8Xf-lI-yAO"/>
                         <outlet property="scrollView" destination="oVl-Xg-1oU" id="NWg-6Y-Fzh"/>
                         <outlet property="tabBarContainer" destination="xu9-ap-dyh" id="BtZ-3H-GvG"/>
                         <segue destination="9Ob-pq-aJH" kind="show" identifier="to_NovaPermissaoViewController" id="zdw-TB-zS2"/>

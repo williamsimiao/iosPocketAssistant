@@ -16,21 +16,25 @@ import MaterialComponents
 
 class RelacaoCollectionViewCell: MDCCardCollectionCell {
     static var identifier: String = "Cell"
-    @IBOutlet weak var titleLabel: UILabel!
     var separator: UIBezierPath!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        titleLabel.font = MDCTypography.body2Font()
-        titleLabel.alpha = MDCTypography.body2FontOpacity()
+    var myItem : item? {
+        didSet {
+            titleLabel.text = myItem?.usr
+        }
     }
     
+    private let titleLabel : UILabel = {
+        let lbl = UILabel()
+        lbl.font = MDCTypography.body2Font()
+        lbl.alpha = MDCTypography.body2FontOpacity()
+        return lbl
+    }()
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         createRectangle()
     }
-    
     
     func createRectangle() {
         // Initialize the path.
@@ -44,5 +48,4 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
         UIColor.black.setStroke()
         separator.stroke()
     }
-
 }
