@@ -21,21 +21,42 @@ class NovaPermissaoViewController: UIViewController {
     
     var usernameTextFieldController: MDCTextInputControllerOutlined?
     let networkManager = NetworkManager()
+    var myAcl: aclStruct?
+    var userName: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
         usernameTextField.delegate = self
         registerKeyboardNotifications()
-
     }
     
-    func setUpSwitches() {
+    func setUpSwitches(aclInteger: Int) {
+        myAcl = aclStruct(rawValue: UInt32(aclInteger))
+        
+        guard let myAcl = self.myAcl else {
+            print("no ACL")
+            return
+        }
+        
+        if myAcl.contains(.obj_read) {
+            lerSwitch.isOn = true
+        }
+        if myAcl.contains(.obj_create) {
+            criarSwitch.isOn = true
+        }
+        if myAcl.contains(.obj_del) {
+            removerSwitch.isOn = true
+        }
+        if myAcl.contains(.obj_update) {
+            atualizarSwitch.isOn = true
+        }
         
     }
     
     @IBAction func didTapSalvar(_ sender: Any) {
+        
     }
     
     func getAclRequest() {
@@ -51,8 +72,9 @@ class NovaPermissaoViewController: UIViewController {
                 print(error)
             }
             if let response = response {
-                
+                let theAcl = response.acl
                 DispatchQueue.main.async {
+                    self.setUpSwitches(aclInteger: theAcl)
                 }
             }
         }
