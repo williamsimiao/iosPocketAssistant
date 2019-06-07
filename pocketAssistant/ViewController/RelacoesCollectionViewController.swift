@@ -16,6 +16,7 @@ import SwiftKeychainWrapper
 
 class RelacoesCollectionViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tabBarContainer: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     var tokenString: String?
@@ -26,6 +27,7 @@ class RelacoesCollectionViewController: UIViewController {
         tabBar.delegate = self
         MDCTabBarColorThemer.applySemanticColorScheme(globalColorScheme(), toTabs: tabBar)
         tabBar.itemAppearance = .titles
+        tabBar.alignment = .center
         tabBar.tintColor = .black
         tabBar.items = [UITabBarItem(title: "TRUSTER", image: nil, tag:0),
                         UITabBarItem(title: "TRUSTEES", image: nil, tag:0)]
@@ -153,7 +155,14 @@ extension RelacoesCollectionViewController: MDCTabBarDelegate {
             fatalError("MDCTabBarDelegate given selected item not found in tabBar.items")
         }
         
-        //        scrollView.setContentOffset(CGPoint(x: CGFloat(index) * view.bounds.width, y: 0),
-        //                                    animated: true)
+        scrollView.setContentOffset(CGPoint(x: CGFloat(index) * view.bounds.width, y: 0),
+                                    animated: true)
+    }
+}
+
+extension RelacoesCollectionViewController {
+    func setUpSrollView() {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+
     }
 }
