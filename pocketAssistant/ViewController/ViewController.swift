@@ -20,7 +20,16 @@ class MainViewController: UIViewController {
     @IBOutlet weak var autenticarButton: MDCButton!
     
     let networkManager = NetworkManager()
-    let activityIndicator = MDCActivityIndicator()
+    
+    lazy var activityIndicator: MDCActivityIndicator = {
+        let aActivityIndicator = MDCActivityIndicator()
+        aActivityIndicator.sizeToFit()
+        let colorScheme = MDCSemanticColorScheme()
+        colorScheme.primaryColor = .black
+        MDCActivityIndicatorColorThemer.applySemanticColorScheme(colorScheme, to: aActivityIndicator)
+
+        return aActivityIndicator
+    }()
 
     var usernameTextFieldController: MDCTextInputControllerOutlined?
     var passwordTextFieldController: MDCTextInputControllerOutlined?
@@ -29,11 +38,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Dinâmo"
-        
-        activityIndicator.sizeToFit()
-        let colorScheme = MDCSemanticColorScheme()
-        colorScheme.primaryColor = .black
-        MDCActivityIndicatorColorThemer.applySemanticColorScheme(colorScheme, to: activityIndicator)
         
         contentView.addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false

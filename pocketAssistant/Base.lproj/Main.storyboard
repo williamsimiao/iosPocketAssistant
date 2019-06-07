@@ -210,7 +210,7 @@
                 <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="RelacoesCollectionViewController" id="HIl-Pb-GOo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Yh-fZ-Wgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3014" y="3"/>
+            <point key="canvasLocation" x="3141" y="-15"/>
         </scene>
         <!--Perfil View Controller-->
         <scene sceneID="Iwz-Xq-Bx3">
@@ -221,7 +221,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYJ-hx-zFr">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <color key="barTintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="Perfil do usuário" id="ZU8-A9-OSw">
@@ -235,20 +235,20 @@
                                 </items>
                             </navigationBar>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVa-yD-qUJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="48"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="48"/>
                                 <color key="backgroundColor" red="0.74901960784313726" green="0.66666666666666663" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="78O-aS-hrO"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Yg-7a-zJZ">
-                                <rect key="frame" x="0.0" y="136" width="414" height="726"/>
+                                <rect key="frame" x="0.0" y="180" width="414" height="682"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BSf-Em-msB" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="726"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="682"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wm9-GQ-eur" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="422" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="378" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="Fei-tf-Y5e"/>
@@ -261,7 +261,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9O-kd-h58" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="478" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="434" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="rOH-LQ-6Lz"/>
@@ -311,15 +311,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5qH-Cx-OuW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hT6-zF-iuF"/>
                     <connections>
                         <outlet property="fecharSessaoButton" destination="R9O-kd-h58" id="WmM-MW-2Jk"/>
                         <outlet property="mudarSenhaButton" destination="wm9-GQ-eur" id="6Ch-eU-YGT"/>
                         <outlet property="tabBarContainer" destination="aVa-yD-qUJ" id="EiE-dl-7DD"/>
+                        <segue destination="Jo6-n1-nhB" kind="show" identifier="to_TrocarSenhaViewController" id="tU6-93-tC1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDt-hK-Fka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2751" y="866"/>
+            <point key="canvasLocation" x="3660.8695652173915" y="865.84821428571422"/>
+        </scene>
+        <!--TrocarSenhaViewController-->
+        <scene sceneID="ege-5i-BgD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="actions" referencedIdentifier="TrocarSenhaViewController" id="Jo6-n1-nhB" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gB7-RT-j83" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4384.7826086956529" y="770.75892857142856"/>
         </scene>
         <!--Custom Navigation Controller-->
         <scene sceneID="ZHk-we-tl0">
@@ -344,9 +354,27 @@
             </objects>
             <point key="canvasLocation" x="1531.8840579710145" y="-35.491071428571423"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HCf-L3-3xS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bKF-Qh-hvw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kpg-3Q-QY1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zfQ-Ug-Isw" kind="relationship" relationship="rootViewController" id="zH8-ql-yP5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0v6-di-DT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2750.7246376811595" y="865.84821428571422"/>
+        </scene>
     </scenes>
     <resources>
         <image name="baseline_close_black_24pt_" width="24" height="24"/>
-        <image name="dinamoLogo" width="200" height="200"/>
+        <image name="dinamoLogo" width="2361" height="651"/>
     </resources>
 </document>

@@ -14,16 +14,32 @@ import SwiftKeychainWrapper
 //    func onTapRelacaoCell(isTruster: Bool, username: String)
 //}
 
-class RelacoesCollectionViewController: UICollectionViewController {
+class RelacoesCollectionViewController: UIViewController {
 
+    @IBOutlet weak var tabBarContainer: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
     var tokenString: String?
     var itemArray: [item]?
     var selectedUserName: String?
-//    var cellDelegate: relacoesCellDelegate?
+    lazy var tabBar: MDCTabBar = {
+        let tabBar = MDCTabBar(frame: tabBarContainer.bounds)
+        tabBar.delegate = self
+        MDCTabBarColorThemer.applySemanticColorScheme(globalColorScheme(), toTabs: tabBar)
+        tabBar.itemAppearance = .titles
+        tabBar.tintColor = .black
+        tabBar.items = [UITabBarItem(title: "TRUSTER", image: nil, tag:0),
+                        UITabBarItem(title: "TRUSTEES", image: nil, tag:0)]
+        return tabBar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Relação"
+        tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        tabBar.sizeToFit()
+        tabBarContainer.addSubview(tabBar)
+
+        
         makeRequestListUsers()
         setUpBarButtonItens()
     }
@@ -94,14 +110,14 @@ extension RelacoesCollectionViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: 50.0)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let rowCounter = itemArray?.count else {
             return 0
         }
         return rowCounter
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RelacaoCollectionViewCell.identifier, for: indexPath) as! RelacaoCollectionViewCell
         
         guard let data = itemArray else {
@@ -111,7 +127,7 @@ extension RelacoesCollectionViewController: UICollectionViewDelegateFlowLayout {
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RelacaoCollectionViewCell.identifier, for: indexPath) as! RelacaoCollectionViewCell
         guard let username = cell.titleLabel.text else {
             //TODO: present alert of error
@@ -125,5 +141,16 @@ extension RelacoesCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     @objc func backItemTapped(sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension RelacoesCollectionViewController: MDCTabBarDelegate {
+    func tabBar(_ tabBar: MDCTabBar, didSelect item: UITabBarItem) {
+        guard let index = tabBar.items.firstIndex(of: item) else {
+            fatalError("MDCTabBarDelegate given selected item not found in tabBar.items")
+        }
+        
+        //        scrollView.setContentOffset(CGPoint(x: CGFloat(index) * view.bounds.width, y: 0),
+        //                                    animated: true)
     }
 }

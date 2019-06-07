@@ -31,6 +31,8 @@ class CustomNavigationController: UINavigationController {
         super.viewDidLoad()
         view.backgroundColor = colorScheme.backgroundColor
         
+//        view.
+        
         bottomAppBar.isFloatingButtonHidden = true
         let barButtonLeadingItem = UIBarButtonItem()
         let menuImage = UIImage(named:"baseline_menu_black_24pt_")?.withRenderingMode(.alwaysTemplate)
