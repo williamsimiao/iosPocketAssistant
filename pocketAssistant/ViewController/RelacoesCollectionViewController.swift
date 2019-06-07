@@ -26,8 +26,8 @@ class RelacoesCollectionViewController: UIViewController {
         tabBar.itemAppearance = .titles
         tabBar.alignment = .center
         tabBar.tintColor = .black
-        tabBar.items = [UITabBarItem(title: "TRUSTER", image: nil, tag:0),
-                        UITabBarItem(title: "TRUSTEES", image: nil, tag:0)]
+        tabBar.items = [UITabBarItem(title: "TRUSTEES", image: nil, tag:0),
+                        UITabBarItem(title: "TRUSTERS", image: nil, tag:0)]
         return tabBar
     }()
     
@@ -39,10 +39,14 @@ class RelacoesCollectionViewController: UIViewController {
         tabBarContainer.addSubview(tabBar)
         
         let trustees = TrusteesViewController()
-        let trusters = TrustersViewController()
+        trustees.isTrustees = true
         
-        add(trustees)
-//        add(trusters)
+        let trusters = TrusteesViewController()
+        trusters.isTrustees = false
+
+        
+        add(trustees, frame: CGRect(x: scrollView.bounds.origin.x, y: scrollView.bounds.origin.y, width: scrollView.bounds.width, height: scrollView.bounds.height))
+        add(trusters, frame: CGRect(x: 414, y: scrollView.bounds.origin.y, width: scrollView.bounds.width, height: scrollView.bounds.height))
         
         setUpBarButtonItens()
     }
@@ -93,7 +97,7 @@ extension RelacoesCollectionViewController: MDCTabBarDelegate {
     }
 }
 
-extension UIViewController {
+extension RelacoesCollectionViewController {
     func add(_ child: UIViewController, frame: CGRect? = nil) {
         addChild(child)
         
@@ -101,13 +105,13 @@ extension UIViewController {
             child.view.frame = frame
         }
         
-        view.addSubview(child.view)
+        scrollView.addSubview(child.view)
         child.didMove(toParent: self)
     }
     
     func remove() {
         willMove(toParent: nil)
-        view.removeFromSuperview()
+        scrollView.removeFromSuperview()
         removeFromParent()
     }
 }

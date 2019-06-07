@@ -24,12 +24,32 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
         }
     }
     
-    private let titleLabel : UILabel = {
+    let titleLabel : UILabel = {
         let lbl = UILabel()
+        lbl.textColor = .black
         lbl.font = MDCTypography.body2Font()
         lbl.alpha = MDCTypography.body2FontOpacity()
         return lbl
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        self.contentView.backgroundColor = .white
+        self.contentView.addSubview(titleLabel)
+//        NSLayoutConstraint.activate([
+//            titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
+//            titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 8)
+//            ])
+    }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -48,4 +68,6 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
         UIColor.black.setStroke()
         separator.stroke()
     }
+    
+    
 }

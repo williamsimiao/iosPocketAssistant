@@ -14,6 +14,7 @@ class TrusteesViewController: UIViewController {
     var itemArray: [item]?
     var selectedUserName: String?
     var collectionView: UICollectionView?
+    var isTrustees: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,21 @@ class TrusteesViewController: UIViewController {
         collectionView!.register(RelacaoCollectionViewCell.self, forCellWithReuseIdentifier: RelacaoCollectionViewCell.identifier)
         collectionView!.delegate = self
         collectionView!.dataSource = self
-        collectionView!.backgroundColor = .red
-        
         self.view.addSubview(collectionView!)
-        
+        diferences()
         makeRequestListUsers()
+    }
+    
+    func diferences() {
+        guard let isTrustees = self.isTrustees else {
+            return
+        }
+        if isTrustees {
+            collectionView!.backgroundColor = .red
+        }
+        else {
+            collectionView!.backgroundColor = .yellow
+        }
     }
     
     func makeRequestListUsers() {
@@ -36,7 +47,10 @@ class TrusteesViewController: UIViewController {
         guard let usrName = KeychainWrapper.standard.string(forKey: "USR_NAME") else {
             return
         }
-        let op = 1
+        guard let isTrustees = self.isTrustees else {
+            return
+        }
+        let op = isTrustees ? 1 : 2
         NetworkManager().runListUsrsTrust(token: token, op: op, usr: usrName) { (response, error) in
             if let error = error {
                 print(error)
@@ -88,7 +102,6 @@ UICollectionViewDelegateFlowLayout {
         }
         self.selectedUserName = username
         performSegue(withIdentifier: "to_NovaPermissaoViewController", sender: self)
-        //        cellDelegate?.onTapRelacaoCell(isTruster: false, username: username)
     }
     
     @objc func backItemTapped(sender: Any) {
