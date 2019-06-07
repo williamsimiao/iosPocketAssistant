@@ -142,12 +142,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43c-3J-7xL" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CA0-CP-TI1" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="60" width="398" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-sd-tIO">
                                                 <rect key="frame" x="8" y="120" width="398" height="200"/>
                                                 <subviews>
@@ -263,13 +257,10 @@
                                         <constraints>
                                             <constraint firstItem="RwU-Bm-M78" firstAttribute="leading" secondItem="43c-3J-7xL" secondAttribute="leading" constant="8" id="0sq-LL-JCb"/>
                                             <constraint firstAttribute="trailing" secondItem="VcD-sd-tIO" secondAttribute="trailing" constant="8" id="955-ih-wWM"/>
-                                            <constraint firstItem="CA0-CP-TI1" firstAttribute="leading" secondItem="43c-3J-7xL" secondAttribute="leading" constant="8" id="NjY-pw-jTY"/>
                                             <constraint firstItem="VcD-sd-tIO" firstAttribute="leading" secondItem="43c-3J-7xL" secondAttribute="leading" constant="8" id="QqI-7t-faE"/>
                                             <constraint firstAttribute="trailing" secondItem="RwU-Bm-M78" secondAttribute="trailing" constant="8" id="Rec-0v-1Bm"/>
                                             <constraint firstItem="RwU-Bm-M78" firstAttribute="top" secondItem="VcD-sd-tIO" secondAttribute="bottom" constant="80" id="XkP-S0-dAa"/>
-                                            <constraint firstItem="CA0-CP-TI1" firstAttribute="top" secondItem="43c-3J-7xL" secondAttribute="top" constant="60" id="YF9-jx-CdV"/>
-                                            <constraint firstAttribute="trailing" secondItem="CA0-CP-TI1" secondAttribute="trailing" constant="8" id="bfa-8d-sZ7"/>
-                                            <constraint firstItem="VcD-sd-tIO" firstAttribute="top" secondItem="CA0-CP-TI1" secondAttribute="bottom" constant="30" id="wvA-a9-ccx"/>
+                                            <constraint firstItem="VcD-sd-tIO" firstAttribute="top" secondItem="43c-3J-7xL" secondAttribute="top" constant="120" id="jdW-t3-dbb"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -299,7 +290,6 @@
                         <outlet property="removerSwitch" destination="0lV-VU-NTM" id="SSE-ef-csA"/>
                         <outlet property="salvarButton" destination="RwU-Bm-M78" id="E5p-sQ-fSx"/>
                         <outlet property="scrollView" destination="Igg-mv-bZn" id="MY9-c5-LY3"/>
-                        <outlet property="usernameTextField" destination="CA0-CP-TI1" id="DVG-hh-eht"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSS-2T-bxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
