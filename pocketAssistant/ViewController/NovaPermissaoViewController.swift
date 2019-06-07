@@ -63,6 +63,8 @@ class NovaPermissaoViewController: UIViewController {
         if atualizarSwitch.isOn {
             unionOfBits = unionOfBits.union(.obj_update)
         }
+        print("Meu Int32: \(unionOfBits.rawValue)")
+        print("Resultado interiro: \(Int(unionOfBits.rawValue))")
         return Int(unionOfBits.rawValue)
     }
     
@@ -113,7 +115,8 @@ class NovaPermissaoViewController: UIViewController {
     
     // MARK: - UPDATE ACL
     @IBAction func didTapSalvar(_ sender: Any) {
-        
+        let novoAcl = getIntFromSwitches()
+//        updateAclRequest(acl: novoAcl)
     }
     
     func updateAclRequest(acl: Int) {

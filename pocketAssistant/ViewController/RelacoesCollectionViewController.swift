@@ -10,12 +10,16 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
-private let reuseIdentifier = "Cell"
+//protocol relacoesCellDelegate {
+//    func onTapRelacaoCell(isTruster: Bool, username: String)
+//}
 
 class RelacoesCollectionViewController: UICollectionViewController {
 
     var tokenString: String?
     var itemArray: [item]?
+    var selectedUserName: String?
+//    var cellDelegate: relacoesCellDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +72,18 @@ class RelacoesCollectionViewController: UICollectionViewController {
     @objc func didTapAddRefresh() {
         makeRequestListUsers()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "to_NovaPermissaoViewController" {
+            guard let destinationViewController = segue.destination as? NovaPermissaoViewController else {
+                return
+            }
+            guard let theUsername = self.selectedUserName else {
+                return
+            }
+            destinationViewController.username = theUsername
+        }
+    }
 }
 
 //Delegate, DataSource
@@ -94,6 +110,18 @@ extension RelacoesCollectionViewController: UICollectionViewDelegateFlowLayout {
         cell.titleLabel.text = data[indexPath.row].usr
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RelacaoCollectionViewCell.identifier, for: indexPath) as! RelacaoCollectionViewCell
+        guard let username = cell.titleLabel.text else {
+            //TODO: present alert of error
+            return
+        }
+        self.selectedUserName = username
+        performSegue(withIdentifier: "to_NovaPermissaoViewController", sender: self)
+//        cellDelegate?.onTapRelacaoCell(isTruster: false, username: username)
+    }
+
     
     @objc func backItemTapped(sender: Any) {
         self.navigationController?.popViewController(animated: true)

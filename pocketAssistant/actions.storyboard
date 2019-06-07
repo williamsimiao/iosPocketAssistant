@@ -121,7 +121,7 @@
                         </connections>
                     </collectionView>
                     <connections>
-                        <segue destination="9Ob-pq-aJH" kind="show" id="dQV-WS-jBt"/>
+                        <segue destination="9Ob-pq-aJH" kind="show" identifier="to_NovaPermissaoViewController" id="dQV-WS-jBt"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6a-Bv-MlJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
