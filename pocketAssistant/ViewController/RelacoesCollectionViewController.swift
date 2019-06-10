@@ -10,8 +10,8 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
-protocol barButtonItemDelegate {
-    func onRefreshTap()
+protocol performeSegueDelegate {
+    func goToNovaPermisao(userACLpair: item)
 }
 
 class RelacoesCollectionViewController: UIViewController {
@@ -31,9 +31,9 @@ class RelacoesCollectionViewController: UIViewController {
         return tabBar
     }()
     
-    var barButtonDelegate: barButtonItemDelegate?
     var viewControllertrusters: TrusteesViewController?
     var viewControllerTrustees: TrusteesViewController?
+    var selectedUserPermissions: item?
 
 
     override func viewDidLoad() {
@@ -44,9 +44,11 @@ class RelacoesCollectionViewController: UIViewController {
         tabBarContainer.addSubview(tabBar)
         
         viewControllerTrustees = TrusteesViewController()
+        viewControllerTrustees!.segueDelegate = self
         viewControllerTrustees!.isTrustees = true
         
         viewControllertrusters = TrusteesViewController()
+        viewControllertrusters!.segueDelegate = self
         viewControllertrusters!.isTrustees = false
 
         
@@ -133,9 +135,21 @@ extension RelacoesCollectionViewController {
     }
 }
 
-//extension RelacoesCollectionViewController {
-//    func setUpSrollView() {
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//
-//    }
-//}
+extension RelacoesCollectionViewController: performeSegueDelegate {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "to_NovaPermissaoViewController" {
+            guard let destinationViewController = segue.destination as? NovaPermissaoViewController else {
+                return
+            }
+            guard let selectedUserPermissions = self.selectedUserPermissions else {
+                return
+            }
+            destinationViewController.currentUserPermission = selectedUserPermissions
+        }
+    }
+    
+    func goToNovaPermisao(userACLpair: item) {
+        self.selectedUserPermissions = userACLpair
+        performSegue(withIdentifier: "to_NovaPermissaoViewController", sender: self)
+    }
+}

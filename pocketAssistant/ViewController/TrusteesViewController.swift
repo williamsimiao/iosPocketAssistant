@@ -10,13 +10,17 @@ import UIKit
 import SwiftKeychainWrapper
 import MaterialComponents
 
+protocol barButtonItemDelegate {
+    func onRefreshTap()
+}
+
 class TrusteesViewController: UIViewController {
     
     var itemArray: [item]?
-    var selectedUserPermissions: item?
     var collectionView: UICollectionView?
     var isTrustees: Bool?
-    
+    var segueDelegate: performeSegueDelegate?
+
     let noContentLabel : UILabel = {
         let lbl = UILabel()
         lbl.isHidden = true
@@ -124,25 +128,15 @@ UICollectionViewDelegateFlowLayout {
             //TODO: present alert of error
             return
         }
-        self.selectedUserPermissions = userPermission
-        performSegue(withIdentifier: "to_NovaPermissaoViewController", sender: self)
+        //AQUI
+        segueDelegate?.goToNovaPermisao(userACLpair: userPermission)
     }
     
     @objc func backItemTapped(sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "to_NovaPermissaoViewController" {
-            guard let destinationViewController = segue.destination as? NovaPermissaoViewController else {
-                return
-            }
-            guard let selectedUserPermissions = self.selectedUserPermissions else {
-                return
-            }
-            destinationViewController.currentUserPermission = selectedUserPermissions
-        }
-    }
+    
 }
 
 extension TrusteesViewController : barButtonItemDelegate {
