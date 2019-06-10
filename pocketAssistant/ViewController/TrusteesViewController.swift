@@ -100,6 +100,8 @@ UICollectionViewDelegateFlowLayout {
             return  cell
         }
         cell.myItem = data[indexPath.row]
+        cell.titleLabel.text = cell.myItem?.usr
+
         return cell
     }
     

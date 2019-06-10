@@ -18,23 +18,21 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
     static var identifier: String = "Cell"
     var separator: UIBezierPath!
     
-    var myItem : item? {
-        didSet {
-            titleLabel.text = myItem?.usr
-        }
-    }
+    var myItem : item?
     
     let titleLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.font = MDCTypography.body2Font()
         lbl.alpha = MDCTypography.body2FontOpacity()
+        lbl.backgroundColor = .gray
         return lbl
     }()
     
     let arraowImage : UIImageView = {
         let imgView = UIImageView()
         imgView.image = UIImage(named: "baseline_keyboard_arrow_right_black_24pt_")
+        imgView.backgroundColor = .gray
         return imgView
     }()
     
@@ -57,17 +55,14 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
 
         NSLayoutConstraint.activate([
             
-            arraowImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 8),
+            self.contentView.trailingAnchor.constraint(equalTo: arraowImage.trailingAnchor, constant: 8),
             arraowImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             arraowImage.widthAnchor.constraint(equalTo: arraowImage.heightAnchor, multiplier: 1),
             arraowImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
             
-            
             titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: self.arraowImage.leadingAnchor, constant: 8),
-            titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-
-
+            self.arraowImage.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 8),
+            titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
             ])
     }
     

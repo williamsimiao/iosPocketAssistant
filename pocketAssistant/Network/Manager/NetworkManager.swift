@@ -53,7 +53,6 @@ struct NetworkManager {
                 return
             }
             
-            
             let alertController = MDCAlertController(title: aTitle, message: aMessage)
             let action = MDCAlertAction(title: "OK", handler: nil)
             alertController.addAction(action)
@@ -64,20 +63,17 @@ struct NetworkManager {
             let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
             let currentViewController = AppUtil().currentView()
             
-            currentViewController.present(alertController, animated: true, completion: nil)
+            if currentViewController.isKind(of: MainViewController.self) {
 
-            
-//            if currentViewController.isKind(of: MainViewController.self) {
-//
-//                currentViewController.present(alertController, animated: true, completion: nil)
-//            }
-//            else {
-//
-//                currentViewController.present(mainViewController, animated: true, completion: { () in
-//                    let newCurrentViewCOntroller = AppUtil().currentView()
-//                    newCurrentViewCOntroller.present(alertController, animated: true, completion: nil)
-//                })
-//            }
+                currentViewController.present(alertController, animated: true, completion: nil)
+            }
+            else {
+
+                currentViewController.present(mainViewController, animated: true, completion: { () in
+                    let newCurrentViewController = AppUtil().currentView()
+                    newCurrentViewController.present(alertController, animated: true, completion: nil)
+                })
+            }
         }
     }
     
