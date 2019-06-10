@@ -31,6 +31,9 @@ class RelacoesCollectionViewController: UIViewController {
         return tabBar
     }()
     
+    var barButtonDelegateTrustee: barButtonItemDelegate?
+    var barButtonDelegateTruster: barButtonItemDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Relação"
@@ -39,6 +42,7 @@ class RelacoesCollectionViewController: UIViewController {
         tabBarContainer.addSubview(tabBar)
         
         let trustees = TrusteesViewController()
+        trustees.
         trustees.isTrustees = true
         
         let trusters = TrusteesViewController()

@@ -19,9 +19,11 @@ class TrusteesViewController: UIViewController {
     
     let noContentLabel : UILabel = {
         let lbl = UILabel()
+        lbl.isHidden = true
         lbl.textColor = .black
         lbl.font = MDCTypography.body2Font()
         lbl.alpha = MDCTypography.body2FontOpacity()
+        lbl.text = "Nenhum usuário listado"
         return lbl
     }()
     
@@ -32,9 +34,17 @@ class TrusteesViewController: UIViewController {
         collectionView!.register(RelacaoCollectionViewCell.self, forCellWithReuseIdentifier: RelacaoCollectionViewCell.identifier)
         collectionView!.delegate = self
         collectionView!.dataSource = self
+        self.view.addSubview(noContentLabel)
         self.view.addSubview(collectionView!)
         diferences()
         makeRequestListUsers()
+    }
+    
+    func setupViews() {
+        NSLayoutConstraint.activate([
+            noContentLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            noContentLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            ])
     }
     
     func diferences() {
@@ -88,8 +98,10 @@ UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let rowCounter = itemArray?.count else {
+            self.noContentLabel.isHidden = false
             return 0
         }
+        self.noContentLabel.isHidden = true
         return rowCounter
     }
     
@@ -99,15 +111,14 @@ UICollectionViewDelegateFlowLayout {
         guard let data = itemArray else {
             return  cell
         }
-        cell.myItem = data[indexPath.row]
-        cell.titleLabel.text = cell.myItem?.usr
+        cell.userPermission = data[indexPath.row]
 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RelacaoCollectionViewCell.identifier, for: indexPath) as! RelacaoCollectionViewCell
-        guard let userPermission = cell.myItem else {
+        let cell = collectionView.cellForItem(at: indexPath) as! RelacaoCollectionViewCell
+        guard let userPermission = cell.userPermission else {
             //TODO: present alert of error
             return
         }

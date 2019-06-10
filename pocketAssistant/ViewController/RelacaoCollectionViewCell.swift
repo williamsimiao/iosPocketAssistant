@@ -17,22 +17,23 @@ import MaterialComponents
 class RelacaoCollectionViewCell: MDCCardCollectionCell {
     static var identifier: String = "Cell"
     var separator: UIBezierPath!
-    
-    var myItem : item?
+    var userPermission : item? {
+        didSet {
+            titleLabel.text = userPermission?.usr
+        }
+    }
     
     let titleLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.font = MDCTypography.body2Font()
         lbl.alpha = MDCTypography.body2FontOpacity()
-        lbl.backgroundColor = .gray
         return lbl
     }()
     
     let arraowImage : UIImageView = {
         let imgView = UIImageView()
         imgView.image = UIImage(named: "baseline_keyboard_arrow_right_black_24pt_")
-        imgView.backgroundColor = .gray
         return imgView
     }()
     
