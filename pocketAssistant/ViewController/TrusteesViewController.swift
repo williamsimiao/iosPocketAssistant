@@ -13,7 +13,7 @@ import MaterialComponents
 class TrusteesViewController: UIViewController {
     
     var itemArray: [item]?
-    var selectedUserName: String?
+    var selectedUserPermissions: item?
     var collectionView: UICollectionView?
     var isTrustees: Bool?
     
@@ -105,11 +105,11 @@ UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RelacaoCollectionViewCell.identifier, for: indexPath) as! RelacaoCollectionViewCell
-        guard let username = cell.myItem?.usr else {
+        guard let userPermission = cell.myItem else {
             //TODO: present alert of error
             return
         }
-        self.selectedUserName = username
+        self.selectedUserPermissions = userPermission
         performSegue(withIdentifier: "to_NovaPermissaoViewController", sender: self)
     }
     
@@ -122,16 +122,16 @@ UICollectionViewDelegateFlowLayout {
             guard let destinationViewController = segue.destination as? NovaPermissaoViewController else {
                 return
             }
-            guard let theUsername = self.selectedUserName else {
+            guard let selectedUserPermissions = self.selectedUserPermissions else {
                 return
             }
-            destinationViewController.username = theUsername
+            destinationViewController.currentUserPermission = selectedUserPermissions
         }
     }
 }
 
 extension TrusteesViewController : barButtonItemDelegate {
     func onRefreshTap() {
-        //makeRequest
+        makeRequestListUsers()
     }
 }

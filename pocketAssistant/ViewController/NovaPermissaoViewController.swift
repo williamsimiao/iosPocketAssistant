@@ -20,8 +20,7 @@ class NovaPermissaoViewController: UIViewController {
     
     var usernameTextFieldController: MDCTextInputControllerOutlined?
     let networkManager = NetworkManager()
-    var myAcl: aclStruct?
-    var username: String?
+    var currentUserPermission: item?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +29,32 @@ class NovaPermissaoViewController: UIViewController {
         criarSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         removerSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         atualizarSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-
-        getAclRequest()
+        
+        guard let currentUserPermission = self.currentUserPermission else {
+            print("no User Pemissions")
+            return
+        }
+        self.setUpSwitches(aclInteger: currentUserPermission.acl)
     }
     
     // MARK: - SWITCHES
+    func setUpSwitches(aclInteger: Int) {
+        let currentAcl = aclStruct(rawValue: UInt32(aclInteger))
+        
+        if currentAcl.contains(.obj_read) {
+            lerSwitch.isOn = true
+        }
+        if currentAcl.contains(.obj_create) {
+            criarSwitch.isOn = true
+        }
+        if currentAcl.contains(.obj_del) {
+            removerSwitch.isOn = true
+        }
+        if currentAcl.contains(.obj_update) {
+            atualizarSwitch.isOn = true
+        }
+    }
+    
     @objc func switchChanged(mySwitch: UISwitch) {
         switch mySwitch {
         case lerSwitch:
@@ -68,65 +88,40 @@ class NovaPermissaoViewController: UIViewController {
         return Int(unionOfBits.rawValue)
     }
     
-    func setUpSwitches(aclInteger: Int) {
-        myAcl = aclStruct(rawValue: UInt32(aclInteger))
-        
-        guard let myAcl = self.myAcl else {
-            print("no ACL")
-            return
-        }
-        
-        if myAcl.contains(.obj_read) {
-            lerSwitch.isOn = true
-        }
-        if myAcl.contains(.obj_create) {
-            criarSwitch.isOn = true
-        }
-        if myAcl.contains(.obj_del) {
-            removerSwitch.isOn = true
-        }
-        if myAcl.contains(.obj_update) {
-            atualizarSwitch.isOn = true
-        }
-    }
-    
     // MARK: - GET ACL
-    func getAclRequest() {
-        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
-            return
-        }
-        guard let username = self.username else {
-            return
-        }
-        
-        networkManager.runGetAcl(token: token, usr: username) { (response, error) in
-            if let error = error {
-                print(error)
-            }
-            if let response = response {
-                let theAcl = response.acl
-                DispatchQueue.main.async {
-                    self.setUpSwitches(aclInteger: theAcl)
-                }
-            }
-        }
-    }
+//    func getAclRequest() {
+//        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
+//            return
+//        }
+//        guard let username = self.username else {
+//            return
+//        }
+//
+//        networkManager.runGetAcl(token: token, usr: username) { (response, error) in
+//            if let error = error {
+//                print(error)
+//            }
+//            if let response = response {
+//                let theAcl = response.acl
+//                DispatchQueue.main.async {
+//                    self.setUpSwitches(aclInteger: theAcl)
+//                }
+//            }
+//        }
+//    }
     
     
     // MARK: - UPDATE ACL
     @IBAction func didTapSalvar(_ sender: Any) {
         let novoAcl = getIntFromSwitches()
-//        updateAclRequest(acl: novoAcl)
+        updateAclRequest(newAcl: novoAcl)
     }
     
-    func updateAclRequest(acl: Int) {
+    func updateAclRequest(newAcl: Int) {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-        guard let username = username else {
-            return
-        }
-        networkManager.runUpdateAcl(token: token, acl: acl, usr: username) { (error) in
+        networkManager.runUpdateAcl(token: token, acl: newAcl, usr: currentUserPermission!.usr) { (error) in
             if let error = error {
                 print(error)
             }

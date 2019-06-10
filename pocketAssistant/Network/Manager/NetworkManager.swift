@@ -17,6 +17,7 @@ enum NetworkResponse: String {
     case failed = "Network request failed"
     case noData = "Response returned with no data to decode"
     case unableToDecode = "We could not decode the response"
+    case serverError = "Internal Server error"
 }
 
 enum Result<String> {
@@ -38,6 +39,9 @@ struct NetworkManager {
             case .failure(NetworkResponse.authenticationError.rawValue):
                 title = "Credenciais invalidas"
                 message = "Faça o login novamente"
+            case .failure(NetworkResponse.serverError.rawValue):
+                title = "Erro Interno"
+                message = "Verifique se seu usuário posusi permissão para realizar esta operação"
             default:
                 title = "Erro"
                 message = ""
@@ -60,27 +64,34 @@ struct NetworkManager {
             let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
             let currentViewController = AppUtil().currentView()
             
-            if currentViewController.isKind(of: MainViewController.self) {
-                
-                currentViewController.present(alertController, animated: true, completion: nil)
-            }
-            else {
-                
-                currentViewController.present(mainViewController, animated: true, completion: { () in
-                    let newCurrentViewCOntroller = AppUtil().currentView()
-                    newCurrentViewCOntroller.present(alertController, animated: true, completion: nil)
-                })
-            }
+            currentViewController.present(alertController, animated: true, completion: nil)
+
+            
+//            if currentViewController.isKind(of: MainViewController.self) {
+//
+//                currentViewController.present(alertController, animated: true, completion: nil)
+//            }
+//            else {
+//
+//                currentViewController.present(mainViewController, animated: true, completion: { () in
+//                    let newCurrentViewCOntroller = AppUtil().currentView()
+//                    newCurrentViewCOntroller.present(alertController, animated: true, completion: nil)
+//                })
+//            }
         }
     }
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
+        print("STATUS CODE: \(response.statusCode)")
         switch response.statusCode {
         case 200...299:
             return .success
-        case 401...500:
+        case 401...499:
             promptErrorToUser(resultCode: .failure(NetworkResponse.authenticationError.rawValue))
             return .failure(NetworkResponse.authenticationError.rawValue)
+        case 500:
+            promptErrorToUser(resultCode: .failure(NetworkResponse.serverError.rawValue))
+            return .failure(NetworkResponse.serverError.rawValue)
         case 501...599:
             promptErrorToUser(resultCode: .failure(NetworkResponse.badRequest.rawValue))
             return .failure(NetworkResponse.badRequest.rawValue)
@@ -94,7 +105,7 @@ struct NetworkManager {
     }
     
     
-    //UsuarioApi
+    // MARK: - UsuarioApi
     func runGetAcl(token: String, usr: String, completion: @escaping (_ body1:ResponseBody6?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         usuarioRouter.request(.getAcl(token: completeToken, usr: usr)) { (data, response, error) in
@@ -236,7 +247,7 @@ struct NetworkManager {
         }
     }
     
-    //ObjetosApi
+    // MARK: - ObjetosApi
     func runListObjs(token: String, completion: @escaping (_ body2:ResponseBody2?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
