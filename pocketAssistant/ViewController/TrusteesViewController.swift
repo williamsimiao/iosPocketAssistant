@@ -48,14 +48,16 @@ class TrusteesViewController: UIViewController {
     }
     
     func diferences() {
+        collectionView?.backgroundColor = .white
+
         guard let isTrustees = self.isTrustees else {
             return
         }
         if isTrustees {
-            collectionView!.backgroundColor = .red
+            print("RED")
         }
         else {
-            collectionView!.backgroundColor = .yellow
+            print("YELLOW")
         }
     }
     

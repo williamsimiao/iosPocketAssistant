@@ -31,9 +31,11 @@ class RelacoesCollectionViewController: UIViewController {
         return tabBar
     }()
     
-    var barButtonDelegateTrustee: barButtonItemDelegate?
-    var barButtonDelegateTruster: barButtonItemDelegate?
-    
+    var barButtonDelegate: barButtonItemDelegate?
+    var viewControllertrusters: TrusteesViewController?
+    var viewControllerTrustees: TrusteesViewController?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Relação"
@@ -41,16 +43,17 @@ class RelacoesCollectionViewController: UIViewController {
         tabBar.sizeToFit()
         tabBarContainer.addSubview(tabBar)
         
-        let trustees = TrusteesViewController()
-        trustees.
-        trustees.isTrustees = true
+        viewControllerTrustees = TrusteesViewController()
+        viewControllerTrustees!.isTrustees = true
         
-        let trusters = TrusteesViewController()
-        trusters.isTrustees = false
+        viewControllertrusters = TrusteesViewController()
+        viewControllertrusters!.isTrustees = false
 
         
-        add(trustees, frame: CGRect(x: scrollView.bounds.origin.x, y: scrollView.bounds.origin.y, width: scrollView.bounds.width, height: scrollView.bounds.height))
-        add(trusters, frame: CGRect(x: 414, y: scrollView.bounds.origin.y, width: scrollView.bounds.width, height: scrollView.bounds.height))
+        add(viewControllerTrustees!, frame: CGRect(x: scrollView.bounds.origin.x, y: scrollView.bounds.origin.y, width: scrollView.bounds.width, height: scrollView.bounds.height))
+        
+        let windowWidth = UIScreen.main.bounds.width
+        add(viewControllertrusters!, frame: CGRect(x: windowWidth, y: scrollView.bounds.origin.y, width: scrollView.bounds.width, height: scrollView.bounds.height))
         
         setUpBarButtonItens()
     }
@@ -81,11 +84,15 @@ class RelacoesCollectionViewController: UIViewController {
         guard let index = tabBar.items.firstIndex(of: tabBar.selectedItem!) else {
             fatalError("MDCTabBarDelegate given selected item not found in tabBar.items")
         }
+        //Trusttes
         if index == 0 {
-            
+            print("O Index 0")
+            viewControllerTrustees?.onRefreshTap()
         }
         else {
-            
+            print("O Index 1")
+            viewControllerTrustees?.onRefreshTap()
+
         }
     }
 }
@@ -94,6 +101,12 @@ extension RelacoesCollectionViewController: MDCTabBarDelegate {
     func tabBar(_ tabBar: MDCTabBar, didSelect item: UITabBarItem) {
         guard let index = tabBar.items.firstIndex(of: item) else {
             fatalError("MDCTabBarDelegate given selected item not found in tabBar.items")
+        }
+        if index == 0 {
+            print("Index 0")
+        }
+        else {
+            print("Index 1")
         }
         
         scrollView.setContentOffset(CGPoint(x: CGFloat(index) * view.bounds.width, y: 0),
