@@ -31,41 +31,46 @@ struct NetworkManager {
     private let usuarioRouter = Router<UsuariosApi>()
 
     func promptErrorToUser(resultCode: Result<String>) {
-        let message: String?
-        let title: String?
-        switch resultCode {
-        case .failure(NetworkResponse.authenticationError.rawValue):
-            title = "Credenciais invalidas"
-            message = "Faça o login novamente"
-        default:
-            title = "Erro"
-            message = ""
-        }
-        guard let aTitle = title else {
-            return
-        }
-        guard let aMessage = message else {
-            return
-        }
-        
-        let stor = UIStoryboard.init(name: "Main", bundle: nil)
-        let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
-        let currentViewController = AppUtil().currentView()
-        
-        let alertController = MDCAlertController(title: aTitle, message: aMessage)
-        let action = MDCAlertAction(title: "OK", handler: nil)
-        alertController.addAction(action)
-        alertController.applyTheme(withScheme: globalContainerScheme())
-        
-        if currentViewController.isKind(of: MainViewController.self) {
-            currentViewController.present(alertController, animated: true, completion: nil)
-        }
-        else {
+        DispatchQueue.main.async {
+            let message: String?
+            let title: String?
+            switch resultCode {
+            case .failure(NetworkResponse.authenticationError.rawValue):
+                title = "Credenciais invalidas"
+                message = "Faça o login novamente"
+            default:
+                title = "Erro"
+                message = ""
+            }
+            guard let aTitle = title else {
+                return
+            }
+            guard let aMessage = message else {
+                return
+            }
             
-            currentViewController.present(mainViewController, animated: true, completion: { () in
-                let newCurrentViewCOntroller = AppUtil().currentView()
-                newCurrentViewCOntroller.present(alertController, animated: true, completion: nil)
-            })
+            
+            let alertController = MDCAlertController(title: aTitle, message: aMessage)
+            let action = MDCAlertAction(title: "OK", handler: nil)
+            alertController.addAction(action)
+            alertController.applyTheme(withScheme: globalContainerScheme())
+            
+            
+            let stor = UIStoryboard.init(name: "Main", bundle: nil)
+            let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
+            let currentViewController = AppUtil().currentView()
+            
+            if currentViewController.isKind(of: MainViewController.self) {
+                
+                currentViewController.present(alertController, animated: true, completion: nil)
+            }
+            else {
+                
+                currentViewController.present(mainViewController, animated: true, completion: { () in
+                    let newCurrentViewCOntroller = AppUtil().currentView()
+                    newCurrentViewCOntroller.present(alertController, animated: true, completion: nil)
+                })
+            }
         }
     }
     

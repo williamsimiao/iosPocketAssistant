@@ -32,6 +32,12 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
         return lbl
     }()
     
+    let arraowImage : UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(named: "baseline_keyboard_arrow_right_black_24pt_")
+        return imgView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -45,12 +51,23 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
     func commonInit() {
         self.contentView.backgroundColor = .white
         self.contentView.addSubview(titleLabel)
+        self.contentView.addSubview(arraowImage)
+        arraowImage.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
+            
+            arraowImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 8),
+            arraowImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            arraowImage.widthAnchor.constraint(equalTo: arraowImage.heightAnchor, multiplier: 1),
+            arraowImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
+            
+            
             titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 8),
-            titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
+            titleLabel.trailingAnchor.constraint(equalTo: self.arraowImage.leadingAnchor, constant: 8),
+            titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+
+
             ])
     }
     

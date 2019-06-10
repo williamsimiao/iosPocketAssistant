@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		34F845E31FA6321F5199E782 /* Pods_pocketAssistantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6450FD44100929B3E47E6D1F /* Pods_pocketAssistantTests.framework */; };
 		3D0E098922AADA360073FF35 /* TrusteesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E098822AADA360073FF35 /* TrusteesViewController.swift */; };
-		3D0E098B22AADA440073FF35 /* TrustersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E098A22AADA440073FF35 /* TrustersViewController.swift */; };
 		3D114DBA228B045500A4A74C /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DB9228B045500A4A74C /* EndPointType.swift */; };
 		3D114DBC228B053E00A4A74C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DBB228B053E00A4A74C /* HTTPMethod.swift */; };
 		3D114DC0228B05AB00A4A74C /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DBF228B05AB00A4A74C /* HTTPTask.swift */; };
@@ -86,7 +85,6 @@
 		05C9E0621829363EDDD14786 /* Pods_pocketAssistantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pocketAssistantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA250FFD5C04EF18BDC5CF8 /* Pods-pocketAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketAssistant.debug.xcconfig"; path = "Target Support Files/Pods-pocketAssistant/Pods-pocketAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0E098822AADA360073FF35 /* TrusteesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrusteesViewController.swift; sourceTree = "<group>"; };
-		3D0E098A22AADA440073FF35 /* TrustersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustersViewController.swift; sourceTree = "<group>"; };
 		3D114DB9228B045500A4A74C /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		3D114DBB228B053E00A4A74C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		3D114DBF228B05AB00A4A74C /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */,
 				3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */,
 				3D0E098822AADA360073FF35 /* TrusteesViewController.swift */,
-				3D0E098A22AADA440073FF35 /* TrustersViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -663,7 +660,6 @@
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
 				3D3C105A22A9950A00E1BDD9 /* ResponseBody5.swift in Sources */,
 				3DFC2FEB22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift in Sources */,
-				3D0E098B22AADA440073FF35 /* TrustersViewController.swift in Sources */,
 				3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */,
 				3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */,
 				3D114DBA228B045500A4A74C /* EndPointType.swift in Sources */,
