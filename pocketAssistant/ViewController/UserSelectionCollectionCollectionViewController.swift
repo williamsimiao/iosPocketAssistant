@@ -24,6 +24,10 @@ class UserSelectionCollectionCollectionViewController: UICollectionViewControlle
         setUpBarButtonItens()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        makeRequestListUsers()
+    }
+    
     func makeRequestListUsers() {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return

@@ -25,27 +25,30 @@ class NovaPermissaoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        turnAllSwitchesOff()
         salvarButton.applyContainedTheme(withScheme: globalContainerScheme())
         lerSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         criarSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         removerSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         atualizarSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         
-        guard let userCurrentACL = self.userACL else {
-            guard let userName = self.userName else {
-                //TODO: Show error
-                return
-            }
-            //TODO: show loading
-            makeSwitchesVisibleOrNot(shouldHide: true)
-            getAclRequest(userName: userName)
-
-            return
+        //Se veio por essa tela então provavelmente o usuario nao estava na lista de Trustees,
+        //logo nao deve ter nenhuma permissao
+        if self.userACL == nil {
+            self.userACL = 0
         }
-        self.setUpSwitches(aclInteger: userCurrentACL)
+        
+        self.setUpSwitches(aclInteger: self.userACL!)
     }
     
     // MARK: - SWITCHES
+    func turnAllSwitchesOff() {
+        lerSwitch.isOn = false
+        criarSwitch.isOn = false
+        removerSwitch.isOn = false
+        atualizarSwitch.isOn = false
+    }
+    
     func makeSwitchesVisibleOrNot(shouldHide: Bool) {
         lerSwitch.isHidden = shouldHide
         criarSwitch.isHidden = shouldHide
@@ -74,13 +77,24 @@ class NovaPermissaoViewController: UIViewController {
         switch mySwitch {
         case lerSwitch:
             if mySwitch.isOn == false {
-                criarSwitch.isOn = false
-                removerSwitch.isOn = false
-                atualizarSwitch.isOn = false
+                criarSwitch.setOn(false, animated: true)
+                removerSwitch.setOn(false, animated: true)
+                atualizarSwitch.setOn(false, animated: true)
             }
-
+//        case  criarSwitch:
+//            if mySwitch.isOn == true {
+//                lerSwitch.setOn(true, animated: true)
+//            }
+//        case removerSwitch:
+//            if mySwitch.isOn == true {
+//                lerSwitch.setOn(true, animated: true)
+//            }
+            
+        //All others
         default:
-            print("Outro switch")
+            if mySwitch.isOn == true {
+                lerSwitch.setOn(true, animated: true)
+            }
         }
     }
     
@@ -104,24 +118,24 @@ class NovaPermissaoViewController: UIViewController {
     }
     
     // MARK: - GET ACL
-    func getAclRequest(userName: String) {
-        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
-            return
-        }
-
-        networkManager.runGetAcl(token: token, usr: userName) { (response, error) in
-            if let error = error {
-                print(error)
-            }
-            if let response = response {
-                let theAcl = response.acl
-                DispatchQueue.main.async {
-                    self.makeSwitchesVisibleOrNot(shouldHide: false)
-                    self.setUpSwitches(aclInteger: theAcl)
-                }
-            }
-        }
-    }
+//    func getAclRequest(userName: String) {
+//        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
+//            return
+//        }
+//
+//        networkManager.runGetAcl(token: token, usr: userName) { (response, error) in
+//            if let error = error {
+//                print(error)
+//            }
+//            if let response = response {
+//                let theAcl = response.acl
+//                DispatchQueue.main.async {
+//                    self.makeSwitchesVisibleOrNot(shouldHide: false)
+//                    self.setUpSwitches(aclInteger: theAcl)
+//                }
+//            }
+//        }
+//    }
     
     
     // MARK: - UPDATE ACL

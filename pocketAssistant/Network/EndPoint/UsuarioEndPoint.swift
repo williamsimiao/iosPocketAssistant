@@ -76,6 +76,8 @@ extension UsuariosApi: EndPointType {
         case .listUsrTrust(let token, let op, let usr):
             return .requestParametersAndHeaders(bodyParameters: ["op": op, "usr": usr], urlParameters: nil, additionHeaders: ["Authorization": token])
         case .updateAcl(let token, let acl, let usr):
+            print("my ACL: \(acl)")
+            print("my usr: \(usr)")
             return .requestParametersAndHeaders(bodyParameters: ["acl": acl, "usr": usr], urlParameters: nil, additionHeaders: ["Authorization": token])
         case .getAcl(let token, let usr):
             return .requestParametersAndHeaders(bodyParameters: ["usr": usr], urlParameters: nil, additionHeaders: ["Authorization": token])

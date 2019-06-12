@@ -41,29 +41,19 @@ class TrusteesViewController: UIViewController {
         collectionView!.dataSource = self
         self.view.addSubview(noContentLabel)
         self.view.addSubview(collectionView!)
-        diferences()
+        collectionView?.backgroundColor = .white
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         makeRequestListUsrTrust()
     }
+
     
     func setupViews() {
         NSLayoutConstraint.activate([
             noContentLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             noContentLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
             ])
-    }
-    
-    func diferences() {
-        collectionView?.backgroundColor = .white
-
-        guard let isTrustees = self.isTrustees else {
-            return
-        }
-        if isTrustees {
-            print("RED")
-        }
-        else {
-            print("YELLOW")
-        }
     }
     
     func makeRequestListUsrTrust() {
@@ -76,7 +66,7 @@ class TrusteesViewController: UIViewController {
         guard let isTrustees = self.isTrustees else {
             return
         }
-        let op = isTrustees ? 1 : 2
+        let op = isTrustees ? 2 : 1
         NetworkManager().runListUsrsTrust(token: token, op: op, usr: usrName) { (response, error) in
             if let error = error {
                 print(error)
