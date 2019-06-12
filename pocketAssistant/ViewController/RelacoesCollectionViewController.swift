@@ -158,7 +158,10 @@ extension RelacoesCollectionViewController: performeSegueDelegate {
             guard let selectedUserPermissions = self.selectedUserPermissions else {
                 return
             }
-            destinationViewController.currentUserPermission = selectedUserPermissions
+            destinationViewController.userName = selectedUserPermissions.usr
+            destinationViewController.userACL = selectedUserPermissions.acl
+
+//            destinationViewController.currentUserPermission = selectedUserPermissions
         }
     }
     

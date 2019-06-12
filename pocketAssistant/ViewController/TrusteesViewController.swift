@@ -66,23 +66,6 @@ class TrusteesViewController: UIViewController {
         }
     }
     
-//    func makeRequestListUsers() {
-//        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
-//            return
-//        }
-//        NetworkManager().runListUsrs(token: token) { (response, error) in
-//            if let error = error {
-//                print(error)
-//            }
-//            if let response = response {
-//                self.usrsArray = response.usr
-//                DispatchQueue.main.async {
-//                    self.collectionView.reloadData()
-//                }
-//            }
-//        }
-//    }
-    
     func makeRequestListUsrTrust() {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return

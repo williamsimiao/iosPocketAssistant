@@ -88,7 +88,7 @@ extension GestaoUsuariosCollectionViewController: UICollectionViewDelegateFlowLa
             return  cell
         }
         cell.actionDelegate = self
-        cell.setUserName(data[indexPath.row])
+        cell.userName = data[indexPath.row]
         return cell
     }
     

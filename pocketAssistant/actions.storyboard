@@ -241,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSS-2T-bxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9659" y="34"/>
+            <point key="canvasLocation" x="10372" y="21"/>
         </scene>
         <!--Trocar Senha View Controller-->
         <scene sceneID="8dQ-1B-J7r">
@@ -592,6 +592,9 @@
                             <outlet property="delegate" destination="xZm-f8-xkn" id="JIM-O6-3aj"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <segue destination="9Ob-pq-aJH" kind="show" identifier="from_selection_novaPermissao" id="9Ey-Ud-bJd"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdM-e8-Uti" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -602,4 +605,7 @@
         <image name="delete" width="24" height="24"/>
         <image name="edit" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9Ey-Ud-bJd"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -20,7 +20,8 @@ class NovaPermissaoViewController: UIViewController {
     
     var usernameTextFieldController: MDCTextInputControllerOutlined?
     let networkManager = NetworkManager()
-    var currentUserPermission: item?
+    var userName: String?
+    var userACL: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +31,28 @@ class NovaPermissaoViewController: UIViewController {
         removerSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         atualizarSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         
-        guard let currentUserPermission = self.currentUserPermission else {
-            print("no User Pemissions")
+        guard let userCurrentACL = self.userACL else {
+            guard let userName = self.userName else {
+                //TODO: Show error
+                return
+            }
+            //TODO: show loading
+            makeSwitchesVisibleOrNot(shouldHide: true)
+            getAclRequest(userName: userName)
+
             return
         }
-        self.setUpSwitches(aclInteger: currentUserPermission.acl)
+        self.setUpSwitches(aclInteger: userCurrentACL)
     }
     
     // MARK: - SWITCHES
+    func makeSwitchesVisibleOrNot(shouldHide: Bool) {
+        lerSwitch.isHidden = shouldHide
+        criarSwitch.isHidden = shouldHide
+        removerSwitch.isHidden = shouldHide
+        atualizarSwitch.isHidden = shouldHide
+    }
+    
     func setUpSwitches(aclInteger: Int) {
         let currentAcl = aclStruct(rawValue: UInt32(aclInteger))
         
@@ -89,26 +104,24 @@ class NovaPermissaoViewController: UIViewController {
     }
     
     // MARK: - GET ACL
-//    func getAclRequest() {
-//        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
-//            return
-//        }
-//        guard let username = self.username else {
-//            return
-//        }
-//
-//        networkManager.runGetAcl(token: token, usr: username) { (response, error) in
-//            if let error = error {
-//                print(error)
-//            }
-//            if let response = response {
-//                let theAcl = response.acl
-//                DispatchQueue.main.async {
-//                    self.setUpSwitches(aclInteger: theAcl)
-//                }
-//            }
-//        }
-//    }
+    func getAclRequest(userName: String) {
+        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
+            return
+        }
+
+        networkManager.runGetAcl(token: token, usr: userName) { (response, error) in
+            if let error = error {
+                print(error)
+            }
+            if let response = response {
+                let theAcl = response.acl
+                DispatchQueue.main.async {
+                    self.makeSwitchesVisibleOrNot(shouldHide: false)
+                    self.setUpSwitches(aclInteger: theAcl)
+                }
+            }
+        }
+    }
     
     
     // MARK: - UPDATE ACL
@@ -121,7 +134,7 @@ class NovaPermissaoViewController: UIViewController {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-        networkManager.runUpdateAcl(token: token, acl: newAcl, usr: currentUserPermission!.usr) { (error) in
+        networkManager.runUpdateAcl(token: token, acl: newAcl, usr: userName!) { (error) in
             if let error = error {
                 print(error)
             }

@@ -23,18 +23,18 @@ class GestaoUsuariosCollectionViewCell: MDCCardCollectionCell {
     
     var separator: UIBezierPath!
     
-    var userName: String?
+    var userName: String? {
+        didSet {
+            titleLabel.text = userName
+        }
+    }
+    
     var actionDelegate: gestaoUsuariosCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.font = MDCTypography.body2Font()
         titleLabel.alpha = MDCTypography.body2FontOpacity()
-    }
-    
-    func setUserName(_ userName: String) {
-        self.userName = userName
-        titleLabel.text = userName
     }
     
     override func draw(_ rect: CGRect) {

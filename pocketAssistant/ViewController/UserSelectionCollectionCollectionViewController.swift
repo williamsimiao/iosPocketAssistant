@@ -15,6 +15,7 @@ class UserSelectionCollectionCollectionViewController: UICollectionViewControlle
 
     var tokenString: String?
     var usrsArray: [String]?
+    var selectedUserName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,19 @@ class UserSelectionCollectionCollectionViewController: UICollectionViewControlle
         makeRequestListUsers()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "from_selection_novaPermissao" {
+            guard let destinationViewController = segue.destination as? NovaPermissaoViewController else {
+                return
+            }
+            destinationViewController.userName = self.selectedUserName
+        }
+    }
+    
+    @objc func backItemTapped(sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 //Delegate, DataSource
@@ -78,15 +92,13 @@ extension UserSelectionCollectionCollectionViewController: UICollectionViewDeleg
         guard let data = usrsArray else {
             return  cell
         }
-        cell.setUserName(data[indexPath.row])
+        cell.userName = data[indexPath.row]
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-
-    @objc func backItemTapped(sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let cell = collectionView.cellForItem(at: indexPath) as! GestaoUsuariosCollectionViewCell
+        self.selectedUserName = cell.userName
+        performSegue(withIdentifier: "from_selection_novaPermissao", sender: self)
     }
 }
