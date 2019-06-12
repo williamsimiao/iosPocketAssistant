@@ -63,17 +63,19 @@ struct NetworkManager {
             let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
             let currentViewController = AppUtil().currentView()
             
-            if currentViewController.isKind(of: MainViewController.self) {
+            currentViewController.present(alertController, animated: true, completion: nil)
 
-                currentViewController.present(alertController, animated: true, completion: nil)
-            }
-            else {
-
-                currentViewController.present(mainViewController, animated: true, completion: { () in
-                    let newCurrentViewController = AppUtil().currentView()
-                    newCurrentViewController.present(alertController, animated: true, completion: nil)
-                })
-            }
+//            if currentViewController.isKind(of: MainViewController.self) {
+//
+//                currentViewController.present(alertController, animated: true, completion: nil)
+//            }
+//            else {
+//
+//                currentViewController.present(mainViewController, animated: true, completion: { () in
+//                    let newCurrentViewController = AppUtil().currentView()
+//                    newCurrentViewController.present(alertController, animated: true, completion: nil)
+//                })
+//            }
         }
     }
     

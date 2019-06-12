@@ -31,7 +31,6 @@ class CustomNavigationController: UINavigationController {
         super.viewDidLoad()
         view.backgroundColor = colorScheme.backgroundColor
         
-//        view.
         
         bottomAppBar.isFloatingButtonHidden = true
         let barButtonLeadingItem = UIBarButtonItem()

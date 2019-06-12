@@ -12,6 +12,7 @@ import SwiftKeychainWrapper
 
 protocol performeSegueDelegate {
     func goToNovaPermisao(userACLpair: item)
+    func gotoUserSelection()
 }
 
 class RelacoesCollectionViewController: UIViewController {
@@ -34,6 +35,7 @@ class RelacoesCollectionViewController: UIViewController {
     var viewControllertrusters: TrusteesViewController?
     var viewControllerTrustees: TrusteesViewController?
     var selectedUserPermissions: item?
+    var adduserButton: UIButton?
 
 
     override func viewDidLoad() {
@@ -67,20 +69,30 @@ class RelacoesCollectionViewController: UIViewController {
         refreshButton.addTarget(self, action: #selector(RelacoesCollectionViewController.didTapAddRefresh), for: .touchUpInside)
         let refreshBarItem = UIBarButtonItem(customView: refreshButton)
         
-//        let adduserButton = UIButton(type: .custom)
-//        adduserButton.setImage(UIImage(named: "addUser"), for: .normal)
-//        adduserButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        adduserButton.addTarget(self, action: #selector(RelacoesCollectionViewController.didTapAdd), for: .touchUpInside)
-//        let addUserBarItem = UIBarButtonItem(customView: adduserButton)
+        adduserButton = UIButton(type: .custom)
+        adduserButton!.setImage(UIImage(named: "addUser"), for: .normal)
+        adduserButton!.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        adduserButton!.addTarget(self, action: #selector(RelacoesCollectionViewController.didTapAdd), for: .touchUpInside)
+        let addUserBarItem = UIBarButtonItem(customView: adduserButton!)
         
-//        self.navigationItem.setRightBarButtonItems([addUserBarItem, refreshBarItem], animated: true)
-        self.navigationItem.setRightBarButtonItems([refreshBarItem], animated: true)
+        self.navigationItem.setRightBarButtonItems([refreshBarItem, addUserBarItem], animated: true)
 
     }
     
-//    @objc func didTapAdd() {
-//        performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
-//    }
+    @objc func didTapAdd() {
+        guard let index = tabBar.items.firstIndex(of: tabBar.selectedItem!) else {
+            fatalError("MDCTabBarDelegate given selected item not found in tabBar.items")
+        }
+        //Trusttes
+        if index == 0 {
+            print("My Index 0")
+            viewControllerTrustees?.didTapAdd()
+        }
+        else {
+            print("My Index 1")
+            viewControllertrusters?.didTapAdd()
+        }
+    }
     
     @objc func didTapAddRefresh() {
         guard let index = tabBar.items.firstIndex(of: tabBar.selectedItem!) else {
@@ -88,12 +100,12 @@ class RelacoesCollectionViewController: UIViewController {
         }
         //Trusttes
         if index == 0 {
-            print("O Index 0")
-            viewControllerTrustees?.onRefreshTap()
+            print("The Index 0")
+            viewControllerTrustees?.didTapRefresh()
         }
         else {
-            print("O Index 1")
-            viewControllerTrustees?.onRefreshTap()
+            print("The Index 1")
+            viewControllertrusters?.didTapAdd()
 
         }
     }
@@ -106,9 +118,11 @@ extension RelacoesCollectionViewController: MDCTabBarDelegate {
         }
         if index == 0 {
             print("Index 0")
+            adduserButton?.isHidden = false
         }
         else {
             print("Index 1")
+            adduserButton?.isHidden = true
         }
         
         scrollView.setContentOffset(CGPoint(x: CGFloat(index) * view.bounds.width, y: 0),
@@ -151,5 +165,9 @@ extension RelacoesCollectionViewController: performeSegueDelegate {
     func goToNovaPermisao(userACLpair: item) {
         self.selectedUserPermissions = userACLpair
         performSegue(withIdentifier: "to_NovaPermissaoViewController", sender: self)
+    }
+    
+    func gotoUserSelection() {
+        performSegue(withIdentifier: "to_UserSelectionCollectionCollectionViewController", sender: self)
     }
 }

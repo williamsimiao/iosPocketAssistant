@@ -1,8 +1,9 @@
+
 //
-//  GestaoUsuariosCollectionViewController.swift
+//  UserSelectionCollectionCollectionViewController.swift
 //  pocketAssistant
 //
-//  Created by William Simiao on 06/06/19.
+//  Created by William on 11/06/19.
 //  Copyright © 2019 William Simiao. All rights reserved.
 //
 
@@ -10,14 +11,14 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
-class GestaoUsuariosCollectionViewController: UICollectionViewController {
+class UserSelectionCollectionCollectionViewController: UICollectionViewController {
 
     var tokenString: String?
     var usrsArray: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Usuários"
+        self.title = "Seleção de Usuários"
         makeRequestListUsers()
         setUpBarButtonItens()
     }
@@ -46,28 +47,18 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
         refreshButton.addTarget(self, action: #selector(GestaoUsuariosCollectionViewController.didTapAddRefresh), for: .touchUpInside)
         let refreshBarItem = UIBarButtonItem(customView: refreshButton)
         
-        let adduserButton = UIButton(type: .custom)
-        adduserButton.setImage(UIImage(named: "addUser"), for: .normal)
-        adduserButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        adduserButton.addTarget(self, action: #selector(GestaoUsuariosCollectionViewController.didTapAddUser), for: .touchUpInside)
-        let addUserBarItem = UIBarButtonItem(customView: adduserButton)
-        
-        self.navigationItem.setRightBarButtonItems([addUserBarItem, refreshBarItem], animated: true)
-    }
-    
-    @objc func didTapAddUser() {
-        performSegue(withIdentifier: "to_CriarUsuarioViewController", sender: self)
+       
+        self.navigationItem.setRightBarButtonItems([refreshBarItem], animated: true)
     }
     
     @objc func didTapAddRefresh() {
         makeRequestListUsers()
     }
     
-    //TODO ADD USER STUFF
 }
 
 //Delegate, DataSource
-extension GestaoUsuariosCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension UserSelectionCollectionCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width  = self.view.frame.size.width
         
@@ -87,22 +78,15 @@ extension GestaoUsuariosCollectionViewController: UICollectionViewDelegateFlowLa
         guard let data = usrsArray else {
             return  cell
         }
-        cell.actionDelegate = self
         cell.setUserName(data[indexPath.row])
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+
     @objc func backItemTapped(sender: Any) {
         self.navigationController?.popViewController(animated: true)
-    }
-}
-
-extension GestaoUsuariosCollectionViewController: gestaoUsuariosCellDelegate {
-    func onDeleteTapped(userName: String) {
-        print("tap delete: \(userName)")
-    }
-    
-    func onEditTapped(userName: String) {
-        print("tap edit: \(userName)")
     }
 }

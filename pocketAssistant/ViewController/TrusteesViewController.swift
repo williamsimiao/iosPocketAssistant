@@ -11,7 +11,8 @@ import SwiftKeychainWrapper
 import MaterialComponents
 
 protocol barButtonItemDelegate {
-    func onRefreshTap()
+    func didTapRefresh()
+    func didTapAdd()
 }
 
 class TrusteesViewController: UIViewController {
@@ -41,7 +42,7 @@ class TrusteesViewController: UIViewController {
         self.view.addSubview(noContentLabel)
         self.view.addSubview(collectionView!)
         diferences()
-        makeRequestListUsers()
+        makeRequestListUsrTrust()
     }
     
     func setupViews() {
@@ -65,7 +66,24 @@ class TrusteesViewController: UIViewController {
         }
     }
     
-    func makeRequestListUsers() {
+//    func makeRequestListUsers() {
+//        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
+//            return
+//        }
+//        NetworkManager().runListUsrs(token: token) { (response, error) in
+//            if let error = error {
+//                print(error)
+//            }
+//            if let response = response {
+//                self.usrsArray = response.usr
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
+//            }
+//        }
+//    }
+    
+    func makeRequestListUsrTrust() {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
@@ -140,7 +158,12 @@ UICollectionViewDelegateFlowLayout {
 }
 
 extension TrusteesViewController : barButtonItemDelegate {
-    func onRefreshTap() {
-        makeRequestListUsers()
+    
+    func didTapRefresh() {
+        makeRequestListUsrTrust()
+    }
+    
+    func didTapAdd() {
+        segueDelegate?.gotoUserSelection()
     }
 }
