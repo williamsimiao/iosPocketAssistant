@@ -247,7 +247,7 @@ struct NetworkManager {
     
     // MARK: - ObjetosApi
     
-    func runObjExp(objId: String, token: String, completion: @escaping (_ body2:ResponseBody7?,_ error: String?)->()) {
+    func runObjExp(objId: String, token: String, completion: @escaping (_ body2:CFData?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
         objetosRouter.request(.objExp(token: completeToken, obj: objId)) { (data, response, error) in
@@ -264,8 +264,7 @@ struct NetworkManager {
                     }
                     
                     do {
-                        let apiResponse = try JSONDecoder().decode(ResponseBody7.self, from: responseData)
-                        completion(apiResponse, nil)
+                        completion(responseData as CFData, nil)
                     } catch {
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
                     }

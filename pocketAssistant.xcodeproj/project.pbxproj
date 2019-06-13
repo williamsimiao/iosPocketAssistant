@@ -223,10 +223,10 @@
 				3D114DBE228B055900A4A74C /* EndPoint */,
 				3D114DBD228B054800A4A74C /* Service */,
 				3D114DC7228B08E800A4A74C /* Encoding */,
-				3D114DC5228B086900A4A74C /* NetworkError.swift */,
 				3D114DD7228B48FE00A4A74C /* Manager */,
 				3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */,
 				3D60CA0A22A0260D000387D7 /* NetworkHelper.swift */,
+				3D114DC5228B086900A4A74C /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";

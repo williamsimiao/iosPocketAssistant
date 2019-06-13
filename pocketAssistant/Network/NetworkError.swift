@@ -7,6 +7,11 @@
 //
 
 import Foundation
+
+public enum certError : String, Error {
+    case commonNameError = "Common Name not key not found"
+}
+
 public enum inputError : String, Error {
     case stringNil = "Empty String"
     case invalidString = "invalid String"
