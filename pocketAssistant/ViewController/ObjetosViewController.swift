@@ -53,29 +53,27 @@ class ObjetosViewController: UICollectionViewController {
             if let response = response {
                 let certificate = SecCertificateCreateWithData(nil, response as CFData)
                 let certificateString = String(describing: certificate)
-//                print("OK: \(certificateString)")
+                print("OK: \(certificateString)")
                 let matched = self.matches(for: "(?<=s: )(.*)(?= i:)", in: certificateString)
                 self.exportedCertificates = self.exportedCertificates + 1
                 self.certificateNameArray.append(matched.first!)
                 
                 
-//                var commonNamePointer = UnsafeMutablePointer<CFString?>.allocate(capacity: 50)
-//
+                var commonNamePointer = UnsafeMutablePointer<CFString?>.allocate(capacity: 50)
+
 //                if #available(iOS 10.3, *) {
-//                    let status = SecCertificateCopyCommonName(certificate!, commonNamePointer)
-//                    guard status == errSecSuccess else {
-//                        print("throw certError.commonNameError")
+//                    var cerror: Unmanaged<CFError>?
+//                    guard let dict = SecCertificateCopyValues(certificate,nil,&cerror) else {
+//                        print("deu ruim")
 //                        return
+////                        throw cerror!.takeRetainedValue() as Error
 //                    }
-//                    let teste = String(bytesNoCopy: commonNamePointer, length: 50, encoding: String.Encoding.ascii, freeWhenDone: false)
-//                    print("commonName: \(teste)")
+//                    print("DIC: \(dict)")
 //
 //                } else {
 //                    // Fallback on earlier versions
 //                }
             }
-            print("self.exportedCertificates: \(self.exportedCertificates)")
-            print("self.certificateCounter: \(self.certificateCounter)")
             if self.exportedCertificates == self.certificateCounter {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()

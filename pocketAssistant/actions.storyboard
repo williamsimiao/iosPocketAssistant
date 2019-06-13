@@ -482,14 +482,14 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojL-Ma-ZW3">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojL-Ma-ZW3">
                                             <rect key="frame" x="320" y="13" width="24" height="24"/>
                                             <state key="normal" image="edit"/>
                                             <connections>
                                                 <action selector="didTapEdit:" destination="BP0-oD-NVJ" eventType="touchUpInside" id="am8-po-v4c"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BpL-P7-Qg2">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BpL-P7-Qg2">
                                             <rect key="frame" x="360" y="13" width="24" height="24"/>
                                             <state key="normal" image="delete"/>
                                             <connections>
