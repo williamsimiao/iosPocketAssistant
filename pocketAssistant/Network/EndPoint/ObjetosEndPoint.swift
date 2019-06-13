@@ -10,6 +10,8 @@ import Foundation
 
 public enum ObjetosApi {
     case listObjs(token: String)
+    case getObjInfo(token: String, obj: String)
+    case objExp(token: String, obj: String)
 }
 
 extension ObjetosApi: EndPointType {
@@ -29,6 +31,10 @@ extension ObjetosApi: EndPointType {
         switch self {
         case .listObjs:
             return "list_objs"
+        case .getObjInfo:
+            return "get_obj_info"
+        case .objExp:
+            return "obj_exp"
         }
     }
     
@@ -36,6 +42,10 @@ extension ObjetosApi: EndPointType {
         switch self {
         case .listObjs:
             return .get
+        case .getObjInfo:
+            return .post
+        case .objExp:
+            return .post
         }
     }
     
@@ -43,6 +53,12 @@ extension ObjetosApi: EndPointType {
         switch self {
         case .listObjs(let token):
             return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: ["Authorization": token])
+            
+        case .getObjInfo(let token, let obj):
+            return .requestParametersAndHeaders(bodyParameters: ["obj": obj], urlParameters: nil, additionHeaders: ["Authorization": token])
+            
+        case .objExp(let token, let obj):
+            return .requestParametersAndHeaders(bodyParameters: ["obj": obj], urlParameters: nil, additionHeaders: ["Authorization": token])
         }
     }
     

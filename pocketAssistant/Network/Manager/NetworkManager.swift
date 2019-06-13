@@ -246,6 +246,65 @@ struct NetworkManager {
     }
     
     // MARK: - ObjetosApi
+    
+    func runObjExp(objId: String, token: String, completion: @escaping (_ body2:ResponseBody7?,_ error: String?)->()) {
+        let completeToken = "HSM \(token)"
+        print("complete TOKEN: \(completeToken)")
+        objetosRouter.request(.objExp(token: completeToken, obj: objId)) { (data, response, error) in
+            if error != nil {
+                completion(nil, "Check your internet connection")
+            }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue)
+                        return
+                    }
+                    
+                    do {
+                        let apiResponse = try JSONDecoder().decode(ResponseBody7.self, from: responseData)
+                        completion(apiResponse, nil)
+                    } catch {
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError)
+                }
+            }
+        }
+    }
+    
+    func runGetObjInfo(objId: String, token: String, completion: @escaping (_ body2:ResponseBody7?,_ error: String?)->()) {
+        let completeToken = "HSM \(token)"
+        print("complete TOKEN: \(completeToken)")
+        objetosRouter.request(.getObjInfo(token: completeToken, obj: objId)) { (data, response, error) in
+            if error != nil {
+                completion(nil, "Check your internet connection")
+            }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue)
+                        return
+                    }
+                    
+                    do {
+                        let apiResponse = try JSONDecoder().decode(ResponseBody7.self, from: responseData)
+                        completion(apiResponse, nil)
+                    } catch {
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError)
+                }
+            }
+        }
+    }
+    
     func runListObjs(token: String, completion: @escaping (_ body2:ResponseBody2?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")

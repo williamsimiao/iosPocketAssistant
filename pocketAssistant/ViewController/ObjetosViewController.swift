@@ -22,6 +22,21 @@ class ObjetosViewController: UICollectionViewController {
         makeRequest()
     }
     
+    func makeRequestInfo(objId: String) {
+        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
+            return
+        }
+        NetworkManager().runGetObjInfo(objId: objId, token: token) { (response, error) in
+            if let error = error {
+                print(error)
+            }
+            if let response = response {
+                let myType = response.type
+                
+            }
+        }
+    }
+    
     func makeRequest() {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
@@ -32,9 +47,12 @@ class ObjetosViewController: UICollectionViewController {
             }
             if let response = response {
                 self.objIdArray = response.obj
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+                for objectId in self.objIdArray! {
+                    self.makeRequestInfo(objId: objectId)
                 }
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
             }
         }
     }
