@@ -17,14 +17,15 @@ class DrawerCell: MDCCardCollectionCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = UIColor(red: 56, green: 69, blue: 76)
+//        contentView.backgroundColor = UIColor(red: 56, green: 69, blue: 76)
+        contentView.backgroundColor = .white
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .center
         let titleLabel = UILabel(frame: .zero)
         titleLabel.font = MDCTypography.body1Font()
         titleLabel.alpha = MDCTypography.body1FontOpacity()
         titleLabel.textAlignment = .left
-        titleLabel.textColor = .white
+        titleLabel.textColor = .black
 
 
         self.contentView.addSubview(titleLabel)

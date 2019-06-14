@@ -199,7 +199,6 @@
 				3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */,
 				3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */,
 				3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */,
-				3D1F5ABA22A1747D006DE185 /* DrawerCell.swift */,
 				3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */,
 				3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */,
 				3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */,
@@ -355,6 +354,7 @@
 		3DC8465722A1B6B70032FB31 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				3D1F5ABA22A1747D006DE185 /* DrawerCell.swift */,
 				3D60CA0822A0216B000387D7 /* CustomNavigationController.swift */,
 				3DFC2FE822A5BD4A005099A8 /* SectionView.swift */,
 				3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */,

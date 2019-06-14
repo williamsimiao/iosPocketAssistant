@@ -31,7 +31,7 @@ class SectionView: UICollectionReusableView {
         sectionLabel.font = MDCTypography.body1Font()
         sectionLabel.alpha = MDCTypography.body1FontOpacity()
         sectionLabel.textAlignment = .left
-        sectionLabel.textColor = .white
+        sectionLabel.textColor = .black
         
         self.addSubview(sectionLabel)
         NSLayoutConstraint.activate([

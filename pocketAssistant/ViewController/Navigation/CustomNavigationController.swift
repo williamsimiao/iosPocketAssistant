@@ -90,6 +90,18 @@ class CustomNavigationController: UINavigationController {
             return
         }
         bottomDrawerViewController.maximumInitialDrawerHeight = 400
+//        if #available(iOS 11.0, *) {
+//            let guide = view.safeAreaLayoutGuide
+//            NSLayoutConstraint.activate([
+//            guide.bottomAnchor.constraint(equalToSystemSpacingBelow: bottomDrawerViewController.view.bottomAnchor, multiplier: 1.0)
+//            ])
+//
+//        } else {
+//            NSLayoutConstraint.activate([
+//                bottomLayoutGuide.bottomAnchor.constraint(equalTo: bottomDrawerViewController.view.bottomAnchor, constant: 8.0)
+//            ])
+//        }
+
         contentViewController.dismissDelegate = self
         bottomDrawerViewController.contentViewController = contentViewController
         bottomDrawerViewController.headerViewController = headerViewController

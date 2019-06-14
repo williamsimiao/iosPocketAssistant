@@ -16,11 +16,11 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     let flowLayout = UICollectionViewFlowLayout()
     
     //particao
-    let chavesItem = cellInfo(title: "Chaves/Objetos", leftImageName: "baseline_vpn_key_white_24pt_")
-    let confiancaItem = cellInfo(title: "Relação de confiança", leftImageName: "baseline_vpn_key_white_24pt_")
+    let chavesItem = cellInfo(title: "Chaves/Objetos", leftImageName: "key")
+    let confiancaItem = cellInfo(title: "Relação de confiança", leftImageName: "thumbs")
     var particaoSection: section?
     //usuarios
-    let gestaoItem = cellInfo(title: "Gestão", leftImageName: "baseline_vpn_key_white_24pt_")
+    let gestaoItem = cellInfo(title: "Gestão", leftImageName: "people")
     var usuariosSection: section?
     
     var drawerComplete: drawerMenuInfo?
@@ -60,7 +60,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        collectionView.backgroundColor = UIColor(red: 56, green: 69, blue: 76)
+//        collectionView.backgroundColor = UIColor(red: 56, green: 69, blue: 76)
+        collectionView.backgroundColor = UIColor.groupTableViewBackground
         
         let width = self.view.frame.size.width
         flowLayout.itemSize = CGSize(width: width, height: 50.0)
