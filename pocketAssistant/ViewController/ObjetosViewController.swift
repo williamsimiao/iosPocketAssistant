@@ -23,7 +23,6 @@ class ObjetosViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Objetos"
         makeRequest()
     }
     

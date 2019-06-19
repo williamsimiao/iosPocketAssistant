@@ -17,7 +17,6 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Usuários"
         makeRequestListUsers()
         setUpBarButtonItens()
     }

@@ -40,7 +40,6 @@ class RelacoesCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Relação"
         tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         tabBar.sizeToFit()
         tabBarContainer.addSubview(tabBar)

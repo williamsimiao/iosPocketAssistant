@@ -19,7 +19,6 @@ class UserSelectionCollectionCollectionViewController: UICollectionViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Seleção de Usuários"
         makeRequestListUsers()
         setUpBarButtonItens()
     }
