@@ -129,18 +129,14 @@
     BOOL mdc_adjustsFontForContentSizeCategory UI_APPEARANCE_SELECTOR;
 
 /**
- Affects the fallback behavior for when a scaled font is not provided.
+ Enable legacy font scaling curves for Dynamic Type.
 
- If @c YES, the font size will adjust even if a scaled font has not been provided for
- a given @c UIFont property on this component.
+ Legacy font scaling uses the older [UIFont mdc_fontSizedForMaterialTextStyle:scaledForDynamicType:
+ category instead of the current MDCFontScaler API.
 
- If @c NO, the font size will only be adjusted if a scaled font has been provided.
-
- Default value is @c YES.
+ Default value is NO.
  */
-@property(nonatomic, assign) BOOL adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
-@property(nonatomic, readwrite, setter=mdc_setLegacyFontScaling:)
-    BOOL mdc_legacyFontScaling __deprecated;
+@property(nonatomic, readwrite, setter=mdc_setLegacyFontScaling:) BOOL mdc_legacyFontScaling;
 
 /**
  The shape generator used to define the button's shape.

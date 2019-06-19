@@ -58,6 +58,10 @@ class MainViewController: UIViewController {
         usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
         otpTextFieldController = MDCTextInputControllerOutlined(textInput: otpTextField)
+        
+        MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: usernameTextFieldController!)
+        MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: passwordTextFieldController!)
+        MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: otpTextFieldController!)
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
         scrollView.addGestureRecognizer(tapGestureRecognizer)

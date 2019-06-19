@@ -18,7 +18,6 @@
 
 #import <MDFInternationalization/MDFInternationalization.h>
 
-#import "MaterialApplication.h"
 #import "MaterialInk.h"
 #import "MaterialMath.h"
 #import "MaterialTypography.h"
@@ -74,7 +73,6 @@ static const CGFloat kDetailColorOpacity = (CGFloat)0.6;
 
 - (void)commonMDCSelfSizingStereoCellInit {
   self.cachedLayouts = [[NSMutableDictionary alloc] init];
-  _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = YES;
   [self createSubviews];
 }
 
@@ -209,47 +207,24 @@ static const CGFloat kDetailColorOpacity = (CGFloat)0.6;
                                                   object:nil];
   }
 
-  [self adjustFontsForDynamicType];
-}
-
-- (void)setAdjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable:
-    (BOOL)adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable {
-  _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable =
-      adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
-  [self adjustFontsForDynamicType];
+  [self adjustFontsForContentSizeCategory];
 }
 
 // Handles UIContentSizeCategoryDidChangeNotifications
 - (void)contentSizeCategoryDidChange:(__unused NSNotification *)notification {
-  [self adjustFontsForDynamicType];
+  [self adjustFontsForContentSizeCategory];
 }
 
-- (void)adjustFontsForDynamicType {
+- (void)adjustFontsForContentSizeCategory {
   UIFont *titleFont = self.titleLabel.font ?: self.defaultTitleLabelFont;
   UIFont *detailFont = self.detailLabel.font ?: self.defaultDetailLabelFont;
-  if (self.mdc_adjustsFontForContentSizeCategory) {
-    UIContentSizeCategory sizeCategory = UIContentSizeCategoryLarge;
-    if (@available(iOS 10.0, *)) {
-      sizeCategory = self.traitCollection.preferredContentSizeCategory;
-    } else if ([UIApplication mdc_safeSharedApplication]) {
-      sizeCategory = [UIApplication mdc_safeSharedApplication].preferredContentSizeCategory;
-    }
-
-    if (titleFont.mdc_scalingCurve) {
-      titleFont = [titleFont mdc_scaledFontForSizeCategory:sizeCategory];
-    } else if (self.adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable) {
-      titleFont =
-          [titleFont mdc_fontSizedForMaterialTextStyle:MDCFontTextStyleTitle
-                                  scaledForDynamicType:self.mdc_adjustsFontForContentSizeCategory];
-    }
-
-    if (detailFont.mdc_scalingCurve) {
-      detailFont = [detailFont mdc_scaledFontForSizeCategory:sizeCategory];
-    } else if (self.adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable) {
-      detailFont =
-          [detailFont mdc_fontSizedForMaterialTextStyle:MDCFontTextStyleCaption
-                                   scaledForDynamicType:self.mdc_adjustsFontForContentSizeCategory];
-    }
+  if (_mdc_adjustsFontForContentSizeCategory) {
+    titleFont =
+        [titleFont mdc_fontSizedForMaterialTextStyle:MDCFontTextStyleTitle
+                                scaledForDynamicType:_mdc_adjustsFontForContentSizeCategory];
+    detailFont =
+        [detailFont mdc_fontSizedForMaterialTextStyle:MDCFontTextStyleCaption
+                                 scaledForDynamicType:_mdc_adjustsFontForContentSizeCategory];
   }
   self.titleLabel.font = titleFont;
   self.detailLabel.font = detailFont;

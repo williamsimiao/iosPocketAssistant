@@ -26,8 +26,6 @@
 - (instancetype)initWithDefaults:(MDCTypographySchemeDefaults)defaults {
   self = [super init];
   if (self) {
-    _useCurrentContentSizeCategoryWhenApplied = NO;
-
     switch (defaults) {
       case MDCTypographySchemeDefaultsMaterial201804:
 #if defined(__IPHONE_8_2)
@@ -64,6 +62,7 @@
         _button = [UIFont systemFontOfSize:14.0];
         _overline = [UIFont systemFontOfSize:12.0];
 #endif
+        _mdc_adjustsFontForContentSizeCategory = NO;
         break;
       case MDCTypographySchemeDefaultsMaterial201902:
 #if defined(__IPHONE_8_2)
@@ -100,6 +99,8 @@
         _button = [UIFont systemFontOfSize:14.0];
         _overline = [UIFont systemFontOfSize:12.0];
 #endif
+
+        _mdc_adjustsFontForContentSizeCategory = YES;
 
         // Attach a sizing curve to all fonts
         MDCFontScaler *fontScaler =
@@ -181,14 +182,6 @@
   copy.mdc_adjustsFontForContentSizeCategory = self.mdc_adjustsFontForContentSizeCategory;
 
   return copy;
-}
-
-- (BOOL)mdc_adjustsFontForContentSizeCategory {
-  return self.useCurrentContentSizeCategoryWhenApplied;
-}
-
-- (void)setMdc_adjustsFontForContentSizeCategory:(BOOL)mdc_adjustsFontForContentSizeCategory {
-  self.useCurrentContentSizeCategoryWhenApplied = mdc_adjustsFontForContentSizeCategory;
 }
 
 @end

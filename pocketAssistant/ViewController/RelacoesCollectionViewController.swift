@@ -25,7 +25,7 @@ class RelacoesCollectionViewController: UIViewController {
         tabBar.delegate = self
         MDCTabBarColorThemer.applySemanticColorScheme(globalColorScheme(), toTabs: tabBar)
         tabBar.itemAppearance = .titles
-        tabBar.alignment = .center
+        tabBar.alignment = MDCTabBarAlignment.justified
         tabBar.tintColor = .black
         tabBar.items = [UITabBarItem(title: "TRUSTEES", image: nil, tag:0),
                         UITabBarItem(title: "TRUSTERS", image: nil, tag:0)]
@@ -40,6 +40,7 @@ class RelacoesCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         tabBar.sizeToFit()
         tabBarContainer.addSubview(tabBar)

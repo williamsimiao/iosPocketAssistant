@@ -20,6 +20,7 @@ class TrocarSenhaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.title = "Trocar senha"
 
         atualizarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())

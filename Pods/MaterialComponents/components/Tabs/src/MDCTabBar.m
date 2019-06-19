@@ -16,7 +16,6 @@
 
 #import <MDFInternationalization/MDFInternationalization.h>
 
-#import "MDCTabBarExtendedAlignment.h"
 #import "MDCTabBarIndicatorTemplate.h"
 #import "MDCTabBarUnderlineIndicatorTemplate.h"
 #import "MaterialInk.h"
@@ -54,22 +53,18 @@ static const CGFloat kBottomNavigationTitleImagePadding = 3;
 /// Height for the bottom divider.
 static const CGFloat kBottomNavigationBarDividerHeight = 1;
 
-static MDCItemBarAlignment MDCItemBarAlignmentForTabBarAlignment(
-    MDCTabBarExtendedAlignment alignment) {
+static MDCItemBarAlignment MDCItemBarAlignmentForTabBarAlignment(MDCTabBarAlignment alignment) {
   switch (alignment) {
-    case MDCTabBarExtendedAlignmentCenter:
+    case MDCTabBarAlignmentCenter:
       return MDCItemBarAlignmentCenter;
 
-    case MDCTabBarExtendedAlignmentLeading:
+    case MDCTabBarAlignmentLeading:
       return MDCItemBarAlignmentLeading;
 
-    case MDCTabBarExtendedAlignmentJustified:
+    case MDCTabBarAlignmentJustified:
       return MDCItemBarAlignmentJustified;
 
-    case MDCTabBarExtendedAlignmentBestEffortJustified:
-      return MDCItemBarAlignmentBestEffortJustified;
-
-    case MDCTabBarExtendedAlignmentCenterSelected:
+    case MDCTabBarAlignmentCenterSelected:
       return MDCItemBarAlignmentCenterSelected;
   }
 
@@ -147,8 +142,7 @@ static MDCItemBarAlignment MDCItemBarAlignmentForTabBarAlignment(
   _itemBar = [[MDCItemBar alloc] initWithFrame:self.bounds];
   _itemBar.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
   _itemBar.delegate = self;
-  _itemBar.alignment =
-      MDCItemBarAlignmentForTabBarAlignment((MDCTabBarExtendedAlignment)_alignment);
+  _itemBar.alignment = MDCItemBarAlignmentForTabBarAlignment(_alignment);
   [self addSubview:_itemBar];
 
   CGFloat dividerTop = CGRectGetMaxY(self.bounds) - kBottomNavigationBarDividerHeight;
@@ -589,9 +583,7 @@ static MDCItemBarAlignment MDCItemBarAlignmentForTabBarAlignment(
 - (void)internalSetAlignment:(MDCTabBarAlignment)alignment animated:(BOOL)animated {
   if (_alignment != alignment) {
     _alignment = alignment;
-    [_itemBar
-        setAlignment:MDCItemBarAlignmentForTabBarAlignment((MDCTabBarExtendedAlignment)_alignment)
-            animated:animated];
+    [_itemBar setAlignment:MDCItemBarAlignmentForTabBarAlignment(_alignment) animated:animated];
   }
 }
 

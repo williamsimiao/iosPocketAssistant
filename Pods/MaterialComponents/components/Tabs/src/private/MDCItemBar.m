@@ -76,10 +76,6 @@ static void *kItemPropertyContext = &kItemPropertyContext;
 
   /// Current style properties.
   MDCItemBarStyle *_style;
-
-  /// The current alignment to use for item bar. This may vary from `_alignment` in cases where
-  /// the actual alignment is determined on-the-fly.
-  MDCItemBarAlignment _currentAlignment;
 }
 
 + (CGFloat)defaultHeightForStyle:(nonnull MDCItemBarStyle *)style {
@@ -282,7 +278,7 @@ static void *kItemPropertyContext = &kItemPropertyContext;
   // Update collection metrics if the size has changed.
   if (!CGSizeEqualToSize(bounds.size, _lastSize) ||
       [self adjustedCollectionViewWidth] != _lastAdjustedCollectionViewWidth) {
-    [self updateAlignmentAnimated:NO];
+    [self updateFlowLayoutMetrics];
 
     // Ensure selected item is aligned properly on resize, forcing the new layout to take effect.
     [_collectionView layoutIfNeeded];
@@ -316,14 +312,14 @@ static void *kItemPropertyContext = &kItemPropertyContext;
   [super didMoveToWindow];
 
   // New window: Update for potentially updated size class.
-  [self updateAlignmentAnimated:NO];
+  [self updateFlowLayoutMetrics];
 }
 
 - (void)traitCollectionDidChange:(nullable UITraitCollection *)previousTraitCollection {
   [super traitCollectionDidChange:previousTraitCollection];
 
-  // Update alignment and layout metrics for potentially updated size class.
-  [self updateAlignmentAnimated:NO];
+  // Update metrics for potentially updated size class.
+  [self updateFlowLayoutMetrics];
 }
 
 - (void)tintColorDidChange {
@@ -423,7 +419,7 @@ static void *kItemPropertyContext = &kItemPropertyContext;
   size = [MDCItemBarCell sizeThatFits:size item:item style:_style];
 
   // Divide justified items evenly across the view.
-  if (_currentAlignment == MDCItemBarAlignmentJustified) {
+  if (_alignment == MDCItemBarAlignmentJustified) {
     NSInteger count = [self collectionView:_collectionView numberOfItemsInSection:0];
     size.width = [self adjustedCollectionViewWidth] / MAX(count, 1);
   }
@@ -524,7 +520,7 @@ static void *kItemPropertyContext = &kItemPropertyContext;
 
 - (void)reload {
   [_collectionView reloadData];
-  [self updateAlignmentAnimated:NO];
+  [self updateFlowLayoutMetrics];
 }
 
 - (UICollectionViewFlowLayout *)generatedFlowLayout {
@@ -566,31 +562,8 @@ static void *kItemPropertyContext = &kItemPropertyContext;
 }
 
 - (void)updateAlignmentAnimated:(BOOL)animated {
-  [self updateCurrentAlignment];
   [self updateScrollProperties];
   [self updateFlowLayoutMetricsAnimated:animated];
-}
-
-- (void)updateCurrentAlignment {
-  if (_alignment != MDCItemBarAlignmentBestEffortJustified) {
-    _currentAlignment = _alignment;
-    return;
-  }
-
-  // Calculate the "best" alignment for MDCItemBarAlignmentBestEffortJustified. Begin with
-  // Justified alignment, but calculate to see if Leading alignment would be a better fit.
-  _currentAlignment = MDCItemBarAlignmentJustified;
-  const CGFloat widthPerJustifiedItem = [self adjustedCollectionViewWidth] / MAX(_items.count, 1ul);
-  CGSize size = CGSizeMake(CGFLOAT_MAX, self.bounds.size.height);
-  for (UITabBarItem *item in _items) {
-    const CGSize itemSize = [MDCItemBarCell sizeThatFits:size item:item style:_style];
-    const CGFloat itemWidth = itemSize.width;
-    // If any item cannot fit nicely in its portion of the width, fallback to Leading alignment.
-    if (itemWidth >= widthPerJustifiedItem) {
-      _currentAlignment = MDCItemBarAlignmentLeading;
-      break;
-    }
-  }
 }
 
 /// Sets _selectionIndicator's bounds and center to display under the item at the given index with
@@ -659,14 +632,14 @@ static void *kItemPropertyContext = &kItemPropertyContext;
 }
 
 - (void)updateScrollProperties {
-  _collectionView.alwaysBounceHorizontal = (_currentAlignment != MDCItemBarAlignmentJustified);
+  _collectionView.alwaysBounceHorizontal = (_alignment != MDCItemBarAlignmentJustified);
 }
 
 - (void)updateFlowLayoutMetrics {
   UIUserInterfaceSizeClass horizontalSizeClass = [self horizontalSizeClass];
 
   UIEdgeInsets newSectionInset = UIEdgeInsetsZero;
-  switch (_currentAlignment) {
+  switch (_alignment) {
     case MDCItemBarAlignmentLeading:
       newSectionInset = [self leadingAlignedInsetsForHorizontalSizeClass:horizontalSizeClass];
       break;
@@ -678,10 +651,6 @@ static void *kItemPropertyContext = &kItemPropertyContext;
       break;
     case MDCItemBarAlignmentCenterSelected:
       newSectionInset = [self centerSelectedInsets];
-      break;
-    case MDCItemBarAlignmentBestEffortJustified:
-      // This case should never be possible, since the _currentAlignment will never be set to
-      // this value.
       break;
   }
 

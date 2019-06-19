@@ -12,34 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "MaterialNavigationBar.h"
-#import "MaterialTypographyScheme.h"
-
 #import <Foundation/Foundation.h>
 
+#import "MaterialColorScheme.h"
+#import "MaterialTextFields.h"
+
 /**
- The Material Design typography system's themer for instances of MDCNavigationBar.
+ The Material Design color system's outlined text field themer.
 
  @warning This API will eventually be deprecated. See the individual method documentation for
  details on replacement APIs.
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-@interface MDCNavigationBarTypographyThemer : NSObject
+@interface MDCOutlinedTextFieldColorThemer : NSObject
 @end
 
-@interface MDCNavigationBarTypographyThemer (ToBeDeprecated)
+@interface MDCOutlinedTextFieldColorThemer (ToBeDeprecated)
 
 /**
- Applies a typography scheme's properties to an MDCNavigationBar.
+ Applies a color scheme's properties to a text field using the outlined style.
 
- @param typographyScheme The typography scheme to apply to the component instance.
- @param navigationBar A component instance to which the typography scheme should be applied.
+ @param colorScheme The color scheme to apply to the component instance.
+ @param textInputController A component instance to which the color scheme should be applied.
 
- @warning This API will eventually be deprecated. There is no replacement yet.
- Track progress here: https://github.com/material-components/material-components-ios/issues/7172
+ @warning This API will eventually be deprecated. The replacement API is:
+ `MDCTextInputControllerOutlined`'s `-applyThemeWithScheme:`
  Learn more at docs/theming.md#migration-guide-themers-to-theming-extensions
  */
-+ (void)applyTypographyScheme:(nonnull id<MDCTypographyScheming>)typographyScheme
-              toNavigationBar:(nonnull MDCNavigationBar *)navigationBar;
++ (void)applySemanticColorScheme:(nonnull id<MDCColorScheming>)colorScheme
+           toTextInputController:(nonnull id<MDCTextInputController>)textInputController;
 
 @end

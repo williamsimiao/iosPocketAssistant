@@ -386,10 +386,12 @@ static UIColor *DrawerShadowColor(void) {
   _shouldPresentAtFullscreen = YES;
   [self cacheLayoutCalculations];
   [UIView animateWithDuration:duration
-                   animations:^{
-                     [self setupLayout];
-                   }
-                   completion:completion];
+      animations:^{
+        [self setupLayout];
+      }
+      completion:^(BOOL completed) {
+        completion(completed);
+      }];
 }
 
 #pragma mark UIViewController
@@ -549,7 +551,6 @@ static UIColor *DrawerShadowColor(void) {
   }
 
   self.headerShadowLayer = [[MDCShadowLayer alloc] init];
-  // The header acts as an AppBar, so it keeps the same elevation value.
   self.headerShadowLayer.elevation = MDCShadowElevationAppBar;
   self.headerShadowLayer.shadowColor = DrawerShadowColor().CGColor;
   [self.headerViewController.view.layer addSublayer:self.headerShadowLayer];

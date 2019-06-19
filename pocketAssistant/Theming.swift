@@ -13,6 +13,14 @@ func globalColorScheme() -> MDCSemanticColorScheme {
     colorScheme.primaryColor = UIColor(red: 170, green: 170, blue: 170)
     return colorScheme
 }
+
+func textFieldColorScheme() -> MDCSemanticColorScheme {
+    let colorScheme = MDCSemanticColorScheme()
+    colorScheme.primaryColor = .black
+    colorScheme.onSurfaceColor = .gray
+    return colorScheme
+}
+
 func globalContainerScheme() -> MDCContainerScheming {
     let containerScheme = MDCContainerScheme()
     // Customize containerScheme here...

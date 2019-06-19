@@ -16,8 +16,6 @@
 
 #import <objc/runtime.h>
 
-#import "MaterialApplication.h"
-
 #import "MDCTypography.h"
 #import "private/MDCTypographyUtilities.h"
 
@@ -53,16 +51,6 @@ static char MDCFontScaleObjectKey;
   return scaledFont;
 }
 
-- (UIFont *)mdc_scaledFontForTraitEnvironment:(id<UITraitEnvironment>)traitEnvironment {
-  UIContentSizeCategory sizeCategory = UIContentSizeCategoryLarge;
-  if (@available(iOS 10.0, *)) {
-    sizeCategory = traitEnvironment.traitCollection.preferredContentSizeCategory;
-  } else if ([UIApplication mdc_safeSharedApplication]) {
-    sizeCategory = [UIApplication mdc_safeSharedApplication].preferredContentSizeCategory;
-  }
-  return [self mdc_scaledFontForSizeCategory:sizeCategory];
-}
-
 - (UIFont *)mdc_scaledFontForCurrentSizeCategory {
   UIContentSizeCategory currentSizeCategory = GetCurrentSizeCategory();
 
@@ -80,7 +68,7 @@ static char MDCFontScaleObjectKey;
 
 - (void)mdc_setScalingCurve:(NSDictionary<UIContentSizeCategory, NSNumber *> *)scalingCurve {
   objc_setAssociatedObject(self, &MDCFontScaleObjectKey, scalingCurve,
-                           OBJC_ASSOCIATION_COPY_NONATOMIC);
+                           OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

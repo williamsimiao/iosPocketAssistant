@@ -11,6 +11,8 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/Buttons+Theming'
     pod 'MaterialComponents/Collections'
     pod 'MaterialComponents/TextFields'
+    pod 'MaterialComponents/TextFields+Theming'
+    pod 'MaterialComponents/TextFields+ColorThemer'
     pod 'MaterialComponents/Cards'
     pod 'MaterialComponents/List'
     pod 'MaterialComponents/Typography'
