@@ -51,7 +51,7 @@ class NovaPermissaoViewController: UIViewController {
         atualizarSwitch.isOn = false
     }
     
-    func makeSwitchesVisibleOrNot(shouldHide: Bool) {
+    func makeSwitchesHideOrNot(shouldHide: Bool) {
         lerSwitch.isHidden = shouldHide
         criarSwitch.isHidden = shouldHide
         removerSwitch.isHidden = shouldHide
