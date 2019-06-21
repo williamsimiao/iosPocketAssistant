@@ -48,7 +48,6 @@
 		3DDB7ACD229D999800C4D265 /* ResponseBody3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */; };
 		3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */; };
 		3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */; };
-		3DDB7AD5229DD59B00C4D265 /* actions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD4229DD59B00C4D265 /* actions.storyboard */; };
 		3DDB7AD7229DDD6400C4D265 /* CriarUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */; };
 		3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */; };
 		3DDC4091229F490100713546 /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC4090229F490100713546 /* Theming.swift */; };
@@ -132,7 +131,6 @@
 		3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody3.swift; sourceTree = "<group>"; };
 		3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioEndPoint.swift; sourceTree = "<group>"; };
 		3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrocarSenhaViewController.swift; sourceTree = "<group>"; };
-		3DDB7AD4229DD59B00C4D265 /* actions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = actions.storyboard; sourceTree = "<group>"; };
 		3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarUsuarioViewController.swift; sourceTree = "<group>"; };
 		3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+synchronous.swift"; sourceTree = "<group>"; };
 		3DDC4090229F490100713546 /* Theming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theming.swift; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 				3D114DB6228B03D000A4A74C /* Application */,
 				3D114DB7228B03E100A4A74C /* ViewController */,
 				3D9311EE2289DD4E000C2635 /* Main.storyboard */,
-				3DDB7AD4229DD59B00C4D265 /* actions.storyboard */,
 				3D9311F12289DD50000C2635 /* Assets.xcassets */,
 				3D9311F32289DD50000C2635 /* LaunchScreen.storyboard */,
 				3D9311F62289DD50000C2635 /* Info.plist */,
@@ -496,7 +493,6 @@
 			files = (
 				3D9311F52289DD50000C2635 /* LaunchScreen.storyboard in Resources */,
 				3D9311F22289DD50000C2635 /* Assets.xcassets in Resources */,
-				3DDB7AD5229DD59B00C4D265 /* actions.storyboard in Resources */,
 				3D9311F02289DD4E000C2635 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
