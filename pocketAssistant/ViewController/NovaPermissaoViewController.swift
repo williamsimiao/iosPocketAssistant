@@ -20,6 +20,7 @@ class NovaPermissaoViewController: UIViewController {
     
     var usernameTextFieldController: MDCTextInputControllerOutlined?
     let networkManager = NetworkManager()
+    var systemAcl: Int?
     var userName: String?
     var userACL: Int?
     
@@ -28,11 +29,11 @@ class NovaPermissaoViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         turnAllSwitchesOff()
         salvarButton.applyContainedTheme(withScheme: globalContainerScheme())
-        lerSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-        criarSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-        removerSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-        atualizarSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-        
+        lerSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
+        criarSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
+        removerSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
+        atualizarSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
+        getAclRequest(userName: userName!)
         //Se veio por essa tela então provavelmente o usuario nao estava na lista de Trustees,
         //logo nao deve ter nenhuma permissao
         if self.userACL == nil {
@@ -74,7 +75,7 @@ class NovaPermissaoViewController: UIViewController {
         }
     }
     
-    @objc func switchChanged(mySwitch: UISwitch) {
+    @objc func didTapASwitch(mySwitch: UISwitch) {
         switch mySwitch {
         case lerSwitch:
             if mySwitch.isOn == false {
@@ -119,24 +120,20 @@ class NovaPermissaoViewController: UIViewController {
     }
     
     // MARK: - GET ACL
-//    func getAclRequest(userName: String) {
-//        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
-//            return
-//        }
-//
-//        networkManager.runGetAcl(token: token, usr: userName) { (response, error) in
-//            if let error = error {
-//                print(error)
-//            }
-//            if let response = response {
-//                let theAcl = response.acl
-//                DispatchQueue.main.async {
-//                    self.makeSwitchesVisibleOrNot(shouldHide: false)
-//                    self.setUpSwitches(aclInteger: theAcl)
-//                }
-//            }
-//        }
-//    }
+    func getAclRequest(userName: String) {
+        guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
+            return
+        }
+
+        networkManager.runGetAcl(token: token, usr: userName) { (response, error) in
+            if let error = error {
+                print(error)
+            }
+            if let response = response {
+                self.systemAcl = response.acl
+            }
+        }
+    }
     
     
     // MARK: - UPDATE ACL
@@ -144,12 +141,19 @@ class NovaPermissaoViewController: UIViewController {
         let novoAcl = getIntFromSwitches()
         updateAclRequest(newAcl: novoAcl)
     }
-    
+    func composeFinalAcl(newAcl: Int) -> Int {
+        let minusLastFourBits = systemAcl! >> 4
+        let onlySystemAcl = minusLastFourBits << 4
+        let finalAcl = onlySystemAcl | newAcl
+        return finalAcl
+    }
+
     func updateAclRequest(newAcl: Int) {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-        networkManager.runUpdateAcl(token: token, acl: newAcl, usr: userName!) { (error) in
+        let finalAcl = composeFinalAcl(newAcl: newAcl)
+        networkManager.runUpdateAcl(token: token, acl: finalAcl, usr: userName!) { (error) in
             if let error = error {
                 print(error)
             }
