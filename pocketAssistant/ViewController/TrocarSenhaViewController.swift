@@ -14,10 +14,12 @@ class TrocarSenhaViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var newPwdTextField: MDCTextField!
+    @IBOutlet weak var pwdConfirmationTextField: MDCTextField!
     @IBOutlet weak var atualizarSenhaButton: MDCButton!
     
     var newPwdTextFieldController: MDCTextInputControllerOutlined?
-    
+    var pwdConfirmationTextFieldController: MDCTextInputControllerOutlined?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -25,8 +27,10 @@ class TrocarSenhaViewController: UIViewController {
 
         atualizarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())
         newPwdTextFieldController = MDCTextInputControllerOutlined(textInput: newPwdTextField)
-        
+        pwdConfirmationTextFieldController = MDCTextInputControllerOutlined(textInput: pwdConfirmationTextField)
+
         newPwdTextField.delegate = self
+        pwdConfirmationTextField.delegate = self
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
@@ -53,6 +57,7 @@ class TrocarSenhaViewController: UIViewController {
                     let message = MDCSnackbarMessage()
                     message.text = "Senha alterada com sucesso"
                     MDCSnackbarManager.show(message)
+                    self.dismiss(animated: true, completion: nil)
                     
 //                    let actionComplitionHandler: MDCActionHandler = {_ in
 //                        self.navigationController?.popViewController(animated: true)

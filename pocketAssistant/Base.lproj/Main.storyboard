@@ -527,19 +527,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ahy-KH-BCu" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="50" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="16" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9kd-1u-Zjg" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="80" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="46" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repita a senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RuL-6k-f7K" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="110" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="76" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -568,7 +568,7 @@
                                             <constraint firstItem="ahy-KH-BCu" firstAttribute="leading" secondItem="diu-06-O6j" secondAttribute="leading" constant="8" id="UVt-aW-Wxx"/>
                                             <constraint firstItem="9kd-1u-Zjg" firstAttribute="leading" secondItem="diu-06-O6j" secondAttribute="leading" constant="8" id="aPh-jT-pui"/>
                                             <constraint firstItem="uYt-Cw-ki8" firstAttribute="leading" secondItem="diu-06-O6j" secondAttribute="leading" constant="8" id="fYw-RG-6a2"/>
-                                            <constraint firstItem="ahy-KH-BCu" firstAttribute="top" secondItem="diu-06-O6j" secondAttribute="top" constant="50" id="g49-d1-2ad"/>
+                                            <constraint firstItem="ahy-KH-BCu" firstAttribute="top" secondItem="diu-06-O6j" secondAttribute="top" constant="16" id="g49-d1-2ad"/>
                                             <constraint firstAttribute="trailing" secondItem="9kd-1u-Zjg" secondAttribute="trailing" constant="8" id="pph-yd-BTy"/>
                                             <constraint firstItem="RuL-6k-f7K" firstAttribute="top" secondItem="9kd-1u-Zjg" secondAttribute="bottom" id="vrn-xf-EzM"/>
                                             <constraint firstItem="RuL-6k-f7K" firstAttribute="leading" secondItem="diu-06-O6j" secondAttribute="leading" constant="8" id="zd9-0Y-C1K"/>
@@ -904,7 +904,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="828"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nova senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hfv-oY-wav" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="300" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="16" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -922,15 +922,24 @@
                                                     <action selector="didTapChangePwd:" destination="HZO-Qr-fFQ" eventType="touchUpInside" id="3zd-Jy-OgJ"/>
                                                 </connections>
                                             </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmação de senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Doj-nL-l3R" customClass="MDCTextField">
+                                                <rect key="frame" x="8" y="62" width="398" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="a8M-EN-o5I" secondAttribute="bottom" constant="8" id="2Ub-GV-QZy"/>
                                             <constraint firstItem="a8M-EN-o5I" firstAttribute="leading" secondItem="tpB-lm-Mbb" secondAttribute="leading" constant="8" id="6xS-so-5lP"/>
                                             <constraint firstAttribute="trailing" secondItem="Hfv-oY-wav" secondAttribute="trailing" constant="8" id="Vrb-mh-vNC"/>
+                                            <constraint firstItem="Doj-nL-l3R" firstAttribute="top" secondItem="Hfv-oY-wav" secondAttribute="bottom" constant="16" id="YkG-zh-sOc"/>
+                                            <constraint firstAttribute="trailing" secondItem="Doj-nL-l3R" secondAttribute="trailing" constant="8" id="eS3-eV-lSy"/>
                                             <constraint firstAttribute="trailing" secondItem="a8M-EN-o5I" secondAttribute="trailing" constant="8" id="iF9-iJ-g9q"/>
-                                            <constraint firstItem="Hfv-oY-wav" firstAttribute="top" secondItem="tpB-lm-Mbb" secondAttribute="top" constant="300" id="kkZ-iP-5jR"/>
+                                            <constraint firstItem="Hfv-oY-wav" firstAttribute="top" secondItem="tpB-lm-Mbb" secondAttribute="top" constant="16" id="kkZ-iP-5jR"/>
                                             <constraint firstItem="Hfv-oY-wav" firstAttribute="leading" secondItem="tpB-lm-Mbb" secondAttribute="leading" constant="8" id="raf-mC-J3e"/>
+                                            <constraint firstItem="Doj-nL-l3R" firstAttribute="leading" secondItem="tpB-lm-Mbb" secondAttribute="leading" constant="8" id="sim-Ue-q8z"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -956,6 +965,7 @@
                     <connections>
                         <outlet property="atualizarSenhaButton" destination="a8M-EN-o5I" id="RXu-wK-bw3"/>
                         <outlet property="newPwdTextField" destination="Hfv-oY-wav" id="1Bo-bl-2Ox"/>
+                        <outlet property="pwdConfirmationTextField" destination="Doj-nL-l3R" id="63W-nH-lYa"/>
                         <outlet property="scrollView" destination="wls-HC-lq7" id="hKE-e2-Ow2"/>
                     </connections>
                 </viewController>
