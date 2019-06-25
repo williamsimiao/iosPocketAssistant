@@ -66,7 +66,7 @@ class RelacoesCollectionViewController: UIViewController {
         let refreshButton = UIButton(type: .custom)
         refreshButton.setImage(UIImage(named: "refresh"), for: .normal)
         refreshButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        refreshButton.addTarget(self, action: #selector(RelacoesCollectionViewController.didTapAddRefresh), for: .touchUpInside)
+        refreshButton.addTarget(self, action: #selector(RelacoesCollectionViewController.didTapRefresh), for: .touchUpInside)
         let refreshBarItem = UIBarButtonItem(customView: refreshButton)
         
         adduserButton = UIButton(type: .custom)
@@ -90,11 +90,11 @@ class RelacoesCollectionViewController: UIViewController {
         }
         else {
             print("My Index 1")
-            viewControllertrusters?.didTapAdd()
+            //should not be called
         }
     }
     
-    @objc func didTapAddRefresh() {
+    @objc func didTapRefresh() {
         guard let index = tabBar.items.firstIndex(of: tabBar.selectedItem!) else {
             fatalError("MDCTabBarDelegate given selected item not found in tabBar.items")
         }
@@ -105,7 +105,7 @@ class RelacoesCollectionViewController: UIViewController {
         }
         else {
             print("The Index 1")
-            viewControllertrusters?.didTapAdd()
+            viewControllertrusters?.didTapRefresh()
 
         }
     }

@@ -26,6 +26,22 @@ class ObjetosViewController: UICollectionViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         makeRequest()
+        setUpBarButtonItens()
+
+    }
+    
+    func setUpBarButtonItens() {
+        let refreshButton = UIButton(type: .custom)
+        refreshButton.setImage(UIImage(named: "refresh"), for: .normal)
+        refreshButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        refreshButton.addTarget(self, action: #selector(ObjetosViewController.didTapAddRefresh), for: .touchUpInside)
+        let refreshBarItem = UIBarButtonItem(customView: refreshButton)
+        
+        self.navigationItem.setRightBarButtonItems([refreshBarItem], animated: true)
+    }
+    
+    @objc func didTapAddRefresh() {
+        makeRequest()
     }
     
     func matches(for regex: String, in text: String) -> [String] {
@@ -105,7 +121,9 @@ class ObjetosViewController: UICollectionViewController {
     func makeRequest() {
         //TODO:Reset others possible helper variables
         self.certificateCounter = 0
-        
+        self.exportedCertificates = 0
+        self.certificateNameArray.removeAll()
+
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }

@@ -77,7 +77,8 @@ class PerfilViewController: UIViewController {
                     print(error)
                 }
                 else {
-                    print("Sessão encerrada")
+                    
+                    
                     DispatchQueue.main.async {
                         let stor = UIStoryboard.init(name: "Main", bundle: nil)
                         let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")

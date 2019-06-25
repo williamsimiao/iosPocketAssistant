@@ -42,8 +42,9 @@ class TrusteesViewController: UIViewController {
         collectionView!.register(RelacaoCollectionViewCell.self, forCellWithReuseIdentifier: RelacaoCollectionViewCell.identifier)
         collectionView!.delegate = self
         collectionView!.dataSource = self
-        self.view.addSubview(noContentLabel)
         self.view.addSubview(collectionView!)
+        self.view.addSubview(noContentLabel)
+
         collectionView?.backgroundColor = .white
     }
     

@@ -260,15 +260,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD4-by-A9H">
-                                            <rect key="frame" x="8" y="-10" width="330" height="20"/>
+                                            <rect key="frame" x="8" y="-10" width="380" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OLj-vU-v3q">
-                                            <rect key="frame" x="346" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="396" y="0.0" width="0.0" height="0.0"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="Fz7-q5-Oc6"/>
                                                 <constraint firstAttribute="width" secondItem="OLj-vU-v3q" secondAttribute="height" multiplier="1:1" id="oUJ-2F-SXe"/>
                                             </constraints>
                                         </imageView>
