@@ -25,13 +25,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="master" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yte-kM-0SM" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="158" width="398" height="30"/>
+                                                <rect key="frame" x="16" y="158" width="382" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="name"/>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-c7-pbX" customClass="MDCTextField">
+                                                <rect key="frame" x="16" y="188" width="382" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP(Opcional)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4gY-3P-aLH" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="218" width="398" height="30"/>
+                                                <rect key="frame" x="16" y="218" width="382" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="one-time-code"/>
@@ -47,12 +53,6 @@
                                                     <action selector="didTapAutenticar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zbb-W9-eWR"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-c7-pbX" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="188" width="398" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                            </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dinamoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6Ek-be-C8B">
                                                 <rect key="frame" x="64" y="56" width="286" height="70"/>
                                                 <constraints>
@@ -62,21 +62,21 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="BXl-c7-pbX" firstAttribute="leading" secondItem="Yte-kM-0SM" secondAttribute="leading" id="6WS-ok-9Ze"/>
                                             <constraint firstAttribute="bottom" secondItem="OsZ-Cz-3YM" secondAttribute="bottom" constant="8" id="86h-td-3Kz"/>
-                                            <constraint firstAttribute="trailing" secondItem="Yte-kM-0SM" secondAttribute="trailing" constant="8" id="97O-IY-Nch"/>
+                                            <constraint firstAttribute="trailing" secondItem="Yte-kM-0SM" secondAttribute="trailing" constant="16" id="97O-IY-Nch"/>
                                             <constraint firstItem="Yte-kM-0SM" firstAttribute="top" secondItem="6Ek-be-C8B" secondAttribute="bottom" constant="32" id="9gG-HS-7rU"/>
                                             <constraint firstAttribute="trailing" secondItem="6Ek-be-C8B" secondAttribute="trailing" constant="64" id="A8O-Tm-NCl"/>
                                             <constraint firstAttribute="trailing" secondItem="OsZ-Cz-3YM" secondAttribute="trailing" constant="8" id="BXE-Iq-zXW"/>
-                                            <constraint firstItem="4gY-3P-aLH" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="CVA-sl-bs0"/>
-                                            <constraint firstAttribute="trailing" secondItem="4gY-3P-aLH" secondAttribute="trailing" constant="8" id="O01-9g-tcl"/>
+                                            <constraint firstItem="4gY-3P-aLH" firstAttribute="trailing" secondItem="Yte-kM-0SM" secondAttribute="trailing" id="Mzv-U1-Er7"/>
                                             <constraint firstItem="6Ek-be-C8B" firstAttribute="centerX" secondItem="Esq-Cm-2HR" secondAttribute="centerX" id="Rrw-ca-fla"/>
                                             <constraint firstItem="BXl-c7-pbX" firstAttribute="top" secondItem="Yte-kM-0SM" secondAttribute="bottom" id="W1O-4g-omj"/>
+                                            <constraint firstItem="BXl-c7-pbX" firstAttribute="trailing" secondItem="Yte-kM-0SM" secondAttribute="trailing" id="eeb-Hc-Kq6"/>
                                             <constraint firstItem="6Ek-be-C8B" firstAttribute="top" secondItem="Esq-Cm-2HR" secondAttribute="top" constant="56" id="pqE-Le-3PY"/>
-                                            <constraint firstItem="BXl-c7-pbX" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="sf4-hC-Rke"/>
-                                            <constraint firstItem="Yte-kM-0SM" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="uW6-Uc-X34"/>
+                                            <constraint firstItem="Yte-kM-0SM" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="16" id="uW6-Uc-X34"/>
                                             <constraint firstItem="4gY-3P-aLH" firstAttribute="top" secondItem="BXl-c7-pbX" secondAttribute="bottom" id="uiS-Zs-QVW"/>
-                                            <constraint firstAttribute="trailing" secondItem="BXl-c7-pbX" secondAttribute="trailing" constant="8" id="vrt-sh-rDW"/>
                                             <constraint firstItem="OsZ-Cz-3YM" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="zKd-bC-puZ"/>
+                                            <constraint firstItem="4gY-3P-aLH" firstAttribute="leading" secondItem="Yte-kM-0SM" secondAttribute="leading" id="zRM-Ne-MSr"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -415,7 +415,7 @@
         <scene sceneID="YJX-Uw-3Lf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c6T-Oh-MF5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Certificados" image="key_outline" selectedImage="key" id="hY0-iG-oyy"/>
+                    <tabBarItem key="tabBarItem" title="Certificados" selectedImage="key" id="hY0-iG-oyy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="72g-1c-Brd">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -435,7 +435,7 @@
         <scene sceneID="Xzb-Jn-23Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zgw-P2-xvX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gestão" image="people_outline" selectedImage="people" id="fBT-3f-JCc"/>
+                    <tabBarItem key="tabBarItem" title="Gestão" selectedImage="people" id="fBT-3f-JCc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w4T-W1-fzo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -455,7 +455,7 @@
         <scene sceneID="tH0-Jb-PeK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4i8-8A-fn9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Relações" image="thumbs_outline" selectedImage="thumbs" id="Mr9-Kf-3lc"/>
+                    <tabBarItem key="tabBarItem" title="Relações" selectedImage="thumbs" id="Mr9-Kf-3lc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CbR-9S-pk6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -475,7 +475,7 @@
         <scene sceneID="qQZ-SR-c5g">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SZY-mA-7wn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Usuário" image="person_outline" selectedImage="person" id="FqA-oD-ZNf"/>
+                    <tabBarItem key="tabBarItem" title="Usuário" selectedImage="person" id="FqA-oD-ZNf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lcM-Ej-LFw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -958,12 +958,8 @@
         <image name="dinamoLogo" width="2361" height="651"/>
         <image name="edit" width="24" height="24"/>
         <image name="key" width="24" height="24"/>
-        <image name="key_outline" width="24" height="24"/>
         <image name="people" width="24" height="24"/>
-        <image name="people_outline" width="24" height="24"/>
         <image name="person" width="24" height="24"/>
-        <image name="person_outline" width="24" height="24"/>
         <image name="thumbs" width="24" height="24"/>
-        <image name="thumbs_outline" width="24" height="24"/>
     </resources>
 </document>
