@@ -10,7 +10,7 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
-class MainViewController: UIViewController {
+class MainViewController: mainViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -170,7 +170,7 @@ class MainViewController: UIViewController {
             return
         }
         
-        networkManager.runProbeSynchronous(token: tokenString) { (response, error) in
+        networkManager.runProbeSynchronous(token: token) { (response, error) in
             if let error = error {
                 print(error)
 //                let alertController = MDCAlertController(title: "Token expirou", message: "Faça o login novamente")

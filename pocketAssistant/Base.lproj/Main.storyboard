@@ -25,13 +25,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="master" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yte-kM-0SM" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="330" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="158" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP(Opcional)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4gY-3P-aLH" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="390" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="218" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="one-time-code"/>
@@ -48,16 +48,15 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-c7-pbX" customClass="MDCTextField">
-                                                <rect key="frame" x="8" y="360" width="398" height="30"/>
+                                                <rect key="frame" x="8" y="188" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dinamoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6Ek-be-C8B">
-                                                <rect key="frame" x="122" y="60" width="170" height="170"/>
+                                                <rect key="frame" x="64" y="56" width="286" height="70"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="170" id="2Dz-XV-2qF"/>
-                                                    <constraint firstAttribute="width" secondItem="6Ek-be-C8B" secondAttribute="height" multiplier="1:1" id="adC-dn-bkR"/>
+                                                    <constraint firstAttribute="height" constant="70" id="yKE-ge-AyM"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -65,13 +64,14 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="OsZ-Cz-3YM" secondAttribute="bottom" constant="8" id="86h-td-3Kz"/>
                                             <constraint firstAttribute="trailing" secondItem="Yte-kM-0SM" secondAttribute="trailing" constant="8" id="97O-IY-Nch"/>
-                                            <constraint firstItem="Yte-kM-0SM" firstAttribute="top" secondItem="6Ek-be-C8B" secondAttribute="bottom" constant="100" id="9gG-HS-7rU"/>
+                                            <constraint firstItem="Yte-kM-0SM" firstAttribute="top" secondItem="6Ek-be-C8B" secondAttribute="bottom" constant="32" id="9gG-HS-7rU"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Ek-be-C8B" secondAttribute="trailing" constant="64" id="A8O-Tm-NCl"/>
                                             <constraint firstAttribute="trailing" secondItem="OsZ-Cz-3YM" secondAttribute="trailing" constant="8" id="BXE-Iq-zXW"/>
                                             <constraint firstItem="4gY-3P-aLH" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="CVA-sl-bs0"/>
                                             <constraint firstAttribute="trailing" secondItem="4gY-3P-aLH" secondAttribute="trailing" constant="8" id="O01-9g-tcl"/>
                                             <constraint firstItem="6Ek-be-C8B" firstAttribute="centerX" secondItem="Esq-Cm-2HR" secondAttribute="centerX" id="Rrw-ca-fla"/>
                                             <constraint firstItem="BXl-c7-pbX" firstAttribute="top" secondItem="Yte-kM-0SM" secondAttribute="bottom" id="W1O-4g-omj"/>
-                                            <constraint firstItem="6Ek-be-C8B" firstAttribute="top" secondItem="Esq-Cm-2HR" secondAttribute="top" constant="60" id="pqE-Le-3PY"/>
+                                            <constraint firstItem="6Ek-be-C8B" firstAttribute="top" secondItem="Esq-Cm-2HR" secondAttribute="top" constant="56" id="pqE-Le-3PY"/>
                                             <constraint firstItem="BXl-c7-pbX" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="sf4-hC-Rke"/>
                                             <constraint firstItem="Yte-kM-0SM" firstAttribute="leading" secondItem="Esq-Cm-2HR" secondAttribute="leading" constant="8" id="uW6-Uc-X34"/>
                                             <constraint firstItem="4gY-3P-aLH" firstAttribute="top" secondItem="BXl-c7-pbX" secondAttribute="bottom" id="uiS-Zs-QVW"/>
@@ -206,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDt-hK-Fka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4532" y="724"/>
+            <point key="canvasLocation" x="4532" y="643"/>
         </scene>
         <!--TrocarSenhaViewController-->
         <scene sceneID="ege-5i-BgD">
@@ -237,10 +237,10 @@
             </objects>
             <point key="canvasLocation" x="2298.5507246376815" y="-62.946428571428569"/>
         </scene>
-        <!--Certificados-->
+        <!--Objetos View Controller-->
         <scene sceneID="9o3-N8-h8q">
             <objects>
-                <collectionViewController storyboardIdentifier="ObjetosViewController" title="Certificados" id="Nyg-ij-HMq" customClass="ObjetosViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ObjetosViewController" id="Nyg-ij-HMq" customClass="ObjetosViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="RXR-N6-Lnd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -500,7 +500,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNn-bg-Hgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3622" y="724"/>
+            <point key="canvasLocation" x="3622" y="643"/>
         </scene>
         <!--Criar Usuario View Controller-->
         <scene sceneID="x6o-dY-VnT">

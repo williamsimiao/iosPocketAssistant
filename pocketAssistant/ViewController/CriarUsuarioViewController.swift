@@ -29,7 +29,7 @@ class CriarUsuarioViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         self.title = "Criar usuário"
 
         criarUsuarioButton.applyContainedTheme(withScheme: globalContainerScheme())

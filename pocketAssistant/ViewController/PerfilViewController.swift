@@ -36,6 +36,7 @@ class PerfilViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
         
         tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
