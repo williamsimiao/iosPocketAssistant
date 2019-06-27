@@ -115,7 +115,7 @@ class MainViewController: mainViewController {
         let password = passwordTextField.text!
         networkManager.runAuth(usr: username, pwd: password) { (response, error) in
             if let error = error {
-                print(error)
+                let message = AppUtil.handleAPIError(viewController: self, error: error)
             }
             if let response = response {
                 let tokenSaved: Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")

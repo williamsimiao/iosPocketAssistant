@@ -61,21 +61,9 @@ struct NetworkManager {
             
             let stor = UIStoryboard.init(name: "Main", bundle: nil)
             let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
-            let currentViewController = AppUtil().currentView()
+            let currentViewController = AppUtil.currentView()
             
             currentViewController.present(alertController, animated: true, completion: nil)
-
-//            if currentViewController.isKind(of: MainViewController.self) {
-//
-//                currentViewController.present(alertController, animated: true, completion: nil)
-//            }
-//            else {
-//
-//                currentViewController.present(mainViewController, animated: true, completion: { () in
-//                    let newCurrentViewController = AppUtil().currentView()
-//                    newCurrentViewController.present(alertController, animated: true, completion: nil)
-//                })
-//            }
         }
     }
     
@@ -400,7 +388,23 @@ struct NetworkManager {
                     } catch {
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
                     }
+                    
+                    
+                    
+                    
                 case .failure(let networkFailureError):
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue)
+                        return
+                    }
+                    do {
+                        let apiResponse = try JSONDecoder().decode(ResponseBody1.self, from: responseData)
+                        completion(apiResponse, nil)
+                    } catch {
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                    
+                    
                     completion(nil, networkFailureError)
                 }
             }

@@ -1,13 +1,57 @@
 //
-//  acl.swift
+//  Body1.swift
 //  pocketAssistant
 //
-//  Created by William on 06/06/19.
+//  Created by William Simiao on 22/05/19.
 //  Copyright © 2019 William Simiao. All rights reserved.
 //
 
 import Foundation
 
+public struct ResponseBody1: Codable {
+    public var token: String
+    public var cid: Int
+    public var pwd_expired: Int
+}
+
+//
+public struct ResponseBody2: Codable {
+    public var obj: [String]
+}
+
+//Probe
+public struct ResponseBody3: Codable {
+    public var probe_str: String
+}
+
+//
+public struct ResponseBody4: Codable {
+    public var usr: [String]
+}
+
+//
+public struct ResponseBody5: Codable {
+    public var trust: [item]
+}
+
+public struct item: Codable {
+    public var acl: Int
+    public var usr: String
+}
+
+//
+public struct ResponseBody6: Codable {
+    public var acl: Int
+}
+
+//
+public struct ResponseBody7: Codable {
+    public var version: Int
+    public var type: Int
+    public var attr: Int
+}
+
+//
 struct aclStruct: OptionSet {
     let rawValue: UInt32
     static let obj_del =            aclStruct(rawValue: 1 << 0)
@@ -51,3 +95,4 @@ struct aclStruct: OptionSet {
 //#define ACL_DEFAULT_OWNER ( ACL_OBJ_DEL | ACL_OBJ_READ | ACL_OBJ_CREATE | \
 //ACL_OBJ_UPDATE |ACL_OBJ_WRITE \
 //)
+

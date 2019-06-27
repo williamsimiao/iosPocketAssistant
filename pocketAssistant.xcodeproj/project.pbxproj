@@ -21,16 +21,13 @@
 		3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DD5228B48EB00A4A74C /* NetworkManager.swift */; };
 		3D19F95322A156B70071644C /* DrawerCellinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F95222A156B70071644C /* DrawerCellinfo.swift */; };
 		3D1F5ABC22A1747D006DE185 /* DrawerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F5ABA22A1747D006DE185 /* DrawerCell.swift */; };
-		3D236F4422B29B1B00FADC0A /* ResponseBody7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D236F4322B29B1B00FADC0A /* ResponseBody7.swift */; };
 		3D3C104B22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */; };
 		3D3C104D22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */; };
-		3D3C105022A946BC00E1BDD9 /* ResponseBody4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104F22A946BC00E1BDD9 /* ResponseBody4.swift */; };
 		3D3C105422A9909200E1BDD9 /* RelacoesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */; };
 		3D3C105822A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */; };
-		3D3C105A22A9950A00E1BDD9 /* ResponseBody5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105922A9950A00E1BDD9 /* ResponseBody5.swift */; };
 		3D3C105C22A9AA9000E1BDD9 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105B22A9AA9000E1BDD9 /* AppUtil.swift */; };
 		3D3C105E22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */; };
-		3D48FB742295B06F007ACC63 /* ResponseBody1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB732295B06F007ACC63 /* ResponseBody1.swift */; };
+		3D48FB742295B06F007ACC63 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB732295B06F007ACC63 /* ResponseBody.swift */; };
 		3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */; };
 		3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60CA0622A01547000387D7 /* testeViewController.swift */; };
 		3D60CA0922A0216B000387D7 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60CA0822A0216B000387D7 /* CustomNavigationController.swift */; };
@@ -45,7 +42,6 @@
 		3DC449DC22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC449DB22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift */; };
 		3DC8465622A1AD420032FB31 /* UIColor+RGBinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */; };
 		3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */; };
-		3DDB7ACD229D999800C4D265 /* ResponseBody3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */; };
 		3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */; };
 		3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */; };
 		3DDB7AD7229DDD6400C4D265 /* CriarUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */; };
@@ -54,11 +50,8 @@
 		3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */; };
 		3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */; };
 		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
-		3DEBB0FC2297001A006F0E3B /* ResponseBody2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0FB2297001A006F0E3B /* ResponseBody2.swift */; };
 		3DF882F522C5331300205315 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF882F422C5331300205315 /* mainViewController.swift */; };
 		3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */; };
-		3DFBDFA422A9D0680027C41E /* ResponseBody6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBDFA322A9D0680027C41E /* ResponseBody6.swift */; };
-		3DFBDFA622A9E2040027C41E /* acl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBDFA522A9E2040027C41E /* acl.swift */; };
 		3DFC2FE922A5BD4A005099A8 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FE822A5BD4A005099A8 /* SectionView.swift */; };
 		3DFC2FEB22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */; };
 		3DFC2FED22A5BE2B005099A8 /* DrawerHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */; };
@@ -99,16 +92,13 @@
 		3D114DD5228B48EB00A4A74C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3D19F95222A156B70071644C /* DrawerCellinfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCellinfo.swift; sourceTree = "<group>"; };
 		3D1F5ABA22A1747D006DE185 /* DrawerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCell.swift; sourceTree = "<group>"; };
-		3D236F4322B29B1B00FADC0A /* ResponseBody7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody7.swift; sourceTree = "<group>"; };
 		3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestaoUsuariosCollectionViewController.swift; sourceTree = "<group>"; };
 		3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestaoUsuariosCollectionViewCell.swift; sourceTree = "<group>"; };
-		3D3C104F22A946BC00E1BDD9 /* ResponseBody4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody4.swift; sourceTree = "<group>"; };
 		3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelacoesCollectionViewController.swift; sourceTree = "<group>"; };
 		3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelacaoCollectionViewCell.swift; sourceTree = "<group>"; };
-		3D3C105922A9950A00E1BDD9 /* ResponseBody5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody5.swift; sourceTree = "<group>"; };
 		3D3C105B22A9AA9000E1BDD9 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaPermissaoViewController.swift; sourceTree = "<group>"; };
-		3D48FB732295B06F007ACC63 /* ResponseBody1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody1.swift; sourceTree = "<group>"; };
+		3D48FB732295B06F007ACC63 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
 		3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessaoEndPoint.swift; sourceTree = "<group>"; };
 		3D60CA0622A01547000387D7 /* testeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
 		3D60CA0822A0216B000387D7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -129,7 +119,6 @@
 		3DC449DB22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionCollectionCollectionViewController.swift; sourceTree = "<group>"; };
 		3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBinit.swift"; sourceTree = "<group>"; };
 		3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
-		3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody3.swift; sourceTree = "<group>"; };
 		3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioEndPoint.swift; sourceTree = "<group>"; };
 		3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrocarSenhaViewController.swift; sourceTree = "<group>"; };
 		3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarUsuarioViewController.swift; sourceTree = "<group>"; };
@@ -138,11 +127,8 @@
 		3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosEndPoint.swift; sourceTree = "<group>"; };
 		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
-		3DEBB0FB2297001A006F0E3B /* ResponseBody2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody2.swift; sourceTree = "<group>"; };
 		3DF882F422C5331300205315 /* mainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
 		3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetoCell.swift; sourceTree = "<group>"; };
-		3DFBDFA322A9D0680027C41E /* ResponseBody6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody6.swift; sourceTree = "<group>"; };
-		3DFBDFA522A9E2040027C41E /* acl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = acl.swift; sourceTree = "<group>"; };
 		3DFC2FE822A5BD4A005099A8 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContentWithScrollViewController.swift; sourceTree = "<group>"; };
 		3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHeaderViewController.swift; sourceTree = "<group>"; };
@@ -268,7 +254,6 @@
 			children = (
 				3D19F95122A156670071644C /* Bodies */,
 				3D19F95222A156B70071644C /* DrawerCellinfo.swift */,
-				3DFBDFA522A9E2040027C41E /* acl.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,13 +269,7 @@
 		3D19F95122A156670071644C /* Bodies */ = {
 			isa = PBXGroup;
 			children = (
-				3D48FB732295B06F007ACC63 /* ResponseBody1.swift */,
-				3DEBB0FB2297001A006F0E3B /* ResponseBody2.swift */,
-				3DDB7ACC229D999800C4D265 /* ResponseBody3.swift */,
-				3D3C104F22A946BC00E1BDD9 /* ResponseBody4.swift */,
-				3D3C105922A9950A00E1BDD9 /* ResponseBody5.swift */,
-				3DFBDFA322A9D0680027C41E /* ResponseBody6.swift */,
-				3D236F4322B29B1B00FADC0A /* ResponseBody7.swift */,
+				3D48FB732295B06F007ACC63 /* ResponseBody.swift */,
 			);
 			path = Bodies;
 			sourceTree = "<group>";
@@ -632,19 +611,15 @@
 				3D114DC9228B090200A4A74C /* URLParameterEncoder.swift in Sources */,
 				3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */,
 				3DF882F522C5331300205315 /* mainViewController.swift in Sources */,
-				3DDB7ACD229D999800C4D265 /* ResponseBody3.swift in Sources */,
 				3D114DC4228B075C00A4A74C /* ParameterEncoding.swift in Sources */,
 				3D3C105C22A9AA9000E1BDD9 /* AppUtil.swift in Sources */,
-				3DFBDFA622A9E2040027C41E /* acl.swift in Sources */,
 				3DC8465622A1AD420032FB31 /* UIColor+RGBinit.swift in Sources */,
 				3DC449DC22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift in Sources */,
 				3D114DC6228B086900A4A74C /* NetworkError.swift in Sources */,
-				3DFBDFA422A9D0680027C41E /* ResponseBody6.swift in Sources */,
 				3D114DBC228B053E00A4A74C /* HTTPMethod.swift in Sources */,
-				3D236F4422B29B1B00FADC0A /* ResponseBody7.swift in Sources */,
 				3DDC4091229F490100713546 /* Theming.swift in Sources */,
 				3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */,
-				3D48FB742295B06F007ACC63 /* ResponseBody1.swift in Sources */,
+				3D48FB742295B06F007ACC63 /* ResponseBody.swift in Sources */,
 				3D3C105422A9909200E1BDD9 /* RelacoesCollectionViewController.swift in Sources */,
 				3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */,
 				3DDB7AD7229DDD6400C4D265 /* CriarUsuarioViewController.swift in Sources */,
@@ -655,9 +630,7 @@
 				3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */,
 				3D9311ED2289DD4E000C2635 /* ViewController.swift in Sources */,
 				3D3C105822A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift in Sources */,
-				3D3C105022A946BC00E1BDD9 /* ResponseBody4.swift in Sources */,
 				3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */,
-				3DEBB0FC2297001A006F0E3B /* ResponseBody2.swift in Sources */,
 				3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */,
 				3D1F5ABC22A1747D006DE185 /* DrawerCell.swift in Sources */,
 				3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */,
@@ -666,7 +639,6 @@
 				3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */,
 				3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */,
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
-				3D3C105A22A9950A00E1BDD9 /* ResponseBody5.swift in Sources */,
 				3DFC2FEB22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift in Sources */,
 				3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */,
 				3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */,

@@ -24,6 +24,7 @@ class PerfilViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Perfil"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
         
@@ -52,9 +53,7 @@ class PerfilViewController: UIViewController {
                     print(error)
                 }
                 else {
-                    
-                    
-                    
+                    AppUtil.goToLoginScreen(sourceViewController: self)
                 }
             }
         }
@@ -64,11 +63,6 @@ class PerfilViewController: UIViewController {
         alertController.addAction(MDCAlertAction(title: "Cancelar", emphasis: .high, handler: nil))
         self.present(alertController, animated:true, completion:nil)
     }
-    
-    @IBAction func didTapDismiss(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
 }
 
 extension PerfilViewController: MDCTabBarDelegate {
