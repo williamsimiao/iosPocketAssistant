@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import SystemConfiguration
+import SwiftKeychainWrapper
 import UIKit
 
 open class AppUtil {
@@ -21,5 +21,31 @@ open class AppUtil {
             currentViewController = topController
         }
         return currentViewController
+    }
+    
+    //DAQUI pra baixo
+    func goToLoginScreen(viewController: UIViewController) {
+        DispatchQueue.main.async {
+            let stor = UIStoryboard.init(name: "Main", bundle: nil)
+            let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
+            viewController.dismiss(animated: true, completion: {
+                KeychainWrapper.standard.removeObject(forKey: "TOKEN")
+                viewController.present(mainViewController, animated: true)
+            })
+        }
+    }
+    
+    func alertAboutConnectionError(viewController: UIViewController) {
+        
+    }
+    
+    func isNetworkConnected() {
+        
+    }
+    
+    func handleAPIError(viewController: UIViewController, error: String) -> String? {
+        let message = String()
+        
+        return message
     }
 }

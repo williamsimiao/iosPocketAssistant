@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var autenticarButton: MDCButton!
     
     let networkManager = NetworkManager()
+    var tokenString: String?
     
     lazy var activityIndicator: MDCActivityIndicator = {
         let aActivityIndicator = MDCActivityIndicator()
@@ -38,7 +39,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Dinâmo"
-        
+        tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
+
         contentView.addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         let horizontalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
@@ -74,8 +76,9 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        probeRequest()
-
+        if tokenString != nil {
+            probeRequest()
+        }
     }
     
     // MARK: - Gesture Handling
@@ -160,8 +163,7 @@ class MainViewController: UIViewController {
     func probeRequest() {
         
         let networkManager = NetworkManager()
-        let token = KeychainWrapper.standard.string(forKey: "TOKEN")
-        guard let tokenString = token else {
+        guard let token = tokenString else {
             //then go to MainViewController without setting "tokenHasExpired" to true
             //because thre is no token yet or the session has been properly closed
             showLoginFields()

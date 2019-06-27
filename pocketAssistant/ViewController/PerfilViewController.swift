@@ -79,13 +79,7 @@ class PerfilViewController: UIViewController {
                 else {
                     
                     
-                    DispatchQueue.main.async {
-                        let stor = UIStoryboard.init(name: "Main", bundle: nil)
-                        let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
-                        self.dismiss(animated: true, completion: {
-                            self.present(mainViewController, animated: true)
-                        })
-                    }
+                    
                 }
             }
         }
