@@ -24,7 +24,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esq-Cm-2HR">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yte-kM-0SM" customClass="MDCTextField">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="master" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yte-kM-0SM" customClass="MDCTextField">
                                                 <rect key="frame" x="8" y="330" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -47,7 +47,7 @@
                                                     <action selector="didTapAutenticar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zbb-W9-eWR"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-c7-pbX" customClass="MDCTextField">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-c7-pbX" customClass="MDCTextField">
                                                 <rect key="frame" x="8" y="360" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -260,29 +260,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD4-by-A9H">
-                                            <rect key="frame" x="8" y="-10" width="380" height="20"/>
+                                            <rect key="frame" x="8" y="-10" width="384" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OLj-vU-v3q">
-                                            <rect key="frame" x="396" y="0.0" width="0.0" height="0.0"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="OLj-vU-v3q" secondAttribute="height" multiplier="1:1" id="oUJ-2F-SXe"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="XD4-by-A9H" firstAttribute="leading" secondItem="2KC-PT-0ED" secondAttribute="leading" constant="8" id="4qf-ZE-OMf"/>
-                                    <constraint firstItem="OLj-vU-v3q" firstAttribute="top" secondItem="2KC-PT-0ED" secondAttribute="top" id="MLa-aA-PIo"/>
-                                    <constraint firstAttribute="bottom" secondItem="OLj-vU-v3q" secondAttribute="bottom" id="oba-23-5jx"/>
+                                    <constraint firstAttribute="trailing" secondItem="XD4-by-A9H" secondAttribute="trailing" constant="8" id="kFw-1v-4DD"/>
                                     <constraint firstItem="XD4-by-A9H" firstAttribute="centerY" secondItem="2KC-PT-0ED" secondAttribute="centerY" id="pzF-bh-Aoa"/>
-                                    <constraint firstItem="OLj-vU-v3q" firstAttribute="leading" secondItem="XD4-by-A9H" secondAttribute="trailing" constant="8" id="uvv-au-0jG"/>
-                                    <constraint firstAttribute="trailing" secondItem="OLj-vU-v3q" secondAttribute="trailing" constant="4" id="wbd-so-ns3"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="arrowImage" destination="OLj-vU-v3q" id="DwH-uU-ZbJ"/>
                                     <outlet property="keyLabel" destination="XD4-by-A9H" id="eeG-Rc-TZQ"/>
                                 </connections>
                             </collectionViewCell>

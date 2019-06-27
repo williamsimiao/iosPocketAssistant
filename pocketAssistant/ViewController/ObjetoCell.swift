@@ -13,15 +13,13 @@ class ObjetoCell: MDCCardCollectionCell {
     static var identifier: String = "Cell"
 
     @IBOutlet weak var keyLabel: UILabel!
-    @IBOutlet weak var arrowImage: UIImageView!
-    
     var separator: UIBezierPath!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         keyLabel.font = MDCTypography.body2Font()
         keyLabel.alpha = MDCTypography.body2FontOpacity()
-        arrowImage.image = UIImage(named: "baseline_keyboard_arrow_right_black_24pt_")
+//        arrowImage.image = UIImage(named: "baseline_keyboard_arrow_right_black_24pt_")
     }
 
 

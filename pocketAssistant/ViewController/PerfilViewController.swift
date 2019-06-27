@@ -82,8 +82,8 @@ class PerfilViewController: UIViewController {
                     DispatchQueue.main.async {
                         let stor = UIStoryboard.init(name: "Main", bundle: nil)
                         let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
-                        self.present(mainViewController, animated: true, completion: { () in
-                            print("Done")
+                        self.dismiss(animated: true, completion: {
+                            self.present(mainViewController, animated: true)
                         })
                     }
                 }
@@ -104,7 +104,7 @@ class PerfilViewController: UIViewController {
 
 extension PerfilViewController: MDCTabBarDelegate {
     func tabBar(_ tabBar: MDCTabBar, didSelect item: UITabBarItem) {
-        guard let index = tabBar.items.index(of: item) else {
+        guard let index = tabBar.items.firstIndex(of: item) else {
             fatalError("MDCTabBarDelegate given selected item not found in tabBar.items")
         }
         
