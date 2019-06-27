@@ -122,21 +122,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVa-yD-qUJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="48"/>
-                                <color key="backgroundColor" red="0.74901960784313726" green="0.66666666666666663" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="78O-aS-hrO"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Yg-7a-zJZ">
-                                <rect key="frame" x="0.0" y="136" width="414" height="677"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BSf-Em-msB" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wm9-GQ-eur" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="565" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="613" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="Fei-tf-Y5e"/>
@@ -149,7 +142,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9O-kd-h58" customClass="MDCButton">
-                                                <rect key="frame" x="16" y="621" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="669" width="382" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="rOH-LQ-6Lz"/>
@@ -187,11 +180,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7Yg-7a-zJZ" firstAttribute="leading" secondItem="5qH-Cx-OuW" secondAttribute="leading" id="BUT-09-A0e"/>
-                            <constraint firstItem="7Yg-7a-zJZ" firstAttribute="top" secondItem="aVa-yD-qUJ" secondAttribute="bottom" id="Jnc-uZ-ofd"/>
-                            <constraint firstItem="aVa-yD-qUJ" firstAttribute="leading" secondItem="5qH-Cx-OuW" secondAttribute="leading" id="X1n-Yw-RSw"/>
+                            <constraint firstItem="7Yg-7a-zJZ" firstAttribute="top" secondItem="5qH-Cx-OuW" secondAttribute="top" id="bjN-Cu-eID"/>
                             <constraint firstItem="5qH-Cx-OuW" firstAttribute="trailing" secondItem="7Yg-7a-zJZ" secondAttribute="trailing" id="fXY-IK-6M4"/>
-                            <constraint firstItem="5qH-Cx-OuW" firstAttribute="trailing" secondItem="aVa-yD-qUJ" secondAttribute="trailing" id="qPB-jJ-kN3"/>
-                            <constraint firstItem="aVa-yD-qUJ" firstAttribute="top" secondItem="5qH-Cx-OuW" secondAttribute="top" id="rgc-PG-sIf"/>
                             <constraint firstItem="5qH-Cx-OuW" firstAttribute="bottom" secondItem="7Yg-7a-zJZ" secondAttribute="bottom" id="ve0-8j-Aov"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5qH-Cx-OuW"/>
@@ -200,7 +190,6 @@
                     <connections>
                         <outlet property="fecharSessaoButton" destination="R9O-kd-h58" id="WmM-MW-2Jk"/>
                         <outlet property="mudarSenhaButton" destination="wm9-GQ-eur" id="6Ch-eU-YGT"/>
-                        <outlet property="tabBarContainer" destination="aVa-yD-qUJ" id="EiE-dl-7DD"/>
                         <segue destination="Jo6-n1-nhB" kind="show" identifier="to_TrocarSenhaViewController" id="tU6-93-tC1"/>
                     </connections>
                 </viewController>

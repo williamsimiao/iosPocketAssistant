@@ -14,18 +14,6 @@ class PerfilViewController: UIViewController {
     @IBOutlet weak var mudarSenhaButton: MDCButton!
     @IBOutlet weak var fecharSessaoButton: MDCButton!
     @IBOutlet weak var tabBarContainer: UIView!
-    lazy var tabBar: MDCTabBar = {
-        let tabBar = MDCTabBar(frame: tabBarContainer.bounds)
-        tabBar.delegate = self
-        let anyImage = UIImage(named: "baseline_menu_black_24pt_")
-        MDCTabBarColorThemer.applySemanticColorScheme(globalColorScheme(), toTabs: tabBar)
-        tabBar.itemAppearance = .titles
-        tabBar.tintColor = .black
-        tabBar.items = [UITabBarItem(title: "Atributos", image: anyImage, tag:0),
-                        UITabBarItem(title: "Permissões", image: anyImage, tag:0),
-                        UITabBarItem(title: "Alterar senha", image: anyImage, tag:0)]
-        return tabBar
-    }()
     
     var tokenString: String?
     let networkManager = NetworkManager()
@@ -38,20 +26,6 @@ class PerfilViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
-        
-        tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-        tabBar.sizeToFit()
-        tabBarContainer.addSubview(tabBar)
-//        let atabBar = MDCTabBar(frame: view.bounds)
-//        atabBar.items = [
-//            UITabBarItem(title: "Recents", image: UIImage(named: "baseline_menu_black_24pt_"), tag: 0),
-//            UITabBarItem(title: "Favorites", image: UIImage(named: "baseline_menu_black_24pt_"), tag: 0),
-//        ]
-//        MDCTabBarColorThemer.applySemanticColorScheme(globalColorScheme(), toTabs: atabBar)
-//        atabBar.itemAppearance = .titledImages
-//        atabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-//        atabBar.sizeToFit()
-//        view.addSubview(atabBar)
         
         mudarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())
         fecharSessaoButton.applyContainedTheme(withScheme: globalContainerScheme())
