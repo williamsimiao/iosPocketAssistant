@@ -51,6 +51,11 @@ public struct ResponseBody7: Codable {
     public var attr: Int
 }
 
+public struct errorBody: Codable {
+    public var rc: Int64
+    public var rd: String
+}
+
 //
 struct aclStruct: OptionSet {
     let rawValue: UInt32

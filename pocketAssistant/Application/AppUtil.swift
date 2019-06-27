@@ -77,43 +77,20 @@ open class AppUtil {
         return isConnected
     }
     
-    class func handleAPIError(viewController: UIViewController, error: String) -> String? {
-        let message = String()
-        let rc: Int? = nil
-        let rd: String? = nil
+    class func handleAPIError(viewController: UIViewController, mErrorBody: errorBody) -> String? {
+        let message: String?
         
-        if let range = error.range(of: "\"rc\": ")  {
-            print(error[range.upperBound...])
-            print(error[range.upperBound...])
+        switch mErrorBody.rd {
+        case "ERR_ACCESS_DENIED":
+            message = "Acesso negado"
+            if (viewController is MainViewController) == false {
+                goToLoginScreen(sourceViewController: viewController)
+            }
+        case "ERR_USR_NOT_FOUND": message = "Usuário não encontrado"
+        default:
+            message = "Erro desconhecido"
+            print(mErrorBody.rd)
         }
-        
-        
-        
         return message
     }
-    
-    
-    //fun handleAPIError(activity: Activity, mErrorBody: ResponseBody?): String? {
-    //    val message: String
-    //
-    //    val errorStream = mErrorBody?.byteStream().toString()
-    //    val rc = errorStream.substringAfter("\"rc\": ").substringBefore(",")
-    //    val rd = errorStream.substringAfter("\"rd\":  \"").substringBefore("\"")
-    //    val errorBody = errorBody(rc.toLong(), rd)
-    //
-    //    when(errorBody.rd) {
-    //        "ERR_ACCESS_DENIED" -> {
-    //            message = activity.getString(R.string.ERR_ACCESS_DENIED_message)
-    //            if(activity !is MainActivity) {
-    //                goToLoginScreen(activity)
-    //            }
-    //        }
-    //        "ERR_USR_NOT_FOUND" -> message = activity.getString(R.string.ERR_USR_NOT_FOUND_message)
-    //        else -> {
-    //            message = activity.getString(R.string.ERR_DESCONHECIDO_message)
-    //            Log.d(TAG, errorBody.rd)
-    //        }
-    //    }
-    //    return message
-    //}
 }

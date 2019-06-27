@@ -30,62 +30,20 @@ struct NetworkManager {
     private let sessaoRouter = Router<SessaoApi>()
     private let objetosRouter = Router<ObjetosApi>()
     private let usuarioRouter = Router<UsuariosApi>()
-
-    func promptErrorToUser(resultCode: Result<String>) {
-        DispatchQueue.main.async {
-            let message: String?
-            let title: String?
-            switch resultCode {
-            case .failure(NetworkResponse.authenticationError.rawValue):
-                title = "Credenciais invalidas"
-                message = "Faça o login novamente"
-            case .failure(NetworkResponse.serverError.rawValue):
-                title = "Erro Interno"
-                message = "Verifique se seu usuário posusi permissão para realizar esta operação"
-            default:
-                title = "Erro"
-                message = ""
-            }
-            guard let aTitle = title else {
-                return
-            }
-            guard let aMessage = message else {
-                return
-            }
-            
-            let alertController = MDCAlertController(title: aTitle, message: aMessage)
-            let action = MDCAlertAction(title: "OK", handler: nil)
-            alertController.addAction(action)
-            alertController.applyTheme(withScheme: globalContainerScheme())
-            
-            
-            let stor = UIStoryboard.init(name: "Main", bundle: nil)
-            let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
-            let currentViewController = AppUtil.currentView()
-            
-            currentViewController.present(alertController, animated: true, completion: nil)
-        }
-    }
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
-        print("STATUS CODE: \(response.statusCode)")
         switch response.statusCode {
         case 200...299:
             return .success
         case 401...499:
-            promptErrorToUser(resultCode: .failure(NetworkResponse.authenticationError.rawValue))
             return .failure(NetworkResponse.authenticationError.rawValue)
         case 500:
-            promptErrorToUser(resultCode: .failure(NetworkResponse.serverError.rawValue))
             return .failure(NetworkResponse.serverError.rawValue)
         case 501...599:
-            promptErrorToUser(resultCode: .failure(NetworkResponse.badRequest.rawValue))
             return .failure(NetworkResponse.badRequest.rawValue)
         case 600:
-            promptErrorToUser(resultCode: .failure(NetworkResponse.outdated.rawValue))
             return .failure(NetworkResponse.outdated.rawValue)
         default:
-            promptErrorToUser(resultCode: .failure(NetworkResponse.failed.rawValue))
             return .failure(NetworkResponse.failed.rawValue)
         }
     }
@@ -368,44 +326,30 @@ struct NetworkManager {
         }
     }
     
-    func runAuth(usr: String, pwd: String, completion: @escaping (_ body1:ResponseBody1?,_ error: String?)->()) {
+    func runAuth(usr: String, pwd: String, completion: @escaping (_ body1:ResponseBody1?,_ error: errorBody?)->()) {
         sessaoRouter.request(.auth(usr: usr, pwd: pwd)) { (data, response, error) in
             if error != nil {
-                completion(nil, "Check your internet connection")
+                print(error)
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
                 switch result {
                 case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    
                     do {
-                        let apiResponse = try JSONDecoder().decode(ResponseBody1.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(ResponseBody1.self, from: data!)
                         completion(apiResponse, nil)
                     } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                        print(NetworkResponse.unableToDecode.rawValue)
                     }
-                    
-                    
-                    
                     
                 case .failure(let networkFailureError):
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
                     do {
-                        let apiResponse = try JSONDecoder().decode(ResponseBody1.self, from: responseData)
-                        completion(apiResponse, nil)
+                        let apiResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(nil, apiResponse)
                     } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                        print(NetworkResponse.unableToDecode.rawValue)
                     }
-                    
-                    
-                    completion(nil, networkFailureError)
+                    print(networkFailureError)
                 }
             }
         }

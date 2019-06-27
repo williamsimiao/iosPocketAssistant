@@ -48,14 +48,6 @@ class MainViewController: mainViewController {
         let widthConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
         let heightConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
         view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
-        // To make the activity indicator appear:
-        activityIndicator.startAnimating()
-        
-        //HIDE IT ALL
-        usernameTextField.isHidden = true
-        passwordTextField.isHidden = true
-        otpTextField.isHidden = true
-        autenticarButton.isHidden = true
         
         usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
@@ -75,8 +67,15 @@ class MainViewController: mainViewController {
         registerKeyboardNotifications()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if tokenString != nil {
+            //HIDE IT ALL
+            usernameTextField.isHidden = true
+            passwordTextField.isHidden = true
+            otpTextField.isHidden = true
+            autenticarButton.isHidden = true
+            
+            activityIndicator.startAnimating()
             probeRequest()
         }
     }
@@ -115,11 +114,16 @@ class MainViewController: mainViewController {
         let password = passwordTextField.text!
         networkManager.runAuth(usr: username, pwd: password) { (response, error) in
             if let error = error {
-                let message = AppUtil.handleAPIError(viewController: self, error: error)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+                
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
+            
             if let response = response {
-                let tokenSaved: Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
-                let userNameSaved: Bool = KeychainWrapper.standard.set(username, forKey: "USR_NAME")
+                let tokenSaved : Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
+                let _ : Bool = KeychainWrapper.standard.set(username, forKey: "USR_NAME")
                 if !tokenSaved {
                     return
                 }
@@ -173,15 +177,11 @@ class MainViewController: mainViewController {
         networkManager.runProbeSynchronous(token: token) { (response, error) in
             if let error = error {
                 print(error)
-//                let alertController = MDCAlertController(title: "Token expirou", message: "Faça o login novamente")
-//                let action = MDCAlertAction(title: "OK", handler: nil)
-//                alertController.addAction(action)
-//                alertController.applyTheme(withScheme: globalContainerScheme())
-//                self.present(alertController, animated:true, completion:nil)
             }
             else if let response = response {
-                print(response.probe_str)
-                self.performSegue(withIdentifier: "to_second", sender: self)
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "to_second", sender: self)
+                }
             }
             self.showLoginFields()
         }
