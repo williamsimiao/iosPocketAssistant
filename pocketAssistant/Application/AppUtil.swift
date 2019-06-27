@@ -25,7 +25,6 @@ open class AppUtil {
         return currentViewController
     }
     
-    //DAQUI pra baixo
     class func goToLoginScreen(sourceViewController: UIViewController) {
         DispatchQueue.main.async {
             let stor = UIStoryboard.init(name: "Main", bundle: nil)
@@ -72,8 +71,11 @@ open class AppUtil {
         }
         let alertController = MDCAlertController(title: title, message: message)
         alertController.addAction(MDCAlertAction(title: "Ok", emphasis: .high, handler: nil))
-        viewController.present(alertController, animated:true, completion:nil)
         
+        DispatchQueue.main.async {
+            viewController.present(alertController, animated:true, completion:nil)
+        }
+
         return isConnected
     }
     

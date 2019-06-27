@@ -64,14 +64,3 @@ class PerfilViewController: UIViewController {
         self.present(alertController, animated:true, completion:nil)
     }
 }
-
-extension PerfilViewController: MDCTabBarDelegate {
-    func tabBar(_ tabBar: MDCTabBar, didSelect item: UITabBarItem) {
-        guard let index = tabBar.items.firstIndex(of: item) else {
-            fatalError("MDCTabBarDelegate given selected item not found in tabBar.items")
-        }
-        
-//        scrollView.setContentOffset(CGPoint(x: CGFloat(index) * view.bounds.width, y: 0),
-//                                    animated: true)
-    }
-}

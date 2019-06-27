@@ -208,12 +208,8 @@ struct NetworkManager {
                         completion(nil, NetworkResponse.noData.rawValue)
                         return
                     }
+                    completion(responseData as CFData, nil)
                     
-                    do {
-                        completion(responseData as CFData, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
                 case .failure(let networkFailureError):
                     completion(nil, networkFailureError)
                 }
@@ -282,7 +278,7 @@ struct NetworkManager {
     //SessaoApi
     func runProbeSynchronous(token: String, completion: @escaping (_ body1:ResponseBody3?,_ error: String?)->()) {
         let completeToken = "HSM \(token)"
-        sessaoRouter.synchronousRequest(.probe(token: completeToken)) { (data, response, error) in
+        sessaoRouter.request(.probe(token: completeToken)) { (data, response, error) in
             if error != nil {
                 completion(nil, "Check your internet connection")
             }
@@ -329,7 +325,7 @@ struct NetworkManager {
     func runAuth(usr: String, pwd: String, completion: @escaping (_ body1:ResponseBody1?,_ error: errorBody?)->()) {
         sessaoRouter.request(.auth(usr: usr, pwd: pwd)) { (data, response, error) in
             if error != nil {
-                print(error)
+                print(error!)
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)

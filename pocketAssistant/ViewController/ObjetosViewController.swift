@@ -77,7 +77,7 @@ class ObjetosViewController: UICollectionViewController {
                 self.certificateNameArray.append(matched.first!)
                 
                 
-                var commonNamePointer = UnsafeMutablePointer<CFString?>.allocate(capacity: 50)
+//                var commonNamePointer = UnsafeMutablePointer<CFString?>.allocate(capacity: 50)
 
 //                if #available(iOS 10.3, *) {
 //                    var cerror: Unmanaged<CFError>?

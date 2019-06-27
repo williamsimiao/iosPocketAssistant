@@ -112,6 +112,7 @@ class MainViewController: mainViewController {
         }
         let username = usernameTextField.text!
         let password = passwordTextField.text!
+        
         networkManager.runAuth(usr: username, pwd: password) { (response, error) in
             if let error = error {
                 let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
@@ -168,34 +169,35 @@ class MainViewController: mainViewController {
         
         let networkManager = NetworkManager()
         guard let token = tokenString else {
-            //then go to MainViewController without setting "tokenHasExpired" to true
-            //because thre is no token yet or the session has been properly closed
-            showLoginFields()
+            self.showLoginFields()
+            
             return
         }
         
         networkManager.runProbeSynchronous(token: token) { (response, error) in
             if let error = error {
-                print(error)
+                self.showLoginFields()
             }
-            else if let response = response {
+            else if let _ = response {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "to_second", sender: self)
                 }
+
             }
-            self.showLoginFields()
         }
     }
     
     func showLoginFields() {
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.isHidden = true
-        
-        //SHOW IT ALL
-        self.usernameTextField.isHidden = false
-        self.passwordTextField.isHidden = false
-        self.otpTextField.isHidden = false
-        self.autenticarButton.isHidden = false
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            
+            //SHOW IT ALL
+            self.usernameTextField.isHidden = false
+            self.passwordTextField.isHidden = false
+            self.otpTextField.isHidden = false
+            self.autenticarButton.isHidden = false
+        }
     }
 
 }
