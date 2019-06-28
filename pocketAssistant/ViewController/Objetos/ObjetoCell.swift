@@ -14,6 +14,11 @@ class ObjetoCell: MDCCardCollectionCell {
 
     @IBOutlet weak var keyLabel: UILabel!
     var separator: UIBezierPath!
+    var objectName: String? {
+        didSet {
+            keyLabel.text = objectName
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

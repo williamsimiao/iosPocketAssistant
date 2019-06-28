@@ -53,6 +53,7 @@ class PerfilViewController: UIViewController {
                     let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
                 }
                 else {
+                    print("Deu certo")
                     AppUtil.goToLoginScreen(sourceViewController: self)
                 }
             }

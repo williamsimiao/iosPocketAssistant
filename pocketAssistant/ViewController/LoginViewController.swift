@@ -39,7 +39,21 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
-
+        setUpViews()
+        
+        registerKeyboardNotifications()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //This null verification is not suitable for viewDidLoad because de Token is
+        //modified after the creation
+        if tokenString != nil {
+            hideLoginFields()
+            probeRequest()
+        }
+    }
+    
+    func setUpViews() {
         contentView.addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         let horizontalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
@@ -55,27 +69,21 @@ class LoginViewController: UIViewController {
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: usernameTextFieldController!)
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: passwordTextFieldController!)
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: otpTextFieldController!)
-
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
-
+        
         autenticarButton.applyContainedTheme(withScheme: globalContainerScheme())
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         otpTextField.delegate = self
-        registerKeyboardNotifications()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if tokenString != nil {
-            //HIDE IT ALL
-            usernameTextField.isHidden = true
-            passwordTextField.isHidden = true
-            otpTextField.isHidden = true
-            autenticarButton.isHidden = true
-            
-            activityIndicator.startAnimating()
-            probeRequest()
+    func showInvalidTokenDialog() {
+        let alertController = MDCAlertController(title: "Credenciais inválidas", message: "Faça o login novamente.")
+        alertController.addAction(MDCAlertAction(title: "Ok", emphasis: .high, handler: nil))
+        DispatchQueue.main.async {
+            self.present(alertController, animated:true, completion:nil)
         }
     }
     
@@ -169,24 +177,33 @@ class LoginViewController: UIViewController {
         
         let networkManager = NetworkManager()
         guard let token = tokenString else {
-            self.showLoginFields()
-            
             return
         }
         
         networkManager.runProbeSynchronous(token: token) { (response, errorResponse) in
             if let errorResponse = errorResponse {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-
-                self.showLoginFields()
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                if message == "Acesso negado" {
+                    self.showInvalidTokenDialog()
+                }
             }
             else if let _ = response {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "to_second", sender: self)
                 }
-
             }
+            self.showLoginFields()
         }
+    }
+    
+    func hideLoginFields() {
+        usernameTextField.isHidden = true
+        passwordTextField.isHidden = true
+        otpTextField.isHidden = true
+        autenticarButton.isHidden = true
+        activityIndicator.isHidden = false
+        
+        activityIndicator.startAnimating()
     }
     
     func showLoginFields() {

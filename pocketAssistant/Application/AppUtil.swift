@@ -29,9 +29,9 @@ open class AppUtil {
         DispatchQueue.main.async {
             let stor = UIStoryboard.init(name: "Main", bundle: nil)
             let LoginViewController = stor.instantiateViewController(withIdentifier: "LoginViewController")
-            sourceViewController.dismiss(animated: true, completion: {
+            sourceViewController.present(LoginViewController, animated: true, completion: {
                 KeychainWrapper.standard.removeObject(forKey: "TOKEN")
-                sourceViewController.present(LoginViewController, animated: true)
+//                sourceViewController.dismiss(animated: true, completion: nil)
             })
         }
     }
@@ -77,6 +77,11 @@ open class AppUtil {
         let message: String?
         
         switch mErrorBody.rd {
+        case "ERR_INVALID_KEY":
+            message = "Sessão expirou"
+            if (viewController is LoginViewController) == false {
+                goToLoginScreen(sourceViewController: viewController)
+            }
         case "ERR_ACCESS_DENIED":
             message = "Acesso negado"
             if (viewController is LoginViewController) == false {
@@ -86,12 +91,6 @@ open class AppUtil {
         default:
             message = "Erro desconhecido"
             print(mErrorBody.rd)
-        }
-        
-        if message != "Acesso negado" {
-            let snackBar = MDCSnackbarMessage()
-            snackBar.text = message
-            MDCSnackbarManager.show(snackBar)
         }
         
         return message

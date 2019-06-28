@@ -158,7 +158,7 @@ extension ObjetosViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ObjetoCell.identifier, for: indexPath) as! ObjetoCell
         let data = certificateNameArray
-        cell.keyLabel.text = data[indexPath.row]
+        cell.objectName = data[indexPath.row]
         return cell
     }
     
