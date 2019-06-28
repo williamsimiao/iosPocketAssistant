@@ -151,12 +151,12 @@ struct NetworkManager {
         }
     }
     
-    func runCreateUsr(token: String, usr: String, pwd: String, acl: Int, completion: @escaping (_ error: String?)->()) {
+    func runCreateUsr(token: String, usr: String, pwd: String, acl: Int, completion: @escaping (_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
         usuarioRouter.request(.createUsr(token: completeToken, usr: usr, pwd: pwd, acl: acl)) { (data, response, error) in
             if error != nil {
-                completion("Check your internet connection")
+                AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
@@ -165,7 +165,13 @@ struct NetworkManager {
                 case .success:
                     completion(nil)
                 case .failure(let networkFailureError):
-                    completion(networkFailureError)
+                    do {
+                        let errorResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(errorResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }

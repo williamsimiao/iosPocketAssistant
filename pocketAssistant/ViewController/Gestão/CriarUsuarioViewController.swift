@@ -66,9 +66,9 @@ class CriarUsuarioViewController: UIViewController {
             return
         }
         
-        NetworkManager().runCreateUsr(token: token, usr: username, pwd: password, acl: newUserDefaultACL) { (error) in
-            if let error = error {
-                print(error)
+        NetworkManager().runCreateUsr(token: token, usr: username, pwd: password, acl: newUserDefaultACL) { (errorResponse) in
+            if let errorResponse = errorResponse {
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
             }
             else {
                 DispatchQueue.main.async {
