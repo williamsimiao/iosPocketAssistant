@@ -64,9 +64,9 @@ class ObjetosViewController: UICollectionViewController {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-        NetworkManager().runObjExp(objId: objId, token: token) { (response, error) in
-            if let error = error {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+        NetworkManager().runObjExp(objId: objId, token: token) { (response, errorResponse) in
+            if let errorResponse = errorResponse {
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
             }
             if let response = response {
                 let certificate = SecCertificateCreateWithData(nil, response as CFData)

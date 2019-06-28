@@ -47,9 +47,9 @@ class TrocarSenhaViewController: UIViewController {
         let newPwd = newPwdTextField.text!
         let tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
         
-        networkmanager.runChangePwd(token: tokenString!, newPwd: newPwd) { (error) in
-            if let error = error {
-                print(error)
+        networkmanager.runChangePwd(token: tokenString!, newPwd: newPwd) { (errorResponse) in
+            if let errorResponse = errorResponse {
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
             }
             else {
                 DispatchQueue.main.async {
