@@ -29,8 +29,8 @@ class CriarUsuarioViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Criar usuário"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         criarUsuarioButton.applyContainedTheme(withScheme: globalContainerScheme())
         usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)

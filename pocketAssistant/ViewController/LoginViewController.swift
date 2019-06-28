@@ -10,7 +10,7 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
-class LoginViewController: MainViewController {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
