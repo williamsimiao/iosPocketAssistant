@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="506" y="-35"/>
+            <point key="canvasLocation" x="1442" y="-63"/>
         </scene>
         <!--Usuário-->
         <scene sceneID="Iwz-Xq-Bx3">
@@ -190,20 +190,12 @@
                     <connections>
                         <outlet property="fecharSessaoButton" destination="R9O-kd-h58" id="WmM-MW-2Jk"/>
                         <outlet property="mudarSenhaButton" destination="wm9-GQ-eur" id="6Ch-eU-YGT"/>
-                        <segue destination="Jo6-n1-nhB" kind="show" identifier="to_TrocarSenhaViewController" id="tU6-93-tC1"/>
+                        <segue destination="HZO-Qr-fFQ" kind="show" identifier="to_TrocarSenhaViewController" id="9g5-cD-LVZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDt-hK-Fka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4532" y="643"/>
-        </scene>
-        <!--TrocarSenhaViewController-->
-        <scene sceneID="ege-5i-BgD">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="TrocarSenhaViewController" id="Jo6-n1-nhB" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gB7-RT-j83" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5295" y="724"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ro8-fJ-85B">
@@ -393,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OhD-CR-5us" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4531.884057971015" y="-1438.3928571428571"/>
+            <point key="canvasLocation" x="4532" y="-1487"/>
         </scene>
         <!--NovaPermissaoViewController-->
         <scene sceneID="LLS-7M-5zc">
@@ -469,7 +461,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDK-nd-Nvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3621.739130434783" y="-1438.3928571428571"/>
+            <point key="canvasLocation" x="3622" y="-1487"/>
         </scene>
         <!--Usuário-->
         <scene sceneID="qQZ-SR-c5g">
@@ -583,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JE6-KI-BIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6052" y="-794"/>
+            <point key="canvasLocation" x="5377" y="-794"/>
         </scene>
         <!--Seleção do Usuário-->
         <scene sceneID="fBW-K2-4Pj">
@@ -873,14 +865,14 @@
             <objects>
                 <viewController storyboardIdentifier="TrocarSenhaViewController" id="HZO-Qr-fFQ" customClass="TrocarSenhaViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6pa-fV-weX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wls-HC-lq7">
-                                <rect key="frame" x="0.0" y="34" width="414" height="828"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpB-lm-Mbb">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="828"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nova senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hfv-oY-wav" customClass="MDCTextField">
                                                 <rect key="frame" x="8" y="16" width="398" height="30"/>
@@ -889,7 +881,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8M-EN-o5I" customClass="MDCButton">
-                                                <rect key="frame" x="8" y="772" width="398" height="48"/>
+                                                <rect key="frame" x="8" y="669" width="398" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="5ym-80-TK9"/>
@@ -935,7 +927,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wls-HC-lq7" firstAttribute="leading" secondItem="Hzz-0s-CNL" secondAttribute="leading" id="BeH-49-RmI"/>
-                            <constraint firstItem="wls-HC-lq7" firstAttribute="centerY" secondItem="6pa-fV-weX" secondAttribute="centerY" id="Bpw-eu-s0E"/>
+                            <constraint firstItem="wls-HC-lq7" firstAttribute="top" secondItem="Hzz-0s-CNL" secondAttribute="top" id="C3z-Kg-kzw"/>
                             <constraint firstItem="Hzz-0s-CNL" firstAttribute="bottom" secondItem="wls-HC-lq7" secondAttribute="bottom" id="cgA-Ga-3rW"/>
                             <constraint firstItem="Hzz-0s-CNL" firstAttribute="trailing" secondItem="wls-HC-lq7" secondAttribute="trailing" id="kmA-zu-3m5"/>
                         </constraints>
@@ -950,7 +942,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qU1-Yi-ffd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7464" y="327"/>
+            <point key="canvasLocation" x="5378" y="643"/>
         </scene>
     </scenes>
     <resources>

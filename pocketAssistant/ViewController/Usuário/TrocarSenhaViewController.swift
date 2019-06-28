@@ -53,20 +53,10 @@ class TrocarSenhaViewController: UIViewController {
             }
             else {
                 DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                     let message = MDCSnackbarMessage()
                     message.text = "Senha alterada com sucesso"
                     MDCSnackbarManager.show(message)
-                    self.dismiss(animated: true, completion: nil)
-                    
-//                    let actionComplitionHandler: MDCActionHandler = {_ in
-//                        self.navigationController?.popViewController(animated: true)
-//                    }
-//
-//                    let alertController = MDCAlertController(title: "Senha alterada", message: "Senha alterada com sucesso")
-//                    let action = MDCAlertAction(title: "OK", handler: actionComplitionHandler)
-//                    alertController.addAction(action)
-//                    self.present(alertController, animated:true, completion:nil)
                 }
             }
         }
