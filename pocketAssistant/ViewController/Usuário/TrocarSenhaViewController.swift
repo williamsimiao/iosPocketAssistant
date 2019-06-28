@@ -17,6 +17,7 @@ class TrocarSenhaViewController: UIViewController {
     @IBOutlet weak var pwdConfirmationTextField: MDCTextField!
     @IBOutlet weak var atualizarSenhaButton: MDCButton!
     
+    let pwdMinimumLength = 8
     var newPwdTextFieldController: MDCTextInputControllerOutlined?
     var pwdConfirmationTextFieldController: MDCTextInputControllerOutlined?
 
@@ -94,5 +95,75 @@ class TrocarSenhaViewController: UIViewController {
 }
 
 extension TrocarSenhaViewController: UITextFieldDelegate {
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        switch textField {
+        case newPwdTextField:
+            newPwdTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        case pwdConfirmationTextField:
+            pwdConfirmationTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        default:
+            break
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case newPwdTextField:
+            newPwdTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        case pwdConfirmationTextField:
+            pwdConfirmationTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        default:
+            break
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == newPwdTextField {checkForValidPassword()}
+    }
+    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return false
+//    }
+    
+    //Validation while typing
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let textFieldController: MDCTextInputControllerOutlined?
+//        if textField != newPwdTextField && textField != pwdConfirmationTextField {
+//            return true
+//        }
+//
+//        switch textField {
+//        case newPwdTextField:
+//            textFieldController = newPwdTextFieldController
+//        default:
+//            textFieldController = pwdConfirmationTextFieldController
+//        }
+//
+//
+//        guard let text = textField.text,
+//            let range = Range(range, in: text) else {
+//                return true
+//        }
+//
+//        let finishedString = text.replacingCharacters(in: range, with: string)
+//        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
+//            textFieldController?.setErrorText("Apenas letras e numeros são permitidas", errorAccessibilityValue: nil)
+//        } else {
+//            textFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+//        }
+//
+//        return true
+//    }
+    
+    
+    func checkForValidPassword() {
+        if (self.newPwdTextField.text != nil &&
+            self.newPwdTextField.text!.count < pwdMinimumLength) {
+            self.newPwdTextFieldController!.setErrorText("Senha muito curta",
+                                                      errorAccessibilityValue: nil)
+        }
+    }
     
 }

@@ -13,7 +13,6 @@ import SwiftKeychainWrapper
 class PerfilViewController: UIViewController {
     @IBOutlet weak var mudarSenhaButton: MDCButton!
     @IBOutlet weak var fecharSessaoButton: MDCButton!
-    @IBOutlet weak var tabBarContainer: UIView!
     
     var tokenString: String?
     let networkManager = NetworkManager()
@@ -30,8 +29,6 @@ class PerfilViewController: UIViewController {
         
         mudarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())
         fecharSessaoButton.applyContainedTheme(withScheme: globalContainerScheme())
-        
-        
         
         let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
         barView.backgroundColor = UIColor(red: 170, green: 170, blue: 170)

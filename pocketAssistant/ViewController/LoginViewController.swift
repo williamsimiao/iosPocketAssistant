@@ -175,7 +175,6 @@ class LoginViewController: UIViewController {
     // MARK: - Requests
     func probeRequest() {
         
-        let networkManager = NetworkManager()
         guard let token = tokenString else {
             return
         }
@@ -238,38 +237,51 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
     
-    func checkForValidPassword(_ textField: UITextField) {
-        if (textField == passwordTextField &&
-            passwordTextField.text != nil &&
-            passwordTextField.text!.count < 8) {
-            passwordTextFieldController!.setErrorText("Senha muito curta",
-                                                      errorAccessibilityValue: nil)
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case usernameTextField:
+            usernameTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        case passwordTextField:
+            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        case otpTextField:
+            otpTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        default:
+            break
         }
     }
     
-    //Validation after press return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        checkForValidPassword(textField)
-
+//        checkForValidPassword(textField)
         return false
     }
     
-    //Validation while typing
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text,
-            let range = Range(range, in: text),
-            textField == passwordTextField else {
-                return true
-        }
-        
-        let finishedString = text.replacingCharacters(in: range, with: string)
-        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
-            passwordTextFieldController?.setErrorText("Apenas letras e numeros são permitidas", errorAccessibilityValue: nil)
-        } else {
-            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        }
-        
-        return true
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let textFieldController: MDCTextInputControllerOutlined?
+//        if textField != newPwdTextField && textField != pwdConfirmationTextField {
+//            return true
+//        }
+//        
+//        switch textField {
+//        case newPwdTextField:
+//            textFieldController = newPwdTextFieldController
+//        default:
+//            textFieldController = pwdConfirmationTextFieldController
+//        }
+//        
+//        
+//        guard let text = textField.text,
+//            let range = Range(range, in: text) else {
+//                return true
+//        }
+//        
+//        let finishedString = text.replacingCharacters(in: range, with: string)
+//        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
+//            textFieldController?.setErrorText("Apenas letras e numeros são permitidas", errorAccessibilityValue: nil)
+//        } else {
+//            textFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+//        }
+//        
+//        return true
+//    }
 }
