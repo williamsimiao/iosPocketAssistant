@@ -10,7 +10,7 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
-class MainViewController: mainViewController {
+class LoginViewController: MainViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -38,7 +38,6 @@ class MainViewController: mainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Dinâmo"
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
 
         contentView.addSubview(activityIndicator)
@@ -203,7 +202,7 @@ class MainViewController: mainViewController {
 }
 
 // MARK: - UITextFieldDelegate
-extension MainViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         switch textField {

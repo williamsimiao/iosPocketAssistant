@@ -28,10 +28,10 @@ open class AppUtil {
     class func goToLoginScreen(sourceViewController: UIViewController) {
         DispatchQueue.main.async {
             let stor = UIStoryboard.init(name: "Main", bundle: nil)
-            let mainViewController = stor.instantiateViewController(withIdentifier: "MainViewController")
+            let LoginViewController = stor.instantiateViewController(withIdentifier: "LoginViewController")
             sourceViewController.dismiss(animated: true, completion: {
                 KeychainWrapper.standard.removeObject(forKey: "TOKEN")
-                sourceViewController.present(mainViewController, animated: true)
+                sourceViewController.present(LoginViewController, animated: true)
             })
         }
     }
@@ -85,7 +85,7 @@ open class AppUtil {
         switch mErrorBody.rd {
         case "ERR_ACCESS_DENIED":
             message = "Acesso negado"
-            if (viewController is MainViewController) == false {
+            if (viewController is LoginViewController) == false {
                 goToLoginScreen(sourceViewController: viewController)
             }
         case "ERR_USR_NOT_FOUND": message = "Usuário não encontrado"

@@ -1,5 +1,5 @@
 //
-//  mainViewController.swift
+//  LoginViewController.swift
 //  pocketAssistant
 //
 //  Created by William Simiao on 27/06/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class mainViewController: UIViewController {
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
