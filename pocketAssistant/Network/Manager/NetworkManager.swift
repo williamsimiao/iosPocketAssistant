@@ -50,39 +50,41 @@ struct NetworkManager {
     
     
     // MARK: - UsuarioApi
-    func runGetAcl(token: String, usr: String, completion: @escaping (_ body1:ResponseBody6?,_ error: String?)->()) {
+    func runGetAcl(token: String, usr: String, completion: @escaping (_ body1:ResponseBody6?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         usuarioRouter.request(.getAcl(token: completeToken, usr: usr)) { (data, response, error) in
             if error != nil {
-                completion(nil, "Check your internet connection")
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
                 switch result {
                 case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
                     do {
-                        let apiResponse = try JSONDecoder().decode(ResponseBody6.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(ResponseBody6.self, from: data!)
                         completion(apiResponse, nil)
                     } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                        print(NetworkResponse.unableToDecode.rawValue)
                     }
                 case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
+                    do {
+                        let errorResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(nil, errorResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }
     }
     
-    func runUpdateAcl(token: String, acl: Int, usr: String, completion: @escaping (_ error: String?)->()) {
+    func runUpdateAcl(token: String, acl: Int, usr: String, completion: @escaping (_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
         usuarioRouter.request(.updateAcl(token: completeToken, acl: acl, usr: usr)) { (data, response, error) in
             if error != nil {
-                completion("Check your internet connection")
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
@@ -91,34 +93,42 @@ struct NetworkManager {
                 case .success:
                     completion(nil)
                 case .failure(let networkFailureError):
-                    completion(networkFailureError)
+                    do {
+                        let errorResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(errorResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }
     }
     
-    func runListUsrsTrust(token: String, op: Int, usr: String, completion: @escaping (_ body1:ResponseBody5?,_ error: String?)->()) {
+    func runListUsrsTrust(token: String, op: Int, usr: String, completion: @escaping (_ body1:ResponseBody5?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         usuarioRouter.request(.listUsrTrust(token: completeToken, op: op, usr: usr)) { (data, response, error) in
             if error != nil {
-                completion(nil, "Check your internet connection")
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
                 switch result {
                 case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
                     do {
-                        let apiResponse = try JSONDecoder().decode(ResponseBody5.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(ResponseBody5.self, from: data!)
                         completion(apiResponse, nil)
                     } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                        print(NetworkResponse.unableToDecode.rawValue)
                     }
                 case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
+                    do {
+                        let errorResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(nil, errorResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }
@@ -128,7 +138,7 @@ struct NetworkManager {
         let completeToken = "HSM \(token)"
         usuarioRouter.request(.listUsrs(token: completeToken)) { (data, response, error) in
             if error != nil {
-                AppUtil.alertAboutConnectionError()
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)

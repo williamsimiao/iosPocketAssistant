@@ -71,9 +71,9 @@ class TrusteesViewController: UIViewController {
             return
         }
         let op = isTrustees ? 2 : 1
-        NetworkManager().runListUsrsTrust(token: token, op: op, usr: usrName) { (response, error) in
-            if let error = error {
-                print(error)
+        NetworkManager().runListUsrsTrust(token: token, op: op, usr: usrName) { (response, errorResponse) in
+            if let errorResponse = errorResponse {
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
             }
             if let response = response {
                 self.itemArray = response.trust

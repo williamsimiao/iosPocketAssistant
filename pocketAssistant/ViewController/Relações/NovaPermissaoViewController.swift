@@ -126,9 +126,9 @@ class NovaPermissaoViewController: UIViewController {
             return
         }
 
-        networkManager.runGetAcl(token: token, usr: userName) { (response, error) in
-            if let error = error {
-                print(error)
+        networkManager.runGetAcl(token: token, usr: userName) { (response, errorResponse) in
+            if let errorResponse = errorResponse {
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
             }
             if let response = response {
                 self.systemAcl = response.acl
@@ -154,9 +154,9 @@ class NovaPermissaoViewController: UIViewController {
             return
         }
         let finalAcl = composeFinalAcl(newAcl: newAcl)
-        networkManager.runUpdateAcl(token: token, acl: finalAcl, usr: userName!) { (error) in
-            if let error = error {
-                print(error)
+        networkManager.runUpdateAcl(token: token, acl: finalAcl, usr: userName!) { (errorResponse) in
+            if let errorResponse = errorResponse {
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
             }
             else {
                 DispatchQueue.main.async {
