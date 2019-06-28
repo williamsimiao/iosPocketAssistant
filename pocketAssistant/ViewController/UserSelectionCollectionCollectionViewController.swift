@@ -19,7 +19,7 @@ class UserSelectionCollectionCollectionViewController: UICollectionViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Seleção de usuário"
+        navigationItem.title = "Seleção de usuário"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         makeRequestListUsers()
         setUpBarButtonItens()

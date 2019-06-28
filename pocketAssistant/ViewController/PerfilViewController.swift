@@ -24,7 +24,7 @@ class PerfilViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Usuário"
+        navigationItem.title = "Usuário"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
         

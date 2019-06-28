@@ -17,7 +17,7 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Gestão de Usuários"
+        navigationItem.title = "Gestão de Usuários"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         makeRequestListUsers()
         setUpBarButtonItens()

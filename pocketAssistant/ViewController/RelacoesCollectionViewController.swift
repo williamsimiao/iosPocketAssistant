@@ -40,7 +40,7 @@ class RelacoesCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Relações de confiança"
+        navigationItem.title = "Relações de confiança"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tabBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         tabBar.sizeToFit()

@@ -277,10 +277,10 @@
             </objects>
             <point key="canvasLocation" x="4531.884057971015" y="-77.008928571428569"/>
         </scene>
-        <!--Gestão de usuários-->
+        <!--Gestao Usuarios Collection View Controller-->
         <scene sceneID="cGU-gQ-z2a">
             <objects>
-                <collectionViewController storyboardIdentifier="GestaoUsuariosCollectionViewController" title="Gestão de usuários" id="ILg-TC-roD" customClass="GestaoUsuariosCollectionViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="GestaoUsuariosCollectionViewController" id="ILg-TC-roD" customClass="GestaoUsuariosCollectionViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dzA-Ct-ivI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -351,10 +351,10 @@
             </objects>
             <point key="canvasLocation" x="4531.884057971015" y="-794.19642857142856"/>
         </scene>
-        <!--Relações de confiança-->
+        <!--Relacoes Collection View Controller-->
         <scene sceneID="AAy-Jr-Fvs">
             <objects>
-                <viewController storyboardIdentifier="RelacoesCollectionViewController" title="Relações de confiança" id="1W6-jO-fUs" customClass="RelacoesCollectionViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RelacoesCollectionViewController" id="1W6-jO-fUs" customClass="RelacoesCollectionViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jdA-m2-tHB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -415,7 +415,7 @@
         <scene sceneID="YJX-Uw-3Lf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c6T-Oh-MF5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Certificados" selectedImage="key" id="hY0-iG-oyy"/>
+                    <tabBarItem key="tabBarItem" title="Certificados" image="key" id="hY0-iG-oyy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="72g-1c-Brd">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -435,7 +435,7 @@
         <scene sceneID="Xzb-Jn-23Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zgw-P2-xvX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gestão" selectedImage="people" id="fBT-3f-JCc"/>
+                    <tabBarItem key="tabBarItem" title="Gestão" image="people" id="fBT-3f-JCc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w4T-W1-fzo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -455,7 +455,7 @@
         <scene sceneID="tH0-Jb-PeK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4i8-8A-fn9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Relações" selectedImage="thumbs" id="Mr9-Kf-3lc"/>
+                    <tabBarItem key="tabBarItem" title="Relações" image="thumbs" id="Mr9-Kf-3lc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CbR-9S-pk6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -475,7 +475,7 @@
         <scene sceneID="qQZ-SR-c5g">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SZY-mA-7wn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Usuário" selectedImage="person" id="FqA-oD-ZNf"/>
+                    <tabBarItem key="tabBarItem" title="Usuário" image="person" id="FqA-oD-ZNf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lcM-Ej-LFw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

@@ -26,7 +26,7 @@ class NovaPermissaoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Permissões"
+        navigationItem.title = "Permissões"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         turnAllSwitchesOff()
         salvarButton.applyContainedTheme(withScheme: globalContainerScheme())
