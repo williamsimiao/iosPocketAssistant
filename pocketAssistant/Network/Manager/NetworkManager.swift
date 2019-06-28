@@ -124,28 +124,30 @@ struct NetworkManager {
         }
     }
     
-    func runListUsrs(token: String, completion: @escaping (_ body1:ResponseBody4?,_ error: String?)->()) {
+    func runListUsrs(token: String, completion: @escaping (_ body1:ResponseBody4?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         usuarioRouter.request(.listUsrs(token: completeToken)) { (data, response, error) in
             if error != nil {
-                completion(nil, "Check your internet connection")
+                AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
                 switch result {
                 case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
                     do {
-                        let apiResponse = try JSONDecoder().decode(ResponseBody4.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(ResponseBody4.self, from: data!)
                         completion(apiResponse, nil)
                     } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                        print(NetworkResponse.unableToDecode.rawValue)
                     }
                 case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
+                    do {
+                        let errorResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(nil, errorResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }

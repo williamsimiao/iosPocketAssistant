@@ -27,9 +27,9 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-        NetworkManager().runListUsrs(token: token) { (response, error) in
-            if let error = error {
-                print(error)
+        NetworkManager().runListUsrs(token: token) { (response, errorResponse) in
+            if let errorResponse = errorResponse {
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
             }
             if let response = response {
                 self.usrsArray = response.usr
