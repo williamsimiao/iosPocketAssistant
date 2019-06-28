@@ -71,7 +71,6 @@ class ObjetosViewController: UICollectionViewController {
             if let response = response {
                 let certificate = SecCertificateCreateWithData(nil, response as CFData)
                 let certificateString = String(describing: certificate)
-                print("OK: \(certificateString)")
                 let matched = self.matches(for: "(?<=s: )(.*)(?= i:)", in: certificateString)
                 self.exportedCertificates = self.exportedCertificates + 1
                 self.certificateNameArray.append(matched.first!)

@@ -46,6 +46,7 @@
 		3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */; };
 		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
 		3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */; };
+		3DFFC7D522C69CB4006F26BE /* textField+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFFC7D422C69CB4006F26BE /* textField+Controller.swift */; };
 		DB5B795C171B839FB899B200 /* Pods_pocketAssistantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C9E0621829363EDDD14786 /* Pods_pocketAssistantUITests.framework */; };
 		E59639CB1100C70E66B532AF /* Pods_pocketAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA57C49EE4E0E31AAC057880 /* Pods_pocketAssistant.framework */; };
 /* End PBXBuildFile section */
@@ -114,6 +115,7 @@
 		3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosEndPoint.swift; sourceTree = "<group>"; };
 		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
 		3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetoCell.swift; sourceTree = "<group>"; };
+		3DFFC7D422C69CB4006F26BE /* textField+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "textField+Controller.swift"; sourceTree = "<group>"; };
 		4035907E3AF831FFA15F767C /* Pods-pocketAssistantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketAssistantUITests.debug.xcconfig"; path = "Target Support Files/Pods-pocketAssistantUITests/Pods-pocketAssistantUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6450FD44100929B3E47E6D1F /* Pods_pocketAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pocketAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7691126919138FD928000AE8 /* Pods-pocketAssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketAssistantTests.release.xcconfig"; path = "Target Support Files/Pods-pocketAssistantTests/Pods-pocketAssistantTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				3D19F95122A156670071644C /* Bodies */,
+				3DFFC7D422C69CB4006F26BE /* textField+Controller.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */,
 				3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */,
 				3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */,
+				3DFFC7D522C69CB4006F26BE /* textField+Controller.swift in Sources */,
 				3D3C104B22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift in Sources */,
 				3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */,
 				3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */,

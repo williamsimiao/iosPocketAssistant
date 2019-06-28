@@ -36,6 +36,10 @@ class LoginViewController: UIViewController {
     var passwordTextFieldController: MDCTextInputControllerOutlined?
     var otpTextFieldController: MDCTextInputControllerOutlined?
     
+    var usernameTextLayout: textLayout?
+    var passwordTextLayout: textLayout?
+    var otpTextLayout: textLayout?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
@@ -66,6 +70,10 @@ class LoginViewController: UIViewController {
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
         otpTextFieldController = MDCTextInputControllerOutlined(textInput: otpTextField)
         
+        usernameTextLayout = textLayout(textField: usernameTextField, controller: usernameTextFieldController!)
+        passwordTextLayout = textLayout(textField: passwordTextField, controller: passwordTextFieldController!)
+        otpTextLayout = textLayout(textField: otpTextField, controller: otpTextFieldController!)
+        
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: usernameTextFieldController!)
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: passwordTextFieldController!)
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: otpTextFieldController!)
@@ -77,6 +85,10 @@ class LoginViewController: UIViewController {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         otpTextField.delegate = self
+        usernameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        otpTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+
     }
     
     func showInvalidTokenDialog() {
@@ -100,23 +112,11 @@ class LoginViewController: UIViewController {
         //TODO check more cases
     }
     
-    func validateAuth() -> Bool {
-        do {
-            try validateTextInput(text: usernameTextField.text)
-            try validateTextInput(text: passwordTextField.text)
-        } catch {
-            let alert = UIAlertController(title: "Erro", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            present(alert, animated: true)
-            return false
-        }
-        return true
-    }
-    
     @IBAction func didTapAutenticar(_ sender: Any) {
-        if validateAuth() == false {
-            return
+        guard AppUtil.fieldsAreValid(textLayoutArray: [usernameTextLayout!, passwordTextLayout!]) else {
+                return
         }
+
         let username = usernameTextField.text!
         let password = passwordTextField.text!
         
@@ -256,32 +256,42 @@ extension LoginViewController: UITextFieldDelegate {
         return false
     }
     
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        switch textField {
+        case usernameTextField:
+            usernameTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        case passwordTextField:
+            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        case otpTextField:
+            otpTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        default:
+            break
+        }
+    }
+    
 //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 //        let textFieldController: MDCTextInputControllerOutlined?
-//        if textField != newPwdTextField && textField != pwdConfirmationTextField {
-//            return true
-//        }
-//        
+//
 //        switch textField {
-//        case newPwdTextField:
-//            textFieldController = newPwdTextFieldController
+//        case passwordTextField:
+//            textFieldController = passwordTextFieldController
 //        default:
-//            textFieldController = pwdConfirmationTextFieldController
+//            textFieldController = usernameTextFieldController
 //        }
-//        
-//        
+//
+//
 //        guard let text = textField.text,
 //            let range = Range(range, in: text) else {
 //                return true
 //        }
-//        
+//
 //        let finishedString = text.replacingCharacters(in: range, with: string)
 //        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
 //            textFieldController?.setErrorText("Apenas letras e numeros são permitidas", errorAccessibilityValue: nil)
 //        } else {
 //            textFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
 //        }
-//        
+//
 //        return true
 //    }
 }

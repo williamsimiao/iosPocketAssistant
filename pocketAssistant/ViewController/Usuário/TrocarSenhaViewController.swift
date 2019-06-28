@@ -17,19 +17,25 @@ class TrocarSenhaViewController: UIViewController {
     @IBOutlet weak var pwdConfirmationTextField: MDCTextField!
     @IBOutlet weak var atualizarSenhaButton: MDCButton!
     
+    let networkmanager = NetworkManager()
     let pwdMinimumLength = 8
     var newPwdTextFieldController: MDCTextInputControllerOutlined?
     var pwdConfirmationTextFieldController: MDCTextInputControllerOutlined?
-
+    var newPwdLayout: textLayout?
+    var pwdConfirmationLayout: textLayout?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.title = "Trocar senha"
-
+        
         atualizarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())
         newPwdTextFieldController = MDCTextInputControllerOutlined(textInput: newPwdTextField)
         pwdConfirmationTextFieldController = MDCTextInputControllerOutlined(textInput: pwdConfirmationTextField)
-
+        
+        newPwdLayout = textLayout(textField: newPwdTextField, controller: newPwdTextFieldController!)
+        pwdConfirmationLayout = textLayout(textField: pwdConfirmationTextField, controller: pwdConfirmationTextFieldController!)
+        
         newPwdTextField.delegate = self
         pwdConfirmationTextField.delegate = self
         
@@ -44,10 +50,19 @@ class TrocarSenhaViewController: UIViewController {
     }
     
     @IBAction func didTapChangePwd(_ sender: Any) {
-        let networkmanager = NetworkManager()
+        guard AppUtil.fieldsAreValid(textLayoutArray: [newPwdLayout!]) &&
+              AppUtil.validPwd(newPwdLayout!) &&
+              newPwdTextField.text == pwdConfirmationTextField.text else {
+            return
+        }
+        
+        changePwdRequest()
+    }
+    
+    func changePwdRequest() {
         let newPwd = newPwdTextField.text!
         let tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
-        
+
         networkmanager.runChangePwd(token: tokenString!, newPwd: newPwd) { (errorResponse) in
             if let errorResponse = errorResponse {
                 let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
@@ -91,11 +106,10 @@ class TrocarSenhaViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         self.scrollView.contentInset = UIEdgeInsets.zero;
     }
-
 }
 
 extension TrocarSenhaViewController: UITextFieldDelegate {
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    func clearErrorMenssageOnTextLayout(_ textField: UITextField) {
         switch textField {
         case newPwdTextField:
             newPwdTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
@@ -104,22 +118,21 @@ extension TrocarSenhaViewController: UITextFieldDelegate {
         default:
             break
         }
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        clearErrorMenssageOnTextLayout(textField)
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        switch textField {
-        case newPwdTextField:
-            newPwdTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        case pwdConfirmationTextField:
-            pwdConfirmationTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        default:
-            break
-        }
+        clearErrorMenssageOnTextLayout(textField)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == newPwdTextField {checkForValidPassword()}
+        if textField == newPwdTextField {
+            let _ = AppUtil.validPwd(newPwdLayout!)
+        }
     }
     
 //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -156,14 +169,5 @@ extension TrocarSenhaViewController: UITextFieldDelegate {
 //
 //        return true
 //    }
-    
-    
-    func checkForValidPassword() {
-        if (self.newPwdTextField.text != nil &&
-            self.newPwdTextField.text!.count < pwdMinimumLength) {
-            self.newPwdTextFieldController!.setErrorText("Senha muito curta",
-                                                      errorAccessibilityValue: nil)
-        }
-    }
     
 }

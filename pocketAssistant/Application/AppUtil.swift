@@ -88,6 +88,7 @@ open class AppUtil {
                 goToLoginScreen(sourceViewController: viewController)
             }
         case "ERR_USR_NOT_FOUND": message = "Usuário não encontrado"
+        case "ERR_INVALID_PAYLOAD": message = "Entrada inválida"
         default:
             message = "Erro desconhecido"
             print(mErrorBody.rd)
@@ -95,4 +96,57 @@ open class AppUtil {
         
         return message
     }
+    
+    class func validPwd(_ textLayout: textLayout) -> Bool {
+        let pwdMinimumLength = 8
+        if textLayout.textField.text!.count >= pwdMinimumLength {
+            return true
+        }
+        else {
+            textLayout.controller.setErrorText("Senhas devem contem pelo menos 8 caracteres", errorAccessibilityValue: nil)
+            return false
+        }
+    }
+    
+    class func fieldsAreValid(textLayoutArray: [textLayout]) -> Bool {
+        var isValid = true
+        for textLayout in textLayoutArray {
+            if textLayout.textField.text == "" {
+                textLayout.controller.setErrorText("Campo Obrigatório", errorAccessibilityValue: nil)
+                isValid = false
+            }
+        }
+        return isValid
+    }
+    
+    //fun fieldsAreValid(context: Context?, mTextInputLayoutArray: Array<TextInputLayout>): Boolean {
+    //    var isValid = true
+    //
+    //    for(mTextInputlayout: TextInputLayout in mTextInputLayoutArray) {
+    //        val input = mTextInputlayout.editText!!.text.toString()
+    //        if(input == "") {
+    //            mTextInputlayout.error = context!!.getString(R.string.required_field)
+    //            isValid = false
+    //        }
+    //    }
+    //    return isValid
+    //}
+    
+    
+    
+    //    fun didTapAlterar() {
+    //        if(fieldsAreValid(context, arrayOf(newPwdEditText,
+    //                newPwdConfirmationEditText)) == false) {
+    //            return
+    //        }
+    //
+    //        if(validPwd(context, newPwdEditText) ==  false) return
+    //
+    //        if(validPwdConfirmation(context, newPwdEditText.editText!!.text.toString(),
+    //                newPwdConfirmationEditText) == false) {
+    //            return
+    //        }
+    //
+    //        changePwdRequest()
+    //    }
 }
