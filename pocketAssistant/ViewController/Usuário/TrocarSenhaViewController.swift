@@ -18,6 +18,7 @@ class TrocarSenhaViewController: UIViewController {
     @IBOutlet weak var atualizarSenhaButton: MDCButton!
     
     let networkmanager = NetworkManager()
+    var tokenString: String?
     let pwdMinimumLength = 8
     var newPwdTextFieldController: MDCTextInputControllerOutlined?
     var pwdConfirmationTextFieldController: MDCTextInputControllerOutlined?
@@ -28,10 +29,20 @@ class TrocarSenhaViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.title = "Trocar senha"
-        
+        tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
+
+        setUpViews()
+        registerKeyboardNotifications()
+    }
+    
+    func setUpViews() {
         atualizarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())
+        
         newPwdTextFieldController = MDCTextInputControllerOutlined(textInput: newPwdTextField)
         pwdConfirmationTextFieldController = MDCTextInputControllerOutlined(textInput: pwdConfirmationTextField)
+        
+        MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: newPwdTextFieldController!)
+        MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: pwdConfirmationTextFieldController!)
         
         newPwdLayout = textLayout(textField: newPwdTextField, controller: newPwdTextFieldController!)
         pwdConfirmationLayout = textLayout(textField: pwdConfirmationTextField, controller: pwdConfirmationTextFieldController!)
@@ -39,9 +50,11 @@ class TrocarSenhaViewController: UIViewController {
         newPwdTextField.delegate = self
         pwdConfirmationTextField.delegate = self
         
+        newPwdTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        pwdConfirmationTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
-        registerKeyboardNotifications()
     }
     
     // MARK: - Gesture Handling
@@ -50,9 +63,10 @@ class TrocarSenhaViewController: UIViewController {
     }
     
     @IBAction func didTapChangePwd(_ sender: Any) {
-        guard AppUtil.fieldsAreValid(textLayoutArray: [newPwdLayout!]) &&
-              AppUtil.validPwd(newPwdLayout!) &&
-              newPwdTextField.text == pwdConfirmationTextField.text else {
+        guard AppUtil.validPwd(newPwdLayout!) &&
+            AppUtil.fieldsAreValid([newPwdLayout!, pwdConfirmationLayout!]) &&
+            AppUtil.validPwdConfirmation(newPwdLayout!, pwdConfirmationLayout!)
+               else {
             return
         }
         
@@ -61,15 +75,15 @@ class TrocarSenhaViewController: UIViewController {
     
     func changePwdRequest() {
         let newPwd = newPwdTextField.text!
-        let tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
 
         networkmanager.runChangePwd(token: tokenString!, newPwd: newPwd) { (errorResponse) in
             if let errorResponse = errorResponse {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                print(message)
             }
             else {
                 DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popToRootViewController(animated: true)
                     let message = MDCSnackbarMessage()
                     message.text = "Senha alterada com sucesso"
                     MDCSnackbarManager.show(message)
@@ -120,54 +134,23 @@ extension TrocarSenhaViewController: UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        clearErrorMenssageOnTextLayout(textField)
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        clearErrorMenssageOnTextLayout(textField)
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == newPwdTextField {
             let _ = AppUtil.validPwd(newPwdLayout!)
         }
+        else if textField == pwdConfirmationTextField {
+            let _ = AppUtil.validPwdConfirmation(newPwdLayout!, pwdConfirmationLayout!)
+        }
     }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return false
-//    }
-    
-    //Validation while typing
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let textFieldController: MDCTextInputControllerOutlined?
-//        if textField != newPwdTextField && textField != pwdConfirmationTextField {
-//            return true
-//        }
-//
-//        switch textField {
-//        case newPwdTextField:
-//            textFieldController = newPwdTextFieldController
-//        default:
-//            textFieldController = pwdConfirmationTextFieldController
-//        }
-//
-//
-//        guard let text = textField.text,
-//            let range = Range(range, in: text) else {
-//                return true
-//        }
-//
-//        let finishedString = text.replacingCharacters(in: range, with: string)
-//        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
-//            textFieldController?.setErrorText("Apenas letras e numeros são permitidas", errorAccessibilityValue: nil)
-//        } else {
-//            textFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-//        }
-//
-//        return true
-//    }
-    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        switch textField {
+        case newPwdTextField:
+            newPwdTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        case pwdConfirmationTextField:
+            pwdConfirmationTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        default:
+            break
+        }
+    }
 }

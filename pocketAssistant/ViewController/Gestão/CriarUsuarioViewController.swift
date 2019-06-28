@@ -72,7 +72,7 @@ class CriarUsuarioViewController: UIViewController {
             }
             else {
                 DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popToRootViewController(animated: true)
                     let message = MDCSnackbarMessage()
                     message.text = "Usuário criado com sucesso"
                     MDCSnackbarManager.show(message)

@@ -70,13 +70,13 @@ class LoginViewController: UIViewController {
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
         otpTextFieldController = MDCTextInputControllerOutlined(textInput: otpTextField)
         
-        usernameTextLayout = textLayout(textField: usernameTextField, controller: usernameTextFieldController!)
-        passwordTextLayout = textLayout(textField: passwordTextField, controller: passwordTextFieldController!)
-        otpTextLayout = textLayout(textField: otpTextField, controller: otpTextFieldController!)
-        
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: usernameTextFieldController!)
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: passwordTextFieldController!)
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: otpTextFieldController!)
+        
+        usernameTextLayout = textLayout(textField: usernameTextField, controller: usernameTextFieldController!)
+        passwordTextLayout = textLayout(textField: passwordTextField, controller: passwordTextFieldController!)
+        otpTextLayout = textLayout(textField: otpTextField, controller: otpTextFieldController!)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
@@ -113,7 +113,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didTapAutenticar(_ sender: Any) {
-        guard AppUtil.fieldsAreValid(textLayoutArray: [usernameTextLayout!, passwordTextLayout!]) else {
+        guard AppUtil.fieldsAreValid([usernameTextLayout!, passwordTextLayout!]) else {
                 return
         }
 
@@ -268,30 +268,4 @@ extension LoginViewController: UITextFieldDelegate {
             break
         }
     }
-    
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let textFieldController: MDCTextInputControllerOutlined?
-//
-//        switch textField {
-//        case passwordTextField:
-//            textFieldController = passwordTextFieldController
-//        default:
-//            textFieldController = usernameTextFieldController
-//        }
-//
-//
-//        guard let text = textField.text,
-//            let range = Range(range, in: text) else {
-//                return true
-//        }
-//
-//        let finishedString = text.replacingCharacters(in: range, with: string)
-//        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
-//            textFieldController?.setErrorText("Apenas letras e numeros são permitidas", errorAccessibilityValue: nil)
-//        } else {
-//            textFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-//        }
-//
-//        return true
-//    }
 }

@@ -97,6 +97,16 @@ open class AppUtil {
         return message
     }
     
+    class func validPwdConfirmation(_ pwdTextLayout: textLayout, _ confirmationTextLayout: textLayout) -> Bool {
+        if pwdTextLayout.textField.text == confirmationTextLayout.textField.text {
+            return true
+        }
+        else {
+            confirmationTextLayout.controller.setErrorText("Confirmação difere da senha", errorAccessibilityValue: nil)
+            return false
+        }
+    }
+    
     class func validPwd(_ textLayout: textLayout) -> Bool {
         let pwdMinimumLength = 8
         if textLayout.textField.text!.count >= pwdMinimumLength {
@@ -108,7 +118,7 @@ open class AppUtil {
         }
     }
     
-    class func fieldsAreValid(textLayoutArray: [textLayout]) -> Bool {
+    class func fieldsAreValid(_ textLayoutArray: [textLayout]) -> Bool {
         var isValid = true
         for textLayout in textLayoutArray {
             if textLayout.textField.text == "" {
