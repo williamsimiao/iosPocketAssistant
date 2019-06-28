@@ -112,10 +112,11 @@ class LoginViewController: UIViewController {
         let username = usernameTextField.text!
         let password = passwordTextField.text!
         
-        networkManager.runAuth(usr: username, pwd: password) { (response, error) in
-            if let error = error {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+        networkManager.runAuth(usr: username, pwd: password) { (response, errorResponse) in
+            if let errorResponse = errorResponse {
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
                 
+                //Show message(Acesso negado) em snackBar já que o alerta nao vai aparecer
                 let snackBar = MDCSnackbarMessage()
                 snackBar.text = message
                 MDCSnackbarManager.show(snackBar)
@@ -173,8 +174,10 @@ class LoginViewController: UIViewController {
             return
         }
         
-        networkManager.runProbeSynchronous(token: token) { (response, error) in
-            if let error = error {
+        networkManager.runProbeSynchronous(token: token) { (response, errorResponse) in
+            if let errorResponse = errorResponse {
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+
                 self.showLoginFields()
             }
             else if let _ = response {

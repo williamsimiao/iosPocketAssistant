@@ -66,7 +66,7 @@ class ObjetosViewController: UICollectionViewController {
         }
         NetworkManager().runObjExp(objId: objId, token: token) { (response, error) in
             if let error = error {
-                print(error)
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
             }
             if let response = response {
                 let certificate = SecCertificateCreateWithData(nil, response as CFData)
@@ -107,7 +107,7 @@ class ObjetosViewController: UICollectionViewController {
         }
         NetworkManager().runGetObjInfo(objId: objId, token: token) { (response, error) in
             if let error = error {
-                print(error)
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
             }
             if let response = response {
                 let myType = response.type
@@ -128,9 +128,9 @@ class ObjetosViewController: UICollectionViewController {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-        NetworkManager().runListObjs(token: token) { (response, error) in
-            if let error = error {
-                print(error)
+        NetworkManager().runListObjs(token: token) { (response, errorResponse) in
+            if let errorResponse = errorResponse {
+                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
             }
             if let response = response {
                 self.objIdArray = response.obj

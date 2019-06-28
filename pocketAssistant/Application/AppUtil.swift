@@ -56,25 +56,19 @@ open class AppUtil {
         return (isReachable && !needsConnection)
     }
     
-    class func alertAboutConnectionError(viewController: UIViewController) -> Bool {
-        let title: String?
+    class func alertAboutConnectionError() -> Bool {
         let message: String?
         
         let isConnected = isInternetAvailable()
         if isConnected == false {
-            title = "Erro ao conectar-se"
             message = "Verifique sua conecção com a internet e tente novamente"
         }
         else {
-            title = "Erro"
-            message = "Erro desconhecido"
+            message = "Erro ao conectar-se"
         }
-        let alertController = MDCAlertController(title: title, message: message)
-        alertController.addAction(MDCAlertAction(title: "Ok", emphasis: .high, handler: nil))
-        
-        DispatchQueue.main.async {
-            viewController.present(alertController, animated:true, completion:nil)
-        }
+        let snackBar = MDCSnackbarMessage()
+        snackBar.text = message
+        MDCSnackbarManager.show(snackBar)
 
         return isConnected
     }
@@ -93,6 +87,13 @@ open class AppUtil {
             message = "Erro desconhecido"
             print(mErrorBody.rd)
         }
+        
+        if message != "Acesso negado" {
+            let snackBar = MDCSnackbarMessage()
+            snackBar.text = message
+            MDCSnackbarManager.show(snackBar)
+        }
+        
         return message
     }
 }

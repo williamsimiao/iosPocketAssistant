@@ -50,7 +50,7 @@ class PerfilViewController: UIViewController {
         let actionComplitionHandler: MDCActionHandler = {_ in
             self.networkManager.runClose(token: token) { (error) in
                 if let error = error {
-                    print(error)
+                    let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
                 }
                 else {
                     AppUtil.goToLoginScreen(sourceViewController: self)

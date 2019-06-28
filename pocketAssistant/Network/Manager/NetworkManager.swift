@@ -193,121 +193,132 @@ struct NetworkManager {
     
     // MARK: - ObjetosApi
     
-    func runObjExp(objId: String, token: String, completion: @escaping (_ body2:CFData?,_ error: String?)->()) {
+    func runObjExp(objId: String, token: String, completion: @escaping (_ body2:CFData?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
         objetosRouter.request(.objExp(token: completeToken, obj: objId)) { (data, response, error) in
             if error != nil {
-                completion(nil, "Check your internet connection")
+                AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
                 switch result {
                 case .success:
                     guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
+                        print(NetworkResponse.noData.rawValue)
                         return
                     }
                     completion(responseData as CFData, nil)
                     
                 case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
+                    do {
+                        let apiResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(nil, apiResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }
     }
     
-    func runGetObjInfo(objId: String, token: String, completion: @escaping (_ body2:ResponseBody7?,_ error: String?)->()) {
+    func runGetObjInfo(objId: String, token: String, completion: @escaping (_ body2:ResponseBody7?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
         objetosRouter.request(.getObjInfo(token: completeToken, obj: objId)) { (data, response, error) in
             if error != nil {
-                completion(nil, "Check your internet connection")
+                AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
                 switch result {
                 case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    
                     do {
-                        let apiResponse = try JSONDecoder().decode(ResponseBody7.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(ResponseBody7.self, from: data!)
                         completion(apiResponse, nil)
                     } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                        print(NetworkResponse.unableToDecode.rawValue)
                     }
                 case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
+                    do {
+                        let apiResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(nil, apiResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }
     }
     
-    func runListObjs(token: String, completion: @escaping (_ body2:ResponseBody2?,_ error: String?)->()) {
+    func runListObjs(token: String, completion: @escaping (_ body2:ResponseBody2?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         print("complete TOKEN: \(completeToken)")
         objetosRouter.request(.listObjs(token: completeToken)) { (data, response, error) in
             if error != nil {
-                completion(nil, "Check your internet connection")
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
                 switch result {
                 case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    
                     do {
-                        let apiResponse = try JSONDecoder().decode(ResponseBody2.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(ResponseBody2.self, from: data!)
                         completion(apiResponse, nil)
                     } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                        print(NetworkResponse.unableToDecode.rawValue)
                     }
+
                 case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
+                    do {
+                        let apiResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(nil, apiResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }
     }
     
     //SessaoApi
-    func runProbeSynchronous(token: String, completion: @escaping (_ body1:ResponseBody3?,_ error: String?)->()) {
+    func runProbeSynchronous(token: String, completion: @escaping (_ body1:ResponseBody3?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         sessaoRouter.request(.probe(token: completeToken)) { (data, response, error) in
             if error != nil {
-                completion(nil, "Check your internet connection")
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
                 switch result {
                 case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
                     do {
-                        let apiResponse = try JSONDecoder().decode(ResponseBody3.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(ResponseBody3.self, from: data!)
                         completion(apiResponse, nil)
                     } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                        print(NetworkResponse.unableToDecode.rawValue)
                     }
                 case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
+                    do {
+                        let apiResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(nil, apiResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }
     }
     
-    func runClose(token: String, completion: @escaping (_ error: String?)->()) {
+    func runClose(token: String, completion: @escaping (_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
         sessaoRouter.request(.close(token: completeToken)) { (data, response, error) in
             if error != nil {
-                completion("Check your internet connection")
+                AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
@@ -316,7 +327,13 @@ struct NetworkManager {
                 case .success:
                     completion(nil)
                 case .failure(let networkFailureError):
-                    completion(networkFailureError)
+                    do {
+                        let apiResponse = try JSONDecoder().decode(errorBody.self, from: data!)
+                        completion(apiResponse)
+                    } catch {
+                        print(NetworkResponse.unableToDecode.rawValue)
+                    }
+                    print(networkFailureError)
                 }
             }
         }
@@ -325,7 +342,7 @@ struct NetworkManager {
     func runAuth(usr: String, pwd: String, completion: @escaping (_ body1:ResponseBody1?,_ error: errorBody?)->()) {
         sessaoRouter.request(.auth(usr: usr, pwd: pwd)) { (data, response, error) in
             if error != nil {
-                print(error!)
+                AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
