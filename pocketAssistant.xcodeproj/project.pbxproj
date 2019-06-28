@@ -19,8 +19,6 @@
 		3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DCC228B2A9C00A4A74C /* NetworkRouter.swift */; };
 		3D114DCF228B2F7B00A4A74C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DCE228B2F7B00A4A74C /* Router.swift */; };
 		3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DD5228B48EB00A4A74C /* NetworkManager.swift */; };
-		3D19F95322A156B70071644C /* DrawerCellinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F95222A156B70071644C /* DrawerCellinfo.swift */; };
-		3D1F5ABC22A1747D006DE185 /* DrawerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F5ABA22A1747D006DE185 /* DrawerCell.swift */; };
 		3D3C104B22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */; };
 		3D3C104D22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */; };
 		3D3C105422A9909200E1BDD9 /* RelacoesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */; };
@@ -29,8 +27,6 @@
 		3D3C105E22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */; };
 		3D48FB742295B06F007ACC63 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB732295B06F007ACC63 /* ResponseBody.swift */; };
 		3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */; };
-		3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60CA0622A01547000387D7 /* testeViewController.swift */; };
-		3D60CA0922A0216B000387D7 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60CA0822A0216B000387D7 /* CustomNavigationController.swift */; };
 		3D60CA0B22A0260D000387D7 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60CA0A22A0260D000387D7 /* NetworkHelper.swift */; };
 		3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9311EA2289DD4E000C2635 /* AppDelegate.swift */; };
 		3D9311ED2289DD4E000C2635 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9311EC2289DD4E000C2635 /* ViewController.swift */; };
@@ -47,14 +43,10 @@
 		3DDB7AD7229DDD6400C4D265 /* CriarUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */; };
 		3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */; };
 		3DDC4091229F490100713546 /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC4090229F490100713546 /* Theming.swift */; };
-		3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */; };
 		3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */; };
 		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
 		3DF882F522C5331300205315 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF882F422C5331300205315 /* mainViewController.swift */; };
 		3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */; };
-		3DFC2FE922A5BD4A005099A8 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FE822A5BD4A005099A8 /* SectionView.swift */; };
-		3DFC2FEB22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */; };
-		3DFC2FED22A5BE2B005099A8 /* DrawerHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */; };
 		DB5B795C171B839FB899B200 /* Pods_pocketAssistantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C9E0621829363EDDD14786 /* Pods_pocketAssistantUITests.framework */; };
 		E59639CB1100C70E66B532AF /* Pods_pocketAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA57C49EE4E0E31AAC057880 /* Pods_pocketAssistant.framework */; };
 /* End PBXBuildFile section */
@@ -90,8 +82,6 @@
 		3D114DCC228B2A9C00A4A74C /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		3D114DCE228B2F7B00A4A74C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		3D114DD5228B48EB00A4A74C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		3D19F95222A156B70071644C /* DrawerCellinfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCellinfo.swift; sourceTree = "<group>"; };
-		3D1F5ABA22A1747D006DE185 /* DrawerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCell.swift; sourceTree = "<group>"; };
 		3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestaoUsuariosCollectionViewController.swift; sourceTree = "<group>"; };
 		3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestaoUsuariosCollectionViewCell.swift; sourceTree = "<group>"; };
 		3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelacoesCollectionViewController.swift; sourceTree = "<group>"; };
@@ -100,8 +90,6 @@
 		3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaPermissaoViewController.swift; sourceTree = "<group>"; };
 		3D48FB732295B06F007ACC63 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
 		3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessaoEndPoint.swift; sourceTree = "<group>"; };
-		3D60CA0622A01547000387D7 /* testeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
-		3D60CA0822A0216B000387D7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		3D60CA0A22A0260D000387D7 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		3D9311E72289DD4E000C2635 /* pocketAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pocketAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9311EA2289DD4E000C2635 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,14 +112,10 @@
 		3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarUsuarioViewController.swift; sourceTree = "<group>"; };
 		3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+synchronous.swift"; sourceTree = "<group>"; };
 		3DDC4090229F490100713546 /* Theming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theming.swift; sourceTree = "<group>"; };
-		3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosEndPoint.swift; sourceTree = "<group>"; };
 		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
 		3DF882F422C5331300205315 /* mainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
 		3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetoCell.swift; sourceTree = "<group>"; };
-		3DFC2FE822A5BD4A005099A8 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
-		3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerContentWithScrollViewController.swift; sourceTree = "<group>"; };
-		3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHeaderViewController.swift; sourceTree = "<group>"; };
 		4035907E3AF831FFA15F767C /* Pods-pocketAssistantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketAssistantUITests.debug.xcconfig"; path = "Target Support Files/Pods-pocketAssistantUITests/Pods-pocketAssistantUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6450FD44100929B3E47E6D1F /* Pods_pocketAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pocketAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7691126919138FD928000AE8 /* Pods-pocketAssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketAssistantTests.release.xcconfig"; path = "Target Support Files/Pods-pocketAssistantTests/Pods-pocketAssistantTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,22 +166,11 @@
 			isa = PBXGroup;
 			children = (
 				3D9311EC2289DD4E000C2635 /* ViewController.swift */,
-				3DEBB0F52295E1C6006F0E3B /* SecondViewController.swift */,
-				3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */,
-				3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */,
-				3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */,
-				3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */,
-				3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */,
-				3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */,
-				3D60CA0622A01547000387D7 /* testeViewController.swift */,
-				3DC8465722A1B6B70032FB31 /* Navigation */,
+				3DF882F722C63F7C00205315 /* Objetos */,
+				3DF882F822C63FA200205315 /* Relações */,
+				3DF882FA22C63FCA00205315 /* Gestão */,
+				3DF882FB22C63FEA00205315 /* Usuário */,
 				3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */,
-				3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */,
-				3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */,
-				3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */,
-				3D0E098822AADA360073FF35 /* TrusteesViewController.swift */,
-				3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */,
-				3DC449DB22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift */,
 				3DF882F422C5331300205315 /* mainViewController.swift */,
 			);
 			path = ViewController;
@@ -253,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				3D19F95122A156670071644C /* Bodies */,
-				3D19F95222A156B70071644C /* DrawerCellinfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,16 +302,55 @@
 			path = pocketAssistantUITests;
 			sourceTree = "<group>";
 		};
-		3DC8465722A1B6B70032FB31 /* Navigation */ = {
+		3DF882F722C63F7C00205315 /* Objetos */ = {
 			isa = PBXGroup;
 			children = (
-				3D1F5ABA22A1747D006DE185 /* DrawerCell.swift */,
-				3D60CA0822A0216B000387D7 /* CustomNavigationController.swift */,
-				3DFC2FE822A5BD4A005099A8 /* SectionView.swift */,
-				3DFC2FEA22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift */,
-				3DFC2FEC22A5BE2B005099A8 /* DrawerHeaderViewController.swift */,
+				3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */,
+				3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */,
 			);
-			path = Navigation;
+			path = Objetos;
+			sourceTree = "<group>";
+		};
+		3DF882F822C63FA200205315 /* Relações */ = {
+			isa = PBXGroup;
+			children = (
+				3DF882F922C63FBA00205315 /* Views */,
+				3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */,
+				3D0E098822AADA360073FF35 /* TrusteesViewController.swift */,
+				3D3C105D22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift */,
+				3DC449DB22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift */,
+			);
+			name = "Relações";
+			path = "Relações";
+			sourceTree = "<group>";
+		};
+		3DF882F922C63FBA00205315 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D3C105722A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3DF882FA22C63FCA00205315 /* Gestão */ = {
+			isa = PBXGroup;
+			children = (
+				3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */,
+				3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */,
+				3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */,
+			);
+			name = "Gestão";
+			path = "Gestão";
+			sourceTree = "<group>";
+		};
+		3DF882FB22C63FEA00205315 /* Usuário */ = {
+			isa = PBXGroup;
+			children = (
+				3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */,
+				3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */,
+			);
+			name = "Usuário";
+			path = "Usuário";
 			sourceTree = "<group>";
 		};
 		C4F8B999163EE1C597E251CD /* Frameworks */ = {
@@ -601,11 +612,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DFC2FED22A5BE2B005099A8 /* DrawerHeaderViewController.swift in Sources */,
-				3D19F95322A156B70071644C /* DrawerCellinfo.swift in Sources */,
 				3D60CA0B22A0260D000387D7 /* NetworkHelper.swift in Sources */,
 				3D0E098922AADA360073FF35 /* TrusteesViewController.swift in Sources */,
-				3DFC2FE922A5BD4A005099A8 /* SectionView.swift in Sources */,
 				3D3C105E22A9B3BC00E1BDD9 /* NovaPermissaoViewController.swift in Sources */,
 				3D114DCF228B2F7B00A4A74C /* Router.swift in Sources */,
 				3D114DC9228B090200A4A74C /* URLParameterEncoder.swift in Sources */,
@@ -624,7 +632,6 @@
 				3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */,
 				3DDB7AD7229DDD6400C4D265 /* CriarUsuarioViewController.swift in Sources */,
 				3D3C104D22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift in Sources */,
-				3D60CA0922A0216B000387D7 /* CustomNavigationController.swift in Sources */,
 				3D114DC0228B05AB00A4A74C /* HTTPTask.swift in Sources */,
 				3D114DCB228B28F100A4A74C /* JSONParameterEncoder.swift in Sources */,
 				3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */,
@@ -632,16 +639,12 @@
 				3D3C105822A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift in Sources */,
 				3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */,
 				3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */,
-				3D1F5ABC22A1747D006DE185 /* DrawerCell.swift in Sources */,
-				3DEBB0F62295E1C6006F0E3B /* SecondViewController.swift in Sources */,
 				3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */,
 				3D3C104B22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift in Sources */,
 				3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */,
 				3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */,
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
-				3DFC2FEB22A5BDC0005099A8 /* DrawerContentWithScrollViewController.swift in Sources */,
 				3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */,
-				3D60CA0722A01547000387D7 /* testeViewController.swift in Sources */,
 				3D114DBA228B045500A4A74C /* EndPointType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

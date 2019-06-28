@@ -34,7 +34,7 @@ class NovaPermissaoViewController: UIViewController {
         criarSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
         removerSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
         atualizarSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
-        getAclRequest(userName: userName!)
+        getSystemAclRequest(userName: userName!)
         //Se veio por essa tela então provavelmente o usuario nao estava na lista de Trustees,
         //logo nao deve ter nenhuma permissao
         if self.userACL == nil {
@@ -121,7 +121,7 @@ class NovaPermissaoViewController: UIViewController {
     }
     
     // MARK: - GET ACL
-    func getAclRequest(userName: String) {
+    func getSystemAclRequest(userName: String) {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
