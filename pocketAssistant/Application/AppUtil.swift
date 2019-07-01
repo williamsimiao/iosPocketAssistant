@@ -66,9 +66,16 @@ open class AppUtil {
         else {
             message = "Erro ao conectar-se"
         }
-        let snackBar = MDCSnackbarMessage()
-        snackBar.text = message
-        MDCSnackbarManager.show(snackBar)
+        
+        let alertController = MDCAlertController(title: "Sem conexão", message: message)
+        alertController.addAction(MDCAlertAction(title: "Ok", emphasis: .high, handler: nil))
+        DispatchQueue.main.async {
+            currentView().present(alertController, animated:true, completion:nil)
+        }
+        
+//        let snackBar = MDCSnackbarMessage()
+//        snackBar.text = message
+//        MDCSnackbarManager.show(snackBar)
 
         return isConnected
     }

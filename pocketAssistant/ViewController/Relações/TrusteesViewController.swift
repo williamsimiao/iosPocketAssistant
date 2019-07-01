@@ -123,7 +123,6 @@ UICollectionViewDelegateFlowLayout {
             //TODO: present alert of error
             return
         }
-        //AQUI
         segueDelegate?.goToNovaPermisao(userACLpair: userPermission)
     }
     

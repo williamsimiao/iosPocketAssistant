@@ -75,21 +75,6 @@ class ObjetosViewController: UICollectionViewController {
                 self.exportedCertificates = self.exportedCertificates + 1
                 self.certificateNameArray.append(matched.first!)
                 
-                
-//                var commonNamePointer = UnsafeMutablePointer<CFString?>.allocate(capacity: 50)
-
-//                if #available(iOS 10.3, *) {
-//                    var cerror: Unmanaged<CFError>?
-//                    guard let dict = SecCertificateCopyValues(certificate,nil,&cerror) else {
-//                        print("deu ruim")
-//                        return
-////                        throw cerror!.takeRetainedValue() as Error
-//                    }
-//                    print("DIC: \(dict)")
-//
-//                } else {
-//                    // Fallback on earlier versions
-//                }
             }
             if self.exportedCertificates == self.certificateCounter {
                 DispatchQueue.main.async {

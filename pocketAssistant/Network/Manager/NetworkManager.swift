@@ -314,6 +314,8 @@ struct NetworkManager {
         let completeToken = "HSM \(token)"
         sessaoRouter.request(.probe(token: completeToken)) { (data, response, error) in
             if error != nil {
+                let mErroBody = errorBody(rc: 0, rd: "ERR_NO_CONNECTION")
+                completion(nil, mErroBody)
                 let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
