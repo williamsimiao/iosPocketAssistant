@@ -32,11 +32,16 @@ class CriarUsuarioViewController: UIViewController {
         self.title = "Criar usuário"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-        criarUsuarioButton.applyContainedTheme(withScheme: globalContainerScheme())
         usernameTextFieldController = MDCTextInputControllerOutlined(textInput: usernameTextField)
         passwordTextFieldController = MDCTextInputControllerOutlined(textInput: passwordTextField)
         confirmPasswordTextFieldController =
             MDCTextInputControllerOutlined(textInput: confirmPasswordTextField)
+        
+        MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: usernameTextFieldController!)
+        MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: passwordTextFieldController!)
+        MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: confirmPasswordTextFieldController!)
+
+        criarUsuarioButton.applyContainedTheme(withScheme: globalContainerScheme())
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
         scrollView.addGestureRecognizer(tapGestureRecognizer)
