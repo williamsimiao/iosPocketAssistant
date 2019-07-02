@@ -12,10 +12,19 @@ import SwiftKeychainWrapper
 
 class NovaPermissaoViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var lerLabel: UILabel!
     @IBOutlet weak var lerSwitch: UISwitch!
+    
+    @IBOutlet weak var criarLabel: UILabel!
     @IBOutlet weak var criarSwitch: UISwitch!
+    
+    @IBOutlet weak var removerLabel: UILabel!
     @IBOutlet weak var removerSwitch: UISwitch!
+    
+    @IBOutlet weak var atualizarLabel: UILabel!
     @IBOutlet weak var atualizarSwitch: UISwitch!
+    
     @IBOutlet weak var salvarButton: MDCButton!
     
     var usernameTextFieldController: MDCTextInputControllerOutlined?
@@ -28,12 +37,9 @@ class NovaPermissaoViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Permissões"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        turnAllSwitchesOff()
-        salvarButton.applyContainedTheme(withScheme: globalContainerScheme())
-        lerSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
-        criarSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
-        removerSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
-        atualizarSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
+        
+        setUpViews()
+        
         getSystemAclRequest(userName: userName!)
         //Se veio por essa tela então provavelmente o usuario nao estava na lista de Trustees,
         //logo nao deve ter nenhuma permissao
@@ -42,6 +48,29 @@ class NovaPermissaoViewController: UIViewController {
         }
         
         self.setUpSwitches(aclInteger: self.userACL!)
+    }
+    
+    func setUpViews() {
+        turnAllSwitchesOff()
+        salvarButton.applyContainedTheme(withScheme: globalContainerScheme())
+        lerSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
+        criarSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
+        removerSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
+        atualizarSwitch.addTarget(self, action: #selector(didTapASwitch), for: UIControl.Event.valueChanged)
+        
+        
+        lerLabel.font = MDCTypography.subheadFont()
+        lerLabel.alpha = MDCTypography.subheadFontOpacity()
+        
+        criarLabel.font = MDCTypography.subheadFont()
+        criarLabel.alpha = MDCTypography.subheadFontOpacity()
+        
+        removerLabel.font = MDCTypography.subheadFont()
+        removerLabel.alpha = MDCTypography.subheadFontOpacity()
+        
+        atualizarLabel.font = MDCTypography.subheadFont()
+        atualizarLabel.alpha = MDCTypography.subheadFontOpacity()
+        
     }
     
     // MARK: - SWITCHES

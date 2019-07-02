@@ -37,23 +37,23 @@ class ObjetoCell: MDCCardCollectionCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        nameLabel.font = MDCTypography.body1Font()
-        nameLabel.alpha = MDCTypography.titleFontOpacity()
+        nameLabel.font = MDCTypography.subheadFont()
+        nameLabel.alpha = MDCTypography.subheadFontOpacity()
         
-        issuerLabel.font = MDCTypography.body1Font()
-        issuerLabel.alpha = MDCTypography.body1FontOpacity()
+        issuerLabel.font = MDCTypography.subheadFont()
+        issuerLabel.alpha = MDCTypography.subheadFontOpacity()
         
-        fromDate.font = MDCTypography.body1Font()
-        fromDate.alpha = MDCTypography.body1FontOpacity()
+        fromDate.font = MDCTypography.subheadFont()
+        fromDate.alpha = MDCTypography.subheadFontOpacity()
         
-        toDate.font = MDCTypography.body1Font()
-        toDate.alpha = MDCTypography.body1FontOpacity()
+        toDate.font = MDCTypography.subheadFont()
+        toDate.alpha = MDCTypography.subheadFontOpacity()
         
-        fromLabel.font = MDCTypography.body1Font()
-        fromLabel.alpha = MDCTypography.titleFontOpacity()
+        fromLabel.font = MDCTypography.subheadFont()
+        fromLabel.alpha = MDCTypography.subheadFontOpacity()
         
-        toLabel.font = MDCTypography.body1Font()
-        toLabel.alpha = MDCTypography.body2FontOpacity()
+        toLabel.font = MDCTypography.subheadFont()
+        toLabel.alpha = MDCTypography.subheadFontOpacity()
 
         
 //        arrowImage.image = UIImage(named: "baseline_keyboard_arrow_right_black_24pt_")

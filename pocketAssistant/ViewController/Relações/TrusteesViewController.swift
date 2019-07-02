@@ -26,8 +26,8 @@ class TrusteesViewController: UIViewController {
         let lbl = UILabel()
         lbl.isHidden = true
         lbl.textColor = .black
-        lbl.font = MDCTypography.body2Font()
-        lbl.alpha = MDCTypography.body2FontOpacity()
+        lbl.font = MDCTypography.subheadFont()
+        lbl.alpha = MDCTypography.subheadFontOpacity()
         lbl.text = "Nenhum usuário listado"
         return lbl
     }()
