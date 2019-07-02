@@ -79,7 +79,7 @@ class TrocarSenhaViewController: UIViewController {
         networkmanager.runChangePwd(token: tokenString!, newPwd: newPwd) { (errorResponse) in
             if let errorResponse = errorResponse {
                 let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                print(message)
+                print(message ?? "no message")
             }
             else {
                 DispatchQueue.main.async {

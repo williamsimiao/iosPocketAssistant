@@ -169,7 +169,7 @@ struct NetworkManager {
         print("complete TOKEN: \(completeToken)")
         usuarioRouter.request(.createUsr(token: completeToken, usr: usr, pwd: pwd, acl: acl)) { (data, response, error) in
             if error != nil {
-                AppUtil.alertAboutConnectionError()
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
@@ -195,7 +195,7 @@ struct NetworkManager {
         print("complete TOKEN: \(completeToken)")
         usuarioRouter.request(.changePwd(token: completeToken, pwd: newPwd)) { (data, response, error) in
             if error != nil {
-                AppUtil.alertAboutConnectionError()
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
@@ -223,7 +223,7 @@ struct NetworkManager {
         print("complete TOKEN: \(completeToken)")
         objetosRouter.request(.objExp(token: completeToken, obj: objId)) { (data, response, error) in
             if error != nil {
-                AppUtil.alertAboutConnectionError()
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
@@ -253,7 +253,7 @@ struct NetworkManager {
         print("complete TOKEN: \(completeToken)")
         objetosRouter.request(.getObjInfo(token: completeToken, obj: objId)) { (data, response, error) in
             if error != nil {
-                AppUtil.alertAboutConnectionError()
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
@@ -345,7 +345,7 @@ struct NetworkManager {
         let completeToken = "HSM \(token)"
         sessaoRouter.request(.close(token: completeToken)) { (data, response, error) in
             if error != nil {
-                AppUtil.alertAboutConnectionError()
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
@@ -369,7 +369,7 @@ struct NetworkManager {
     func runAuth(usr: String, pwd: String, completion: @escaping (_ body1:ResponseBody1?,_ error: errorBody?)->()) {
         sessaoRouter.request(.auth(usr: usr, pwd: pwd)) { (data, response, error) in
             if error != nil {
-                AppUtil.alertAboutConnectionError()
+                let _ = AppUtil.alertAboutConnectionError()
             }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
