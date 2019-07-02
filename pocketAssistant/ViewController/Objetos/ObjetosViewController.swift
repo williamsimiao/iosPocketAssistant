@@ -9,6 +9,8 @@
 import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
+import Security
+import ASN1Decoder
 
 class ObjetosViewController: UICollectionViewController {
     
@@ -18,7 +20,7 @@ class ObjetosViewController: UICollectionViewController {
     let certificateTypeInteger = 13
     var certificateCounter = 0
     var exportedCertificates = 0
-    var certificateNameArray = [String]()
+    var certificateArray = [certificate]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,12 +70,30 @@ class ObjetosViewController: UICollectionViewController {
                 let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
             }
             if let response = response {
-                let certificate = SecCertificateCreateWithData(nil, response as CFData)
-                certificate
-                
-                
+                do {
+                    let x509 = try X509Certificate(data: response as Data)
+                    
+                    let subject = x509.subjectDistinguishedName
+                    let beginIndex = subject?.firstIndex(of: "=")
+                    let realBeginIndex = subject!.index(beginIndex!, offsetBy: 1)
+                    let endIndex = subject?.firstIndex(of: ",") ?? subject?.endIndex
+
+                    let name = String(subject![realBeginIndex..<endIndex!])
+                    
+                    let issuer = x509.issuerDistinguishedName
+                    let issuerBeginIndex = issuer?.firstIndex(of: "=")
+                    let issuerRealBeginIndex = issuer!.index(issuerBeginIndex!, offsetBy: 1)
+                    let issuerEndIndex = issuer?.firstIndex(of: ",") ?? issuer?.endIndex
+
+                    let issuerName = String(issuer![issuerRealBeginIndex..<issuerEndIndex!])
+                    
+                    let mCert = certificate(name: name, issuer: issuerName, notBefore: x509.notBefore!, notAfter: x509.notAfter!)
+                    self.certificateArray.append(mCert)
+                    
+                } catch {
+                    print(error)
+                }
                 self.exportedCertificates = self.exportedCertificates + 1
-                self.certificateNameArray.append(matched.first!)
                 
             }
             if self.exportedCertificates == self.certificateCounter {
@@ -107,7 +127,7 @@ class ObjetosViewController: UICollectionViewController {
         //TODO:Reset others possible helper variables
         self.certificateCounter = 0
         self.exportedCertificates = 0
-        self.certificateNameArray.removeAll()
+        self.certificateArray.removeAll()
 
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
@@ -131,18 +151,17 @@ extension ObjetosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width  = self.view.frame.size.width
 
-        return CGSize(width: width, height: 50.0)
+        return CGSize(width: width, height: 108.0)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let rowCounter = certificateNameArray.count
+        let rowCounter = certificateArray.count
         return rowCounter
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ObjetoCell.identifier, for: indexPath) as! ObjetoCell
-        let data = certificateNameArray
-        cell.objectName = data[indexPath.row]
+        cell.aCertificate = certificateArray[indexPath.row]
         return cell
     }
     

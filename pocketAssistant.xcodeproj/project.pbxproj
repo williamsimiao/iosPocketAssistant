@@ -167,9 +167,9 @@
 			children = (
 				3D9311EC2289DD4E000C2635 /* LoginViewController.swift */,
 				3DF882F722C63F7C00205315 /* Objetos */,
-				3DF882F822C63FA200205315 /* Relações */,
-				3DF882FA22C63FCA00205315 /* Gestão */,
-				3DF882FB22C63FEA00205315 /* Usuário */,
+				3DF882F822C63FA200205315 /* Relações */,
+				3DF882FA22C63FCA00205315 /* Gestão */,
+				3DF882FB22C63FEA00205315 /* Usuário */,
 				3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */,
 			);
 			path = ViewController;
@@ -311,7 +311,7 @@
 			path = Objetos;
 			sourceTree = "<group>";
 		};
-		3DF882F822C63FA200205315 /* Relações */ = {
+		3DF882F822C63FA200205315 /* Relações */ = {
 			isa = PBXGroup;
 			children = (
 				3DF882F922C63FBA00205315 /* Views */,
@@ -332,7 +332,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3DF882FA22C63FCA00205315 /* Gestão */ = {
+		3DF882FA22C63FCA00205315 /* Gestão */ = {
 			isa = PBXGroup;
 			children = (
 				3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */,
@@ -343,7 +343,7 @@
 			path = "Gestão";
 			sourceTree = "<group>";
 		};
-		3DF882FB22C63FEA00205315 /* Usuário */ = {
+		3DF882FB22C63FEA00205315 /* Usuário */ = {
 			isa = PBXGroup;
 			children = (
 				3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */,
@@ -560,6 +560,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-pocketAssistant/Pods-pocketAssistant-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ASN1Decoder/ASN1Decoder.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
@@ -571,6 +572,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASN1Decoder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",

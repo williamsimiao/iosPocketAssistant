@@ -26,8 +26,8 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
     let titleLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
-        lbl.font = MDCTypography.body2Font()
-        lbl.alpha = MDCTypography.body2FontOpacity()
+        lbl.font = MDCTypography.body1Font()
+        lbl.alpha = MDCTypography.body1FontOpacity()
         return lbl
     }()
     

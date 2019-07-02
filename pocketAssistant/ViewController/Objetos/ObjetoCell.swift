@@ -12,18 +12,50 @@ import MaterialComponents
 class ObjetoCell: MDCCardCollectionCell {
     static var identifier: String = "Cell"
 
-    @IBOutlet weak var keyLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var issuerLabel: UILabel!
+    @IBOutlet weak var fromDate: UILabel!
+    @IBOutlet weak var toDate: UILabel!
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var toLabel: UILabel!
+    
+    
+    
     var separator: UIBezierPath!
-    var objectName: String? {
+    var aCertificate: certificate? {
         didSet {
-            keyLabel.text = objectName
+            nameLabel.text = aCertificate?.name
+            issuerLabel.text = aCertificate?.issuer
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            
+            fromDate.text = dateFormatter.string(from: aCertificate!.notBefore)
+            toDate.text = dateFormatter.string(from: aCertificate!.notAfter)
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        keyLabel.font = MDCTypography.body2Font()
-        keyLabel.alpha = MDCTypography.body2FontOpacity()
+        nameLabel.font = MDCTypography.body1Font()
+        nameLabel.alpha = MDCTypography.titleFontOpacity()
+        
+        issuerLabel.font = MDCTypography.body1Font()
+        issuerLabel.alpha = MDCTypography.body1FontOpacity()
+        
+        fromDate.font = MDCTypography.body1Font()
+        fromDate.alpha = MDCTypography.body1FontOpacity()
+        
+        toDate.font = MDCTypography.body1Font()
+        toDate.alpha = MDCTypography.body1FontOpacity()
+        
+        fromLabel.font = MDCTypography.body1Font()
+        fromLabel.alpha = MDCTypography.titleFontOpacity()
+        
+        toLabel.font = MDCTypography.body1Font()
+        toLabel.alpha = MDCTypography.body2FontOpacity()
+
+        
 //        arrowImage.image = UIImage(named: "baseline_keyboard_arrow_right_black_24pt_")
     }
 

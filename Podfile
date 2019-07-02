@@ -33,6 +33,7 @@ target 'pocketAssistant' do
 
 
     pod 'SwiftKeychainWrapper'
+    pod 'ASN1Decoder'
 
     target 'pocketAssistantTests' do
     inherit! :search_paths

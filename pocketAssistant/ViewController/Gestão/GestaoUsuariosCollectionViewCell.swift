@@ -33,8 +33,8 @@ class GestaoUsuariosCollectionViewCell: MDCCardCollectionCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.font = MDCTypography.body2Font()
-        titleLabel.alpha = MDCTypography.body2FontOpacity()
+        titleLabel.font = MDCTypography.body1Font()
+        titleLabel.alpha = MDCTypography.body1FontOpacity()
     }
     
     override func draw(_ rect: CGRect) {
