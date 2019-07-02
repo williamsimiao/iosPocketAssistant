@@ -15,15 +15,19 @@ class NovaPermissaoViewController: UIViewController {
     
     @IBOutlet weak var lerLabel: UILabel!
     @IBOutlet weak var lerSwitch: UISwitch!
+    @IBOutlet weak var lerSubLabel: UILabel!
     
     @IBOutlet weak var criarLabel: UILabel!
     @IBOutlet weak var criarSwitch: UISwitch!
+    @IBOutlet weak var criarSubLabel: UILabel!
     
     @IBOutlet weak var removerLabel: UILabel!
     @IBOutlet weak var removerSwitch: UISwitch!
+    @IBOutlet weak var removerSubLabel: UILabel!
     
     @IBOutlet weak var atualizarLabel: UILabel!
     @IBOutlet weak var atualizarSwitch: UISwitch!
+    @IBOutlet weak var atualizarSubLabel: UILabel!
     
     @IBOutlet weak var salvarButton: MDCButton!
     
@@ -61,15 +65,25 @@ class NovaPermissaoViewController: UIViewController {
         
         lerLabel.font = MDCTypography.subheadFont()
         lerLabel.alpha = MDCTypography.subheadFontOpacity()
+        lerSubLabel.font = MDCTypography.subheadFont()
+        lerSubLabel.alpha = MDCTypography.captionFontOpacity()
+        
         
         criarLabel.font = MDCTypography.subheadFont()
         criarLabel.alpha = MDCTypography.subheadFontOpacity()
+        criarSubLabel.font = MDCTypography.subheadFont()
+        criarSubLabel.alpha = MDCTypography.captionFontOpacity()
         
         removerLabel.font = MDCTypography.subheadFont()
         removerLabel.alpha = MDCTypography.subheadFontOpacity()
+        removerSubLabel.font = MDCTypography.subheadFont()
+        removerSubLabel.alpha = MDCTypography.captionFontOpacity()
         
         atualizarLabel.font = MDCTypography.subheadFont()
         atualizarLabel.alpha = MDCTypography.subheadFontOpacity()
+        atualizarSubLabel.font = MDCTypography.subheadFont()
+        atualizarSubLabel.alpha = MDCTypography.captionFontOpacity()
+
         
     }
     
