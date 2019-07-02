@@ -18,7 +18,6 @@ class ObjetosViewController: UICollectionViewController {
     let certificateTypeInteger = 13
     var certificateCounter = 0
     var exportedCertificates = 0
-//    var certificateDataArray: [Data]?
     var certificateNameArray = [String]()
 
     override func viewDidLoad() {
@@ -70,8 +69,9 @@ class ObjetosViewController: UICollectionViewController {
             }
             if let response = response {
                 let certificate = SecCertificateCreateWithData(nil, response as CFData)
-                let certificateString = String(describing: certificate)
-                let matched = self.matches(for: "(?<=s: )(.*)(?= i:)", in: certificateString)
+                certificate
+                
+                
                 self.exportedCertificates = self.exportedCertificates + 1
                 self.certificateNameArray.append(matched.first!)
                 

@@ -72,10 +72,6 @@ open class AppUtil {
         DispatchQueue.main.async {
             currentView().present(alertController, animated:true, completion:nil)
         }
-        
-//        let snackBar = MDCSnackbarMessage()
-//        snackBar.text = message
-//        MDCSnackbarManager.show(snackBar)
 
         return isConnected
     }

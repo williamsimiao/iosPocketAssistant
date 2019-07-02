@@ -78,6 +78,13 @@ struct aclStruct: OptionSet {
     static let change_pwd_next_time = aclStruct(rawValue: 1 << 30)
 }
 
+public struct certificate: Codable {
+    public var name: String
+    public var issuer: String
+    public var notBefore: Date
+    public var notAfter: Date
+}
+
 //#define ACL_NOP                 (0x00000000)       // "may the Force be with ya'!"
 //#define ACL_OBJ_DEL             (ACL_NOP + 1)      // delete objects
 //#define ACL_OBJ_READ            (ACL_OBJ_DEL << 1) // read obj content
