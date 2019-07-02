@@ -37,17 +37,22 @@ class ObjetoCell: MDCCardCollectionCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+//        lerLabel.font = MDCTypography.subheadFont()
+//        lerLabel.alpha = MDCTypography.subheadFontOpacity()
+//        lerSubLabel.font = MDCTypography.subheadFont()
+//        lerSubLabel.alpha = MDCTypography.captionFontOpacity()
+        
         nameLabel.font = MDCTypography.subheadFont()
         nameLabel.alpha = MDCTypography.subheadFontOpacity()
         
         issuerLabel.font = MDCTypography.subheadFont()
-        issuerLabel.alpha = MDCTypography.subheadFontOpacity()
+        issuerLabel.alpha = MDCTypography.captionFontOpacity()
         
         fromDate.font = MDCTypography.subheadFont()
-        fromDate.alpha = MDCTypography.subheadFontOpacity()
+        fromDate.alpha = MDCTypography.captionFontOpacity()
         
         toDate.font = MDCTypography.subheadFont()
-        toDate.alpha = MDCTypography.subheadFontOpacity()
+        toDate.alpha = MDCTypography.captionFontOpacity()
         
         fromLabel.font = MDCTypography.subheadFont()
         fromLabel.alpha = MDCTypography.subheadFontOpacity()

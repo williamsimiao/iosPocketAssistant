@@ -259,13 +259,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/08/1994" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbo-3j-NIJ" userLabel="FromDate">
-                                            <rect key="frame" x="74" y="130" width="90.5" height="21"/>
+                                            <rect key="frame" x="66" y="130" width="90.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs8-eK-w0g">
-                                            <rect key="frame" x="172.5" y="130" width="24" height="21"/>
+                                            <rect key="frame" x="164.5" y="130" width="24" height="21"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -285,12 +285,12 @@
                                     <constraint firstItem="cs8-eK-w0g" firstAttribute="leading" secondItem="Fbo-3j-NIJ" secondAttribute="trailing" constant="8" id="J3v-qV-Rqp"/>
                                     <constraint firstItem="Fbo-3j-NIJ" firstAttribute="centerY" secondItem="c3r-vf-noi" secondAttribute="centerY" id="NMB-gh-KJ7"/>
                                     <constraint firstItem="c3r-vf-noi" firstAttribute="top" secondItem="VLm-VR-6us" secondAttribute="bottom" constant="12" id="TLA-ra-OSm"/>
-                                    <constraint firstItem="VLm-VR-6us" firstAttribute="leading" secondItem="cfI-W2-i7R" secondAttribute="leadingMargin" constant="16" id="e0G-Vf-5dB"/>
+                                    <constraint firstItem="VLm-VR-6us" firstAttribute="leading" secondItem="cfI-W2-i7R" secondAttribute="leadingMargin" constant="8" id="e0G-Vf-5dB"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="VLm-VR-6us" secondAttribute="trailing" constant="8" id="hb6-OE-Yk4"/>
-                                    <constraint firstItem="0gk-oe-DHU" firstAttribute="leading" secondItem="cfI-W2-i7R" secondAttribute="leadingMargin" constant="16" id="led-tf-0NY"/>
+                                    <constraint firstItem="0gk-oe-DHU" firstAttribute="leading" secondItem="cfI-W2-i7R" secondAttribute="leadingMargin" constant="8" id="led-tf-0NY"/>
                                     <constraint firstItem="rvu-Rd-Bxe" firstAttribute="centerY" secondItem="c3r-vf-noi" secondAttribute="centerY" id="mWC-gd-PFd"/>
                                     <constraint firstItem="VLm-VR-6us" firstAttribute="top" secondItem="0gk-oe-DHU" secondAttribute="bottom" constant="12" id="rCE-NW-ZbY"/>
-                                    <constraint firstItem="c3r-vf-noi" firstAttribute="leading" secondItem="cfI-W2-i7R" secondAttribute="leadingMargin" constant="16" id="xqc-pQ-SrV"/>
+                                    <constraint firstItem="c3r-vf-noi" firstAttribute="leading" secondItem="cfI-W2-i7R" secondAttribute="leadingMargin" constant="8" id="xqc-pQ-SrV"/>
                                     <constraint firstItem="Fbo-3j-NIJ" firstAttribute="leading" secondItem="c3r-vf-noi" secondAttribute="trailing" constant="4" id="y8I-EK-Djw"/>
                                     <constraint firstItem="cs8-eK-w0g" firstAttribute="centerY" secondItem="c3r-vf-noi" secondAttribute="centerY" id="yDX-VL-JFl"/>
                                 </constraints>
@@ -340,7 +340,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhc-DQ-mNn">
                                             <rect key="frame" x="16" y="-10.5" width="368" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6N-rQ-VQd">
@@ -648,7 +648,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnx-YO-3KT">
                                             <rect key="frame" x="16" y="14.5" width="368" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcw-L0-dLN">
