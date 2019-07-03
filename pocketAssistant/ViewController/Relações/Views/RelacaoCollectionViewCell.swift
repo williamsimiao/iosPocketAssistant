@@ -61,7 +61,7 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
             arraowImage.widthAnchor.constraint(equalTo: arraowImage.heightAnchor, multiplier: 1),
             arraowImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
             
-            titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             self.arraowImage.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 8),
             titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
             ])
