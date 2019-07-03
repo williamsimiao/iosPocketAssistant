@@ -42,7 +42,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
         setUpViews()
         
         registerKeyboardNotifications()
@@ -51,6 +50,7 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         //This null verification is not suitable for viewDidLoad because de Token is
         //modified after the creation
+        tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
         if tokenString != nil {
             hideLoginFields()
             probeRequest()
@@ -182,7 +182,7 @@ class LoginViewController: UIViewController {
         networkManager.runProbeSynchronous(token: token) { (response, errorResponse) in
             if let errorResponse = errorResponse {
                 let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                if message == "Acesso negado" {
+                if message == "Sessão expirou" {
                     self.showInvalidTokenDialog()
                 }
             }

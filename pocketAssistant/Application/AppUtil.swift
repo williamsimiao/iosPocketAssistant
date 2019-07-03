@@ -25,8 +25,11 @@ open class AppUtil {
         return currentViewController
     }
     
-    class func goToLoginScreen(sourceViewController: UIViewController) {
+    class func removeTokenFromKeyChain() {
         KeychainWrapper.standard.removeObject(forKey: "TOKEN")
+    }
+    
+    class func goToLoginScreen(sourceViewController: UIViewController) {
         DispatchQueue.main.async {
             let stor = UIStoryboard.init(name: "Main", bundle: nil)
             let LoginViewController = stor.instantiateViewController(withIdentifier: "LoginViewController")
