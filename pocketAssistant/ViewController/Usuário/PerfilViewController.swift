@@ -51,7 +51,7 @@ class PerfilViewController: UIViewController {
                 }
                 else {
                     print("Deu certo")
-                    AppUtil.removeTokenFromKeyChain()
+                    AppUtil.removeTokenFromSecureLocation()
                     AppUtil.goToLoginScreen(sourceViewController: self)
                 }
             }

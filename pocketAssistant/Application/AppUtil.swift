@@ -25,7 +25,7 @@ open class AppUtil {
         return currentViewController
     }
     
-    class func removeTokenFromKeyChain() {
+    class func removeTokenFromSecureLocation() {
         KeychainWrapper.standard.removeObject(forKey: "TOKEN")
     }
     
@@ -93,6 +93,7 @@ open class AppUtil {
             if (viewController is LoginViewController) == false {
                 goToLoginScreen(sourceViewController: viewController)
             }
+        case "ERR_USR_ALREADY_EXISTS": message = "Usuário já existe"
         case "ERR_USR_NOT_FOUND": message = "Usuário não encontrado"
         case "ERR_INVALID_PAYLOAD": message = "Entrada inválida"
         default:
