@@ -55,7 +55,6 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            
             self.contentView.trailingAnchor.constraint(equalTo: arraowImage.trailingAnchor, constant: 8),
             arraowImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             arraowImage.widthAnchor.constraint(equalTo: arraowImage.heightAnchor, multiplier: 1),
@@ -84,6 +83,4 @@ class RelacaoCollectionViewCell: MDCCardCollectionCell {
         UIColor.black.setStroke()
         separator.stroke()
     }
-    
-    
 }

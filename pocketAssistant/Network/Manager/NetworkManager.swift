@@ -44,7 +44,6 @@ struct NetworkManager {
         case 600:
             return .failure(NetworkResponse.outdated.rawValue)
         default:
-            print("statusCode: \(response.statusCode)")
             return .failure(NetworkResponse.failed.rawValue)
         }
     }
