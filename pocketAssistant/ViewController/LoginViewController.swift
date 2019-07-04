@@ -182,7 +182,7 @@ class LoginViewController: UIViewController {
         networkManager.runProbeSynchronous(token: token) { (response, errorResponse) in
             if let errorResponse = errorResponse {
                 let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                if message == "Sessão expirou" {
+                if message == "Sessão expirou" || message == "Acesso negado" {
                     self.showInvalidTokenDialog()
                 }
             }
