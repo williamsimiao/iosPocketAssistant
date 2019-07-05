@@ -53,7 +53,7 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
         adduserButton.addTarget(self, action: #selector(GestaoUsuariosCollectionViewController.didTapAddUser), for: .touchUpInside)
         let addUserBarItem = UIBarButtonItem(customView: adduserButton)
         
-        self.navigationItem.setRightBarButtonItems([addUserBarItem, refreshBarItem], animated: true)
+        self.navigationItem.setRightBarButtonItems([refreshBarItem, addUserBarItem], animated: true)
     }
     
     @objc func didTapAddUser() {

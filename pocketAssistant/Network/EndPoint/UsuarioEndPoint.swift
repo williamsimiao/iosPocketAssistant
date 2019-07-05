@@ -22,6 +22,7 @@ extension UsuariosApi: EndPointType {
     var environmentBaseURL : String {
         switch NetworkManager.environment {
         case .production: return "https://hsmlab63.dinamonetworks.com/api"
+//        case .production: return "http://10.61.53.210"
         }
     }
     

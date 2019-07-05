@@ -123,16 +123,6 @@ class TrocarSenhaViewController: UIViewController {
 }
 
 extension TrocarSenhaViewController: UITextFieldDelegate {
-    func clearErrorMenssageOnTextLayout(_ textField: UITextField) {
-        switch textField {
-        case newPwdTextField:
-            newPwdTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        case pwdConfirmationTextField:
-            pwdConfirmationTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        default:
-            break
-        }
-    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == newPwdTextField {

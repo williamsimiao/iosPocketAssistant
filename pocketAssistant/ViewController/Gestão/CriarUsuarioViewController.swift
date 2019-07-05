@@ -26,6 +26,10 @@ class CriarUsuarioViewController: UIViewController {
     var usernameTextFieldController: MDCTextInputControllerOutlined?
     var passwordTextFieldController: MDCTextInputControllerOutlined?
     var confirmPasswordTextFieldController: MDCTextInputControllerOutlined?
+    
+    var usernameTextLayout: textLayout?
+    var passwordTextLayout: textLayout?
+    var confirmationTextLayout: textLayout?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +44,10 @@ class CriarUsuarioViewController: UIViewController {
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: usernameTextFieldController!)
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: passwordTextFieldController!)
         MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: confirmPasswordTextFieldController!)
+        
+        usernameTextLayout = textLayout(textField: usernameTextField, controller: usernameTextFieldController!)
+        passwordTextLayout = textLayout(textField: passwordTextField, controller: passwordTextFieldController!)
+        confirmationTextLayout = textLayout(textField: confirmPasswordTextField, controller: confirmPasswordTextFieldController!)
 
         criarUsuarioButton.applyContainedTheme(withScheme: globalContainerScheme())
 
@@ -49,6 +57,8 @@ class CriarUsuarioViewController: UIViewController {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
+        usernameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         registerKeyboardNotifications()
     }
     
@@ -58,9 +68,16 @@ class CriarUsuarioViewController: UIViewController {
     }
     
     @IBAction func didTapCriar(_ sender: Any) {
-        if  !isValidInput(usernameTextField) ||
-            !isValidInput(passwordTextField) ||
-            !isValidInput(confirmPasswordTextField) {
+        guard AppUtil.fieldsAreValid([usernameTextLayout!, passwordTextLayout!, confirmationTextLayout!]) else {
+            return
+        }
+        guard AppUtil.validUsr(usernameTextLayout!) else {
+            return
+        }
+        guard AppUtil.validPwd(passwordTextLayout!) else {
+            return
+        }
+        guard AppUtil.validPwdConfirmation(passwordTextLayout!, confirmationTextLayout!) else {
             return
         }
         
@@ -120,80 +137,52 @@ class CriarUsuarioViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 extension CriarUsuarioViewController: UITextFieldDelegate {
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+//    //Validation after press return
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        let _ = isValidInput(textField)
+//        return false
+//    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == usernameTextField {
+            let _ = AppUtil.validUsr(usernameTextLayout!)
+        }
+        else if textField == passwordTextField {
+            let _ = AppUtil.validPwd(passwordTextLayout!)
+        }
+        else if textField == confirmPasswordTextField {
+            let _ = AppUtil.validPwdConfirmation(passwordTextLayout!, confirmationTextLayout!)
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
         switch textField {
         case usernameTextField:
             usernameTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
         case passwordTextField:
             passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        case confirmPasswordTextField:
-            confirmPasswordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
         default:
             break
         }
-        return true
-    }
-    
-    func checkTextFieldEmpity(_ textField: UITextField) -> Bool {
-        return textField.text == nil || textField.text == ""
-    }
-    
-    func isValidInput(_ textField: UITextField) -> Bool {
-        switch textField {
-        case usernameTextField:
-            if checkTextFieldEmpity(usernameTextField) {
-                usernameTextFieldController?.setErrorText("Campo Obirgatorio", errorAccessibilityValue: nil)
-                return false
-            }
-            
-        case passwordTextField:
-            if checkTextFieldEmpity(passwordTextField) {
-                passwordTextFieldController?.setErrorText("Campo Obirgatorio", errorAccessibilityValue: nil)
-                return false
-            }
-            else if passwordTextField.text!.count < 8 {
-                passwordTextFieldController?.setErrorText("Senha muito curta",
-                                                          errorAccessibilityValue: nil)
-                return false
-            }
-        case confirmPasswordTextField:
-            if checkTextFieldEmpity(confirmPasswordTextField) {
-                confirmPasswordTextFieldController?.setErrorText("Campo Obirgatorio", errorAccessibilityValue: nil)
-                return false
-            }
-            else if confirmPasswordTextField.text != passwordTextField.text {
-                confirmPasswordTextFieldController?.setErrorText("Confirmação e senha não conferem", errorAccessibilityValue: nil)
-                return false
-            }
-        default:
-            break
-        }
-        return true
-    }
-    
-    //Validation after press return
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        let _ = isValidInput(textField)
-        return false
     }
     
     //Validation while typing
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text,
-            let range = Range(range, in: text),
-            textField == passwordTextField else {
-                return true
-        }
-        
-        let finishedString = text.replacingCharacters(in: range, with: string)
-        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
-            passwordTextFieldController?.setErrorText("Apenas letras e numeros são permitidas", errorAccessibilityValue: nil)
-        } else {
-            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        }
-        
-        return true
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let text = textField.text,
+//            let range = Range(range, in: text),
+//            textField == passwordTextField else {
+//                return true
+//        }
+//
+//        let finishedString = text.replacingCharacters(in: range, with: string)
+//        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
+//            passwordTextFieldController?.setErrorText("Use ap", errorAccessibilityValue: nil)
+//        } else {
+//            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+//        }
+//
+//        return true
+//    }
 }
 

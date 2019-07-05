@@ -104,17 +104,12 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
     
-    // MARK: - Action Handling
-    func validateTextInput(text: String?) throws {
-        if text == nil {
-            throw inputError.stringNil
-        }
-        //TODO check more cases
-    }
-    
     @IBAction func didTapAutenticar(_ sender: Any) {
         guard AppUtil.fieldsAreValid([usernameTextLayout!, passwordTextLayout!]) else {
                 return
+        }
+        guard AppUtil.validPwd(passwordTextLayout!) else  {
+            return
         }
 
         let username = usernameTextField.text!
@@ -223,38 +218,23 @@ class LoginViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        switch textField {
-        case usernameTextField:
-            usernameTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        case passwordTextField:
-            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        case otpTextField:
-            otpTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        default:
-            break
-        }
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        switch textField {
-        case usernameTextField:
-            usernameTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        case passwordTextField:
-            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        case otpTextField:
-            otpTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-        default:
-            break
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            let _ = AppUtil.validPwd(passwordTextLayout!)
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-//        checkForValidPassword(textField)
-        return false
-    }
+    
+    
+    
+//    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+//        resetTextFieldError(textField)
+//        return true
+//    }
+    
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        resetTextFieldError(textField)
+//    }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         switch textField {

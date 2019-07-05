@@ -39,6 +39,7 @@ open class AppUtil {
         }
     }
     
+    // MARK: - CONNECTION ERROR HANDLING
     class func isInternetAvailable() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
@@ -104,7 +105,22 @@ open class AppUtil {
         return message
     }
     
+    // MARK: - INPUT ERROR HANDLING
+    class func validUsr(_ usrTextLayout: textLayout) -> Bool {
+        if usrTextLayout.textField.text == "" {
+            return false
+        }
+        let isAlphaNumeric = usrTextLayout.textField.text!.isAlphanumeric
+        if isAlphaNumeric == false {
+            usrTextLayout.controller.setErrorText("O Nome deve conter apenas caracteres alfanuméricos", errorAccessibilityValue: nil)
+        }
+        return isAlphaNumeric
+    }
+    
     class func validPwdConfirmation(_ pwdTextLayout: textLayout, _ confirmationTextLayout: textLayout) -> Bool {
+        if confirmationTextLayout.textField.text == "" {
+            return false
+        }
         if pwdTextLayout.textField.text == confirmationTextLayout.textField.text {
             return true
         }
@@ -114,13 +130,16 @@ open class AppUtil {
         }
     }
     
-    class func validPwd(_ textLayout: textLayout) -> Bool {
+    class func validPwd(_ pwdTextLayout: textLayout) -> Bool {
         let pwdMinimumLength = 8
-        if textLayout.textField.text!.count >= pwdMinimumLength {
+        if pwdTextLayout.textField.text == "" {
+            return false
+        }
+        if pwdTextLayout.textField.text!.count >= pwdMinimumLength {
             return true
         }
         else {
-            textLayout.controller.setErrorText("Senhas devem contem pelo menos 8 caracteres", errorAccessibilityValue: nil)
+            pwdTextLayout.controller.setErrorText("Senhas devem conter pelo menos 8 caracteres", errorAccessibilityValue: nil)
             return false
         }
     }
