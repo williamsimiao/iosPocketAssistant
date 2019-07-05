@@ -23,11 +23,12 @@ class TrusteesViewController: UIViewController {
     var segueDelegate: performeSegueDelegate?
 
     let noContentLabel : UILabel = {
-        let lbl = UILabel()
-        lbl.isHidden = true
-        lbl.textColor = UIColor(red: 44, green: 44, blue: 44, alpha: 1)
-        lbl.font = MDCTypography.subheadFont()
-        lbl.alpha = MDCTypography.subheadFontOpacity()
+        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        lbl.textColor = .black
+        lbl.font = UIFont(name: lbl.font.fontName, size: 50)
+
+        lbl.font = MDCTypography.titleFont()
+        lbl.alpha = MDCTypography.titleFontOpacity()
         lbl.text = "Nenhum usuário listado"
         return lbl
     }()
@@ -44,7 +45,7 @@ class TrusteesViewController: UIViewController {
         collectionView!.dataSource = self
         self.view.addSubview(collectionView!)
         self.view.addSubview(noContentLabel)
-
+        setupViews()
         collectionView?.backgroundColor = .white
     }
     
@@ -86,7 +87,6 @@ class TrusteesViewController: UIViewController {
             }
         }
     }
-
 }
 
 //Delegate, DataSource
@@ -101,12 +101,18 @@ UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let rowCounter = itemArray?.count else {
+        guard let rowCount = itemArray?.count else {
             self.noContentLabel.isHidden = false
             return 0
         }
-        self.noContentLabel.isHidden = true
-        return rowCounter
+        if(rowCount == 0) {
+            self.noContentLabel.isHidden = false
+        }
+        else {
+            self.noContentLabel.isHidden = true
+        }
+        
+        return rowCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -132,8 +138,6 @@ UICollectionViewDelegateFlowLayout {
     @objc func backItemTapped(sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
 }
 
 extension TrusteesViewController : barButtonItemDelegate {
