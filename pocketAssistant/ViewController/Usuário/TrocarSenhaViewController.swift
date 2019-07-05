@@ -85,7 +85,9 @@ class TrocarSenhaViewController: UIViewController {
         networkmanager.runChangePwd(token: tokenString!, newPwd: newPwd) { (errorResponse) in
             if let errorResponse = errorResponse {
                 let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                print(message ?? "no message")
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
             else {
                 DispatchQueue.main.async {

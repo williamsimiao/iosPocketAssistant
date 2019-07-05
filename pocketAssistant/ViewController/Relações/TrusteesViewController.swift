@@ -73,7 +73,10 @@ class TrusteesViewController: UIViewController {
         let op = isTrustees ? 2 : 1
         NetworkManager().runListUsrsTrust(token: token, op: op, usr: usrName) { (response, errorResponse) in
             if let errorResponse = errorResponse {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
             if let response = response {
                 self.itemArray = response.trust

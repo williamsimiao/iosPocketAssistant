@@ -171,7 +171,10 @@ class NovaPermissaoViewController: UIViewController {
 
         networkManager.runGetAcl(token: token, usr: userName) { (response, errorResponse) in
             if let errorResponse = errorResponse {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
             if let response = response {
                 self.systemAcl = response.acl
@@ -199,7 +202,10 @@ class NovaPermissaoViewController: UIViewController {
         let finalAcl = composeFinalAcl(newAcl: newAcl)
         networkManager.runUpdateAcl(token: token, acl: finalAcl, usr: userName!) { (errorResponse) in
             if let errorResponse = errorResponse {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
             else {
                 DispatchQueue.main.async {

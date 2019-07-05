@@ -67,7 +67,10 @@ class ObjetosViewController: UICollectionViewController {
         }
         NetworkManager().runObjExp(objId: objId, token: token) { (response, errorResponse) in
             if let errorResponse = errorResponse {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
             if let response = response {
                 do {
@@ -111,7 +114,10 @@ class ObjetosViewController: UICollectionViewController {
         }
         NetworkManager().runGetObjInfo(objId: objId, token: token) { (response, error) in
             if let error = error {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
             if let response = response {
                 let myType = response.type
@@ -134,7 +140,10 @@ class ObjetosViewController: UICollectionViewController {
         }
         NetworkManager().runListObjs(token: token) { (response, errorResponse) in
             if let errorResponse = errorResponse {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
             if let response = response {
                 self.objIdArray = response.obj

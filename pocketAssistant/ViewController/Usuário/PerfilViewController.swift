@@ -47,7 +47,10 @@ class PerfilViewController: UIViewController {
         let actionComplitionHandler: MDCActionHandler = {_ in
             self.networkManager.runClose(token: token) { (error) in
                 if let error = error {
-                    let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+                    let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+                    let snackBar = MDCSnackbarMessage()
+                    snackBar.text = message
+                    MDCSnackbarManager.show(snackBar)
                 }
                 else {
                     print("Deu certo")

@@ -29,7 +29,10 @@ class GestaoUsuariosCollectionViewController: UICollectionViewController {
         }
         NetworkManager().runListUsrs(token: token) { (response, errorResponse) in
             if let errorResponse = errorResponse {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
             if let response = response {
                 self.usrsArray = response.usr

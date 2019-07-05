@@ -90,7 +90,10 @@ class CriarUsuarioViewController: UIViewController {
         
         NetworkManager().runCreateUsr(token: token, usr: username, pwd: password, acl: newUserDefaultACL) { (errorResponse) in
             if let errorResponse = errorResponse {
-                let _ = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
             }
             else {
                 DispatchQueue.main.async {
