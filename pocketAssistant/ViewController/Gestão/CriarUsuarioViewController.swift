@@ -137,13 +137,6 @@ class CriarUsuarioViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 extension CriarUsuarioViewController: UITextFieldDelegate {
     
-//    //Validation after press return
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        let _ = isValidInput(textField)
-//        return false
-//    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == usernameTextField {
             let _ = AppUtil.validUsr(usernameTextLayout!)
@@ -166,23 +159,5 @@ extension CriarUsuarioViewController: UITextFieldDelegate {
             break
         }
     }
-    
-    //Validation while typing
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        guard let text = textField.text,
-//            let range = Range(range, in: text),
-//            textField == passwordTextField else {
-//                return true
-//        }
-//
-//        let finishedString = text.replacingCharacters(in: range, with: string)
-//        if finishedString.rangeOfCharacter(from: CharacterSet.init(charactersIn: "%@#*!")) != nil {
-//            passwordTextFieldController?.setErrorText("Use ap", errorAccessibilityValue: nil)
-//        } else {
-//            passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
-//        }
-//
-//        return true
-//    }
 }
 

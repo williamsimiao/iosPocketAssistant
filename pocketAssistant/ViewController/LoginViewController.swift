@@ -224,18 +224,6 @@ extension LoginViewController: UITextFieldDelegate {
         }
     }
     
-    
-    
-    
-//    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-//        resetTextFieldError(textField)
-//        return true
-//    }
-    
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        resetTextFieldError(textField)
-//    }
-    
     @objc func textFieldDidChange(_ textField: UITextField) {
         switch textField {
         case usernameTextField:

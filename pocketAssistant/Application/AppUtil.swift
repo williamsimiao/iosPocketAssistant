@@ -112,7 +112,7 @@ open class AppUtil {
         }
         let isAlphaNumeric = usrTextLayout.textField.text!.isAlphanumeric
         if isAlphaNumeric == false {
-            usrTextLayout.controller.setErrorText("O Nome deve conter apenas caracteres alfanuméricos", errorAccessibilityValue: nil)
+            usrTextLayout.controller.setErrorText("O nome deve conter apenas caracteres alfanuméricos", errorAccessibilityValue: nil)
         }
         return isAlphaNumeric
     }
@@ -154,35 +154,4 @@ open class AppUtil {
         }
         return isValid
     }
-    
-    //fun fieldsAreValid(context: Context?, mTextInputLayoutArray: Array<TextInputLayout>): Boolean {
-    //    var isValid = true
-    //
-    //    for(mTextInputlayout: TextInputLayout in mTextInputLayoutArray) {
-    //        val input = mTextInputlayout.editText!!.text.toString()
-    //        if(input == "") {
-    //            mTextInputlayout.error = context!!.getString(R.string.required_field)
-    //            isValid = false
-    //        }
-    //    }
-    //    return isValid
-    //}
-    
-    
-    
-    //    fun didTapAlterar() {
-    //        if(fieldsAreValid(context, arrayOf(newPwdEditText,
-    //                newPwdConfirmationEditText)) == false) {
-    //            return
-    //        }
-    //
-    //        if(validPwd(context, newPwdEditText) ==  false) return
-    //
-    //        if(validPwdConfirmation(context, newPwdEditText.editText!!.text.toString(),
-    //                newPwdConfirmationEditText) == false) {
-    //            return
-    //        }
-    //
-    //        changePwdRequest()
-    //    }
 }

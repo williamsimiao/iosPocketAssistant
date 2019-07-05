@@ -81,7 +81,7 @@ struct NetworkManager {
     
     func runUpdateAcl(token: String, acl: Int, usr: String, completion: @escaping (_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
-        print("complete TOKEN: \(completeToken)")
+        
         usuarioRouter.request(.updateAcl(token: completeToken, acl: acl, usr: usr)) { (data, response, error) in
             if error != nil {
                 let _ = AppUtil.alertAboutConnectionError()
@@ -165,7 +165,7 @@ struct NetworkManager {
     
     func runCreateUsr(token: String, usr: String, pwd: String, acl: Int, completion: @escaping (_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
-        print("complete TOKEN: \(completeToken)")
+        
         usuarioRouter.request(.createUsr(token: completeToken, usr: usr, pwd: pwd, acl: acl)) { (data, response, error) in
             if error != nil {
                 let _ = AppUtil.alertAboutConnectionError()
@@ -191,7 +191,7 @@ struct NetworkManager {
     
     func runChangePwd(token: String, newPwd: String, completion: @escaping (_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
-        print("complete TOKEN: \(completeToken)")
+        
         usuarioRouter.request(.changePwd(token: completeToken, pwd: newPwd)) { (data, response, error) in
             if error != nil {
                 let _ = AppUtil.alertAboutConnectionError()
@@ -219,7 +219,7 @@ struct NetworkManager {
     
     func runObjExp(objId: String, token: String, completion: @escaping (_ body2:CFData?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
-        print("complete TOKEN: \(completeToken)")
+        
         objetosRouter.request(.objExp(token: completeToken, obj: objId)) { (data, response, error) in
             if error != nil {
                 let _ = AppUtil.alertAboutConnectionError()
@@ -249,7 +249,7 @@ struct NetworkManager {
     
     func runGetObjInfo(objId: String, token: String, completion: @escaping (_ body2:ResponseBody7?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
-        print("complete TOKEN: \(completeToken)")
+        
         objetosRouter.request(.getObjInfo(token: completeToken, obj: objId)) { (data, response, error) in
             if error != nil {
                 let _ = AppUtil.alertAboutConnectionError()
@@ -279,7 +279,7 @@ struct NetworkManager {
     
     func runListObjs(token: String, completion: @escaping (_ body2:ResponseBody2?,_ error: errorBody?)->()) {
         let completeToken = "HSM \(token)"
-        print("complete TOKEN: \(completeToken)")
+        
         objetosRouter.request(.listObjs(token: completeToken)) { (data, response, error) in
             if error != nil {
                 let _ = AppUtil.alertAboutConnectionError()

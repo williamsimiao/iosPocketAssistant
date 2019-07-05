@@ -63,10 +63,16 @@ class TrocarSenhaViewController: UIViewController {
     }
     
     @IBAction func didTapChangePwd(_ sender: Any) {
-        guard AppUtil.validPwd(newPwdLayout!) &&
-            AppUtil.fieldsAreValid([newPwdLayout!, pwdConfirmationLayout!]) &&
-            AppUtil.validPwdConfirmation(newPwdLayout!, pwdConfirmationLayout!)
-               else {
+    
+        guard  AppUtil.fieldsAreValid([newPwdLayout!, pwdConfirmationLayout!]) else {
+            return
+        }
+        
+        guard AppUtil.validPwd(newPwdLayout!) else {
+            return
+        }
+        
+        guard AppUtil.validPwdConfirmation(newPwdLayout!, pwdConfirmationLayout!) else {
             return
         }
         

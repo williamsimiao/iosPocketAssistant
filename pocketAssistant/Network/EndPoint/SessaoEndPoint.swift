@@ -61,7 +61,6 @@ extension SessaoApi: EndPointType {
         case .close(let token):
             return .requestParametersAndHeaders(bodyParameters: [:], urlParameters: nil, additionHeaders: ["Authorization": token])
         case .probe(let token):
-            print("FUll token: \(token)")
             return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: ["Authorization": token])
         }
     }
