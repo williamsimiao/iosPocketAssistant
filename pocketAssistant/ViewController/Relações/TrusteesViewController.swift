@@ -23,10 +23,7 @@ class TrusteesViewController: UIViewController {
     var segueDelegate: performeSegueDelegate?
 
     let noContentLabel : UILabel = {
-        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-        lbl.textColor = .black
-        lbl.font = UIFont(name: lbl.font.fontName, size: 50)
-
+        let lbl = UILabel()
         lbl.font = MDCTypography.titleFont()
         lbl.alpha = MDCTypography.titleFontOpacity()
         lbl.text = "Nenhum usuário listado"
@@ -45,16 +42,18 @@ class TrusteesViewController: UIViewController {
         collectionView!.dataSource = self
         self.view.addSubview(collectionView!)
         self.view.addSubview(noContentLabel)
-        setupViews()
         collectionView?.backgroundColor = .white
+        setupViews()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         makeRequestListUsrTrust()
     }
-
     
     func setupViews() {
+        noContentLabel.textAlignment = .center
+        noContentLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             noContentLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             noContentLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)

@@ -21,6 +21,14 @@ class ObjetosViewController: UICollectionViewController {
     var certificateCounter = 0
     var exportedCertificates = 0
     var certificateArray = [certificate]()
+    
+    let noContentLabel : UILabel = {
+        let lbl = UILabel()
+        lbl.font = MDCTypography.titleFont()
+        lbl.alpha = MDCTypography.titleFontOpacity()
+        lbl.text = "Nenhum certificado listado"
+        return lbl
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +37,17 @@ class ObjetosViewController: UICollectionViewController {
 
         makeRequest()
         setUpBarButtonItens()
-
+        setupViews()
+    }
+    
+    func setupViews() {
+        self.view.addSubview(noContentLabel) 
+        noContentLabel.textAlignment = .center
+        noContentLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            noContentLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            noContentLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            ])
     }
     
     func setUpBarButtonItens() {
@@ -164,8 +182,15 @@ extension ObjetosViewController: UICollectionViewDelegateFlowLayout {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let rowCounter = certificateArray.count
-        return rowCounter
+        let rowCount = certificateArray.count
+        if(rowCount == 0) {
+            self.noContentLabel.isHidden = false
+        }
+        else {
+            self.noContentLabel.isHidden = true
+        }
+        
+        return rowCount
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
