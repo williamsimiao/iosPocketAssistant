@@ -9,6 +9,7 @@
 import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
+import NetworkExtension
 
 class LoginViewController: UIViewController {
     
@@ -105,37 +106,53 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didTapAutenticar(_ sender: Any) {
-        guard AppUtil.fieldsAreValid([usernameTextLayout!, passwordTextLayout!]) else {
-                return
+        let mSSID = "pocket"
+        if #available(iOS 11.0, *) {
+            let hotspotConfig = NEHotspotConfiguration(ssid: mSSID)
+            NEHotspotConfigurationManager.shared.apply(hotspotConfig) {[unowned self] (error) in
+                if let error = error {
+                    print("error = ",error)
+                }
+                else {
+                    print("Success!")
+                }
+            }
+        } else {
+            // Fallback on earlier versions
         }
-        guard AppUtil.validPwd(passwordTextLayout!) else  {
-            return
-        }
-
-        let username = usernameTextField.text!
-        let password = passwordTextField.text!
         
-        networkManager.runAuth(usr: username, pwd: password) { (response, errorResponse) in
-            if let errorResponse = errorResponse {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                
-                //Show message(Acesso negado) em snackBar já que o alerta nao vai aparecer
-                let snackBar = MDCSnackbarMessage()
-                snackBar.text = message
-                MDCSnackbarManager.show(snackBar)
-            }
-            
-            if let response = response {
-                let tokenSaved : Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
-                let _ : Bool = KeychainWrapper.standard.set(username, forKey: "USR_NAME")
-                if !tokenSaved {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "to_second", sender: self)
-                }
-            }
-        }
+        
+//        guard AppUtil.fieldsAreValid([usernameTextLayout!, passwordTextLayout!]) else {
+//                return
+//        }
+//        guard AppUtil.validPwd(passwordTextLayout!) else  {
+//            return
+//        }
+//
+//        let username = usernameTextField.text!
+//        let password = passwordTextField.text!
+//
+//        networkManager.runAuth(usr: username, pwd: password) { (response, errorResponse) in
+//            if let errorResponse = errorResponse {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+//
+//                //Show message(Acesso negado) em snackBar já que o alerta nao vai aparecer
+//                let snackBar = MDCSnackbarMessage()
+//                snackBar.text = message
+//                MDCSnackbarManager.show(snackBar)
+//            }
+//
+//            if let response = response {
+//                let tokenSaved : Bool = KeychainWrapper.standard.set(response.token, forKey: "TOKEN")
+//                let _ : Bool = KeychainWrapper.standard.set(username, forKey: "USR_NAME")
+//                if !tokenSaved {
+//                    return
+//                }
+//                DispatchQueue.main.async {
+//                    self.performSegue(withIdentifier: "to_second", sender: self)
+//                }
+//            }
+//        }
     }
     
     // MARK: - Keyboard Handling

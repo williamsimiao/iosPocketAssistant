@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		34F845E31FA6321F5199E782 /* Pods_pocketAssistantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6450FD44100929B3E47E6D1F /* Pods_pocketAssistantTests.framework */; };
 		3D0E098922AADA360073FF35 /* TrusteesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E098822AADA360073FF35 /* TrusteesViewController.swift */; };
+		3D0F1A5B22D380E800EC4B46 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0F1A5A22D380E800EC4B46 /* NetworkExtension.framework */; };
 		3D114DBA228B045500A4A74C /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DB9228B045500A4A74C /* EndPointType.swift */; };
 		3D114DBC228B053E00A4A74C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DBB228B053E00A4A74C /* HTTPMethod.swift */; };
 		3D114DC0228B05AB00A4A74C /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DBF228B05AB00A4A74C /* HTTPTask.swift */; };
@@ -72,6 +73,8 @@
 		05C9E0621829363EDDD14786 /* Pods_pocketAssistantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pocketAssistantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA250FFD5C04EF18BDC5CF8 /* Pods-pocketAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketAssistant.debug.xcconfig"; path = "Target Support Files/Pods-pocketAssistant/Pods-pocketAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0E098822AADA360073FF35 /* TrusteesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrusteesViewController.swift; sourceTree = "<group>"; };
+		3D0F1A5722D380A900EC4B46 /* pocketAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pocketAssistant.entitlements; sourceTree = "<group>"; };
+		3D0F1A5A22D380E800EC4B46 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		3D114DB9228B045500A4A74C /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		3D114DBB228B053E00A4A74C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		3D114DBF228B05AB00A4A74C /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E59639CB1100C70E66B532AF /* Pods_pocketAssistant.framework in Frameworks */,
+				3D0F1A5B22D380E800EC4B46 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,9 +171,9 @@
 			children = (
 				3D9311EC2289DD4E000C2635 /* LoginViewController.swift */,
 				3DF882F722C63F7C00205315 /* Objetos */,
-				3DF882F822C63FA200205315 /* Relações */,
-				3DF882FA22C63FCA00205315 /* Gestão */,
-				3DF882FB22C63FEA00205315 /* Usuário */,
+				3DF882F822C63FA200205315 /* Relações */,
+				3DF882FA22C63FCA00205315 /* Gestão */,
+				3DF882FB22C63FEA00205315 /* Usuário */,
 				3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */,
 			);
 			path = ViewController;
@@ -271,6 +275,7 @@
 		3D9311E92289DD4E000C2635 /* pocketAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				3D0F1A5722D380A900EC4B46 /* pocketAssistant.entitlements */,
 				3D114DD4228B48AD00A4A74C /* Model */,
 				3D114DB8228B043800A4A74C /* Network */,
 				3D114DB6228B03D000A4A74C /* Application */,
@@ -311,7 +316,7 @@
 			path = Objetos;
 			sourceTree = "<group>";
 		};
-		3DF882F822C63FA200205315 /* Relações */ = {
+		3DF882F822C63FA200205315 /* Relações */ = {
 			isa = PBXGroup;
 			children = (
 				3DF882F922C63FBA00205315 /* Views */,
@@ -332,7 +337,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3DF882FA22C63FCA00205315 /* Gestão */ = {
+		3DF882FA22C63FCA00205315 /* Gestão */ = {
 			isa = PBXGroup;
 			children = (
 				3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */,
@@ -343,7 +348,7 @@
 			path = "Gestão";
 			sourceTree = "<group>";
 		};
-		3DF882FB22C63FEA00205315 /* Usuário */ = {
+		3DF882FB22C63FEA00205315 /* Usuário */ = {
 			isa = PBXGroup;
 			children = (
 				3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */,
@@ -356,6 +361,7 @@
 		C4F8B999163EE1C597E251CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D0F1A5A22D380E800EC4B46 /* NetworkExtension.framework */,
 				FA57C49EE4E0E31AAC057880 /* Pods_pocketAssistant.framework */,
 				6450FD44100929B3E47E6D1F /* Pods_pocketAssistantTests.framework */,
 				05C9E0621829363EDDD14786 /* Pods_pocketAssistantUITests.framework */,
@@ -448,6 +454,14 @@
 				TargetAttributes = {
 					3D9311E62289DD4E000C2635 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.HotspotConfiguration = {
+								enabled = 1;
+							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					3D9311FA2289DD50000C2635 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -823,7 +837,9 @@
 			baseConfigurationReference = 2FA250FFD5C04EF18BDC5CF8 /* Pods-pocketAssistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pocketAssistant/pocketAssistant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQ28865C6V;
 				INFOPLIST_FILE = pocketAssistant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -842,7 +858,9 @@
 			baseConfigurationReference = 9EA8807EC4015E34BDD645DA /* Pods-pocketAssistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pocketAssistant/pocketAssistant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQ28865C6V;
 				INFOPLIST_FILE = pocketAssistant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
