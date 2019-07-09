@@ -28,13 +28,13 @@
                                                 <rect key="frame" x="16" y="158" width="382" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="name"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-c7-pbX" customClass="MDCTextField">
                                                 <rect key="frame" x="16" y="188" width="382" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP(Opcional)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4gY-3P-aLH" customClass="MDCTextField">
                                                 <rect key="frame" x="16" y="218" width="382" height="30"/>
@@ -344,14 +344,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6N-rQ-VQd">
-                                            <rect key="frame" x="320" y="-12" width="24" height="24"/>
+                                            <rect key="frame" x="336" y="-11" width="16" height="22"/>
                                             <state key="normal" image="edit"/>
                                             <connections>
                                                 <action selector="didTapEdit:" destination="6cL-Qc-Oj5" eventType="touchUpInside" id="mUL-xc-qTv"/>
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAL-FH-yqU">
-                                            <rect key="frame" x="360" y="-12" width="24" height="24"/>
+                                            <rect key="frame" x="368" y="-11" width="16" height="22"/>
                                             <state key="normal" image="delete"/>
                                             <connections>
                                                 <action selector="didTapDelete:" destination="6cL-Qc-Oj5" eventType="touchUpInside" id="xtZ-UD-rVL"/>
@@ -650,14 +650,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcw-L0-dLN">
-                                            <rect key="frame" x="320" y="13" width="24" height="24"/>
+                                            <rect key="frame" x="336" y="14" width="16" height="22"/>
                                             <state key="normal" image="edit"/>
                                             <connections>
                                                 <action selector="didTapEdit:" destination="4pT-7j-1o9" eventType="touchUpInside" id="JoD-ur-c5D"/>
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0J5-uW-lor">
-                                            <rect key="frame" x="360" y="13" width="24" height="24"/>
+                                            <rect key="frame" x="368" y="14" width="16" height="22"/>
                                             <state key="normal" image="delete"/>
                                             <connections>
                                                 <action selector="didTapDelete:" destination="4pT-7j-1o9" eventType="touchUpInside" id="qag-We-TI3"/>
@@ -967,7 +967,7 @@
                                                 <rect key="frame" x="8" y="16" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8M-EN-o5I" customClass="MDCButton">
                                                 <rect key="frame" x="8" y="669" width="398" height="48"/>
@@ -986,7 +986,7 @@
                                                 <rect key="frame" x="8" y="62" width="398" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
