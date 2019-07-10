@@ -9,6 +9,7 @@
 import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
+//import SocketIO
 
 class LoginViewController: UIViewController {
     
@@ -21,6 +22,10 @@ class LoginViewController: UIViewController {
     
     let networkManager = NetworkManager()
     var tokenString: String?
+    
+    var inputStream: InputStream!
+    var outputStream: OutputStream!
+    let maxReadLength = 4096
     
     lazy var activityIndicator: MDCActivityIndicator = {
         let aActivityIndicator = MDCActivityIndicator()
@@ -40,21 +45,81 @@ class LoginViewController: UIViewController {
     var passwordTextLayout: textLayout?
     var otpTextLayout: textLayout?
     
+    // defaultNamespaceSocket and swiftSocket both share a single connection to the server
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
-        
         registerKeyboardNotifications()
+        
+        setupNetworkCommunication()
+//        socketNovo()
+    }
+    
+    
+//    func socketNovo() {
+//        let manager = SocketManager(socketURL: URL(string: "10.61.53.221:3344")!, config: [.selfSigned(true), .log(true), .compress])
+//        let socket = manager.defaultSocket
+//        socket.connect()
+//
+//        socket.on("0 == TAC_SUCCESS") {data, ack in
+//            print(data.count)
+//            print("socket connected")
+//        }
+//
+//    }
+
+    func setupNetworkCommunication() {
+        // 1
+        var readStream: Unmanaged<CFReadStream>?
+        var writeStream: Unmanaged<CFWriteStream>?
+        
+        // 2
+        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
+                                           "10.61.53.221" as CFString,
+                                           3344,
+                                           &readStream,
+                                           &writeStream)
+        
+        inputStream = readStream!.takeRetainedValue()
+        outputStream = writeStream!.takeRetainedValue()
+        
+        inputStream.delegate = self
+        outputStream.delegate = self
+        
+        inputStream.schedule(in: .current, forMode: .common)
+        outputStream.schedule(in: .current, forMode: .common)
+        
+        inputStream.open()
+        outputStream.open()
+        
+        sendMessage(message: "MI_HELLO")
+    }
+    
+    func sendMessage(message: String) {
+        //1
+        let data = message.data(using: .utf8)!
+        
+        //3
+        _ = data.withUnsafeBytes {
+            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                print("Error joining chat")
+                return
+            }
+            //4
+            outputStream.write(pointer, maxLength: data.count)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //This null verification is not suitable for viewDidLoad because de Token is
         //modified after the creation
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
-        if tokenString != nil {
-            hideLoginFields()
-            probeRequest()
-        }
+//        if tokenString != nil {
+//            hideLoginFields()
+//            probeRequest()
+//        }
     }
     
     func setUpViews() {
@@ -237,3 +302,63 @@ extension LoginViewController: UITextFieldDelegate {
         }
     }
 }
+
+extension LoginViewController: StreamDelegate {
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        switch eventCode {
+        case .hasBytesAvailable:
+            print("new message received")
+            readAvailableBytes(stream: aStream as! InputStream)
+        case .openCompleted:
+            print("Open Completed")
+        case .endEncountered:
+            print("End Encountered")
+        case .errorOccurred:
+            print("error occurred")
+        case .hasSpaceAvailable:
+            print("has space available")
+        default:
+            print("some other event...")
+        }
+    }
+    
+    private func readAvailableBytes(stream: InputStream) {
+        //1
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
+        
+        //2
+        while stream.hasBytesAvailable {
+            //3
+            let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
+            
+            //4
+            if numberOfBytesRead < 0, let error = stream.streamError {
+                print(error)
+                break
+            }
+            
+            // Construct the Message object
+            if let message =
+                processedMessageString(buffer: buffer, length: numberOfBytesRead) {
+                print("message: \(message) fim")
+            }
+        }
+    }
+    
+    private func processedMessageString(buffer: UnsafeMutablePointer<UInt8>,
+                                        length: Int) -> String? {
+        //1
+        guard
+            let message = String(
+                bytesNoCopy: buffer,
+                length: length,
+                encoding: .utf8,
+                freeWhenDone: true)
+            else {
+                return nil
+        }
+        return message
+    }
+
+}
+

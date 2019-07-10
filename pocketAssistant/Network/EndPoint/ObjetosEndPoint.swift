@@ -18,7 +18,7 @@ extension ObjetosApi: EndPointType {
     
     var environmentBaseURL : String {
         switch NetworkManager.environment {
-        case .production: return "https://hsmlab63.dinamonetworks.com/api"
+        case .production: return "https://hsmlab64.dinamonetworks.com/api"
         }
     }
     

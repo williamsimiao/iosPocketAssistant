@@ -232,6 +232,9 @@ PODS:
   - MotionAnimator (2.8.1):
     - MotionInterchange (~> 1.6)
   - MotionInterchange (1.6.0)
+  - Socket.IO-Client-Swift (15.1.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.0)
   - SwiftKeychainWrapper (3.3.0)
 
 DEPENDENCIES:
@@ -259,6 +262,7 @@ DEPENDENCIES:
   - "MaterialComponents/TextFields+ColorThemer"
   - "MaterialComponents/TextFields+Theming"
   - MaterialComponents/Typography
+  - Socket.IO-Client-Swift (~> 15.1.0)
   - SwiftKeychainWrapper
 
 SPEC REPOS:
@@ -269,6 +273,8 @@ SPEC REPOS:
     - MDFTextAccessibility
     - MotionAnimator
     - MotionInterchange
+    - Socket.IO-Client-Swift
+    - Starscream
     - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
@@ -278,8 +284,10 @@ SPEC CHECKSUMS:
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
+  Socket.IO-Client-Swift: 7cb44c0ffb86e158cee32d0642d30ec5fdcf8f61
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
 
-PODFILE CHECKSUM: 319a61fe95e06b22c5ed8fe74e6d7140c6551770
+PODFILE CHECKSUM: c7bb5560db2b389f328bcec85744e1a1dc5d48ca
 
 COCOAPODS: 1.6.1
