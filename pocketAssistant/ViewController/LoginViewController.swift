@@ -9,7 +9,7 @@
 import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
-//import SocketIO
+import SocketIO
 
 class LoginViewController: UIViewController {
     
@@ -53,22 +53,19 @@ class LoginViewController: UIViewController {
         setUpViews()
         registerKeyboardNotifications()
         
-        setupNetworkCommunication()
+//        setupNetworkCommunication()
 //        socketNovo()
     }
     
-    
-//    func socketNovo() {
-//        let manager = SocketManager(socketURL: URL(string: "10.61.53.221:3344")!, config: [.selfSigned(true), .log(true), .compress])
-//        let socket = manager.defaultSocket
-//        socket.connect()
-//
-//        socket.on("0 == TAC_SUCCESS") {data, ack in
-//            print(data.count)
-//            print("socket connected")
-//        }
-//
-//    }
+    func socketNovo() {
+        let manager = SocketManager(socketURL: URL(string: "10.61.53.238:3344")!, config: [.selfSigned(true), .log(true), .compress])
+        let socket = manager.defaultSocket
+        socket.connect()
+        socket.on("0 == TAC_SUCCESS") {data, ack in
+            print(data.count)
+            print("socket connected")
+        }
+    }
 
     func setupNetworkCommunication() {
         // 1
@@ -77,7 +74,7 @@ class LoginViewController: UIViewController {
         
         // 2
         CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
-                                           "10.61.53.221" as CFString,
+                                           "10.61.53.238" as CFString,
                                            3344,
                                            &readStream,
                                            &writeStream)
@@ -95,6 +92,7 @@ class LoginViewController: UIViewController {
         outputStream.open()
         
         sendMessage(message: "MI_HELLO")
+        print("lele")
     }
     
     func sendMessage(message: String) {
@@ -124,6 +122,7 @@ class LoginViewController: UIViewController {
     
     func setUpViews() {
         contentView.addSubview(activityIndicator)
+        activityIndicator.isUserInteractionEnabled = false
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         let horizontalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
         let verticalConstraint = NSLayoutConstraint(item: activityIndicator, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)

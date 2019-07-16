@@ -35,7 +35,6 @@ target 'pocketAssistant' do
     pod 'SwiftKeychainWrapper'
     pod 'ASN1Decoder'
     pod 'Socket.IO-Client-Swift', '~> 15.1.0'
-    pod 'OpenSSL', '~> 1.0'
 
     target 'pocketAssistantTests' do
     inherit! :search_paths
