@@ -10,6 +10,17 @@ import Foundation
 class Router<EndPoint: EndPointType>: NetworkRouter {
     private var task: URLSessionTask?
     
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodClientCertificate) {
+            completionHandler(.rejectProtectionSpace, nil)
+        }
+        if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+            let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+            completionHandler(.useCredential, credential)
+        }
+    }
+
+    
     func synchronousRequest(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
         let session = URLSession.shared
         do {

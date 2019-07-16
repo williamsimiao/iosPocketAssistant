@@ -140,6 +140,20 @@ class CriarUsuarioViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 extension CriarUsuarioViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case usernameTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            confirmPasswordTextField.becomeFirstResponder()
+        case confirmPasswordTextField:
+            confirmPasswordTextField.resignFirstResponder()
+        default:
+            break
+        }
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == usernameTextField {
             let _ = AppUtil.validUsr(usernameTextLayout!)

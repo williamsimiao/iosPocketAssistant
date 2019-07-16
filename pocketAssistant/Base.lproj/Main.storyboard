@@ -344,14 +344,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6N-rQ-VQd">
-                                            <rect key="frame" x="336" y="-11" width="16" height="22"/>
+                                            <rect key="frame" x="320" y="-12" width="24" height="24"/>
                                             <state key="normal" image="edit"/>
                                             <connections>
                                                 <action selector="didTapEdit:" destination="6cL-Qc-Oj5" eventType="touchUpInside" id="mUL-xc-qTv"/>
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAL-FH-yqU">
-                                            <rect key="frame" x="368" y="-11" width="16" height="22"/>
+                                            <rect key="frame" x="360" y="-12" width="24" height="24"/>
                                             <state key="normal" image="delete"/>
                                             <connections>
                                                 <action selector="didTapDelete:" destination="6cL-Qc-Oj5" eventType="touchUpInside" id="xtZ-UD-rVL"/>
@@ -621,6 +621,21 @@
             </objects>
             <point key="canvasLocation" x="5377" y="-794"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="XhW-SH-DRL">
+            <objects>
+                <viewController id="NXN-SE-Bvg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CcW-3p-igK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="MT4-5G-VGW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MgF-r4-Lia" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6440" y="-247"/>
+        </scene>
         <!--Seleção do Usuário-->
         <scene sceneID="fBW-K2-4Pj">
             <objects>
@@ -650,14 +665,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcw-L0-dLN">
-                                            <rect key="frame" x="336" y="14" width="16" height="22"/>
+                                            <rect key="frame" x="320" y="13" width="24" height="24"/>
                                             <state key="normal" image="edit"/>
                                             <connections>
                                                 <action selector="didTapEdit:" destination="4pT-7j-1o9" eventType="touchUpInside" id="JoD-ur-c5D"/>
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0J5-uW-lor">
-                                            <rect key="frame" x="368" y="14" width="16" height="22"/>
+                                            <rect key="frame" x="360" y="13" width="24" height="24"/>
                                             <state key="normal" image="delete"/>
                                             <connections>
                                                 <action selector="didTapDelete:" destination="4pT-7j-1o9" eventType="touchUpInside" id="qag-We-TI3"/>

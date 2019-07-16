@@ -132,6 +132,18 @@ class TrocarSenhaViewController: UIViewController {
 
 extension TrocarSenhaViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case newPwdTextField:
+            pwdConfirmationTextField.becomeFirstResponder()
+        case pwdConfirmationTextField:
+            pwdConfirmationTextField.resignFirstResponder()
+        default:
+            break
+        }
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == newPwdTextField {
             let _ = AppUtil.validPwd(newPwdLayout!)

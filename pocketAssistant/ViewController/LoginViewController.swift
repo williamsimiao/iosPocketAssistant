@@ -9,7 +9,6 @@
 import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
-import SocketIO
 
 class LoginViewController: UIViewController {
     
@@ -53,19 +52,19 @@ class LoginViewController: UIViewController {
         setUpViews()
         registerKeyboardNotifications()
         
-//        setupNetworkCommunication()
+        setupNetworkCommunication()
 //        socketNovo()
     }
     
-    func socketNovo() {
-        let manager = SocketManager(socketURL: URL(string: "10.61.53.238:3344")!, config: [.selfSigned(true), .log(true), .compress])
-        let socket = manager.defaultSocket
-        socket.connect()
-        socket.on("0 == TAC_SUCCESS") {data, ack in
-            print(data.count)
-            print("socket connected")
-        }
-    }
+//    func socketNovo() {
+//        let manager = SocketManager(socketURL: URL(string: "10.61.53.238:3344")!, config: [.selfSigned(true), .log(true), .compress])
+//        let socket = manager.defaultSocket
+//        socket.connect()
+//        socket.on("0 == TAC_SUCCESS") {data, ack in
+//            print(data.count)
+//            print("socket connected")
+//        }
+//    }
 
     func setupNetworkCommunication() {
         // 1
@@ -286,6 +285,20 @@ extension LoginViewController: UITextFieldDelegate {
         if textField == passwordTextField {
             let _ = AppUtil.validPwd(passwordTextLayout!)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+            case usernameTextField:
+                passwordTextField.becomeFirstResponder()
+            case passwordTextField:
+                otpTextField.becomeFirstResponder()
+            case otpTextField:
+                otpTextField.resignFirstResponder()
+            default:
+                break
+        }
+        return true
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
