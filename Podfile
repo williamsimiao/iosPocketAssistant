@@ -31,7 +31,6 @@ target 'pocketAssistant' do
     pod 'MaterialComponents/NavigationDrawer'
     pod 'MaterialComponents/NavigationDrawer+ColorThemer'
 
-
     pod 'SwiftKeychainWrapper'
     pod 'ASN1Decoder'
     pod 'Socket.IO-Client-Swift', '~> 15.1.0'
