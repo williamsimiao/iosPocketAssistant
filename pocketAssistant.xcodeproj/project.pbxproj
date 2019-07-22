@@ -35,6 +35,7 @@
 		3D9311F52289DD50000C2635 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9311F32289DD50000C2635 /* LaunchScreen.storyboard */; };
 		3D9312002289DD50000C2635 /* pocketAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9311FF2289DD50000C2635 /* pocketAssistantTests.swift */; };
 		3D93120B2289DD50000C2635 /* pocketAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D93120A2289DD50000C2635 /* pocketAssistantUITests.swift */; };
+		3D9ED6DB22E64AC400F38FDE /* SvmkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9ED6DA22E64AC400F38FDE /* SvmkViewController.swift */; };
 		3DC449DC22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC449DB22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift */; };
 		3DC8465622A1AD420032FB31 /* UIColor+RGBinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */; };
 		3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */; };
@@ -106,6 +107,7 @@
 		3D9312062289DD50000C2635 /* pocketAssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pocketAssistantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D93120A2289DD50000C2635 /* pocketAssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pocketAssistantUITests.swift; sourceTree = "<group>"; };
 		3D93120C2289DD50000C2635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D9ED6DA22E64AC400F38FDE /* SvmkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SvmkViewController.swift; sourceTree = "<group>"; };
 		3DC449DB22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionCollectionCollectionViewController.swift; sourceTree = "<group>"; };
 		3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBinit.swift"; sourceTree = "<group>"; };
 		3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		3D114DB7228B03E100A4A74C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3D9ED6DA22E64AC400F38FDE /* SvmkViewController.swift */,
 				3DDD53FF22DE6EE9006F36CD /* deviceCollectionViewCell.swift */,
 				3DDD53FD22DE6802006F36CD /* SetupViewController.swift */,
 				3D9311EC2289DD4E000C2635 /* LoginViewController.swift */,
@@ -649,6 +652,7 @@
 				3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */,
 				3D9311ED2289DD4E000C2635 /* LoginViewController.swift in Sources */,
 				3D3C105822A9918B00E1BDD9 /* RelacaoCollectionViewCell.swift in Sources */,
+				3D9ED6DB22E64AC400F38FDE /* SvmkViewController.swift in Sources */,
 				3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */,
 				3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */,
 				3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */,

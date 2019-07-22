@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NXN-SE-Bvg">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -648,12 +648,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="127.10.67.3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5w-1k-Gbl" customClass="MDCTextField">
-                                <rect key="frame" x="16" y="766" width="382" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="ou" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvW-42-b3u">
                                 <rect key="frame" x="193" y="364" width="28" height="16"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -697,7 +691,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Kju-Jv-xxr">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Kju-Jv-xxr" customClass="RelacaoCollectionViewCell" customModule="pocketAssistant" customModuleProvider="target">
                                         <rect key="frame" x="7" y="0.0" width="400" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -705,7 +699,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0X-cf-EJp">
-                                                    <rect key="frame" x="8" y="14.5" width="34" height="21"/>
+                                                    <rect key="frame" x="8" y="14.5" width="384" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -719,7 +713,24 @@
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="NXN-SE-Bvg" id="SZv-mv-qCT"/>
+                                    <outlet property="delegate" destination="NXN-SE-Bvg" id="V6C-uC-dzS"/>
+                                </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aJ-LQ-m8L">
+                                <rect key="frame" x="188" y="513" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="didTapLogin:" destination="NXN-SE-Bvg" eventType="touchUpInside" id="Etp-O2-Nkm"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="127.10.67.3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5w-1k-Gbl" customClass="MDCTextField">
+                                <rect key="frame" x="16" y="463" width="382" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -727,6 +738,7 @@
                             <constraint firstItem="2Fr-Ki-CSh" firstAttribute="leading" secondItem="MT4-5G-VGW" secondAttribute="leading" constant="16" id="405-3h-jBN"/>
                             <constraint firstItem="rTX-If-GP0" firstAttribute="leading" secondItem="MT4-5G-VGW" secondAttribute="leading" constant="16" id="4XI-1J-lWG"/>
                             <constraint firstItem="BHV-B0-XWx" firstAttribute="leading" secondItem="VvW-42-b3u" secondAttribute="trailing" constant="-4" id="9Ri-Wh-gSr"/>
+                            <constraint firstItem="d5w-1k-Gbl" firstAttribute="top" secondItem="L4A-cN-57C" secondAttribute="bottom" constant="30" id="Ayg-16-YQx"/>
                             <constraint firstItem="L4A-cN-57C" firstAttribute="top" secondItem="VvW-42-b3u" secondAttribute="bottom" constant="32" id="Cls-xA-DkV"/>
                             <constraint firstItem="rTX-If-GP0" firstAttribute="bottom" secondItem="MT4-5G-VGW" secondAttribute="bottom" id="DkL-W5-XZs"/>
                             <constraint firstItem="L4A-cN-57C" firstAttribute="centerX" secondItem="CcW-3p-igK" secondAttribute="centerX" id="EWM-IO-gM8"/>
@@ -739,12 +751,13 @@
                             <constraint firstItem="Ngv-zM-X4x" firstAttribute="top" secondItem="b05-Sc-fxp" secondAttribute="bottom" constant="32" id="Pvf-Wy-4Hr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BHV-B0-XWx" secondAttribute="trailing" constant="16" id="RP1-OC-R2h"/>
                             <constraint firstItem="MT4-5G-VGW" firstAttribute="trailing" secondItem="Ngv-zM-X4x" secondAttribute="trailing" id="YqR-PD-zuq"/>
+                            <constraint firstItem="4aJ-LQ-m8L" firstAttribute="centerX" secondItem="CcW-3p-igK" secondAttribute="centerX" id="Z8K-Y9-eo2"/>
                             <constraint firstItem="MT4-5G-VGW" firstAttribute="trailing" secondItem="d5w-1k-Gbl" secondAttribute="trailing" constant="16" id="Zdj-mm-WHp"/>
                             <constraint firstItem="b05-Sc-fxp" firstAttribute="top" secondItem="eGO-yJ-BX8" secondAttribute="bottom" constant="24" id="cki-39-IoH"/>
                             <constraint firstItem="d5w-1k-Gbl" firstAttribute="leading" secondItem="MT4-5G-VGW" secondAttribute="leading" constant="16" id="dtY-vh-OCc"/>
+                            <constraint firstItem="4aJ-LQ-m8L" firstAttribute="top" secondItem="d5w-1k-Gbl" secondAttribute="bottom" constant="20" id="j0w-gH-y7G"/>
                             <constraint firstItem="eGO-yJ-BX8" firstAttribute="leading" secondItem="MT4-5G-VGW" secondAttribute="leading" constant="16" id="m9b-gB-GCH"/>
                             <constraint firstItem="MT4-5G-VGW" firstAttribute="trailing" secondItem="rTX-If-GP0" secondAttribute="trailing" constant="16" id="mBT-ho-lhj"/>
-                            <constraint firstItem="rTX-If-GP0" firstAttribute="top" secondItem="d5w-1k-Gbl" secondAttribute="bottom" constant="32" id="mYf-Vn-bvP"/>
                             <constraint firstItem="eGO-yJ-BX8" firstAttribute="top" secondItem="MT4-5G-VGW" secondAttribute="top" constant="32" id="oHv-N7-6vV"/>
                             <constraint firstItem="VvW-42-b3u" firstAttribute="leading" secondItem="2Fr-Ki-CSh" secondAttribute="trailing" constant="4" id="r9a-ak-8tA"/>
                             <constraint firstItem="eGO-yJ-BX8" firstAttribute="centerX" secondItem="CcW-3p-igK" secondAttribute="centerX" id="u4J-Ag-qMH"/>
@@ -760,7 +773,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgF-r4-Lia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6439.130434782609" y="-247.09821428571428"/>
+            <point key="canvasLocation" x="-999" y="-77"/>
+        </scene>
+        <!--Svmk View Controller-->
+        <scene sceneID="84X-U8-CFm">
+            <objects>
+                <viewController id="Epw-Xn-FTy" customClass="SvmkViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L74-Ic-xMS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informa a chave para ativar o HSM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZd-Pb-D3z">
+                                <rect key="frame" x="16" y="68" width="382" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mmz-sr-2d9" customClass="MDCTextField">
+                                <rect key="frame" x="16" y="111.5" width="382" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaE-cD-lFy" customClass="MDCButton">
+                                <rect key="frame" x="16" y="808" width="382" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Iniciar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapIniciar:" destination="Epw-Xn-FTy" eventType="touchUpInside" id="gKY-3y-gUn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XWb-mQ-0tS" firstAttribute="bottom" secondItem="XaE-cD-lFy" secondAttribute="bottom" constant="24" id="A49-dy-L67"/>
+                            <constraint firstItem="XWb-mQ-0tS" firstAttribute="trailing" secondItem="Mmz-sr-2d9" secondAttribute="trailing" constant="16" id="H2D-Ke-5ce"/>
+                            <constraint firstItem="XWb-mQ-0tS" firstAttribute="trailing" secondItem="XaE-cD-lFy" secondAttribute="trailing" constant="16" id="IJq-Z5-YHv"/>
+                            <constraint firstItem="bZd-Pb-D3z" firstAttribute="leading" secondItem="XWb-mQ-0tS" secondAttribute="leading" constant="16" id="N9g-G8-dEs"/>
+                            <constraint firstItem="Mmz-sr-2d9" firstAttribute="leading" secondItem="XWb-mQ-0tS" secondAttribute="leading" constant="16" id="Qll-Zn-2lT"/>
+                            <constraint firstItem="XWb-mQ-0tS" firstAttribute="trailing" secondItem="bZd-Pb-D3z" secondAttribute="trailing" constant="16" id="Z70-Co-G9a"/>
+                            <constraint firstItem="bZd-Pb-D3z" firstAttribute="top" secondItem="XWb-mQ-0tS" secondAttribute="top" constant="24" id="fIP-oL-mUD"/>
+                            <constraint firstItem="XaE-cD-lFy" firstAttribute="leading" secondItem="XWb-mQ-0tS" secondAttribute="leading" constant="16" id="fut-oO-biq"/>
+                            <constraint firstItem="Mmz-sr-2d9" firstAttribute="top" secondItem="bZd-Pb-D3z" secondAttribute="bottom" constant="16" id="qo9-QK-i8s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XWb-mQ-0tS"/>
+                    </view>
+                    <connections>
+                        <outlet property="iniciarButton" destination="XaE-cD-lFy" id="WS0-B3-mAc"/>
+                        <outlet property="svmkTextField" destination="Mmz-sr-2d9" id="STr-2z-KcM"/>
+                        <outlet property="titleLabel" destination="bZd-Pb-D3z" id="gRX-O7-nqm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V04-sN-AQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-128" y="-77"/>
         </scene>
         <!--Seleção do Usuário-->
         <scene sceneID="fBW-K2-4Pj">
