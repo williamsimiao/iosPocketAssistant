@@ -621,6 +621,60 @@
             </objects>
             <point key="canvasLocation" x="5377" y="-794"/>
         </scene>
+        <!--Wellcome View Controller-->
+        <scene sceneID="r1c-xN-Pax">
+            <objects>
+                <viewController id="hsd-PR-IYS" customClass="WellcomeViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="24R-UP-BJD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bem vindo ao HSM Pocket" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdm-Xv-8Ii">
+                                <rect key="frame" x="16" y="76" width="382" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vamos configurar o pocket em sua rede, mas antes certifique-se que seu celular e o HSM estão na mesma rede" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7SB-9S-Yy8">
+                                <rect key="frame" x="16" y="133.5" width="382" height="134"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uP-8l-C2y" customClass="MDCButton">
+                                <rect key="frame" x="16" y="832" width="382" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="INICIAR CONFIGURAÇÃO">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapIniciar:" destination="hsd-PR-IYS" eventType="touchUpInside" id="Imb-qD-nxp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7SB-9S-Yy8" firstAttribute="leading" secondItem="DH2-OL-WVe" secondAttribute="leading" constant="16" id="9xG-0k-6nG"/>
+                            <constraint firstItem="7SB-9S-Yy8" firstAttribute="top" secondItem="kdm-Xv-8Ii" secondAttribute="bottom" constant="24" id="Bd4-h5-PDP"/>
+                            <constraint firstItem="1uP-8l-C2y" firstAttribute="leading" secondItem="DH2-OL-WVe" secondAttribute="leading" constant="16" id="FGg-Ls-72x"/>
+                            <constraint firstItem="kdm-Xv-8Ii" firstAttribute="top" secondItem="DH2-OL-WVe" secondAttribute="top" constant="32" id="Sa3-5Z-chM"/>
+                            <constraint firstItem="DH2-OL-WVe" firstAttribute="trailing" secondItem="1uP-8l-C2y" secondAttribute="trailing" constant="16" id="TMV-8V-4fh"/>
+                            <constraint firstItem="kdm-Xv-8Ii" firstAttribute="leading" secondItem="DH2-OL-WVe" secondAttribute="leading" constant="16" id="U9N-sb-QCF"/>
+                            <constraint firstItem="DH2-OL-WVe" firstAttribute="trailing" secondItem="7SB-9S-Yy8" secondAttribute="trailing" constant="16" id="ZVd-gY-RIF"/>
+                            <constraint firstItem="DH2-OL-WVe" firstAttribute="trailing" secondItem="kdm-Xv-8Ii" secondAttribute="trailing" constant="16" id="aZe-zT-0ON"/>
+                            <constraint firstItem="DH2-OL-WVe" firstAttribute="bottom" secondItem="1uP-8l-C2y" secondAttribute="bottom" id="hKR-O2-lnT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DH2-OL-WVe"/>
+                    </view>
+                    <connections>
+                        <outlet property="iniciarButton" destination="1uP-8l-C2y" id="yGD-cd-mI7"/>
+                        <segue destination="NXN-SE-Bvg" kind="show" identifier="wellcome_to_discovery" id="YFK-Zs-aGw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrH-dc-ufw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1907" y="-81"/>
+        </scene>
         <!--Discovery View Controller-->
         <scene sceneID="XhW-SH-DRL">
             <objects>
@@ -629,14 +683,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buscando HSMs na sua rede" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGO-yJ-BX8">
-                                <rect key="frame" x="16" y="76" width="382" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buscando HSMs na sua rede" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGO-yJ-BX8">
+                                <rect key="frame" x="16" y="76" width="382" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b05-Sc-fxp" customClass="MDCButton">
-                                <rect key="frame" x="145" y="134" width="124" height="30"/>
+                                <rect key="frame" x="145" y="133.5" width="124" height="30"/>
                                 <state key="normal" title="Tentar novamente">
                                     <color key="titleColor" red="0.74901960779999999" green="0.66666666669999997" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
@@ -652,7 +706,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="ou" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvW-42-b3u">
-                                <rect key="frame" x="193" y="364" width="28" height="16"/>
+                                <rect key="frame" x="193" y="363.5" width="28" height="16"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="iam-a1-wHJ"/>
@@ -662,27 +716,27 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fr-Ki-CSh">
-                                <rect key="frame" x="16" y="371.5" width="173" height="1"/>
+                                <rect key="frame" x="16" y="371" width="173" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="nlm-Cj-lNa"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHV-B0-XWx">
-                                <rect key="frame" x="217" y="371.5" width="161" height="1"/>
+                                <rect key="frame" x="217" y="371" width="161" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="jxq-kj-Dzi"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infome o IP do HSM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-cN-57C">
-                                <rect key="frame" x="131" y="412" width="152" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infome o IP do HSM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-cN-57C">
+                                <rect key="frame" x="131.5" y="411.5" width="151.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ngv-zM-X4x">
-                                <rect key="frame" x="0.0" y="196" width="414" height="132"/>
+                                <rect key="frame" x="0.0" y="195.5" width="414" height="132"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="JyY-XR-Phn"/>
@@ -718,14 +772,14 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aJ-LQ-m8L">
-                                <rect key="frame" x="157" y="513" width="100" height="30"/>
+                                <rect key="frame" x="157" y="512" width="100" height="30"/>
                                 <state key="normal" title="todo: Remover"/>
                                 <connections>
                                     <action selector="didTapLogin:" destination="NXN-SE-Bvg" eventType="touchUpInside" id="Gvs-px-mNh"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="127.10.67.3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5w-1k-Gbl" customClass="MDCTextField">
-                                <rect key="frame" x="16" y="463" width="382" height="30"/>
+                                <rect key="frame" x="16" y="462" width="382" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -769,6 +823,7 @@
                         <outlet property="mainTitle" destination="eGO-yJ-BX8" id="OFN-2S-nNZ"/>
                         <outlet property="subtitle" destination="L4A-cN-57C" id="L1g-D6-wYQ"/>
                         <outlet property="tryAgainButton" destination="b05-Sc-fxp" id="h9D-vG-vmd"/>
+                        <segue destination="Epw-Xn-FTy" kind="show" identifier="discovery_to_svmk" id="QsD-9m-Y2d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgF-r4-Lia" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -824,6 +879,7 @@
                         <outlet property="iniciarButton" destination="XaE-cD-lFy" id="WS0-B3-mAc"/>
                         <outlet property="svmkTextField" destination="Mmz-sr-2d9" id="STr-2z-KcM"/>
                         <outlet property="titleLabel" destination="bZd-Pb-D3z" id="gRX-O7-nqm"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="svmk_to_login" id="5Wo-Az-HdQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V04-sN-AQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>

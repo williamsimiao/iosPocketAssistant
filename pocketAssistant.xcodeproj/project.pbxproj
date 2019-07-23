@@ -46,6 +46,7 @@
 		3DDC4091229F490100713546 /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC4090229F490100713546 /* Theming.swift */; };
 		3DDD53FE22DE6802006F36CD /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD53FD22DE6802006F36CD /* DiscoveryViewController.swift */; };
 		3DDD540022DE6EE9006F36CD /* deviceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD53FF22DE6EE9006F36CD /* deviceCollectionViewCell.swift */; };
+		3DDFBCB322E73796004B9711 /* WellcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDFBCB222E73796004B9711 /* WellcomeViewController.swift */; };
 		3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */; };
 		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
 		3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */; };
@@ -118,6 +119,7 @@
 		3DDC4090229F490100713546 /* Theming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theming.swift; sourceTree = "<group>"; };
 		3DDD53FD22DE6802006F36CD /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		3DDD53FF22DE6EE9006F36CD /* deviceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deviceCollectionViewCell.swift; sourceTree = "<group>"; };
+		3DDFBCB222E73796004B9711 /* WellcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomeViewController.swift; sourceTree = "<group>"; };
 		3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosEndPoint.swift; sourceTree = "<group>"; };
 		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
 		3DF9AF24229C791E009AFD52 /* ObjetoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetoCell.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		3D114DB7228B03E100A4A74C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3DDFBCB222E73796004B9711 /* WellcomeViewController.swift */,
 				3D9ED6DA22E64AC400F38FDE /* SvmkViewController.swift */,
 				3DDD53FF22DE6EE9006F36CD /* deviceCollectionViewCell.swift */,
 				3DDD53FD22DE6802006F36CD /* DiscoveryViewController.swift */,
@@ -635,6 +638,7 @@
 				3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */,
 				3D114DC4228B075C00A4A74C /* ParameterEncoding.swift in Sources */,
 				3D3C105C22A9AA9000E1BDD9 /* AppUtil.swift in Sources */,
+				3DDFBCB322E73796004B9711 /* WellcomeViewController.swift in Sources */,
 				3DDD540022DE6EE9006F36CD /* deviceCollectionViewCell.swift in Sources */,
 				3DC8465622A1AD420032FB31 /* UIColor+RGBinit.swift in Sources */,
 				3DC449DC22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift in Sources */,
