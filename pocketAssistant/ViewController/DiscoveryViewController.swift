@@ -9,11 +9,14 @@
 import UIKit
 import MaterialComponents
 
-class SetupViewController: UIViewController {
-    @IBOutlet weak var processingLabel: UILabel!
+class DiscoveryViewController: UIViewController {
+    @IBOutlet weak var mainTitle: UILabel!
     @IBOutlet weak var tryAgainButton: MDCButton!
-    @IBOutlet weak var ipTextField: MDCTextField!
-    @IBOutlet weak var devicesCollectionView: UICollectionView!
+    @IBOutlet weak var lele: UICollectionView!
+    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet weak var enderecoTextField: MDCTextField!
+    
+    
     
     var stringArray = ["lele", "lolo", "lili", "lala", "lulu"]
 
@@ -23,16 +26,18 @@ class SetupViewController: UIViewController {
     }
     
     func setupViews() {
-        devicesCollectionView.register(RelacaoCollectionViewCell.self, forCellWithReuseIdentifier: RelacaoCollectionViewCell.identifier)
+//        devicesCollectionView.register(RelacaoCollectionViewCell.self, forCellWithReuseIdentifier: RelacaoCollectionViewCell.identifier)
     }
-    
+
     @IBAction func didTapLogin(_ sender: Any) {
         performSegue(withIdentifier: "to_login", sender: self)
     }
     
+    @IBAction func didTapConnect(_ sender: Any) {
+    }
 }
 
-extension SetupViewController: UICollectionViewDelegate,
+extension DiscoveryViewController: UICollectionViewDelegate,
     UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

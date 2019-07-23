@@ -621,10 +621,10 @@
             </objects>
             <point key="canvasLocation" x="5377" y="-794"/>
         </scene>
-        <!--Setup View Controller-->
+        <!--Discovery View Controller-->
         <scene sceneID="XhW-SH-DRL">
             <objects>
-                <viewController id="NXN-SE-Bvg" customClass="SetupViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NXN-SE-Bvg" customClass="DiscoveryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CcW-3p-igK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -647,6 +647,9 @@
                                 <state key="normal" title="CONECTAR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapConnect:" destination="NXN-SE-Bvg" eventType="touchUpInside" id="vUV-5a-Oa0"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="ou" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvW-42-b3u">
                                 <rect key="frame" x="193" y="364" width="28" height="16"/>
@@ -713,16 +716,12 @@
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="NXN-SE-Bvg" id="SZv-mv-qCT"/>
-                                    <outlet property="delegate" destination="NXN-SE-Bvg" id="V6C-uC-dzS"/>
-                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aJ-LQ-m8L">
-                                <rect key="frame" x="188" y="513" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
+                                <rect key="frame" x="157" y="513" width="100" height="30"/>
+                                <state key="normal" title="todo: Remover"/>
                                 <connections>
-                                    <action selector="didTapLogin:" destination="NXN-SE-Bvg" eventType="touchUpInside" id="Etp-O2-Nkm"/>
+                                    <action selector="didTapLogin:" destination="NXN-SE-Bvg" eventType="touchUpInside" id="Gvs-px-mNh"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="127.10.67.3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d5w-1k-Gbl" customClass="MDCTextField">
@@ -765,10 +764,11 @@
                         <viewLayoutGuide key="safeArea" id="MT4-5G-VGW"/>
                     </view>
                     <connections>
-                        <outlet property="devicesCollectionView" destination="Ngv-zM-X4x" id="cww-T5-xGE"/>
-                        <outlet property="ipTextField" destination="d5w-1k-Gbl" id="Bqk-Dx-PSp"/>
-                        <outlet property="processingLabel" destination="eGO-yJ-BX8" id="tZK-YY-ILm"/>
-                        <outlet property="tryAgainButton" destination="b05-Sc-fxp" id="Yjh-yi-ls5"/>
+                        <outlet property="enderecoTextField" destination="d5w-1k-Gbl" id="Rwh-Zv-08f"/>
+                        <outlet property="lele" destination="Ngv-zM-X4x" id="2J8-8f-NUJ"/>
+                        <outlet property="mainTitle" destination="eGO-yJ-BX8" id="OFN-2S-nNZ"/>
+                        <outlet property="subtitle" destination="L4A-cN-57C" id="L1g-D6-wYQ"/>
+                        <outlet property="tryAgainButton" destination="b05-Sc-fxp" id="h9D-vG-vmd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgF-r4-Lia" userLabel="First Responder" sceneMemberID="firstResponder"/>

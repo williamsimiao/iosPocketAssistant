@@ -44,7 +44,7 @@
 		3DDB7AD7229DDD6400C4D265 /* CriarUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */; };
 		3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */; };
 		3DDC4091229F490100713546 /* Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC4090229F490100713546 /* Theming.swift */; };
-		3DDD53FE22DE6802006F36CD /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD53FD22DE6802006F36CD /* SetupViewController.swift */; };
+		3DDD53FE22DE6802006F36CD /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD53FD22DE6802006F36CD /* DiscoveryViewController.swift */; };
 		3DDD540022DE6EE9006F36CD /* deviceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD53FF22DE6EE9006F36CD /* deviceCollectionViewCell.swift */; };
 		3DEBB0F82296D96C006F0E3B /* ObjetosEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */; };
 		3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */; };
@@ -116,7 +116,7 @@
 		3DDB7AD6229DDD6400C4D265 /* CriarUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarUsuarioViewController.swift; sourceTree = "<group>"; };
 		3DDC4054229DFD3800713546 /* URLSession+synchronous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+synchronous.swift"; sourceTree = "<group>"; };
 		3DDC4090229F490100713546 /* Theming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theming.swift; sourceTree = "<group>"; };
-		3DDD53FD22DE6802006F36CD /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		3DDD53FD22DE6802006F36CD /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		3DDD53FF22DE6EE9006F36CD /* deviceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deviceCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosEndPoint.swift; sourceTree = "<group>"; };
 		3DEBB0F92296FF13006F0E3B /* ObjetosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetosViewController.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 			children = (
 				3D9ED6DA22E64AC400F38FDE /* SvmkViewController.swift */,
 				3DDD53FF22DE6EE9006F36CD /* deviceCollectionViewCell.swift */,
-				3DDD53FD22DE6802006F36CD /* SetupViewController.swift */,
+				3DDD53FD22DE6802006F36CD /* DiscoveryViewController.swift */,
 				3D9311EC2289DD4E000C2635 /* LoginViewController.swift */,
 				3DF882F722C63F7C00205315 /* Objetos */,
 				3DF882F822C63FA200205315 /* Relações */,
@@ -663,7 +663,7 @@
 				3D9311EB2289DD4E000C2635 /* AppDelegate.swift in Sources */,
 				3D48FB762295BCE9007ACC63 /* SessaoEndPoint.swift in Sources */,
 				3D114DBA228B045500A4A74C /* EndPointType.swift in Sources */,
-				3DDD53FE22DE6802006F36CD /* SetupViewController.swift in Sources */,
+				3DDD53FE22DE6802006F36CD /* DiscoveryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
