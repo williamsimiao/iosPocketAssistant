@@ -20,7 +20,6 @@ class WellcomeViewController: UIViewController {
     func setupViews() {
         iniciarButton.applyContainedTheme(withScheme: globalContainerScheme())
     }
-        
     
     @IBAction func didTapIniciar(_ sender: Any) {
         performSegue(withIdentifier: "wellcome_to_discovery", sender: self)
