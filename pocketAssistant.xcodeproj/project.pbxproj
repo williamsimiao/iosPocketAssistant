@@ -19,6 +19,7 @@
 		3D114DCD228B2A9C00A4A74C /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DCC228B2A9C00A4A74C /* NetworkRouter.swift */; };
 		3D114DCF228B2F7B00A4A74C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DCE228B2F7B00A4A74C /* Router.swift */; };
 		3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D114DD5228B48EB00A4A74C /* NetworkManager.swift */; };
+		3D19010622F31223004BB7AB /* CustomURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19010522F31223004BB7AB /* CustomURLSession.swift */; };
 		3D3C104B22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */; };
 		3D3C104D22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */; };
 		3D3C105422A9909200E1BDD9 /* RelacoesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */; };
@@ -86,6 +87,7 @@
 		3D114DCC228B2A9C00A4A74C /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		3D114DCE228B2F7B00A4A74C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		3D114DD5228B48EB00A4A74C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		3D19010522F31223004BB7AB /* CustomURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomURLSession.swift; sourceTree = "<group>"; };
 		3D3C104A22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestaoUsuariosCollectionViewController.swift; sourceTree = "<group>"; };
 		3D3C104C22A9439300E1BDD9 /* GestaoUsuariosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestaoUsuariosCollectionViewCell.swift; sourceTree = "<group>"; };
 		3D3C105322A9909200E1BDD9 /* RelacoesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelacoesCollectionViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				3D114DCE228B2F7B00A4A74C /* Router.swift */,
 				3D114DBB228B053E00A4A74C /* HTTPMethod.swift */,
 				3D114DBF228B05AB00A4A74C /* HTTPTask.swift */,
+				3D19010522F31223004BB7AB /* CustomURLSession.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */,
 				3DDB7AD3229DBAB100C4D265 /* TrocarSenhaViewController.swift in Sources */,
 				3DFFC7D522C69CB4006F26BE /* textField+Controller.swift in Sources */,
+				3D19010622F31223004BB7AB /* CustomURLSession.swift in Sources */,
 				3D3C104B22A942A000E1BDD9 /* GestaoUsuariosCollectionViewController.swift in Sources */,
 				3D114DD6228B48EB00A4A74C /* NetworkManager.swift in Sources */,
 				3DDC4055229DFD3800713546 /* URLSession+synchronous.swift in Sources */,

@@ -7,7 +7,9 @@
 //
 
 import Foundation
-class Router<EndPoint: EndPointType>: NetworkRouter {
+class Router<EndPoint: EndPointType>: NetworkRouter, URLSessionDelegate {
+    var description: String
+    
     private var task: URLSessionTask?
     
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
@@ -20,7 +22,17 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
         }
     }
 
-    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+            print("Olha o IP \(challenge.protectionSpace.host)")
+            if(challenge.protectionSpace.host == "10.61.53.209") {
+                let secTrust = challenge.protectionSpace.serverTrust
+                let credential = URLCredential(trust: secTrust!)
+                completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
+            }
+        }
+    }
+
     func synchronousRequest(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
         let session = URLSession.shared
         do {
@@ -39,7 +51,8 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
     }
     
     func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
-        let session = URLSession.shared
+        let configuration = URLSessionConfiguration.default
+        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
         do {
             let request = try self.buildRequest(from: route)
             print("request: \(request)")
