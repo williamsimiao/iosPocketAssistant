@@ -7,31 +7,8 @@
 //
 
 import Foundation
-class Router<EndPoint: EndPointType>: NetworkRouter, URLSessionDelegate {
-    var description: String
-    
+class Router<EndPoint: EndPointType>: NetworkRouter {
     private var task: URLSessionTask?
-    
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodClientCertificate) {
-            completionHandler(.rejectProtectionSpace, nil)
-        }
-        if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
-            let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
-            completionHandler(.useCredential, credential)
-        }
-    }
-
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
-            print("Olha o IP \(challenge.protectionSpace.host)")
-            if(challenge.protectionSpace.host == "10.61.53.209") {
-                let secTrust = challenge.protectionSpace.serverTrust
-                let credential = URLCredential(trust: secTrust!)
-                completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
-            }
-        }
-    }
 
     func synchronousRequest(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
         let session = URLSession.shared
@@ -51,8 +28,9 @@ class Router<EndPoint: EndPointType>: NetworkRouter, URLSessionDelegate {
     }
     
     func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
-        let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+//        let configuration = URLSessionConfiguration.default
+//        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+        let session = URLSession.shared
         do {
             let request = try self.buildRequest(from: route)
             print("request: \(request)")
