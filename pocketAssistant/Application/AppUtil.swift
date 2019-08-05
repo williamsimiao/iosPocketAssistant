@@ -12,6 +12,7 @@ import SystemConfiguration
 import UIKit
 import MaterialComponents
 
+
 open class AppUtil {
     
     class func currentView() -> UIViewController {

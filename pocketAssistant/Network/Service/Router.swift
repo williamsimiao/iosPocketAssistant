@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 class Router<EndPoint: EndPointType>: NetworkRouter {
     private var task: URLSessionTask?
 
@@ -27,10 +28,11 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
         }
     }
     
-    func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
-//        let configuration = URLSessionConfiguration.default
-//        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-        let session = URLSession.shared
+    func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion, myDelegate: URLSessionDelegate) {
+        let configuration = URLSessionConfiguration.default
+        let session = URLSession(configuration: configuration, delegate: myDelegate, delegateQueue: nil)
+        
+//        let session = URLSession.shared
         do {
             let request = try self.buildRequest(from: route)
             print("request: \(request)")

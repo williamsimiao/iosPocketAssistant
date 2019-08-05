@@ -10,7 +10,7 @@ import UIKit
 import MaterialComponents
 import SwiftKeychainWrapper
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, URLSessionDelegate {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -41,6 +41,43 @@ class LoginViewController: UIViewController {
     var otpTextLayout: textLayout?
     
     // defaultNamespaceSocket and swiftSocket both share a single connection to the server
+
+//    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
+//    }
+    
+//    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//        let myHost = "https://hsmlab64.dinamonetworks.com"
+//        //            let host = "10.61.53.209"
+//
+//        let protectionSpace = challenge.protectionSpace
+//        guard protectionSpace.authenticationMethod ==
+//            NSURLAuthenticationMethodServerTrust,
+//            protectionSpace.host.contains(myHost) else {
+//                completionHandler(.performDefaultHandling, nil)
+//                return
+//        }
+//        guard let serverTrust = protectionSpace.serverTrust else {
+//            completionHandler(.performDefaultHandling, nil)
+//            return
+//        }
+//        completionHandler(.cancelAuthenticationChallenge, nil)
+//
+//    }
+
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+            print("Olha o IP \(challenge.protectionSpace.host)")
+            let myHost = "https://hsmlab64.dinamonetworks.com"
+            //            let host = "10.61.53.209"
+            if(challenge.protectionSpace.host == myHost) {
+                let secTrust = challenge.protectionSpace.serverTrust
+                let credential = URLCredential(trust: secTrust!)
+                completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
+            }
+        }
+    }
 
     
     override func viewDidLoad() {
