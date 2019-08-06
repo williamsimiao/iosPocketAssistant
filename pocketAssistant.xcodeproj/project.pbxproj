@@ -219,8 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				3D114DB9228B045500A4A74C /* EndPointType.swift */,
-				3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */,
 				3D48FB752295BCE9007ACC63 /* SessaoEndPoint.swift */,
+				3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */,
 				3DEBB0F72296D96C006F0E3B /* ObjetosEndPoint.swift */,
 			);
 			path = EndPoint;
