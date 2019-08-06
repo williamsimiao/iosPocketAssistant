@@ -88,22 +88,22 @@ class CriarUsuarioViewController: UIViewController {
             return
         }
         
-        NetworkManager().runCreateUsr(token: token, usr: username, pwd: password, acl: newUserDefaultACL) { (errorResponse) in
-            if let errorResponse = errorResponse {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                let snackBar = MDCSnackbarMessage()
-                snackBar.text = message
-                MDCSnackbarManager.show(snackBar)
-            }
-            else {
-                DispatchQueue.main.async {
-                    self.navigationController?.popToRootViewController(animated: true)
-                    let message = MDCSnackbarMessage()
-                    message.text = "Usuário criado com sucesso"
-                    MDCSnackbarManager.show(message)
-                }
-            }
-        }
+//        NetworkManager().runCreateUsr(token: token, usr: username, pwd: password, acl: newUserDefaultACL) { (errorResponse) in
+//            if let errorResponse = errorResponse {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+//                let snackBar = MDCSnackbarMessage()
+//                snackBar.text = message
+//                MDCSnackbarManager.show(snackBar)
+//            }
+//            else {
+//                DispatchQueue.main.async {
+//                    self.navigationController?.popToRootViewController(animated: true)
+//                    let message = MDCSnackbarMessage()
+//                    message.text = "Usuário criado com sucesso"
+//                    MDCSnackbarManager.show(message)
+//                }
+//            }
+//        }
     }
     
     // MARK: - Keyboard Handling

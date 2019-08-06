@@ -169,17 +169,17 @@ class NovaPermissaoViewController: UIViewController {
             return
         }
 
-        networkManager.runGetAcl(token: token, usr: userName) { (response, errorResponse) in
-            if let errorResponse = errorResponse {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                let snackBar = MDCSnackbarMessage()
-                snackBar.text = message
-                MDCSnackbarManager.show(snackBar)
-            }
-            if let response = response {
-                self.systemAcl = response.acl
-            }
-        }
+//        networkManager.runGetAcl(token: token, usr: userName) { (response, errorResponse) in
+//            if let errorResponse = errorResponse {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+//                let snackBar = MDCSnackbarMessage()
+//                snackBar.text = message
+//                MDCSnackbarManager.show(snackBar)
+//            }
+//            if let response = response {
+//                self.systemAcl = response.acl
+//            }
+//        }
     }
     
     
@@ -200,22 +200,22 @@ class NovaPermissaoViewController: UIViewController {
             return
         }
         let finalAcl = composeFinalAcl(newAcl: newAcl)
-        networkManager.runUpdateAcl(token: token, acl: finalAcl, usr: userName!) { (errorResponse) in
-            if let errorResponse = errorResponse {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                let snackBar = MDCSnackbarMessage()
-                snackBar.text = message
-                MDCSnackbarManager.show(snackBar)
-            }
-            else {
-                DispatchQueue.main.async {
-                    self.navigationController?.popToRootViewController(animated: true)
-                    let message = MDCSnackbarMessage()
-                    message.text = "Permissão alterada com sucesso"
-                    MDCSnackbarManager.show(message)
-                }
-            }
-        }
+//        networkManager.runUpdateAcl(token: token, acl: finalAcl, usr: userName!) { (errorResponse) in
+//            if let errorResponse = errorResponse {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+//                let snackBar = MDCSnackbarMessage()
+//                snackBar.text = message
+//                MDCSnackbarManager.show(snackBar)
+//            }
+//            else {
+//                DispatchQueue.main.async {
+//                    self.navigationController?.popToRootViewController(animated: true)
+//                    let message = MDCSnackbarMessage()
+//                    message.text = "Permissão alterada com sucesso"
+//                    MDCSnackbarManager.show(message)
+//                }
+//            }
+//        }
     }
 }
 

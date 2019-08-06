@@ -30,7 +30,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
     
     func request(_ route: EndPoint, myDelegate: URLSessionDelegate, completion: @escaping NetworkRouterCompletion) {
         let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration, delegate: myDelegate, delegateQueue: nil)
+        let session = URLSession(configuration: configuration, delegate: myDelegate, delegateQueue: OperationQueue.main)
         
 //        let session = URLSession.shared
         do {

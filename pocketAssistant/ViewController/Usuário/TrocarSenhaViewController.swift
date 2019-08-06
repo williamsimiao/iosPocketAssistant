@@ -82,22 +82,22 @@ class TrocarSenhaViewController: UIViewController {
     func changePwdRequest() {
         let newPwd = newPwdTextField.text!
 
-        networkmanager.runChangePwd(token: tokenString!, newPwd: newPwd) { (errorResponse) in
-            if let errorResponse = errorResponse {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                let snackBar = MDCSnackbarMessage()
-                snackBar.text = message
-                MDCSnackbarManager.show(snackBar)
-            }
-            else {
-                DispatchQueue.main.async {
-                    self.navigationController?.popToRootViewController(animated: true)
-                    let message = MDCSnackbarMessage()
-                    message.text = "Senha alterada com sucesso"
-                    MDCSnackbarManager.show(message)
-                }
-            }
-        }
+//        networkmanager.runChangePwd(token: tokenString!, newPwd: newPwd) { (errorResponse) in
+//            if let errorResponse = errorResponse {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+//                let snackBar = MDCSnackbarMessage()
+//                snackBar.text = message
+//                MDCSnackbarManager.show(snackBar)
+//            }
+//            else {
+//                DispatchQueue.main.async {
+//                    self.navigationController?.popToRootViewController(animated: true)
+//                    let message = MDCSnackbarMessage()
+//                    message.text = "Senha alterada com sucesso"
+//                    MDCSnackbarManager.show(message)
+//                }
+//            }
+//        }
     }
     
     // MARK: - Keyboard Handling

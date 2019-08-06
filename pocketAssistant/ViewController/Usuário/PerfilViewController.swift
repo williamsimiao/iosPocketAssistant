@@ -45,19 +45,19 @@ class PerfilViewController: UIViewController {
             return
         }
         let actionComplitionHandler: MDCActionHandler = {_ in
-            self.networkManager.runClose(token: token) { (error) in
-                if let error = error {
-                    let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
-                    let snackBar = MDCSnackbarMessage()
-                    snackBar.text = message
-                    MDCSnackbarManager.show(snackBar)
-                }
-                else {
-                    print("Deu certo")
-                    AppUtil.removeTokenFromSecureLocation()
-                    AppUtil.goToLoginScreen(sourceViewController: self)
-                }
-            }
+//            self.networkManager.runClose(token: token) { (error) in
+//                if let error = error {
+//                    let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+//                    let snackBar = MDCSnackbarMessage()
+//                    snackBar.text = message
+//                    MDCSnackbarManager.show(snackBar)
+//                }
+//                else {
+//                    print("Deu certo")
+//                    AppUtil.removeTokenFromSecureLocation()
+//                    AppUtil.goToLoginScreen(sourceViewController: self)
+//                }
+//            }
         }
         
         let alertController = MDCAlertController(title: "Encerrar sessão", message: "Deseja mesmo encerrar a sessão ?")

@@ -67,6 +67,7 @@ class LoginViewController: UIViewController, URLSessionDelegate {
 
     
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        print("AQUIIIIII")
         if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
             print("Olha o IP \(challenge.protectionSpace.host)")
             let myHost = "https://hsmlab64.dinamonetworks.com"
@@ -155,7 +156,7 @@ class LoginViewController: UIViewController, URLSessionDelegate {
         let username = usernameTextField.text!
         let password = passwordTextField.text!
         
-        networkManager.runAuth(usr: username, pwd: password) { (response, errorResponse) in
+        networkManager.runAuth(myDelegate: self, usr: username, pwd: password) { (response, errorResponse) in
             if let errorResponse = errorResponse {
                 let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
                 
@@ -214,20 +215,20 @@ class LoginViewController: UIViewController, URLSessionDelegate {
             return
         }
         
-        networkManager.runProbeSynchronous(token: token) { (response, errorResponse) in
-            if let errorResponse = errorResponse {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                if message == "Sessão expirou" || message == "Acesso negado" {
-                    self.showInvalidTokenDialog()
-                }
-            }
-            else if let _ = response {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "to_second", sender: self)
-                }
-            }
-            self.showLoginFields()
-        }
+//        networkManager.runProbeSynchronous(token: token) { (response, errorResponse) in
+//            if let errorResponse = errorResponse {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+//                if message == "Sessão expirou" || message == "Acesso negado" {
+//                    self.showInvalidTokenDialog()
+//                }
+//            }
+//            else if let _ = response {
+//                DispatchQueue.main.async {
+//                    self.performSegue(withIdentifier: "to_second", sender: self)
+//                }
+//            }
+//            self.showLoginFields()
+//        }
     }
     
     func hideLoginFields() {

@@ -83,46 +83,46 @@ class ObjetosViewController: UICollectionViewController {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-        NetworkManager().runObjExp(objId: objId, token: token) { (response, errorResponse) in
-            if let errorResponse = errorResponse {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                let snackBar = MDCSnackbarMessage()
-                snackBar.text = message
-                MDCSnackbarManager.show(snackBar)
-            }
-            if let response = response {
-                do {
-                    let x509 = try X509Certificate(data: response as Data)
-                    
-                    let subject = x509.subjectDistinguishedName
-                    let beginIndex = subject?.firstIndex(of: "=")
-                    let realBeginIndex = subject!.index(beginIndex!, offsetBy: 1)
-                    let endIndex = subject?.firstIndex(of: ",") ?? subject?.endIndex
-
-                    let name = String(subject![realBeginIndex..<endIndex!])
-                    
-                    let issuer = x509.issuerDistinguishedName
-                    let issuerBeginIndex = issuer?.firstIndex(of: "=")
-                    let issuerRealBeginIndex = issuer!.index(issuerBeginIndex!, offsetBy: 1)
-                    let issuerEndIndex = issuer?.firstIndex(of: ",") ?? issuer?.endIndex
-
-                    let issuerName = String(issuer![issuerRealBeginIndex..<issuerEndIndex!])
-                    
-                    let mCert = certificate(name: name, issuer: issuerName, notBefore: x509.notBefore!, notAfter: x509.notAfter!)
-                    self.certificateArray.append(mCert)
-                    
-                } catch {
-                    print(error)
-                }
-                self.exportedCertificates = self.exportedCertificates + 1
-                
-            }
-            if self.exportedCertificates == self.certificateCounter {
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-        }
+//        NetworkManager().runObjExp(objId: objId, token: token) { (response, errorResponse) in
+//            if let errorResponse = errorResponse {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+//                let snackBar = MDCSnackbarMessage()
+//                snackBar.text = message
+//                MDCSnackbarManager.show(snackBar)
+//            }
+//            if let response = response {
+//                do {
+//                    let x509 = try X509Certificate(data: response as Data)
+//
+//                    let subject = x509.subjectDistinguishedName
+//                    let beginIndex = subject?.firstIndex(of: "=")
+//                    let realBeginIndex = subject!.index(beginIndex!, offsetBy: 1)
+//                    let endIndex = subject?.firstIndex(of: ",") ?? subject?.endIndex
+//
+//                    let name = String(subject![realBeginIndex..<endIndex!])
+//
+//                    let issuer = x509.issuerDistinguishedName
+//                    let issuerBeginIndex = issuer?.firstIndex(of: "=")
+//                    let issuerRealBeginIndex = issuer!.index(issuerBeginIndex!, offsetBy: 1)
+//                    let issuerEndIndex = issuer?.firstIndex(of: ",") ?? issuer?.endIndex
+//
+//                    let issuerName = String(issuer![issuerRealBeginIndex..<issuerEndIndex!])
+//
+//                    let mCert = certificate(name: name, issuer: issuerName, notBefore: x509.notBefore!, notAfter: x509.notAfter!)
+//                    self.certificateArray.append(mCert)
+//
+//                } catch {
+//                    print(error)
+//                }
+//                self.exportedCertificates = self.exportedCertificates + 1
+//
+//            }
+//            if self.exportedCertificates == self.certificateCounter {
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
+//            }
+//        }
     }
     
     
@@ -130,21 +130,21 @@ class ObjetosViewController: UICollectionViewController {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-        NetworkManager().runGetObjInfo(objId: objId, token: token) { (response, error) in
-            if let error = error {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
-                let snackBar = MDCSnackbarMessage()
-                snackBar.text = message
-                MDCSnackbarManager.show(snackBar)
-            }
-            if let response = response {
-                let myType = response.type
-                if myType == self.certificateTypeInteger {
-                    self.makeRequestExport(objId: objId)
-                    self.certificateCounter = self.certificateCounter + 1
-                }
-            }
-        }
+//        NetworkManager().runGetObjInfo(objId: objId, token: token) { (response, error) in
+//            if let error = error {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+//                let snackBar = MDCSnackbarMessage()
+//                snackBar.text = message
+//                MDCSnackbarManager.show(snackBar)
+//            }
+//            if let response = response {
+//                let myType = response.type
+//                if myType == self.certificateTypeInteger {
+//                    self.makeRequestExport(objId: objId)
+//                    self.certificateCounter = self.certificateCounter + 1
+//                }
+//            }
+//        }
     }
     
     func makeRequest() {
@@ -156,20 +156,20 @@ class ObjetosViewController: UICollectionViewController {
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-        NetworkManager().runListObjs(token: token) { (response, errorResponse) in
-            if let errorResponse = errorResponse {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                let snackBar = MDCSnackbarMessage()
-                snackBar.text = message
-                MDCSnackbarManager.show(snackBar)
-            }
-            if let response = response {
-                self.objIdArray = response.obj
-                for objectId in self.objIdArray! {
-                    self.makeRequestInfo(objId: objectId)
-                }
-            }
-        }
+//        NetworkManager().runListObjs(token: token) { (response, errorResponse) in
+//            if let errorResponse = errorResponse {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+//                let snackBar = MDCSnackbarMessage()
+//                snackBar.text = message
+//                MDCSnackbarManager.show(snackBar)
+//            }
+//            if let response = response {
+//                self.objIdArray = response.obj
+//                for objectId in self.objIdArray! {
+//                    self.makeRequestInfo(objId: objectId)
+//                }
+//            }
+//        }
     }
 }
 

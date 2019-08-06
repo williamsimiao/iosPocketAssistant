@@ -71,20 +71,20 @@ class TrusteesViewController: UIViewController {
             return
         }
         let op = isTrustees ? 2 : 1
-        NetworkManager().runListUsrsTrust(token: token, op: op, usr: usrName) { (response, errorResponse) in
-            if let errorResponse = errorResponse {
-                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-                let snackBar = MDCSnackbarMessage()
-                snackBar.text = message
-                MDCSnackbarManager.show(snackBar)
-            }
-            if let response = response {
-                self.itemArray = response.trust
-                DispatchQueue.main.async {
-                    self.collectionView!.reloadData()
-                }
-            }
-        }
+//        NetworkManager().runListUsrsTrust(token: token, op: op, usr: usrName) { (response, errorResponse) in
+//            if let errorResponse = errorResponse {
+//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+//                let snackBar = MDCSnackbarMessage()
+//                snackBar.text = message
+//                MDCSnackbarManager.show(snackBar)
+//            }
+//            if let response = response {
+//                self.itemArray = response.trust
+//                DispatchQueue.main.async {
+//                    self.collectionView!.reloadData()
+//                }
+//            }
+//        }
     }
 }
 
