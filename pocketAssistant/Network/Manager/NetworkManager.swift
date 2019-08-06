@@ -365,8 +365,8 @@ struct NetworkManager {
 //        }
 //    }
     
-    func runAuth(myDelegate: , usr: String, sessionDelegate:  pwd: String, completion: @escaping (_ body1:ResponseBody1?,_ error: errorBody?)->()) {
-        sessaoRouter.request(.auth(usr: usr, pwd: pwd), ) { (data, response, error) in
+    func runAuth(myDelegate: URLSessionDelegate, usr: String, pwd: String, completion: @escaping (_ body1:ResponseBody1?,_ error: errorBody?)->()) {
+        sessaoRouter.request(.auth(usr: usr, pwd: pwd), myDelegate: myDelegate) { (data, response, error) in
             if error != nil {
                 let _ = AppUtil.alertAboutConnectionError()
             }

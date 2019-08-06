@@ -28,7 +28,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
         }
     }
     
-    func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion, myDelegate: URLSessionDelegate) {
+    func request(_ route: EndPoint, myDelegate: URLSessionDelegate, completion: @escaping NetworkRouterCompletion) {
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration, delegate: myDelegate, delegateQueue: nil)
         
