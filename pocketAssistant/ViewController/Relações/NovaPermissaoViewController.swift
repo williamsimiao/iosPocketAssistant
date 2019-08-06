@@ -200,22 +200,38 @@ class NovaPermissaoViewController: UIViewController {
             return
         }
         let finalAcl = composeFinalAcl(newAcl: newAcl)
-//        networkManager.runUpdateAcl(token: token, acl: finalAcl, usr: userName!) { (errorResponse) in
-//            if let errorResponse = errorResponse {
-//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-//                let snackBar = MDCSnackbarMessage()
-//                snackBar.text = message
-//                MDCSnackbarManager.show(snackBar)
-//            }
-//            else {
-//                DispatchQueue.main.async {
-//                    self.navigationController?.popToRootViewController(animated: true)
-//                    let message = MDCSnackbarMessage()
-//                    message.text = "Permissão alterada com sucesso"
-//                    MDCSnackbarManager.show(message)
-//                }
-//            }
-//        }
+        networkManager.runUpdateAcl(myDelegate: self, token: token, acl: finalAcl, usr: userName!) { (errorResponse) in
+            if let errorResponse = errorResponse {
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
+            }
+            else {
+                DispatchQueue.main.async {
+                    self.navigationController?.popToRootViewController(animated: true)
+                    let message = MDCSnackbarMessage()
+                    message.text = "Permissão alterada com sucesso"
+                    MDCSnackbarManager.show(message)
+                }
+            }
+        }
+    }
+}
+
+extension NovaPermissaoViewController: URLSessionDelegate {
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        print("AQUIIIIII")
+        if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+            print("Olha o IP \(challenge.protectionSpace.host)")
+            let myHost = "10.61.53.209"
+            if(challenge.protectionSpace.host == myHost) {
+                print("LALA")
+                let secTrust = challenge.protectionSpace.serverTrust
+                let credential = URLCredential(trust: secTrust!)
+                completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
+            }
+        }
     }
 }
 

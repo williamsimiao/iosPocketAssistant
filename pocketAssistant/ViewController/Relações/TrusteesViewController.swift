@@ -71,20 +71,20 @@ class TrusteesViewController: UIViewController {
             return
         }
         let op = isTrustees ? 2 : 1
-//        NetworkManager().runListUsrsTrust(token: token, op: op, usr: usrName) { (response, errorResponse) in
-//            if let errorResponse = errorResponse {
-//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-//                let snackBar = MDCSnackbarMessage()
-//                snackBar.text = message
-//                MDCSnackbarManager.show(snackBar)
-//            }
-//            if let response = response {
-//                self.itemArray = response.trust
-//                DispatchQueue.main.async {
-//                    self.collectionView!.reloadData()
-//                }
-//            }
-//        }
+        NetworkManager().runListUsrsTrust(myDelegate: self, token: token, op: op, usr: usrName) { (response, errorResponse) in
+            if let errorResponse = errorResponse {
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
+            }
+            if let response = response {
+                self.itemArray = response.trust
+                DispatchQueue.main.async {
+                    self.collectionView!.reloadData()
+                }
+            }
+        }
     }
 }
 
@@ -147,5 +147,21 @@ extension TrusteesViewController : barButtonItemDelegate {
     
     func didTapAdd() {
         segueDelegate?.gotoUserSelection()
+    }
+}
+
+extension TrusteesViewController: URLSessionDelegate {
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        print("AQUIIIIII")
+        if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+            print("Olha o IP \(challenge.protectionSpace.host)")
+            let myHost = "10.61.53.209"
+            if(challenge.protectionSpace.host == myHost) {
+                print("LALA")
+                let secTrust = challenge.protectionSpace.serverTrust
+                let credential = URLCredential(trust: secTrust!)
+                completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
+            }
+        }
     }
 }

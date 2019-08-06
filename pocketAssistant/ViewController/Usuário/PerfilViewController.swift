@@ -45,24 +45,40 @@ class PerfilViewController: UIViewController {
             return
         }
         let actionComplitionHandler: MDCActionHandler = {_ in
-//            self.networkManager.runClose(token: token) { (error) in
-//                if let error = error {
-//                    let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
-//                    let snackBar = MDCSnackbarMessage()
-//                    snackBar.text = message
-//                    MDCSnackbarManager.show(snackBar)
-//                }
-//                else {
-//                    print("Deu certo")
-//                    AppUtil.removeTokenFromSecureLocation()
-//                    AppUtil.goToLoginScreen(sourceViewController: self)
-//                }
-//            }
+            self.networkManager.runClose(myDelegate: self, token: token) { (error) in
+                if let error = error {
+                    let message = AppUtil.handleAPIError(viewController: self, mErrorBody: error)
+                    let snackBar = MDCSnackbarMessage()
+                    snackBar.text = message
+                    MDCSnackbarManager.show(snackBar)
+                }
+                else {
+                    print("Deu certo")
+                    AppUtil.removeTokenFromSecureLocation()
+                    AppUtil.goToLoginScreen(sourceViewController: self)
+                }
+            }
         }
         
         let alertController = MDCAlertController(title: "Encerrar sessão", message: "Deseja mesmo encerrar a sessão ?")
         alertController.addAction(MDCAlertAction(title: "Sim", emphasis: .medium, handler: actionComplitionHandler))
         alertController.addAction(MDCAlertAction(title: "Cancelar", emphasis: .high, handler: nil))
         self.present(alertController, animated:true, completion:nil)
+    }
+}
+
+extension PerfilViewController: URLSessionDelegate {
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        print("AQUIIIIII")
+        if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+            print("Olha o IP \(challenge.protectionSpace.host)")
+            let myHost = "10.61.53.209"
+            if(challenge.protectionSpace.host == myHost) {
+                print("LALA")
+                let secTrust = challenge.protectionSpace.serverTrust
+                let credential = URLCredential(trust: secTrust!)
+                completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
+            }
+        }
     }
 }

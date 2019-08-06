@@ -88,22 +88,22 @@ class CriarUsuarioViewController: UIViewController {
             return
         }
         
-//        NetworkManager().runCreateUsr(token: token, usr: username, pwd: password, acl: newUserDefaultACL) { (errorResponse) in
-//            if let errorResponse = errorResponse {
-//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-//                let snackBar = MDCSnackbarMessage()
-//                snackBar.text = message
-//                MDCSnackbarManager.show(snackBar)
-//            }
-//            else {
-//                DispatchQueue.main.async {
-//                    self.navigationController?.popToRootViewController(animated: true)
-//                    let message = MDCSnackbarMessage()
-//                    message.text = "Usuário criado com sucesso"
-//                    MDCSnackbarManager.show(message)
-//                }
-//            }
-//        }
+        NetworkManager().runCreateUsr(myDelegate: self, token: token, usr: username, pwd: password, acl: newUserDefaultACL) { (errorResponse) in
+            if let errorResponse = errorResponse {
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
+            }
+            else {
+                DispatchQueue.main.async {
+                    self.navigationController?.popToRootViewController(animated: true)
+                    let message = MDCSnackbarMessage()
+                    message.text = "Usuário criado com sucesso"
+                    MDCSnackbarManager.show(message)
+                }
+            }
+        }
     }
     
     // MARK: - Keyboard Handling
@@ -174,6 +174,22 @@ extension CriarUsuarioViewController: UITextFieldDelegate {
             passwordTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
         default:
             break
+        }
+    }
+}
+
+extension CriarUsuarioViewController: URLSessionDelegate {
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        print("AQUIIIIII")
+        if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+            print("Olha o IP \(challenge.protectionSpace.host)")
+            let myHost = "10.61.53.209"
+            if(challenge.protectionSpace.host == myHost) {
+                print("LALA")
+                let secTrust = challenge.protectionSpace.serverTrust
+                let credential = URLCredential(trust: secTrust!)
+                completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
+            }
         }
     }
 }

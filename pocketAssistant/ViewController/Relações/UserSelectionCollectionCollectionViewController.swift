@@ -33,20 +33,20 @@ class UserSelectionCollectionCollectionViewController: UICollectionViewControlle
         guard let token = KeychainWrapper.standard.string(forKey: "TOKEN") else {
             return
         }
-//        NetworkManager().runListUsrs(token: token) { (response, errorResponse) in
-//            if let errorResponse = errorResponse {
-//                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
-//                let snackBar = MDCSnackbarMessage()
-//                snackBar.text = message
-//                MDCSnackbarManager.show(snackBar)
-//            }
-//            if let response = response {
-//                self.usrsArray = response.usr
-//                DispatchQueue.main.async {
-//                    self.collectionView.reloadData()
-//                }
-//            }
-//        }
+        NetworkManager().runListUsrs(myDelegate: self, token: token) { (response, errorResponse) in
+            if let errorResponse = errorResponse {
+                let message = AppUtil.handleAPIError(viewController: self, mErrorBody: errorResponse)
+                let snackBar = MDCSnackbarMessage()
+                snackBar.text = message
+                MDCSnackbarManager.show(snackBar)
+            }
+            if let response = response {
+                self.usrsArray = response.usr
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
     }
     
     func setUpBarButtonItens() {
@@ -108,5 +108,21 @@ extension UserSelectionCollectionCollectionViewController: UICollectionViewDeleg
         let cell = collectionView.cellForItem(at: indexPath) as! GestaoUsuariosCollectionViewCell
         self.selectedUserName = cell.userName
         performSegue(withIdentifier: "from_selection_novaPermissao", sender: self)
+    }
+}
+
+extension UserSelectionCollectionCollectionViewController: URLSessionDelegate {
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        print("AQUIIIIII")
+        if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+            print("Olha o IP \(challenge.protectionSpace.host)")
+            let myHost = "10.61.53.209"
+            if(challenge.protectionSpace.host == myHost) {
+                print("LALA")
+                let secTrust = challenge.protectionSpace.serverTrust
+                let credential = URLCredential(trust: secTrust!)
+                completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
+            }
+        }
     }
 }
