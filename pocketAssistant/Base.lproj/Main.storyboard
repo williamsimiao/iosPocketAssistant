@@ -154,16 +154,62 @@
                                                     <action selector="didTapFecharSessao:" destination="zfQ-Ug-Isw" eventType="touchUpInside" id="4JQ-bU-9TV"/>
                                                 </connections>
                                             </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hja-Ls-d3K">
+                                                <rect key="frame" x="16" y="16" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="UNf-kF-YMP"/>
+                                                    <constraint firstAttribute="width" constant="70" id="tMJ-20-ECu"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqX-Ml-jT7">
+                                                <rect key="frame" x="102" y="40.5" width="296" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="npw-uG-Sfh">
+                                                <rect key="frame" x="16" y="110" width="382" height="487"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nOS-ko-7Qw">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="raj-dI-fRg" customClass="GestaoUsuariosCollectionViewCell" customModule="pocketAssistant" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </view>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="zfQ-Ug-Isw" id="P4F-tP-Lrs"/>
+                                                    <outlet property="delegate" destination="zfQ-Ug-Isw" id="x1i-Ku-XIa"/>
+                                                </connections>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="wm9-GQ-eur" secondAttribute="trailing" constant="16" id="3Xf-vs-0kY"/>
                                             <constraint firstItem="R9O-kd-h58" firstAttribute="top" secondItem="wm9-GQ-eur" secondAttribute="bottom" constant="8" id="C8D-JZ-4Y2"/>
+                                            <constraint firstItem="npw-uG-Sfh" firstAttribute="leading" secondItem="BSf-Em-msB" secondAttribute="leading" constant="16" id="FvK-iu-e8z"/>
+                                            <constraint firstItem="Hja-Ls-d3K" firstAttribute="leading" secondItem="BSf-Em-msB" secondAttribute="leading" constant="16" id="GzV-aq-wOu"/>
+                                            <constraint firstItem="npw-uG-Sfh" firstAttribute="top" secondItem="Hja-Ls-d3K" secondAttribute="bottom" constant="24" id="HD2-bd-bjV"/>
                                             <constraint firstItem="R9O-kd-h58" firstAttribute="top" secondItem="wm9-GQ-eur" secondAttribute="bottom" constant="8" id="HZr-MR-FCD"/>
                                             <constraint firstItem="R9O-kd-h58" firstAttribute="leading" secondItem="BSf-Em-msB" secondAttribute="leading" constant="16" id="LJO-Ng-TXN"/>
+                                            <constraint firstAttribute="trailing" secondItem="nqX-Ml-jT7" secondAttribute="trailing" constant="16" id="Nrg-4T-MEc"/>
                                             <constraint firstAttribute="bottom" secondItem="R9O-kd-h58" secondAttribute="bottom" constant="8" id="Oja-ko-Bww"/>
                                             <constraint firstItem="wm9-GQ-eur" firstAttribute="leading" secondItem="BSf-Em-msB" secondAttribute="leading" constant="16" id="cFC-1S-aXW"/>
                                             <constraint firstAttribute="trailing" secondItem="R9O-kd-h58" secondAttribute="trailing" constant="16" id="ewh-kj-bDX"/>
+                                            <constraint firstItem="nqX-Ml-jT7" firstAttribute="centerY" secondItem="Hja-Ls-d3K" secondAttribute="centerY" id="hfL-VO-P7Z"/>
+                                            <constraint firstAttribute="trailing" secondItem="npw-uG-Sfh" secondAttribute="trailing" constant="16" id="lTd-Lm-FUe"/>
+                                            <constraint firstItem="nqX-Ml-jT7" firstAttribute="leading" secondItem="Hja-Ls-d3K" secondAttribute="trailing" constant="16" id="pEO-8g-O2n"/>
+                                            <constraint firstItem="Hja-Ls-d3K" firstAttribute="top" secondItem="BSf-Em-msB" secondAttribute="top" constant="16" id="swW-KY-5g0"/>
+                                            <constraint firstItem="wm9-GQ-eur" firstAttribute="top" secondItem="npw-uG-Sfh" secondAttribute="bottom" constant="16" id="xmj-PE-Dv4"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -190,12 +236,14 @@
                     <connections>
                         <outlet property="fecharSessaoButton" destination="R9O-kd-h58" id="WmM-MW-2Jk"/>
                         <outlet property="mudarSenhaButton" destination="wm9-GQ-eur" id="6Ch-eU-YGT"/>
+                        <outlet property="optionsCollectionView" destination="npw-uG-Sfh" id="7UL-aM-gcW"/>
+                        <outlet property="userNameLabel" destination="nqX-Ml-jT7" id="8ck-Ur-5RH"/>
                         <segue destination="HZO-Qr-fFQ" kind="show" identifier="to_TrocarSenhaViewController" id="9g5-cD-LVZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDt-hK-Fka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4532" y="643"/>
+            <point key="canvasLocation" x="5151" y="643"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ro8-fJ-85B">
@@ -313,7 +361,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dx9-UH-aGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5442.0289855072469" y="-77.008928571428569"/>
+            <point key="canvasLocation" x="5151" y="-81"/>
         </scene>
         <!--Gestao Usuarios Collection View Controller-->
         <scene sceneID="cGU-gQ-z2a">
@@ -387,7 +435,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bem-mG-4s8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4531.884057971015" y="-794.19642857142856"/>
+            <point key="canvasLocation" x="5151" y="-766"/>
         </scene>
         <!--Relacoes Collection View Controller-->
         <scene sceneID="AAy-Jr-Fvs">
@@ -429,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OhD-CR-5us" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4532" y="-1487"/>
+            <point key="canvasLocation" x="5151" y="-1478"/>
         </scene>
         <!--NovaPermissaoViewController-->
         <scene sceneID="LLS-7M-5zc">
@@ -437,7 +485,7 @@
                 <viewControllerPlaceholder referencedIdentifier="NovaPermissaoViewController" id="XRo-vf-JbS" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyv-Qg-uar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5480" y="-1537"/>
+            <point key="canvasLocation" x="5850" y="-1542"/>
         </scene>
         <!--UserSelectionCollectionCollectionViewController-->
         <scene sceneID="Snl-Ih-nug">
@@ -445,7 +493,7 @@
                 <viewControllerPlaceholder referencedIdentifier="UserSelectionCollectionCollectionViewController" id="JXe-Wy-9uV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1r-Wc-1qg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5564" y="-1487"/>
+            <point key="canvasLocation" x="5924" y="-1478"/>
         </scene>
         <!--Certificados-->
         <scene sceneID="YJX-Uw-3Lf">
@@ -465,7 +513,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOJ-sx-uTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4531.884057971015" y="-77.008928571428569"/>
+            <point key="canvasLocation" x="4241" y="-81"/>
         </scene>
         <!--Gestão-->
         <scene sceneID="Xzb-Jn-23Y">
@@ -485,22 +533,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7o-ta-VXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3621.739130434783" y="-794.19642857142856"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="0jg-vN-9bj">
-            <objects>
-                <viewController id="za6-f9-wRm" customClass="LoginViewController" customModule="pocketAssistant" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="thb-PE-8Vj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="fQY-hC-CVR"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qvb-TL-Z1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1296" y="-1171"/>
+            <point key="canvasLocation" x="4241" y="-766"/>
         </scene>
         <!--Relações-->
         <scene sceneID="tH0-Jb-PeK">
@@ -520,7 +553,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDK-nd-Nvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3622" y="-1487"/>
+            <point key="canvasLocation" x="4241" y="-1478"/>
         </scene>
         <!--Usuário-->
         <scene sceneID="qQZ-SR-c5g">
@@ -540,7 +573,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNn-bg-Hgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3622" y="643"/>
+            <point key="canvasLocation" x="4241" y="643"/>
         </scene>
         <!--Criar Usuario View Controller-->
         <scene sceneID="x6o-dY-VnT">
@@ -634,7 +667,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JE6-KI-BIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5377" y="-794"/>
+            <point key="canvasLocation" x="5996" y="-766"/>
         </scene>
         <!--Wellcome View Controller-->
         <scene sceneID="r1c-xN-Pax">
@@ -1317,7 +1350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qU1-Yi-ffd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5378" y="643"/>
+            <point key="canvasLocation" x="6114" y="643"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rzA-cn-8ai">

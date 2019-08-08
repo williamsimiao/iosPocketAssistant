@@ -13,9 +13,12 @@ import SwiftKeychainWrapper
 class PerfilViewController: UIViewController {
     @IBOutlet weak var mudarSenhaButton: MDCButton!
     @IBOutlet weak var fecharSessaoButton: MDCButton!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var optionsCollectionView: UICollectionView!
     
     var tokenString: String?
     let networkManager = NetworkManager()
+    var optionsArray: [String]?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
@@ -33,6 +36,13 @@ class PerfilViewController: UIViewController {
         let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
         barView.backgroundColor = UIColor(red: 170, green: 170, blue: 170)
         view.addSubview(barView)
+        
+
+        
+        optionsArray = ["Conectar-se a outro HSM",
+                        "Opções do HSM",
+                        "Trocar senha",
+                        "Fechar sessão"]
     }
 
     @IBAction func didTapTrocarSenha(_ sender: Any) {
@@ -65,6 +75,27 @@ class PerfilViewController: UIViewController {
         alertController.addAction(MDCAlertAction(title: "Cancelar", emphasis: .high, handler: nil))
         self.present(alertController, animated:true, completion:nil)
     }
+}
+
+extension PerfilViewController:  UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width  = self.view.frame.size.width
+        
+        return CGSize(width: width, height: 108.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        return optionsArray!.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GestaoUsuariosCollectionViewCell.identifier, for: indexPath) as! GestaoUsuariosCollectionViewCell
+        cell.userName = optionsArray![indexPath.row]
+        return cell
+    }
+    
 }
 
 extension PerfilViewController: URLSessionDelegate {
