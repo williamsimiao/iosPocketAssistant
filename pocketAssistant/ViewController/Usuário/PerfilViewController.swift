@@ -11,8 +11,9 @@ import MaterialComponents
 import SwiftKeychainWrapper
 
 class PerfilViewController: UIViewController {
+    @IBOutlet weak var userImgView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var optionsCollectionView: UICollectionView!
+    var collectionView: UICollectionView?
     
     var tokenString: String?
     let networkManager = NetworkManager()
@@ -24,22 +25,43 @@ class PerfilViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpCollectionView()
         navigationItem.title = "Usuário"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
 //        let userName = KeychainWrapper.standard.string(forKey: "USR")
         userNameLabel.text = "Usuário"
         
-        
-        let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
-        barView.backgroundColor = UIColor(red: 170, green: 170, blue: 170)
-        view.addSubview(barView)
-        
-        
         optionsArray = ["Conectar-se a outro HSM",
                         "Opções do HSM",
                         "Trocar senha",
                         "Fechar sessão"]
+    }
+    
+    func setUpCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 15
+
+        
+        collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
+        flowLayout.headerReferenceSize = CGSize(width: self.collectionView!.frame.size.width, height: 50)
+
+        collectionView!.translatesAutoresizingMaskIntoConstraints = false
+        collectionView!.register(OptionsCollectionViewCell.self, forCellWithReuseIdentifier: OptionsCollectionViewCell.identifier)
+        collectionView!.delegate = self
+        collectionView!.dataSource = self
+        collectionView?.backgroundColor = .white
+        self.view.addSubview(collectionView!)
+        
+        //Constraints
+        NSLayoutConstraint.activate([
+            collectionView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+            collectionView!.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
+            collectionView!.topAnchor.constraint(equalTo: userImgView.bottomAnchor, constant: 0),
+            collectionView!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
+            ])
+        
     }
 
     func didTapTrocarSenha() {
@@ -79,7 +101,7 @@ extension PerfilViewController:  UICollectionViewDelegateFlowLayout, UICollectio
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width  = self.view.frame.size.width
         
-        return CGSize(width: width, height: 50.0)
+        return CGSize(width: width*0.95, height: 50.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,9 +113,8 @@ extension PerfilViewController:  UICollectionViewDelegateFlowLayout, UICollectio
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GestaoUsuariosCollectionViewCell.identifier, for: indexPath) as! OptionsCollectionViewCell
 //        cell.optionTitle = optionsArray![indexPath.row]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GestaoUsuariosCollectionViewCell.identifier, for: indexPath) as! OptionsCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OptionsCollectionViewCell.identifier, for: indexPath) as! OptionsCollectionViewCell
         cell.optionTitle = optionsArray![indexPath.row]
-
         
         return cell
     }

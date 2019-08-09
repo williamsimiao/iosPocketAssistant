@@ -35,7 +35,7 @@ class TrusteesViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumLineSpacing = 10
         collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
         collectionView!.register(RelacaoCollectionViewCell.self, forCellWithReuseIdentifier: RelacaoCollectionViewCell.identifier)
         collectionView!.delegate = self

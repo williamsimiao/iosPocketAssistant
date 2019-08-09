@@ -45,6 +45,15 @@ class OptionsCollectionViewCell: MDCCardCollectionCell {
         self.contentView.backgroundColor = .white
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(arraowImage)
+        self.cornerRadius = 4
+        self.setShadowElevation(ShadowElevation(1), for: .normal)
+//
+//        self.layer.masksToBounds = false
+//        self.layer.shadowColor = UIColor.black.cgColor
+//        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        self.layer.shadowRadius = CGFloat(3)
+//        self.layer.shadowOpacity = 0.24
+        
         arraowImage.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -59,62 +68,4 @@ class OptionsCollectionViewCell: MDCCardCollectionCell {
             titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
             ])
     }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        createRectangle()
-    }
-    
-    func createRectangle() {
-        // Initialize the path.
-        separator = UIBezierPath()
-        UIColor.lightGray.setStroke()
-        separator.lineWidth = 0.5
-        // Create the bottom line (bottom-left to bottom-right).
-        separator.move(to: CGPoint(x: 0.0, y: self.frame.size.height))
-        separator.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
-        separator.close()
-        UIColor.black.setStroke()
-        separator.stroke()
-    }
 }
-
-//class OptionsCollectionViewCell: MDCCardCollectionCell {
-//    static var identifier: String = "Cell"
-//
-//    var separator: UIBezierPath!
-//    var optionTitle: String? {
-//        didSet {
-//            optionLabel.text = optionTitle
-//        }
-//    }
-//
-//
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        optionLabel.font = MDCTypography.subheadFont()
-//        optionLabel.alpha = MDCTypography.subheadFontOpacity()
-//        cornerRadius = 8
-//        setShadowElevation(ShadowElevation(6), for: .normal)
-//        setShadowColor(UIColor.black, for: .normal)
-//    }
-//
-//    override func draw(_ rect: CGRect) {
-//        super.draw(rect)
-////        createRectangle()
-//    }
-//
-//    func createRectangle() {
-//        // Initialize the path.
-//        separator = UIBezierPath()
-//        UIColor.lightGray.setStroke()
-//        separator.lineWidth = 0.5
-//        // Create the bottom line (bottom-left to bottom-right).
-//        separator.move(to: CGPoint(x: 0.0, y: self.frame.size.height))
-//        separator.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
-//        separator.close()
-//        UIColor.black.setStroke()
-//        separator.stroke()
-//    }
-//}

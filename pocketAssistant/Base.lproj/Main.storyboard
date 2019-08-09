@@ -141,40 +141,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="npw-uG-Sfh">
-                                                <rect key="frame" x="0.0" y="110" width="414" height="615"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nOS-ko-7Qw">
-                                                    <size key="itemSize" width="400" height="46"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="raj-dI-fRg" customClass="OptionsCollectionViewCell" customModule="pocketAssistant" customModuleProvider="target">
-                                                        <rect key="frame" x="7" y="0.0" width="400" height="46"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="400" height="46"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </view>
-                                                    </collectionViewCell>
-                                                </cells>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="zfQ-Ug-Isw" id="P4F-tP-Lrs"/>
-                                                    <outlet property="delegate" destination="zfQ-Ug-Isw" id="x1i-Ku-XIa"/>
-                                                </connections>
-                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="npw-uG-Sfh" firstAttribute="leading" secondItem="BSf-Em-msB" secondAttribute="leading" id="FvK-iu-e8z"/>
                                             <constraint firstItem="Hja-Ls-d3K" firstAttribute="leading" secondItem="BSf-Em-msB" secondAttribute="leading" constant="16" id="GzV-aq-wOu"/>
-                                            <constraint firstItem="npw-uG-Sfh" firstAttribute="top" secondItem="Hja-Ls-d3K" secondAttribute="bottom" constant="24" id="HD2-bd-bjV"/>
                                             <constraint firstAttribute="trailing" secondItem="nqX-Ml-jT7" secondAttribute="trailing" constant="16" id="Nrg-4T-MEc"/>
-                                            <constraint firstAttribute="bottom" secondItem="npw-uG-Sfh" secondAttribute="bottom" id="ao7-Sq-AgJ"/>
                                             <constraint firstItem="nqX-Ml-jT7" firstAttribute="centerY" secondItem="Hja-Ls-d3K" secondAttribute="centerY" id="hfL-VO-P7Z"/>
-                                            <constraint firstAttribute="trailing" secondItem="npw-uG-Sfh" secondAttribute="trailing" id="lTd-Lm-FUe"/>
                                             <constraint firstItem="nqX-Ml-jT7" firstAttribute="leading" secondItem="Hja-Ls-d3K" secondAttribute="trailing" constant="16" id="pEO-8g-O2n"/>
                                             <constraint firstItem="Hja-Ls-d3K" firstAttribute="top" secondItem="BSf-Em-msB" secondAttribute="top" constant="16" id="swW-KY-5g0"/>
                                         </constraints>
@@ -201,7 +173,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hT6-zF-iuF"/>
                     <connections>
-                        <outlet property="optionsCollectionView" destination="npw-uG-Sfh" id="7UL-aM-gcW"/>
+                        <outlet property="userImgView" destination="Hja-Ls-d3K" id="CQp-sv-5lP"/>
                         <outlet property="userNameLabel" destination="nqX-Ml-jT7" id="8ck-Ur-5RH"/>
                         <segue destination="HZO-Qr-fFQ" kind="show" identifier="to_TrocarSenhaViewController" id="9g5-cD-LVZ"/>
                     </connections>
