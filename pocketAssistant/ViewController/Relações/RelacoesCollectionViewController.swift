@@ -11,7 +11,7 @@ import MaterialComponents
 import SwiftKeychainWrapper
 
 protocol performeSegueDelegate {
-    func goToNovaPermisao(userACLpair: item)
+    func goToNovaPermisao(userACLpair: UserPermission)
     func gotoUserSelection()
 }
 
@@ -34,7 +34,7 @@ class RelacoesCollectionViewController: UIViewController {
     
     var viewControllertrusters: TrusteesViewController?
     var viewControllerTrustees: TrusteesViewController?
-    var selectedUserPermissions: item?
+    var selectedUserPermissions: UserPermission?
     var adduserButton: UIButton?
 
 
@@ -166,7 +166,7 @@ extension RelacoesCollectionViewController: performeSegueDelegate {
         }
     }
     
-    func goToNovaPermisao(userACLpair: item) {
+    func goToNovaPermisao(userACLpair: UserPermission) {
         self.selectedUserPermissions = userACLpair
         performSegue(withIdentifier: "to_NovaPermissaoViewController", sender: self)
     }

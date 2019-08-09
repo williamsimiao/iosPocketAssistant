@@ -236,6 +236,7 @@ PODS:
     - Starscream (~> 3.1)
   - Starscream (3.1.0)
   - SwiftKeychainWrapper (3.3.0)
+  - SwiftSocket (2.0.2)
 
 DEPENDENCIES:
   - ASN1Decoder
@@ -264,6 +265,7 @@ DEPENDENCIES:
   - MaterialComponents/Typography
   - Socket.IO-Client-Swift (~> 15.1.0)
   - SwiftKeychainWrapper
+  - SwiftSocket
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -276,6 +278,7 @@ SPEC REPOS:
     - Socket.IO-Client-Swift
     - Starscream
     - SwiftKeychainWrapper
+    - SwiftSocket
 
 SPEC CHECKSUMS:
   ASN1Decoder: 93c53c3d4d7a6281040a9db05b8efa7e5605872e
@@ -287,7 +290,8 @@ SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 7cb44c0ffb86e158cee32d0642d30ec5fdcf8f61
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SwiftKeychainWrapper: ef5ad793bc0e08e24a5913f28345b8f7bc8e4123
+  SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
 
-PODFILE CHECKSUM: c7bb5560db2b389f328bcec85744e1a1dc5d48ca
+PODFILE CHECKSUM: 265f4cc58f12ee08ffb14e2794b6080a64cdf9a6
 
 COCOAPODS: 1.6.1

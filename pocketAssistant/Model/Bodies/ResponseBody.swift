@@ -31,10 +31,10 @@ public struct ResponseBody4: Codable {
 
 //
 public struct ResponseBody5: Codable {
-    public var trust: [item]
+    public var trust: [UserPermission]
 }
 
-public struct item: Codable {
+public struct UserPermission: Codable {
     public var acl: Int
     public var usr: String
 }

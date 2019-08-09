@@ -9,7 +9,7 @@
 import Foundation
 import MaterialComponents
 
-class ObjetoCell: MDCCardCollectionCell {
+class ObjetoCell: MDCBaseCell {
     static var identifier: String = "Cell"
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -18,8 +18,6 @@ class ObjetoCell: MDCCardCollectionCell {
     @IBOutlet weak var toDate: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
-    
-    
     
     var separator: UIBezierPath!
     var aCertificate: certificate? {

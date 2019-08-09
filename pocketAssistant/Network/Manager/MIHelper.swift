@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import SocketIO
+
+//class MIHelper: NSObject {
+//
+//    static let sharedInstance = SocketIOClient(
+//
+//    override init() {
+//        super.init()
+//    }
+//
+//}

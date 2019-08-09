@@ -39,6 +39,7 @@
 		3D9ED6DB22E64AC400F38FDE /* SvmkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9ED6DA22E64AC400F38FDE /* SvmkViewController.swift */; };
 		3DC449DC22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC449DB22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift */; };
 		3DC4E70322FC4D6E00C0FC95 /* MIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC4E70222FC4D6E00C0FC95 /* MIHelper.swift */; };
+		3DC4E70522FCB62900C0FC95 /* OptionsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC4E70422FCB62900C0FC95 /* OptionsCollectionCell.swift */; };
 		3DC8465622A1AD420032FB31 /* UIColor+RGBinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */; };
 		3DC8465D22A54FF60032FB31 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */; };
 		3DDB7AD1229DB5C000C4D265 /* UsuarioEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */; };
@@ -114,6 +115,7 @@
 		3D9ED6DA22E64AC400F38FDE /* SvmkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SvmkViewController.swift; sourceTree = "<group>"; };
 		3DC449DB22B0819100887720 /* UserSelectionCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionCollectionCollectionViewController.swift; sourceTree = "<group>"; };
 		3DC4E70222FC4D6E00C0FC95 /* MIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIHelper.swift; sourceTree = "<group>"; };
+		3DC4E70422FCB62900C0FC95 /* OptionsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsCollectionCell.swift; sourceTree = "<group>"; };
 		3DC8465522A1AD420032FB31 /* UIColor+RGBinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBinit.swift"; sourceTree = "<group>"; };
 		3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		3DDB7AD0229DB5C000C4D265 /* UsuarioEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioEndPoint.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			children = (
 				3DDB7AD2229DBAB100C4D265 /* TrocarSenhaViewController.swift */,
 				3DC8465C22A54FF60032FB31 /* PerfilViewController.swift */,
+				3DC4E70422FCB62900C0FC95 /* OptionsCollectionCell.swift */,
 			);
 			name = "Usuário";
 			path = "Usuário";
@@ -587,6 +590,7 @@
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -601,6 +605,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -652,6 +657,7 @@
 				3D114DBC228B053E00A4A74C /* HTTPMethod.swift in Sources */,
 				3DDC4091229F490100713546 /* Theming.swift in Sources */,
 				3DF9AF25229C791E009AFD52 /* ObjetoCell.swift in Sources */,
+				3DC4E70522FCB62900C0FC95 /* OptionsCollectionCell.swift in Sources */,
 				3D48FB742295B06F007ACC63 /* ResponseBody.swift in Sources */,
 				3D3C105422A9909200E1BDD9 /* RelacoesCollectionViewController.swift in Sources */,
 				3DEBB0FA2296FF13006F0E3B /* ObjetosViewController.swift in Sources */,

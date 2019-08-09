@@ -11,8 +11,6 @@ import MaterialComponents
 import SwiftKeychainWrapper
 
 class PerfilViewController: UIViewController {
-    @IBOutlet weak var mudarSenhaButton: MDCButton!
-    @IBOutlet weak var fecharSessaoButton: MDCButton!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var optionsCollectionView: UICollectionView!
     
@@ -29,15 +27,14 @@ class PerfilViewController: UIViewController {
         navigationItem.title = "Usuário"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tokenString = KeychainWrapper.standard.string(forKey: "TOKEN")
+//        let userName = KeychainWrapper.standard.string(forKey: "USR")
+        userNameLabel.text = "Usuário"
         
-        mudarSenhaButton.applyContainedTheme(withScheme: globalContainerScheme())
-        fecharSessaoButton.applyContainedTheme(withScheme: globalContainerScheme())
         
         let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
         barView.backgroundColor = UIColor(red: 170, green: 170, blue: 170)
         view.addSubview(barView)
         
-
         
         optionsArray = ["Conectar-se a outro HSM",
                         "Opções do HSM",
@@ -45,11 +42,11 @@ class PerfilViewController: UIViewController {
                         "Fechar sessão"]
     }
 
-    @IBAction func didTapTrocarSenha(_ sender: Any) {
+    func didTapTrocarSenha() {
         self.performSegue(withIdentifier: "to_TrocarSenhaViewController", sender: self)
     }
     
-    @IBAction func didTapFecharSessao(_ sender: Any) {
+    func didTapFecharSessao() {
         guard let token = self.tokenString else {
             print("No token")
             return
@@ -82,7 +79,7 @@ extension PerfilViewController:  UICollectionViewDelegateFlowLayout, UICollectio
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width  = self.view.frame.size.width
         
-        return CGSize(width: width, height: 108.0)
+        return CGSize(width: width, height: 50.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,9 +88,34 @@ extension PerfilViewController:  UICollectionViewDelegateFlowLayout, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GestaoUsuariosCollectionViewCell.identifier, for: indexPath) as! GestaoUsuariosCollectionViewCell
-        cell.userName = optionsArray![indexPath.row]
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GestaoUsuariosCollectionViewCell.identifier, for: indexPath) as! OptionsCollectionViewCell
+//        cell.optionTitle = optionsArray![indexPath.row]
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GestaoUsuariosCollectionViewCell.identifier, for: indexPath) as! OptionsCollectionViewCell
+        cell.optionTitle = optionsArray![indexPath.row]
+
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! OptionsCollectionViewCell
+        let optionTitle = cell.optionTitle
+        
+        switch optionTitle {
+        case "Conectar-se a outro HSM":
+            print("1")
+        case "Opções do HSM":
+            print("2")
+        case "Trocar senha":
+            print("3")
+            didTapTrocarSenha()
+        case "Fechar sessão":
+            print("4")
+            didTapFecharSessao()
+        default:
+            print("Outro")
+        }
     }
     
 }

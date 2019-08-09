@@ -14,7 +14,7 @@ protocol gestaoUsuariosCellDelegate {
     func onEditTapped(userName: String)
 }
 
-class GestaoUsuariosCollectionViewCell: MDCCardCollectionCell {
+class GestaoUsuariosCollectionViewCell: MDCBaseCell {
     static var identifier: String = "Cell"
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -49,7 +49,6 @@ class GestaoUsuariosCollectionViewCell: MDCCardCollectionCell {
     @IBAction func didTapDelete(_ sender: Any) {
         actionDelegate?.onDeleteTapped(userName: self.userName!)
     }
-    
     
     func createRectangle() {
         // Initialize the path.

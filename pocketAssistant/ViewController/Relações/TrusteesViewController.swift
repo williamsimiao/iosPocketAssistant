@@ -17,7 +17,7 @@ protocol barButtonItemDelegate {
 
 class TrusteesViewController: UIViewController {
     
-    var itemArray: [item]?
+    var itemArray: [UserPermission]?
     var collectionView: UICollectionView?
     var isTrustees: Bool?
     var segueDelegate: performeSegueDelegate?
@@ -44,7 +44,6 @@ class TrusteesViewController: UIViewController {
         self.view.addSubview(noContentLabel)
         collectionView?.backgroundColor = .white
         setupViews()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

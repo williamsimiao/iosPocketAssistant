@@ -9,6 +9,7 @@
 import UIKit
 import MaterialComponents
 import SocketIO
+import SwiftSocket
 
 class DiscoveryViewController: UIViewController {
     @IBOutlet weak var mainTitle: UILabel!
@@ -17,28 +18,45 @@ class DiscoveryViewController: UIViewController {
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var enderecoTextField: MDCTextField!
     
+    var stringArray = ["lele", "lolo", "lili", "lala", "lulu"]
+
     var inputStream: InputStream!
     var outputStream: OutputStream!
     let maxReadLength = 4096
+    let manager = SocketManager(socketURL: URL(string: "http://10.61.53.209:3344")!, config: [.log(true), .compress])
+    var socket: SocketIOClient!
     
-    var stringArray = ["lele", "lolo", "lili", "lala", "lulu"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNetworkCommunication()
-        //        socketNovo()
     }
     
-    func socketNovo() {
-        let manager = SocketManager(socketURL: URL(string: "10.61.53.209:3344")!, config: [.selfSigned(true), .log(true), .compress])
-        let socket = manager.defaultSocket
-        socket.connect()
-        socket.on("0 == TAC_SUCCESS") {data, ack in
-            print(data.count)
-            print("socket connected")
+    override func viewWillAppear(_ animated: Bool) {
+//        setupNetworkCommunication()
+        socketIO()
+    }
+    
+    func socketIO() {
+        socket = manager.defaultSocket
+        socket.on(clientEvent: .connect) {data, ack in
+            print("KKKKKKK")
         }
+        
+        socket.on(clientEvent: .connect) { (data, ack) in
+            print("connected")
+            self.socket.emit("MI_HELLO ", ["": ""])
+        }
+        
+        socket.on("MI_ACK 00000000 ") {data, ack in
+            print("Recebeu")
+            self.socket.emit("MI_SVC_START 12345678 ", ["": ""])
+        }
+        
+        socket.connect()
     }
     
+    
+    ////////
     func setupNetworkCommunication() {
         // 1
         var readStream: Unmanaged<CFReadStream>?
@@ -62,12 +80,9 @@ class DiscoveryViewController: UIViewController {
         
         inputStream.open()
         outputStream.open()
-        
-        sendMessage(message: "MI_HELLO")
-        print("lele")
     }
     
-    func sendMessage(message: String) {
+    func sendMessageRay(message: String) {
         //1
         let data = message.data(using: .utf8)!
         
@@ -81,13 +96,13 @@ class DiscoveryViewController: UIViewController {
             outputStream.write(pointer, maxLength: data.count)
         }
     }
+    /////////
     
-    func setupViews() {
-
-    }
     
     @IBAction func didTapTryAgain(_ sender: Any) {
-        
+        print("CLICOU")
+        self.socket.emit("MI_SVC_START 12345678 ", ["": ""])
+//        sendMessageRay(message: "MI_HELLO ")
     }
     
     @IBAction func didTapLogin(_ sender: Any) {
@@ -175,11 +190,10 @@ extension DiscoveryViewController: StreamDelegate {
                 bytesNoCopy: buffer,
                 length: length,
                 encoding: .utf8,
-                freeWhenDone: true)
+                freeWhenDone: false)
             else {
                 return nil
         }
         return message
     }
-    
 }
