@@ -47,12 +47,6 @@ class OptionsCollectionViewCell: MDCCardCollectionCell {
         self.contentView.addSubview(arraowImage)
         self.cornerRadius = 4
         self.setShadowElevation(ShadowElevation(1), for: .normal)
-//
-//        self.layer.masksToBounds = false
-//        self.layer.shadowColor = UIColor.black.cgColor
-//        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        self.layer.shadowRadius = CGFloat(3)
-//        self.layer.shadowOpacity = 0.24
         
         arraowImage.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

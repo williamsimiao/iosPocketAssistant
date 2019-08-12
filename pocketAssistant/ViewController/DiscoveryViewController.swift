@@ -17,6 +17,7 @@ class DiscoveryViewController: UIViewController {
     @IBOutlet weak var lele: UICollectionView!
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var enderecoTextField: MDCTextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var stringArray = ["lele", "lolo", "lili", "lala", "lulu"]
 
@@ -29,6 +30,7 @@ class DiscoveryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerKeyboardNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,8 @@ class DiscoveryViewController: UIViewController {
     
     func socketIO() {
         socket = manager.defaultSocket
+        socket.connect()
+
         socket.on(clientEvent: .connect) {data, ack in
             print("KKKKKKK")
         }
@@ -105,11 +109,9 @@ class DiscoveryViewController: UIViewController {
 //        sendMessageRay(message: "MI_HELLO ")
     }
     
-    @IBAction func didTapLogin(_ sender: Any) {
-        performSegue(withIdentifier: "discovery_to_svmk", sender: self)
-    }
     
     @IBAction func didTapConnect(_ sender: Any) {
+        performSegue(withIdentifier: "discovery_to_svmk", sender: self)
     }
 }
 
@@ -195,5 +197,33 @@ extension DiscoveryViewController: StreamDelegate {
                 return nil
         }
         return message
+    }
+    
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow),
+            name: NSNotification.Name(rawValue: "UIKeyboardWillShowNotification"),
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow),
+            name: NSNotification.Name(rawValue: "UIKeyboardWillChangeFrameNotification"),
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillHide),
+            name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"),
+            object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let keyboardFrame =
+            (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height, right: 0);
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.scrollView.contentInset = UIEdgeInsets.zero;
     }
 }

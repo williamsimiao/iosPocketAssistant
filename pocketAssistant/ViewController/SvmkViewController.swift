@@ -10,8 +10,8 @@ import UIKit
 import MaterialComponents
 
 class SvmkViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var svmkTextField: MDCTextField!
     @IBOutlet weak var iniciarButton: MDCButton!
     
