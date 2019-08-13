@@ -133,16 +133,41 @@ open class AppUtil {
     
     class func validPwd(_ pwdTextLayout: textLayout) -> Bool {
         let pwdMinimumLength = 8
-        if pwdTextLayout.textField.text == "" {
-            return false
+        var erroMessage : String?
+        
+        //Empity test
+        if pwdTextLayout.textField.text != "" {
+            return true
         }
+        else {
+            erroMessage = "Campo Obrigatório"
+        }
+        
+        //Lenght test
         if pwdTextLayout.textField.text!.count >= pwdMinimumLength {
             return true
         }
         else {
-            pwdTextLayout.controller.setErrorText("Senhas devem conter pelo menos 8 caracteres", errorAccessibilityValue: nil)
-            return false
+            erroMessage = "Senhas devem conter pelo menos 8 caracteres"
         }
+        
+        
+        pwdTextLayout.controller.setErrorText(erroMessage, errorAccessibilityValue: nil)
+        return false
+    }
+    
+    class func validIPAdress(_ ipAddressTextLayout: textLayout) -> Bool {
+        var erroMessage : String?
+
+        if ipAddressTextLayout.textField.text != "" {
+            return true
+        }
+        else {
+            erroMessage = "Campo Obrigatório"
+        }
+        ipAddressTextLayout.controller.setErrorText(erroMessage, errorAccessibilityValue: nil)
+
+        return false
     }
     
     class func fieldsAreValid(_ textLayoutArray: [textLayout]) -> Bool {

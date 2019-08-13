@@ -22,55 +22,48 @@ class DiscoveryViewController: UIViewController {
     var stringArray = ["lele", "lolo", "lili", "lala", "lulu"]
     let miHelper = MIHelper()
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        //TODO:
-//        stopSession()
-    }
+    var addressTextFieldController: MDCTextInputControllerUnderline?
+    var addressTextLayout: textLayout?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         registerKeyboardNotifications()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        //TODO
-//        miHelper.setupNetworkCommunication(address: "10.61.53.225")
+    func setUpViews() {
+        addressTextFieldController = MDCTextInputControllerUnderline(textInput: enderecoTextField)
+        MDCTextFieldColorThemer.applySemanticColorScheme(textFieldColorScheme(), to: addressTextFieldController!)
+        
+        addressTextLayout = textLayout(textField: enderecoTextField, controller: addressTextFieldController!)
+        enderecoTextField.delegate = self
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScrollView))
+        scrollView.addGestureRecognizer(tapGestureRecognizer)
+
     }
     
-    ////////
-    // Add a trusted root CA to out SecTrust object
-    func addAnchorToTrust(trust: SecTrust, certificate: SecCertificate) -> SecTrust {
-        let array: NSMutableArray = NSMutableArray()
-        
-        array.add(certificate)
-        
-        SecTrustSetAnchorCertificates(trust, array)
-        
-        return trust
+    // MARK: - Gesture Handling
+    @objc func didTapScrollView(sender: UIGestureRecognizer) {
+        view.endEditing(true)
     }
-    
-    // Create a SecCertificate object from a DER formatted certificate file
-    func createCertificateFromFile(filename: String, ext: String) -> SecCertificate {
-        let rootCertPath = Bundle.main.path(forResource:filename, ofType: ext)
-        
-        let rootCertData = NSData(contentsOfFile: rootCertPath!)
-        
-        return SecCertificateCreateWithData(kCFAllocatorDefault, rootCertData!)!
-    }
-    
-    /////////
-    
     
     @IBAction func didTapTryAgain(_ sender: Any) {
         print("CLICOU")
     }
     
     @IBAction func didTapConnect(_ sender: Any) {
+        
         miHelper.serviceStartProcess(address: "10.61.53.225", initKey: "12345678") { (object) in
-            let message = object as! String
-            print("AQUI: \(message)")
+            let serviceStartedWithSuccess = object as? Bool
+            if serviceStartedWithSuccess ?? false {
+                print("START SUCSESS")
+            }
+            else {
+                let message = object as? String
+                print("START FAIL: \(message ?? "Outro erro")")
+            }
         }
         
         miHelper.isServiceStarted { (object) in
@@ -82,12 +75,6 @@ class DiscoveryViewController: UIViewController {
                 print("NAO ESTA")
             }
         }
-        
-//        miHelper.sendMessage(message: MI_message.hello) { (message) in
-//            print("Recebido: \(message)")
-//        }
-        
-//        performSegue(withIdentifier: "discovery_to_svmk", sender: self)
     }
 }
 
@@ -143,5 +130,34 @@ UICollectionViewDelegateFlowLayout {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         self.scrollView.contentInset = UIEdgeInsets.zero;
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension DiscoveryViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == enderecoTextField {
+            let _ = AppUtil.validIPAdress(addressTextLayout!)
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case enderecoTextField:
+            enderecoTextField.becomeFirstResponder()
+        default:
+            break
+        }
+        return true
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        switch textField {
+        case enderecoTextField:
+            addressTextFieldController?.setErrorText(nil, errorAccessibilityValue: nil)
+        default:
+            break
+        }
     }
 }

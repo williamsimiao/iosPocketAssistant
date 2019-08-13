@@ -168,6 +168,11 @@ extension MIHelper: StreamDelegate {
     }
     
     private func callHandler(receivedMessage: String) {
+        guard list.isEmpty == false else {
+            print("Empity list")
+            return
+        }
+        
         let currentTuple = list.removeFirst()
         let currentSendedMessage = currentTuple.mesage
         let currentHandler = currentTuple.handler
@@ -179,12 +184,12 @@ extension MIHelper: StreamDelegate {
             else {
                 currentHandler(true)
             }
-        case .auth:
+        case .auth, .start:
             if receivedMessage == MI_message.ack0.rawValue {
                 currentHandler(true)
             }
             else {
-                currentHandler(false)
+                currentHandler(receivedMessage)
             }
 
         default:
