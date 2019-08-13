@@ -40,9 +40,6 @@ class LoginViewController: UIViewController {
     var passwordTextLayout: textLayout?
     var otpTextLayout: textLayout?
     
-    // defaultNamespaceSocket and swiftSocket both share a single connection to the server
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()

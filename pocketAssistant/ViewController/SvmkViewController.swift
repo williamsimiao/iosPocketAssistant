@@ -20,6 +20,7 @@ class SvmkViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerKeyboardNotifications()
         setupViews()
     }
     
@@ -34,6 +35,33 @@ class SvmkViewController: UIViewController {
         svmkTextFieldController = MDCTextInputControllerOutlined(textInput: svmkTextField)
         svmkTextLayout = textLayout(textField: svmkTextField, controller: svmkTextFieldController!)
     }
-  
+    
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow),
+            name: NSNotification.Name(rawValue: "UIKeyboardWillShowNotification"),
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow),
+            name: NSNotification.Name(rawValue: "UIKeyboardWillChangeFrameNotification"),
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillHide),
+            name: NSNotification.Name(rawValue: "UIKeyboardWillHideNotification"),
+            object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let keyboardFrame =
+            (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height, right: 0);
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.scrollView.contentInset = UIEdgeInsets.zero;
+    }
 
 }
