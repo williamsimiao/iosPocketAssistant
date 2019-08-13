@@ -79,8 +79,8 @@ class DiscoveryViewController: UIViewController {
         
         inputStream.delegate = self
         
-        inputStream.schedule(in: .current, forMode: .common)
-        outputStream.schedule(in: .current, forMode: .common)
+        inputStream.schedule(in: .current, forMode: .default)
+        outputStream.schedule(in: .current, forMode: .default)
         
         /////////
         // Enable SSL/TLS on the streams
@@ -110,21 +110,21 @@ class DiscoveryViewController: UIViewController {
     }
     
     func sendMessageRay(message: String) {
-        //1
         let data = message.data(using: .utf8)!
-        
-        //3
-        _ = data.withUnsafeBytes {
-            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                print("Error joining chat")
-                return
-            }
-            //4
-            outputStream.write(pointer, maxLength: data.count)
+        _ = data.withUnsafeBytes { (unsafePointer:UnsafePointer<UInt8>) in
+            print("Mandando mensagem")
+            _ = self.outputStream?.write(unsafePointer, maxLength: data.count);
+
+//            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+//                print("Error joining chat")
+//                return
+//            }
+//            outputStream.write(pointer, maxLength: data.count)
         }
     }
     
     func stopSession() {
+        print("Fechou a sessão")
         inputStream.close()
         outputStream.close()
     }
@@ -133,13 +133,13 @@ class DiscoveryViewController: UIViewController {
     
     @IBAction func didTapTryAgain(_ sender: Any) {
         print("CLICOU")
-//        self.socket.emit("MI_SVC_START 12345678 ", ["": ""])
-        sendMessageRay(message: "MI_HELLO ")
+        sendMessageRay(message: "MI_HELLO\n")
     }
     
     
     @IBAction func didTapConnect(_ sender: Any) {
-        performSegue(withIdentifier: "discovery_to_svmk", sender: self)
+        stopSession()
+//        performSegue(withIdentifier: "discovery_to_svmk", sender: self)
     }
 }
 
