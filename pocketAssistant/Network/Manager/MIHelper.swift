@@ -12,11 +12,14 @@ import SwiftKeychainWrapper
 
 public enum MI_message : String {
     case hello = "MI_HELLO\n"
+    case isFirstBoot = "MI_FIRST_BOOT\n"
     case start = "MI_SVC_START\n"
     case stop = "MI_SVC_STOP\n"
+    case status = "MI_SVC_STATUS\n"
     case auth = "MI_MINI_AUTH"
     case close = "MI_CLOSE\n"
-    case post = "MI_ACK 00000000\n"
+    case ack0 = "MI_ACK 00000000\n"
+    case ack1 = "MI_ACK 00000001\n"
 }
 
 class MIHelper: NSObject {
@@ -24,9 +27,24 @@ class MIHelper: NSObject {
     var inputStream: InputStream!
     var outputStream: OutputStream!
     let maxReadLength = 4096
-    var currentHandler: ((String?) -> Void)?
-
-    func setupNetworkCommunication(address: String) {
+//    var currentSendedMessage: MI_message?
+//    var currentHandler: ((Any?) -> Void)?
+    
+    var list = [(mesage: MI_message, handler: ((Any?) -> Void))]()
+    
+    func serviceStartProcess(address: String, initKey: String, completionHandler: @escaping (Any?) -> Void) {
+        setupNetworkCommunication(address: address)
+        let authCompletedHandler = { (message: Any?) -> Void in
+            self.sendMessage(message: .start, parameter: nil, completionHandler: completionHandler)
+        }
+        sendMessage(message: .auth, parameter: initKey, completionHandler: authCompletedHandler)
+    }
+    
+    func isServiceStarted(completionHandler: @escaping (Any?) -> Void) {
+        sendMessage(message: .status, parameter: nil, completionHandler: completionHandler)
+    }
+    
+    private func setupNetworkCommunication(address: String) {
         
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
@@ -72,22 +90,22 @@ class MIHelper: NSObject {
         outputStream.open()
     }
     
-    func sendMessage(message: MI_message, completionHandler: @escaping (String?) -> Void) {
-        currentHandler = completionHandler
+    private func sendMessage(message: MI_message, parameter: String?, completionHandler: @escaping (Any?) -> Void) {
+//        currentSendedMessage = message
+//        currentHandler = completionHandler
+        let tuple = (message, completionHandler)
+        list.append(tuple)
         
         var messageString = message.rawValue
-        if message == MI_message.auth {
-            guard let initKey = KeychainWrapper.standard.string(forKey: "INIT_KEY") else {
-                print("NO 'INIT_KEY' on user keychain")
-                return
-            }
-            
-            messageString = "\(messageString) \(initKey)\n"
+        
+        if parameter != nil {
+            print("Adicionou parametro")
+            messageString = "\(messageString) \(parameter!)\n"
         }
         
         let data = messageString.data(using: .utf8)!
         _ = data.withUnsafeBytes { (unsafePointer:UnsafePointer<UInt8>) in
-            _ = self.outputStream?.write(unsafePointer, maxLength: data.count);
+            _ = self.outputStream?.write(unsafePointer, maxLength: data.count)
             
             //            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
             //                print("Error joining chat")
@@ -97,7 +115,7 @@ class MIHelper: NSObject {
         }
     }
     
-    func stopSession() {
+    private func stopSession() {
         print("Fechou a sessão")
         inputStream.close()
         outputStream.close()
@@ -141,12 +159,38 @@ extension MIHelper: StreamDelegate {
             }
             
             // Construct the Message object
-            if let message =
-                processedMessageString(buffer: buffer, length: numberOfBytesRead) {
+            if let receivedMessage = processedMessageString(buffer: buffer, length: numberOfBytesRead) {
                 // Notify interested parties
-                currentHandler!(message)
+                callHandler(receivedMessage: receivedMessage)
             }
+            
         }
+    }
+    
+    private func callHandler(receivedMessage: String) {
+        let currentTuple = list.removeFirst()
+        let currentSendedMessage = currentTuple.mesage
+        let currentHandler = currentTuple.handler
+        switch currentSendedMessage {
+        case .isFirstBoot, .status:
+            if receivedMessage == MI_message.ack0.rawValue {
+                currentHandler(false)
+            }
+            else {
+                currentHandler(true)
+            }
+        case .auth:
+            if receivedMessage == MI_message.ack0.rawValue {
+                currentHandler(true)
+            }
+            else {
+                currentHandler(false)
+            }
+
+        default:
+            currentHandler(receivedMessage)
+        }
+        
     }
     
     private func processedMessageString(buffer: UnsafeMutablePointer<UInt8>,

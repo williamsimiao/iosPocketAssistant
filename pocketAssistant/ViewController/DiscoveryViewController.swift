@@ -36,7 +36,7 @@ class DiscoveryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //TODO
-        miHelper.setupNetworkCommunication(address: "10.61.53.225")
+//        miHelper.setupNetworkCommunication(address: "10.61.53.225")
     }
     
     ////////
@@ -67,11 +67,25 @@ class DiscoveryViewController: UIViewController {
         print("CLICOU")
     }
     
-    
     @IBAction func didTapConnect(_ sender: Any) {
-        miHelper.sendMessage(message: MI_message.hello) { (message) in
-            print("Recebido: \(message)")
+        miHelper.serviceStartProcess(address: "10.61.53.225", initKey: "12345678") { (object) in
+            let message = object as! String
+            print("AQUI: \(message)")
         }
+        
+        miHelper.isServiceStarted { (object) in
+            let isServiceStarted = object as! Bool
+            if isServiceStarted {
+                print("SIM ESTA")
+            }
+            else {
+                print("NAO ESTA")
+            }
+        }
+        
+//        miHelper.sendMessage(message: MI_message.hello) { (message) in
+//            print("Recebido: \(message)")
+//        }
         
 //        performSegue(withIdentifier: "discovery_to_svmk", sender: self)
     }
