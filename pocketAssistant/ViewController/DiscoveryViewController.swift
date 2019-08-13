@@ -20,16 +20,12 @@ class DiscoveryViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var stringArray = ["lele", "lolo", "lili", "lala", "lulu"]
-
-    var inputStream: InputStream!
-    var outputStream: OutputStream!
-    let maxReadLength = 4096
-    let manager = SocketManager(socketURL: URL(string: "http://10.61.53.209:3344")!, config: [.log(true), .compress])
-    var socket: SocketIOClient!
+    let miHelper = MIHelper()
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        stopSession()
+        //TODO:
+//        stopSession()
     }
     
 
@@ -39,7 +35,8 @@ class DiscoveryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupNetworkCommunication()
+        //TODO
+        miHelper.setupNetworkCommunication(address: "10.61.53.225")
     }
     
     ////////
@@ -63,82 +60,19 @@ class DiscoveryViewController: UIViewController {
         return SecCertificateCreateWithData(kCFAllocatorDefault, rootCertData!)!
     }
     
-    func setupNetworkCommunication() {
-        
-        var readStream: Unmanaged<CFReadStream>?
-        var writeStream: Unmanaged<CFWriteStream>?
-        
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
-                                           "10.61.53.225" as CFString,
-                                           3344,
-                                           &readStream,
-                                           &writeStream)
-        
-        inputStream = readStream!.takeRetainedValue()
-        outputStream = writeStream!.takeRetainedValue()
-        
-        inputStream.delegate = self
-        
-        inputStream.schedule(in: .current, forMode: .default)
-        outputStream.schedule(in: .current, forMode: .default)
-        
-        /////////
-        // Enable SSL/TLS on the streams
-        inputStream!.setProperty(kCFStreamSocketSecurityLevelNegotiatedSSL, forKey:  Stream.PropertyKey.socketSecurityLevelKey)
-        outputStream!.setProperty(kCFStreamSocketSecurityLevelNegotiatedSSL, forKey: Stream.PropertyKey.socketSecurityLevelKey)
-        
-        
-        // Defin custom SSL/TLS settings
-        let sslSettings : [NSString: Any] = [
-            // NSStream automatically sets up the socket, the streams and creates a trust object and evaulates it before you even get a chance to check the trust yourself. Only proper SSL certificates will work with this method. If you have a self signed certificate like I do, you need to disable the trust check here and evaulate the trust against your custom root CA yourself.
-            NSString(format: kCFStreamSSLValidatesCertificateChain): kCFBooleanFalse,
-            //
-            NSString(format: kCFStreamSSLPeerName): kCFNull,
-            // We are an SSL/TLS client, not a server
-            NSString(format: kCFStreamSSLIsServer): kCFBooleanFalse
-        ]
-        
-        // Set the SSL/TLS settingson the streams
-        inputStream!.setProperty(sslSettings, forKey:  kCFStreamPropertySSLSettings as Stream.PropertyKey)
-        outputStream!.setProperty(sslSettings, forKey: kCFStreamPropertySSLSettings as Stream.PropertyKey)
-
-
-        /////////
-        
-        inputStream.open()
-        outputStream.open()
-    }
-    
-    func sendMessageRay(message: String) {
-        let data = message.data(using: .utf8)!
-        _ = data.withUnsafeBytes { (unsafePointer:UnsafePointer<UInt8>) in
-            print("Mandando mensagem")
-            _ = self.outputStream?.write(unsafePointer, maxLength: data.count);
-
-//            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-//                print("Error joining chat")
-//                return
-//            }
-//            outputStream.write(pointer, maxLength: data.count)
-        }
-    }
-    
-    func stopSession() {
-        print("Fechou a sessão")
-        inputStream.close()
-        outputStream.close()
-    }
     /////////
     
     
     @IBAction func didTapTryAgain(_ sender: Any) {
         print("CLICOU")
-        sendMessageRay(message: "MI_HELLO\n")
     }
     
     
     @IBAction func didTapConnect(_ sender: Any) {
-        stopSession()
+        miHelper.sendMessage(message: MI_message.hello) { (message) in
+            print("Recebido: \(message)")
+        }
+        
 //        performSegue(withIdentifier: "discovery_to_svmk", sender: self)
     }
 }
@@ -195,113 +129,5 @@ UICollectionViewDelegateFlowLayout {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         self.scrollView.contentInset = UIEdgeInsets.zero;
-    }
-}
-
-extension DiscoveryViewController: StreamDelegate {
-    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
-        switch eventCode {
-        case .openCompleted:
-            print("Open Completed")
-        case .hasBytesAvailable:
-            print("new message received")
-            readAvailableBytes(stream: aStream as! InputStream)
-        case .endEncountered:
-            print("new message received END")
-            stopSession()
-        case .errorOccurred:
-            print("error occurred")
-        case .hasSpaceAvailable:
-            print("has space available")
-            
-            // If you try and obtain the trust object (aka kCFStreamPropertySSLPeerTrust) before the stream is available for writing I found that the oject is always nil!
-            var sslTrustInput: SecTrust? =  inputStream! .property(forKey:kCFStreamPropertySSLPeerTrust as Stream.PropertyKey) as! SecTrust?
-            var sslTrustOutput: SecTrust? = outputStream!.property(forKey:kCFStreamPropertySSLPeerTrust as Stream.PropertyKey) as! SecTrust?
-            
-            if (sslTrustInput == nil) {
-                print("INPUT TRUST NIL")
-            }
-            else {
-                print("INPUT TRUST NOT NIL")
-            }
-            
-            if (sslTrustOutput == nil) {
-                print("OUTPUT TRUST NIL")
-            }
-            else {
-                print("OUTPUT TRUST NOT NIL")
-            }
-            
-            // Get our certificate reference. Make sure to add your root certificate file into your project.
-            let rootCert: SecCertificate? = createCertificateFromFile(filename: "ca", ext: "der")
-            
-            // TODO: Don't want to keep adding the certificate every time???
-            // Make sure to add your trusted root CA to the list of trusted anchors otherwise trust evaulation will fail
-            sslTrustInput  = addAnchorToTrust(trust: sslTrustInput!,  certificate: rootCert!)
-            sslTrustOutput = addAnchorToTrust(trust: sslTrustOutput!, certificate: rootCert!)
-            
-            // convert kSecTrustResultUnspecified type to SecTrustResultType for comparison
-            var result: SecTrustResultType = SecTrustResultType.unspecified
-            
-            // This is it! Evaulate the trust.
-            let error: OSStatus = SecTrustEvaluate(sslTrustInput!, &result)
-            
-            // An error occured evaluating the trust check the OSStatus codes for Apple at osstatus.com
-            if (error != noErr) {
-                print("Evaluation Failed")
-            }
-            
-            if (result != SecTrustResultType.proceed && result != SecTrustResultType.unspecified) {
-                // Trust failed. This will happen if you faile to add the trusted anchor as mentioned above
-                print("Peer is not trusted :(")
-            }
-            else {
-                // Peer certificate is trusted. Now we can send data. Woohoo!
-                print("Peer is trusted :)")
-            }
-            
-            
-        default:
-            print("some other event...")
-        }
-    }
-    
-    private func readAvailableBytes(stream: InputStream) {
-        //1
-        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
-        
-        //2
-        while stream.hasBytesAvailable {
-            //3
-            let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
-            
-            //4
-            if numberOfBytesRead < 0, let error = stream.streamError {
-                print(error)
-                break
-            }
-            
-            // Construct the Message object
-            if let message =
-                processedMessageString(buffer: buffer, length: numberOfBytesRead) {
-                // Notify interested parties
-                print("MESSAGE: \(message) FIM")
-            }
-        }
-    }
-    
-    private func processedMessageString(buffer: UnsafeMutablePointer<UInt8>,
-                                        length: Int) -> String? {
-        guard
-            let message = String(
-                bytesNoCopy: buffer,
-                length: length,
-                encoding: .utf8,
-                freeWhenDone: false)
-            else {
-                print("RUIM 1")
-                return nil
-        }
-        return message
     }
 }
