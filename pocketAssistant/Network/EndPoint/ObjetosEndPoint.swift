@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 public enum ObjetosApi {
     case listObjs(token: String)
@@ -18,7 +19,7 @@ extension ObjetosApi: EndPointType {
     
     var environmentBaseURL : String {
         switch NetworkManager.environment {
-            case .production: return "https://10.61.53.209/api/"
+            case .production: return "https://\(KeychainWrapper.standard.string(forKey: "BASE_URL")!)/api/"
         }
     }
     

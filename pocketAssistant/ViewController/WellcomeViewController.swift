@@ -19,18 +19,11 @@ class WellcomeViewController: UIViewController {
         super.viewDidLoad()
         
         let baseUrl = KeychainWrapper.standard.string(forKey: "BASE_URL")
-        let isFirstTime = KeychainWrapper.standard.bool(forKey: "FIRST_TIME")
-        guard let mFirtTime = isFirstTime else {
-            let _ = KeychainWrapper.standard.set(false, forKey: "FIRST_TIME")
+        if baseUrl != nil {
             goToDeviceSelection()
             return
         }
-        if baseUrl != nil || !mFirtTime {
-            goToDeviceSelection()
-        }
-        else {
-            setupViews()
-        }
+        setupViews()
     }
     
     func setupViews() {
@@ -51,7 +44,6 @@ class WellcomeViewController: UIViewController {
     }
     
     func goToDeviceSelection() {
-        KeychainWrapper.standard.set(false, forKey: "FIRST_TIME")
         performSegue(withIdentifier: "wellcome_to_discovery", sender: self)
     }
     

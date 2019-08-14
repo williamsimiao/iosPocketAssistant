@@ -196,7 +196,7 @@ extension DiscoveryViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case ipAddressTextField:
-            ipAddressTextField.becomeFirstResponder()
+            didTapConnect(self)
         default:
             break
         }

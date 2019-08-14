@@ -20,10 +20,12 @@ class SvmkViewController: UIViewController {
     var svmkTextLayout: textLayout?
     var selectedIpAddress : String?
     let miHelper = MIHelper.shared
+    var isFirstBoot = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkFirstBoot()
+        checkFirstBootAndService()
+        
         registerKeyboardNotifications()
         setupViews()
     }
@@ -51,43 +53,62 @@ class SvmkViewController: UIViewController {
     }
     
     @IBAction func didTapIniciar(_ sender: Any) {
+        guard AppUtil.validInitKey(svmkTextLayout!) else {
+            print("Invalid initKey")
+            return
+        }
+        if isFirstBoot {
+            self.handleFirstBoot()
+        }
         
+        let initKey = svmkTextField.text!
+        tryToStartService(initKey: initKey)
+        
+        let _ = KeychainWrapper.standard.set(initKey, forKey: "INIT_KEY")
+        let _ = KeychainWrapper.standard.set(selectedIpAddress!, forKey: "BASE_URL")
     }
     
     // MARK: - MI Calls
-    func checkFirstBoot() {
-        miHelper.isFirstBoot(address: selectedIpAddress!) { (object) in
+    func checkIsServiceStarted() {
+        self.miHelper.isServiceStarted(completionHandler: { (object) in
             let boolean = object as? Bool
-            guard let isFirstBoot = boolean else { return }
-            if isFirstBoot {
-                self.handleFirstBoot()
+            guard let isServiceStarted = boolean else { return }
+            if isServiceStarted {
+                print("Already Started")
+                self.serviceIsStarted()
             }
             else {
-                self.miHelper.isServiceStarted(completionHandler: { (object) in
-                    let boolean = object as? Bool
-                    guard let isServiceStarted = boolean else { return }
-                    if isServiceStarted {
-                        print("Already Started")
-                        self.serviceDidStarted()
-                    }
-                    else {
-                        print("User must start")
-                        self.tryToStartService()
-                    }
-                })
+                print("User must start")
+                guard let initKey = KeychainWrapper.standard.string(forKey: "INIT_KEY") else {
+                    return
+                }
+                self.tryToStartService(initKey: initKey)
+            }
+        })
+    }
+    
+    func checkFirstBootAndService() {
+        miHelper.isFirstBoot(address: selectedIpAddress!) { (object) in
+            let boolean = object as? Bool
+            guard let firstBoot = boolean else { return }
+            self.isFirstBoot = firstBoot
+            
+            if self.isFirstBoot == false {
+                self.checkIsServiceStarted()
             }
         }
     }
     
-    func tryToStartService() {
-        guard let initKey = KeychainWrapper.standard.string(forKey: "INIT_KEY") else {
+    func tryToStartService(initKey: String) {
+        guard let ipAddress = self.selectedIpAddress else {
             return
         }
-        self.miHelper.serviceStartProcess(address: self.selectedIpAddress!, initKey: initKey, completionHandler: { (object) in
+        
+        self.miHelper.serviceStartProcess(address: ipAddress, initKey: initKey, completionHandler: { (object) in
             let serviceStartedWithSuccess = object as? Bool
             if serviceStartedWithSuccess ?? false {
                 print("START SUCSESS")
-                self.serviceDidStarted()
+                self.serviceIsStarted()
             }
             else {
                 self.showFields()
@@ -103,10 +124,12 @@ class SvmkViewController: UIViewController {
         iniciarButton.isHidden = false
     }
     
-    func serviceDidStarted() {
+    func serviceIsStarted() {
         let snackBar = MDCSnackbarMessage()
-        snackBar.text = "Conectado"
+        snackBar.text = "Serviço iniciado"
         MDCSnackbarManager.show(snackBar)
+        
+        KeychainWrapper.standard.set(selectedIpAddress!, forKey: "BASE_URL")
         
         let stor = UIStoryboard.init(name: "Main", bundle: nil)
         let loginViewController = stor.instantiateViewController(withIdentifier: "LoginViewController")
@@ -115,31 +138,7 @@ class SvmkViewController: UIViewController {
     
     func handleFirstBoot() {
         print("NOT IMPLEMENTED")
-    }
-    
-    func sendAuthMessage() {
-        guard let ipAddress = self.selectedIpAddress else {
-            return
-        }
-        guard AppUtil.validIPAdress(svmkTextLayout!) else {
-            return
-        }
-        let initKey = svmkTextField.text
-        miHelper.sendAuth(initKey: initKey!) { (object) in
-            let isAutenticated = object as? Bool
-            if isAutenticated ?? false {
-                self.miHelper.serviceStartProcess(address: ipAddress, initKey: initKey!, completionHandler: { (object) in
-                    guard let _ = object as? Bool else {
-                        let message = object as? String
-                        print("START FAIL: \(message ?? "Outro erro")")
-                        
-                        return
-                    }
-                    print("START SUCSESS")
-                    
-                })
-            }
-        }
+        
     }
     
     func registerKeyboardNotifications() {

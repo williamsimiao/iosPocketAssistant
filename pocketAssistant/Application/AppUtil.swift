@@ -180,4 +180,18 @@ open class AppUtil {
         }
         return isValid
     }
+    
+    class func validInitKey(_ initKeyTextLayout: textLayout) -> Bool {
+        var erroMessage : String?
+        
+        if initKeyTextLayout.textField.text != "" {
+            return true
+        }
+        else {
+            erroMessage = "Campo Obrigatório"
+        }
+        initKeyTextLayout.controller.setErrorText(erroMessage, errorAccessibilityValue: nil)
+        
+        return false
+    }
 }

@@ -209,7 +209,7 @@ extension ObjetosViewController: URLSessionDelegate {
         print("AQUIIIIII")
         if(challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
             print("Olha o IP \(challenge.protectionSpace.host)")
-            let myHost = "10.61.53.209"
+            let myHost = KeychainWrapper.standard.string(forKey: "BASE_URL")!
             if(challenge.protectionSpace.host == myHost) {
                 print("LALA")
                 let secTrust = challenge.protectionSpace.serverTrust

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 enum NetworkEnvironment {
     case production
@@ -22,7 +23,7 @@ extension SessaoApi: EndPointType {
     
     var environmentBaseURL : String {
         switch NetworkManager.environment {
-            case .production: return "https://10.61.53.209/api/"
+            case .production: return "https://\(KeychainWrapper.standard.string(forKey: "BASE_URL")!)/api/"
 
         }
     }
