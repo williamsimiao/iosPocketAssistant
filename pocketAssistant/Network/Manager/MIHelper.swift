@@ -18,8 +18,8 @@ public enum MI_message : String {
     case status = "MI_SVC_STATUS\n"
     case auth = "MI_MINI_AUTH"
     case close = "MI_CLOSE\n"
-    case ack0 = "MI_ACK 00000000\n"
-    case ack1 = "MI_ACK 00000001\n"
+    case ack0 = "MI_ACK 00000000 \n"
+    case ack1 = "MI_ACK 00000001 \n"
 }
 
 class MIHelper: NSObject {
@@ -42,6 +42,11 @@ class MIHelper: NSObject {
     
     func isServiceStarted(completionHandler: @escaping (Any?) -> Void) {
         sendMessage(message: .status, parameter: nil, completionHandler: completionHandler)
+    }
+    
+    func sendHello(address: String, completionHandler: @escaping (Any?) -> Void) {
+        setupNetworkCommunication(address: address)
+        sendMessage(message: .hello, parameter: nil, completionHandler: completionHandler)
     }
     
     private func setupNetworkCommunication(address: String) {

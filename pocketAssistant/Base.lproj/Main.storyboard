@@ -329,14 +329,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6N-rQ-VQd">
-                                            <rect key="frame" x="336" y="-11" width="16" height="22"/>
+                                            <rect key="frame" x="320" y="-12" width="24" height="24"/>
                                             <state key="normal" image="edit"/>
                                             <connections>
                                                 <action selector="didTapEdit:" destination="6cL-Qc-Oj5" eventType="touchUpInside" id="mUL-xc-qTv"/>
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAL-FH-yqU">
-                                            <rect key="frame" x="368" y="-11" width="16" height="22"/>
+                                            <rect key="frame" x="360" y="-12" width="24" height="24"/>
                                             <state key="normal" image="delete"/>
                                             <connections>
                                                 <action selector="didTapDelete:" destination="6cL-Qc-Oj5" eventType="touchUpInside" id="xtZ-UD-rVL"/>
@@ -677,26 +677,25 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qkz-Id-LBC">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buscando HSMs na sua rede" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGO-yJ-BX8">
-                                                <rect key="frame" x="16" y="16" width="345.5" height="33.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buscando Pockets na sua rede" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGO-yJ-BX8">
+                                                <rect key="frame" x="16" y="16" width="382" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b05-Sc-fxp" customClass="MDCButton">
                                                 <rect key="frame" x="145" y="65.5" width="124" height="48"/>
-                                                <color key="backgroundColor" red="0.21960784310000001" green="0.27000162010000001" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="8Y4-79-q31"/>
                                                 </constraints>
                                                 <state key="normal" title="Tentar novamente">
-                                                    <color key="titleColor" red="0.74901960779999999" green="0.66666666669999997" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapTryAgain:" destination="NXN-SE-Bvg" eventType="touchUpInside" id="WmA-Ls-Y0i"/>
                                                 </connections>
                                             </button>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ngv-zM-X4x">
+                                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ngv-zM-X4x">
                                                 <rect key="frame" x="0.0" y="129.5" width="414" height="150"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -715,22 +714,13 @@
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                             <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0X-cf-EJp">
-                                                                    <rect key="frame" x="8" y="14.5" width="384" height="21"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
                                                         </view>
-                                                        <constraints>
-                                                            <constraint firstItem="h0X-cf-EJp" firstAttribute="leading" secondItem="Kju-Jv-xxr" secondAttribute="leading" constant="8" id="Igw-y5-ClY"/>
-                                                            <constraint firstItem="h0X-cf-EJp" firstAttribute="centerY" secondItem="Kju-Jv-xxr" secondAttribute="centerY" id="SsA-6Q-n50"/>
-                                                            <constraint firstAttribute="trailing" secondItem="h0X-cf-EJp" secondAttribute="trailing" constant="8" id="XK4-Fw-haJ"/>
-                                                        </constraints>
                                                     </collectionViewCell>
                                                 </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="NXN-SE-Bvg" id="zhc-rE-oP1"/>
+                                                    <outlet property="delegate" destination="NXN-SE-Bvg" id="G5f-a8-SWq"/>
+                                                </connections>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ou" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-Kx-Jyg">
                                                 <rect key="frame" x="197" y="338" width="20" height="21"/>
@@ -752,7 +742,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="jxq-kj-Dzi"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infome o IP do HSM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-cN-57C">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infome o IP do Pocket conectado" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-cN-57C">
                                                 <rect key="frame" x="16" y="370" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -787,6 +777,7 @@
                                             <constraint firstItem="BHV-B0-XWx" firstAttribute="leading" secondItem="Qkz-Id-LBC" secondAttribute="leading" constant="16" id="9Ra-W9-pVu"/>
                                             <constraint firstItem="b05-Sc-fxp" firstAttribute="top" secondItem="eGO-yJ-BX8" secondAttribute="bottom" constant="16" id="Bjd-DY-gWT"/>
                                             <constraint firstItem="d5w-1k-Gbl" firstAttribute="top" secondItem="L4A-cN-57C" secondAttribute="bottom" constant="47.5" id="CFx-se-Adq"/>
+                                            <constraint firstAttribute="trailing" secondItem="eGO-yJ-BX8" secondAttribute="trailing" constant="16" id="Cgg-iz-zud"/>
                                             <constraint firstAttribute="trailing" secondItem="2Fr-Ki-CSh" secondAttribute="trailing" constant="16" id="FdY-z4-vVC"/>
                                             <constraint firstAttribute="bottom" secondItem="rTX-If-GP0" secondAttribute="bottom" constant="16" id="Iod-IT-aIi"/>
                                             <constraint firstItem="X1H-Kx-Jyg" firstAttribute="centerX" secondItem="Qkz-Id-LBC" secondAttribute="centerX" id="LXg-zI-kaJ"/>
@@ -827,8 +818,9 @@
                         <viewLayoutGuide key="safeArea" id="MT4-5G-VGW"/>
                     </view>
                     <connections>
-                        <outlet property="enderecoTextField" destination="d5w-1k-Gbl" id="Rwh-Zv-08f"/>
-                        <outlet property="lele" destination="Ngv-zM-X4x" id="2J8-8f-NUJ"/>
+                        <outlet property="contentView" destination="Qkz-Id-LBC" id="5gv-Ag-Dh5"/>
+                        <outlet property="devicesCollectionView" destination="Ngv-zM-X4x" id="al9-si-xlA"/>
+                        <outlet property="ipAddressTextField" destination="d5w-1k-Gbl" id="6VA-Y1-qs5"/>
                         <outlet property="mainTitle" destination="eGO-yJ-BX8" id="OFN-2S-nNZ"/>
                         <outlet property="scrollView" destination="nzz-YK-rZb" id="NUE-ug-39C"/>
                         <outlet property="subtitle" destination="L4A-cN-57C" id="L1g-D6-wYQ"/>
@@ -954,14 +946,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcw-L0-dLN">
-                                            <rect key="frame" x="336" y="14" width="16" height="22"/>
+                                            <rect key="frame" x="320" y="13" width="24" height="24"/>
                                             <state key="normal" image="edit"/>
                                             <connections>
                                                 <action selector="didTapEdit:" destination="4pT-7j-1o9" eventType="touchUpInside" id="JoD-ur-c5D"/>
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0J5-uW-lor">
-                                            <rect key="frame" x="368" y="14" width="16" height="22"/>
+                                            <rect key="frame" x="360" y="13" width="24" height="24"/>
                                             <state key="normal" image="delete"/>
                                             <connections>
                                                 <action selector="didTapDelete:" destination="4pT-7j-1o9" eventType="touchUpInside" id="qag-We-TI3"/>

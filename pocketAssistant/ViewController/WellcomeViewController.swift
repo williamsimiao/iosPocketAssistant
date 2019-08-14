@@ -31,14 +31,18 @@ class WellcomeViewController: UIViewController {
         else {
             setupViews()
         }
-        
     }
     
     func setupViews() {
         titleLabel.isHidden = false
-        descriptionLabel.isHidden = false
-        iniciarButton.isHidden = false
+        titleLabel.font = MDCTypography.display1Font()
+        titleLabel.alpha = MDCTypography.display1FontOpacity()
         
+        descriptionLabel.isHidden = false
+        descriptionLabel.font = MDCTypography.display1Font()
+        descriptionLabel.alpha = MDCTypography.display1FontOpacity()
+        
+        iniciarButton.isHidden = false
         iniciarButton.applyContainedTheme(withScheme: globalContainerScheme())
     }
     
@@ -47,6 +51,7 @@ class WellcomeViewController: UIViewController {
     }
     
     func goToDeviceSelection() {
+        KeychainWrapper.standard.set(false, forKey: "FIRST_TIME")
         performSegue(withIdentifier: "wellcome_to_discovery", sender: self)
     }
     

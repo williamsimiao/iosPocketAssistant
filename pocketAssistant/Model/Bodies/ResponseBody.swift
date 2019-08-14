@@ -85,6 +85,10 @@ public struct certificate: Codable {
     public var notAfter: Date
 }
 
+public struct device: Codable {
+    public var ipAddress: String
+}
+
 //#define ACL_NOP                 (0x00000000)       // "may the Force be with ya'!"
 //#define ACL_OBJ_DEL             (ACL_NOP + 1)      // delete objects
 //#define ACL_OBJ_READ            (ACL_OBJ_DEL << 1) // read obj content

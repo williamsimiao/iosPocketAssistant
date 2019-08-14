@@ -17,6 +17,7 @@ class SvmkViewController: UIViewController {
     
     var svmkTextFieldController: MDCTextInputControllerOutlined?
     var svmkTextLayout: textLayout?
+    var selectedIpAddress : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
