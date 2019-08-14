@@ -23,14 +23,14 @@ public enum MI_message : String {
 }
 
 class MIHelper: NSObject {
-    
+    static let shared = MIHelper()
     var inputStream: InputStream!
     var outputStream: OutputStream!
     let maxReadLength = 4096
-//    var currentSendedMessage: MI_message?
-//    var currentHandler: ((Any?) -> Void)?
     
     var list = [(mesage: MI_message, handler: ((Any?) -> Void))]()
+    
+    private override init() { }
     
     func serviceStartProcess(address: String, initKey: String, completionHandler: @escaping (Any?) -> Void) {
         setupNetworkCommunication(address: address)
@@ -47,6 +47,18 @@ class MIHelper: NSObject {
     func sendHello(address: String, completionHandler: @escaping (Any?) -> Void) {
         setupNetworkCommunication(address: address)
         sendMessage(message: .hello, parameter: nil, completionHandler: completionHandler)
+    }
+    
+    func sendAuth(initKey: String, completionHandler: @escaping (Any?) -> Void) {
+        //Presumably already called
+//        setupNetworkCommunication(address: address)
+        sendMessage(message: .auth, parameter: initKey, completionHandler: completionHandler)
+    }
+    
+    func isFirstBoot(address: String, completionHandler: @escaping (Any?) -> Void) {
+        //Presumably already called
+        //        setupNetworkCommunication(address: address)
+        sendMessage(message: .isFirstBoot, parameter: nil, completionHandler: completionHandler)
     }
     
     private func setupNetworkCommunication(address: String) {
@@ -87,8 +99,6 @@ class MIHelper: NSObject {
         // Set the SSL/TLS settingson the streams
         inputStream!.setProperty(sslSettings, forKey:  kCFStreamPropertySSLSettings as Stream.PropertyKey)
         outputStream!.setProperty(sslSettings, forKey: kCFStreamPropertySSLSettings as Stream.PropertyKey)
-        
-        
         /////////
         
         inputStream.open()

@@ -8,8 +8,6 @@
 
 import UIKit
 import MaterialComponents
-import SocketIO
-import SwiftSocket
 
 class DiscoveryViewController: UIViewController {
     @IBOutlet weak var mainTitle: UILabel!
@@ -30,7 +28,7 @@ class DiscoveryViewController: UIViewController {
     }()
     
     var stringArray = ["lele", "lolo", "lili", "lala", "lulu"]
-    let miHelper = MIHelper()
+    let miHelper = MIHelper.shared
     
     var addressTextFieldController: MDCTextInputControllerUnderline?
     var addressTextLayout: textLayout?
@@ -111,6 +109,7 @@ class DiscoveryViewController: UIViewController {
         destinationViewController.selectedIpAddress = ipAddress
     }
     
+    // MARK: - MI Calls
     func prepareConnection(address: String) {
         miHelper.sendHello(address: address) { (object) in
             let message = object as? String
