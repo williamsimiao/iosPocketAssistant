@@ -44,7 +44,9 @@ class WellcomeViewController: UIViewController {
     }
     
     func goToDeviceSelection() {
-        performSegue(withIdentifier: "wellcome_to_discovery", sender: self)
+        let stor = UIStoryboard.init(name: "Main", bundle: nil)
+        let loginViewController = stor.instantiateViewController(withIdentifier: "LoginViewController")
+        self.present(loginViewController, animated: true)
     }
     
 }

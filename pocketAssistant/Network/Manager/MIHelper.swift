@@ -32,6 +32,12 @@ class MIHelper: NSObject {
     
     private override init() { }
     
+    func stopSession() {
+        print("Fechou a sessão")
+        inputStream.close()
+        outputStream.close()
+    }
+    
     func serviceStartProcess(address: String, initKey: String, completionHandler: @escaping (Any?) -> Void) {
         setupNetworkCommunication(address: address)
         let authCompletedHandler = { (message: Any?) -> Void in
@@ -128,12 +134,6 @@ class MIHelper: NSObject {
             //            }
             //            outputStream.write(pointer, maxLength: data.count)
         }
-    }
-    
-    private func stopSession() {
-        print("Fechou a sessão")
-        inputStream.close()
-        outputStream.close()
     }
 
 }

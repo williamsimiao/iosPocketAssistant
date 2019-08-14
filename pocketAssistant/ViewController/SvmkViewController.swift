@@ -131,6 +131,8 @@ class SvmkViewController: UIViewController {
         
         KeychainWrapper.standard.set(selectedIpAddress!, forKey: "BASE_URL")
         
+        miHelper.stopSession()
+        
         let stor = UIStoryboard.init(name: "Main", bundle: nil)
         let loginViewController = stor.instantiateViewController(withIdentifier: "LoginViewController")
         self.present(loginViewController, animated: true)
